@@ -79,6 +79,9 @@ def to_card(
         reviewCount=int(
             doc.get("reviewCount", 0) or 0
         ),
+        soldCount=int(
+            doc.get("soldCount", 0) or 0
+        ),
 
         availability=stock,
         inStock=stock > 0,

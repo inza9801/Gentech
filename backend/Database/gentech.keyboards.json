@@ -1,0 +1,555 @@
+[{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5903"
+  },
+  "name": "A4Tech Fstyler FBX209 Standard Membrane Keyboard",
+  "brand": "A4Tech",
+  "connectionType": "Wired (USB)",
+  "keyboardType": "Membrane",
+  "size": "Full Size",
+  "keyboardSwitch": "Standard Membrane",
+  "color": "Black/White",
+  "price": 1400,
+  "discount": 5,
+  "warranty": "1 Year",
+  "rating": 4.3,
+  "reviewCount": 61,
+  "availability": 28,
+  "features": [
+    "1ms Fast Response Time",
+    "Detachable USB-C Cable",
+    "Anti-Ghosting Gaming Matrix"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/a4tech-fstyler-fbx209-standard-membrane-keyboard-1.jpg",
+    "/images/keyboards/a4tech-fstyler-fbx209-standard-membrane-keyboard-2.jpg",
+    "/images/keyboards/a4tech-fstyler-fbx209-standard-membrane-keyboard-3.png",
+    "/images/keyboards/a4tech-fstyler-fbx209-standard-membrane-keyboard-4.webp"
+  ],
+  "sku": "KEY-0001-ALVCG",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:28:32.098Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5904"
+  },
+  "name": "A4Tech Bloody AT856 Linear Mechanical Gaming Keyboard",
+  "brand": "A4Tech",
+  "connectionType": "Wired (USB)",
+  "keyboardType": "Mechanical Gaming",
+  "size": "60%",
+  "keyboardSwitch": "Linear Switch",
+  "color": "Black",
+  "price": 4600,
+  "discount": 18,
+  "warranty": "2 Years",
+  "rating": 4.3,
+  "reviewCount": 47,
+  "availability": 44,
+  "features": [
+    "1ms Fast Response Time",
+    "Onboard Memory with Macro Support",
+    "Spill-Resistant Design"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/a4tech-bloody-at856-linear-mechanical-gaming-keyboard-1.jpg",
+    "/images/keyboards/a4tech-bloody-at856-linear-mechanical-gaming-keyboard-2.jpg",
+    "/images/keyboards/a4tech-bloody-at856-linear-mechanical-gaming-keyboard-3.jpg",
+    "/images/keyboards/a4tech-bloody-at856-linear-mechanical-gaming-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0002-CYIVS",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:28:36.222Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5905"
+  },
+  "name": "A4Tech Fstyler FBX402 Cherry Mechanical Gaming Keyboard",
+  "brand": "A4Tech",
+  "connectionType": "Wired (USB)",
+  "keyboardType": "Mechanical Gaming",
+  "size": "Full Size",
+  "keyboardSwitch": "Cherry MX Mechanical",
+  "color": "Black",
+  "price": 6300,
+  "discount": 11,
+  "warranty": "2 Years",
+  "rating": 4.5,
+  "reviewCount": 38,
+  "availability": 35,
+  "features": [
+    "Durable PBT Keycaps",
+    "Spill-Resistant Design",
+    "Anti-Ghosting Gaming Matrix"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/a4tech-fstyler-fbx402-cherry-mechanical-gaming-keyboard-1.jpg",
+    "/images/keyboards/a4tech-fstyler-fbx402-cherry-mechanical-gaming-keyboard-2.jpg",
+    "/images/keyboards/a4tech-fstyler-fbx402-cherry-mechanical-gaming-keyboard-3.jpg",
+    "/images/keyboards/a4tech-fstyler-fbx402-cherry-mechanical-gaming-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0003-FRLAY",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:28:41.767Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5906"
+  },
+  "name": "A4Tech Bloody S930 Optical Mechanical Gaming Keyboard",
+  "brand": "A4Tech",
+  "connectionType": "2.4GHz Wireless",
+  "keyboardType": "Mechanical Gaming",
+  "size": "TKL",
+  "keyboardSwitch": "Optical Switch",
+  "color": "Black",
+  "price": 10300,
+  "discount": 0,
+  "warranty": "2 Years",
+  "rating": 4.5,
+  "reviewCount": 25,
+  "availability": 22,
+  "features": [
+    "Detachable USB-C Cable",
+    "RGB Backlit Effects",
+    "Anti-Ghosting Gaming Matrix"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/a4tech-bloody-s930-optical-mechanical-gaming-keyboard-1.jpg",
+    "/images/keyboards/a4tech-bloody-s930-optical-mechanical-gaming-keyboard-2.jpg",
+    "/images/keyboards/a4tech-bloody-s930-optical-mechanical-gaming-keyboard-3.jpg",
+    "/images/keyboards/a4tech-bloody-s930-optical-mechanical-gaming-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0004-JT0Q6",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:28:45.702Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5907"
+  },
+  "name": "A4Tech Bloody S922 Optical Mechanical Gaming Keyboard",
+  "brand": "A4Tech",
+  "connectionType": "Wired (USB)",
+  "keyboardType": "Mechanical Gaming",
+  "size": "Full Size",
+  "keyboardSwitch": "Optical Hot-Swappable Switch",
+  "color": "Black",
+  "price": 14100,
+  "discount": 16,
+  "warranty": "2 Years",
+  "rating": 4.6,
+  "reviewCount": 20,
+  "availability": 27,
+  "features": [
+    "Onboard Memory with Macro Support",
+    "RGB Backlit Effects",
+    "1ms Fast Response Time"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/a4tech-bloody-s922-optical-mechanical-gaming-keyboard-1.jpg",
+    "/images/keyboards/a4tech-bloody-s922-optical-mechanical-gaming-keyboard-2.jpg",
+    "/images/keyboards/a4tech-bloody-s922-optical-mechanical-gaming-keyboard-3.jpg",
+    "/images/keyboards/a4tech-bloody-s922-optical-mechanical-gaming-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0005-ZKLIV",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:28:49.616Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5908"
+  },
+  "name": "Logitech K654 Standard Membrane Keyboard",
+  "brand": "Logitech",
+  "connectionType": "Wired (USB)",
+  "keyboardType": "Membrane",
+  "size": "Full Size",
+  "keyboardSwitch": "Standard Membrane",
+  "color": "Black/White",
+  "price": 1700,
+  "discount": 0,
+  "warranty": "2 Years",
+  "rating": 4.3,
+  "reviewCount": 64,
+  "availability": 28,
+  "features": [
+    "Spill-Resistant Design",
+    "RGB Backlit Effects",
+    "Detachable USB-C Cable"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/logitech-k654-standard-membrane-keyboard-1.png",
+    "/images/keyboards/logitech-k654-standard-membrane-keyboard-2.jpg",
+    "/images/keyboards/logitech-k654-standard-membrane-keyboard-3.jpg",
+    "/images/keyboards/logitech-k654-standard-membrane-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0006-5SOY4",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:28:53.999Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5909"
+  },
+  "name": "Logitech K744 Linear Mechanical Gaming Keyboard",
+  "brand": "Logitech",
+  "connectionType": "Wired (USB)",
+  "keyboardType": "Mechanical Gaming",
+  "size": "60%",
+  "keyboardSwitch": "Linear Switch",
+  "color": "Black",
+  "price": 3800,
+  "discount": 20,
+  "warranty": "2 Years",
+  "rating": 4.4,
+  "reviewCount": 43,
+  "availability": 31,
+  "features": [
+    "Anti-Ghosting Gaming Matrix",
+    "1ms Fast Response Time",
+    "Detachable USB-C Cable"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/logitech-k744-linear-mechanical-gaming-keyboard-1.jpg",
+    "/images/keyboards/logitech-k744-linear-mechanical-gaming-keyboard-2.jpg",
+    "/images/keyboards/logitech-k744-linear-mechanical-gaming-keyboard-3.jpg",
+    "/images/keyboards/logitech-k744-linear-mechanical-gaming-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0007-M35RK",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:28:57.493Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf590a"
+  },
+  "name": "Logitech MX89 Cherry Mechanical Gaming Keyboard",
+  "brand": "Logitech",
+  "connectionType": "Wired (USB)",
+  "keyboardType": "Mechanical Gaming",
+  "size": "Full Size",
+  "keyboardSwitch": "Cherry MX Mechanical",
+  "color": "Black/White",
+  "price": 7700,
+  "discount": 18,
+  "warranty": "2 Years",
+  "rating": 4.5,
+  "reviewCount": 41,
+  "availability": 43,
+  "features": [
+    "Detachable USB-C Cable",
+    "Anti-Ghosting Gaming Matrix",
+    "Spill-Resistant Design"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/logitech-mx89-cherry-mechanical-gaming-keyboard-1.jpg",
+    "/images/keyboards/logitech-mx89-cherry-mechanical-gaming-keyboard-2.jpg",
+    "/images/keyboards/logitech-mx89-cherry-mechanical-gaming-keyboard-3.jpg",
+    "/images/keyboards/logitech-mx89-cherry-mechanical-gaming-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0008-F1SH4",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:01.676Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf590b"
+  },
+  "name": "Logitech G91 Optical Mechanical Gaming Keyboard",
+  "brand": "Logitech",
+  "connectionType": "2.4GHz Wireless",
+  "keyboardType": "Mechanical Gaming",
+  "size": "TKL",
+  "keyboardSwitch": "Optical Switch",
+  "color": "Black",
+  "price": 8900,
+  "discount": 6,
+  "warranty": "2 Years",
+  "rating": 4.5,
+  "reviewCount": 25,
+  "availability": 24,
+  "features": [
+    "1ms Fast Response Time",
+    "Spill-Resistant Design",
+    "RGB Backlit Effects"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/logitech-g91-optical-mechanical-gaming-keyboard-1.jpg",
+    "/images/keyboards/logitech-g91-optical-mechanical-gaming-keyboard-2.jpg",
+    "/images/keyboards/logitech-g91-optical-mechanical-gaming-keyboard-3.jpg",
+    "/images/keyboards/logitech-g91-optical-mechanical-gaming-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0009-1M9PD",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:05.266Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf590c"
+  },
+  "name": "Logitech G882 Optical Mechanical Gaming Keyboard",
+  "brand": "Logitech",
+  "connectionType": "Wired (USB)",
+  "keyboardType": "Mechanical Gaming",
+  "size": "Full Size",
+  "keyboardSwitch": "Optical Hot-Swappable Switch",
+  "color": "Black/White",
+  "price": 14200,
+  "discount": 6,
+  "warranty": "2 Years",
+  "rating": 4.6,
+  "reviewCount": 25,
+  "availability": 21,
+  "features": [
+    "Detachable USB-C Cable",
+    "Anti-Ghosting Gaming Matrix",
+    "Onboard Memory with Macro Support"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/logitech-g882-optical-mechanical-gaming-keyboard-1.jpg",
+    "/images/keyboards/logitech-g882-optical-mechanical-gaming-keyboard-2.jpg",
+    "/images/keyboards/logitech-g882-optical-mechanical-gaming-keyboard-3.jpg",
+    "/images/keyboards/logitech-g882-optical-mechanical-gaming-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0010-RFDDZ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:08.211Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf590d"
+  },
+  "name": "Corsair K70113 Standard Membrane Keyboard",
+  "brand": "Corsair",
+  "connectionType": "Wired (USB)",
+  "keyboardType": "Membrane",
+  "size": "Full Size",
+  "keyboardSwitch": "Standard Membrane",
+  "color": "Black",
+  "price": 1700,
+  "discount": 6,
+  "warranty": "1 Year",
+  "rating": 4.3,
+  "reviewCount": 54,
+  "availability": 32,
+  "features": [
+    "RGB Backlit Effects",
+    "Detachable USB-C Cable",
+    "Onboard Memory with Macro Support"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/corsair-k70113-standard-membrane-keyboard-1.jpg",
+    "/images/keyboards/corsair-k70113-standard-membrane-keyboard-2.jpg",
+    "/images/keyboards/corsair-k70113-standard-membrane-keyboard-3.jpg",
+    "/images/keyboards/corsair-k70113-standard-membrane-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0011-ZZZFF",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:12.199Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf590e"
+  },
+  "name": "Corsair K65115 Linear Mechanical Gaming Keyboard",
+  "brand": "Corsair",
+  "connectionType": "Wired (USB)",
+  "keyboardType": "Mechanical Gaming",
+  "size": "60%",
+  "keyboardSwitch": "Linear Switch",
+  "color": "Black/White",
+  "price": 4700,
+  "discount": 4,
+  "warranty": "2 Years",
+  "rating": 4.4,
+  "reviewCount": 42,
+  "availability": 44,
+  "features": [
+    "Durable PBT Keycaps",
+    "Onboard Memory with Macro Support",
+    "Spill-Resistant Design"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/corsair-k65115-linear-mechanical-gaming-keyboard-1.jpg",
+    "/images/keyboards/corsair-k65115-linear-mechanical-gaming-keyboard-2.jpg",
+    "/images/keyboards/corsair-k65115-linear-mechanical-gaming-keyboard-3.jpg",
+    "/images/keyboards/corsair-k65115-linear-mechanical-gaming-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0012-YXCNG",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:15.495Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf590f"
+  },
+  "name": "Corsair K100247 Cherry Mechanical Gaming Keyboard",
+  "brand": "Corsair",
+  "connectionType": "Wired (USB)",
+  "keyboardType": "Mechanical Gaming",
+  "size": "Full Size",
+  "keyboardSwitch": "Cherry MX Mechanical",
+  "color": "Black",
+  "price": 6900,
+  "discount": 12,
+  "warranty": "2 Years",
+  "rating": 4.5,
+  "reviewCount": 34,
+  "availability": 42,
+  "features": [
+    "Spill-Resistant Design",
+    "Onboard Memory with Macro Support",
+    "Detachable USB-C Cable"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/corsair-k100247-cherry-mechanical-gaming-keyboard-1.jpg",
+    "/images/keyboards/corsair-k100247-cherry-mechanical-gaming-keyboard-2.jpg",
+    "/images/keyboards/corsair-k100247-cherry-mechanical-gaming-keyboard-3.jpg",
+    "/images/keyboards/corsair-k100247-cherry-mechanical-gaming-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0013-RQU0D",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:19.900Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5910"
+  },
+  "name": "Corsair K65513 Optical Mechanical Gaming Keyboard",
+  "brand": "Corsair",
+  "connectionType": "2.4GHz Wireless",
+  "keyboardType": "Mechanical Gaming",
+  "size": "TKL",
+  "keyboardSwitch": "Optical Switch",
+  "color": "Black",
+  "price": 10700,
+  "discount": 3,
+  "warranty": "2 Years",
+  "rating": 4.5,
+  "reviewCount": 24,
+  "availability": 17,
+  "features": [
+    "1ms Fast Response Time",
+    "Anti-Ghosting Gaming Matrix",
+    "Detachable USB-C Cable"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/corsair-k65513-optical-mechanical-gaming-keyboard-1.jpg",
+    "/images/keyboards/corsair-k65513-optical-mechanical-gaming-keyboard-2.jpg",
+    "/images/keyboards/corsair-k65513-optical-mechanical-gaming-keyboard-3.jpg",
+    "/images/keyboards/corsair-k65513-optical-mechanical-gaming-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0014-RZFQZ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:25.921Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5911"
+  },
+  "name": "Corsair K6591 Optical Mechanical Gaming Keyboard",
+  "brand": "Corsair",
+  "connectionType": "Wired (USB)",
+  "keyboardType": "Mechanical Gaming",
+  "size": "Full Size",
+  "keyboardSwitch": "Optical Hot-Swappable Switch",
+  "color": "Black/White",
+  "price": 16600,
+  "discount": 11,
+  "warranty": "2 Years",
+  "rating": 4.5,
+  "reviewCount": 22,
+  "availability": 25,
+  "features": [
+    "Anti-Ghosting Gaming Matrix",
+    "1ms Fast Response Time",
+    "Spill-Resistant Design"
+  ],
+  "category": "keyboards",
+  "images": [
+    "/images/keyboards/corsair-k6591-optical-mechanical-gaming-keyboard-1.jpg",
+    "/images/keyboards/corsair-k6591-optical-mechanical-gaming-keyboard-2.jpg",
+    "/images/keyboards/corsair-k6591-optical-mechanical-gaming-keyboard-3.jpg",
+    "/images/keyboards/corsair-k6591-optical-mechanical-gaming-keyboard-4.jpg"
+  ],
+  "sku": "KEY-0015-2BUEZ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:28.901Z"
+  }
+}]

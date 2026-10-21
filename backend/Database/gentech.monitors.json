@@ -1,0 +1,1295 @@
+[{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58d6"
+  },
+  "name": "LG UltraWide 24-Inch IPS Monitor",
+  "brand": "LG",
+  "displaySize": "24 Inch",
+  "resolution": "1920 x 1080 (FHD)",
+  "refreshRate": "100Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 11500,
+  "discount": 8,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 51,
+  "availability": 20,
+  "features": [
+    "G-SYNC Compatible & FreeSync Premium",
+    "Height-Adjustable Stand",
+    "USB-C with Power Delivery"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lg-ultrawide-24-inch-ips-monitor-1.jpg",
+    "/images/monitors/lg-ultrawide-24-inch-ips-monitor-2.jpg",
+    "/images/monitors/lg-ultrawide-24-inch-ips-monitor-3.jpg",
+    "/images/monitors/lg-ultrawide-24-inch-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0001-7X2SJ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:01.729Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58d7"
+  },
+  "name": "LG UltraGear 27-Inch IPS Monitor",
+  "brand": "LG",
+  "displaySize": "27 Inch",
+  "resolution": "1920 x 1080 (FHD)",
+  "refreshRate": "180Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 23300,
+  "discount": 8,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 45,
+  "availability": 11,
+  "features": [
+    "G-SYNC Compatible & FreeSync Premium",
+    "Eyesafe Low Blue Light",
+    "99% sRGB Color Accuracy"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lg-ultragear-27-inch-ips-monitor-1.jpg",
+    "/images/monitors/lg-ultragear-27-inch-ips-monitor-2.jpg",
+    "/images/monitors/lg-ultragear-27-inch-ips-monitor-3.jpg",
+    "/images/monitors/lg-ultragear-27-inch-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0002-G197Z",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:05.915Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58d8"
+  },
+  "name": "LG UltraGear 27-Inch IPS Monitor",
+  "brand": "LG",
+  "displaySize": "27 Inch",
+  "resolution": "2560 x 1440 (QHD)",
+  "refreshRate": "165Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 34200,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 38,
+  "availability": 14,
+  "features": [
+    "HDR10 Support",
+    "Ideal for Competitive Gaming",
+    "Eyesafe Low Blue Light"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lg-ultragear-27-inch-ips-monitor-1.jpg",
+    "/images/monitors/lg-ultragear-27-inch-ips-monitor-2.jpg",
+    "/images/monitors/lg-ultragear-27-inch-ips-monitor-3.jpg",
+    "/images/monitors/lg-ultragear-27-inch-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0003-9939P",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:09.947Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58d9"
+  },
+  "name": "LG UltraWide 27-Inch IPS Monitor",
+  "brand": "LG",
+  "displaySize": "27 Inch",
+  "resolution": "2560 x 1440 (QHD)",
+  "refreshRate": "240Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 41700,
+  "discount": 8,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 35,
+  "availability": 14,
+  "features": [
+    "Ideal for Competitive Gaming",
+    "Eyesafe Low Blue Light",
+    "HDR10 Support"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lg-ultrawide-27-inch-ips-monitor-1.jpg",
+    "/images/monitors/lg-ultrawide-27-inch-ips-monitor-2.jpg",
+    "/images/monitors/lg-ultrawide-27-inch-ips-monitor-3.jpg",
+    "/images/monitors/lg-ultrawide-27-inch-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0004-IIHJK",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:14.053Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58da"
+  },
+  "name": "LG UltraGear 34-Inch Curved VA Monitor",
+  "brand": "LG",
+  "displaySize": "34 Inch",
+  "resolution": "3440 x 1440 (WQHD)",
+  "refreshRate": "144Hz",
+  "displayType": "Curved VA",
+  "color": "Black",
+  "price": 69600,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 33,
+  "availability": 6,
+  "features": [
+    "Height-Adjustable Stand",
+    "HDR10 Support",
+    "99% sRGB Color Accuracy"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lg-ultragear-34-inch-curved-va-monitor-1.jpg",
+    "/images/monitors/lg-ultragear-34-inch-curved-va-monitor-2.jpg",
+    "/images/monitors/lg-ultragear-34-inch-curved-va-monitor-3.jpg",
+    "/images/monitors/lg-ultragear-34-inch-curved-va-monitor-4.jpg"
+  ],
+  "sku": "MON-0005-XGRVW",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:19.359Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58db"
+  },
+  "name": "LG UltraWide 27-Inch QD-OLED Monitor",
+  "brand": "LG",
+  "displaySize": "27 Inch",
+  "resolution": "3840 x 2160 (4K UHD)",
+  "refreshRate": "120Hz",
+  "displayType": "QD-OLED",
+  "color": "Black",
+  "price": 137900,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 23,
+  "availability": 2,
+  "features": [
+    "USB-C with Power Delivery",
+    "Ideal for Competitive Gaming",
+    "HDR10 Support"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lg-ultrawide-27-inch-qd-oled-monitor-1.png",
+    "/images/monitors/lg-ultrawide-27-inch-qd-oled-monitor-2.jpg",
+    "/images/monitors/lg-ultrawide-27-inch-qd-oled-monitor-3.jpg",
+    "/images/monitors/lg-ultrawide-27-inch-qd-oled-monitor-4.jpg"
+  ],
+  "sku": "MON-0006-CUCNH",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:25.772Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58dc"
+  },
+  "name": "LG UltraWide 32-Inch Mini LED IPS Monitor",
+  "brand": "LG",
+  "displaySize": "32 Inch",
+  "resolution": "3840 x 2160 (4K UHD)",
+  "refreshRate": "144Hz",
+  "displayType": "Mini LED IPS",
+  "color": "Black",
+  "price": 163100,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 17,
+  "availability": 5,
+  "features": [
+    "Eyesafe Low Blue Light",
+    "USB-C with Power Delivery",
+    "Ideal for Competitive Gaming"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lg-ultrawide-32-inch-mini-led-ips-monitor-1.jpg",
+    "/images/monitors/lg-ultrawide-32-inch-mini-led-ips-monitor-2.jpg",
+    "/images/monitors/lg-ultrawide-32-inch-mini-led-ips-monitor-3.jpg",
+    "/images/monitors/lg-ultrawide-32-inch-mini-led-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0007-VO8AD",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:30.031Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58dd"
+  },
+  "name": "Samsung Odyssey 24-Inch IPS Monitor",
+  "brand": "Samsung",
+  "displaySize": "24 Inch",
+  "resolution": "1920 x 1080 (FHD)",
+  "refreshRate": "100Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 12200,
+  "discount": 20,
+  "warranty": "3 Years",
+  "rating": 4.2,
+  "reviewCount": 52,
+  "availability": 20,
+  "features": [
+    "G-SYNC Compatible & FreeSync Premium",
+    "USB-C with Power Delivery",
+    "Eyesafe Low Blue Light"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/samsung-odyssey-24-inch-ips-monitor-1.webp",
+    "/images/monitors/samsung-odyssey-24-inch-ips-monitor-2.png",
+    "/images/monitors/samsung-odyssey-24-inch-ips-monitor-3.jpg",
+    "/images/monitors/samsung-odyssey-24-inch-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0008-087IQ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:34.281Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58de"
+  },
+  "name": "Samsung ViewFinity 27-Inch IPS Monitor",
+  "brand": "Samsung",
+  "displaySize": "27 Inch",
+  "resolution": "1920 x 1080 (FHD)",
+  "refreshRate": "180Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 23900,
+  "discount": 16,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 52,
+  "availability": 10,
+  "features": [
+    "1ms GtG Response Time",
+    "USB-C with Power Delivery",
+    "G-SYNC Compatible & FreeSync Premium"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/samsung-viewfinity-27-inch-ips-monitor-1.webp",
+    "/images/monitors/samsung-viewfinity-27-inch-ips-monitor-2.webp",
+    "/images/monitors/samsung-viewfinity-27-inch-ips-monitor-3.webp",
+    "/images/monitors/samsung-viewfinity-27-inch-ips-monitor-4.webp"
+  ],
+  "sku": "MON-0009-G2A17",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:38.182Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58df"
+  },
+  "name": "Samsung Odyssey 27-Inch IPS Monitor",
+  "brand": "Samsung",
+  "displaySize": "27 Inch",
+  "resolution": "2560 x 1440 (QHD)",
+  "refreshRate": "165Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 34900,
+  "discount": 16,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 38,
+  "availability": 18,
+  "features": [
+    "USB-C with Power Delivery",
+    "1ms GtG Response Time",
+    "G-SYNC Compatible & FreeSync Premium"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/samsung-odyssey-27-inch-ips-monitor-1.webp",
+    "/images/monitors/samsung-odyssey-27-inch-ips-monitor-2.webp",
+    "/images/monitors/samsung-odyssey-27-inch-ips-monitor-3.webp",
+    "/images/monitors/samsung-odyssey-27-inch-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0010-CWYJH",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:43.316Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58e0"
+  },
+  "name": "Samsung ViewFinity 27-Inch IPS Monitor",
+  "brand": "Samsung",
+  "displaySize": "27 Inch",
+  "resolution": "2560 x 1440 (QHD)",
+  "refreshRate": "240Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 39300,
+  "discount": 4,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 32,
+  "availability": 8,
+  "features": [
+    "HDR10 Support",
+    "99% sRGB Color Accuracy",
+    "1ms GtG Response Time"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/samsung-viewfinity-27-inch-ips-monitor-1.webp",
+    "/images/monitors/samsung-viewfinity-27-inch-ips-monitor-2.webp",
+    "/images/monitors/samsung-viewfinity-27-inch-ips-monitor-3.png",
+    "/images/monitors/samsung-viewfinity-27-inch-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0011-GNPFA",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:46.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58e1"
+  },
+  "name": "Samsung Odyssey 34-Inch Curved VA Monitor",
+  "brand": "Samsung",
+  "displaySize": "34 Inch",
+  "resolution": "3440 x 1440 (WQHD)",
+  "refreshRate": "144Hz",
+  "displayType": "Curved VA",
+  "color": "Black",
+  "price": 73000,
+  "discount": 10,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 33,
+  "availability": 6,
+  "features": [
+    "99% sRGB Color Accuracy",
+    "G-SYNC Compatible & FreeSync Premium",
+    "1ms GtG Response Time"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/samsung-odyssey-34-inch-curved-va-monitor-1.webp",
+    "/images/monitors/samsung-odyssey-34-inch-curved-va-monitor-2.webp",
+    "/images/monitors/samsung-odyssey-34-inch-curved-va-monitor-3.jpg",
+    "/images/monitors/samsung-odyssey-34-inch-curved-va-monitor-4.jpg"
+  ],
+  "sku": "MON-0012-Y4G5M",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:50.385Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58e2"
+  },
+  "name": "Samsung ViewFinity 27-Inch QD-OLED Monitor",
+  "brand": "Samsung",
+  "displaySize": "27 Inch",
+  "resolution": "3840 x 2160 (4K UHD)",
+  "refreshRate": "120Hz",
+  "displayType": "QD-OLED",
+  "color": "Black",
+  "price": 127300,
+  "discount": 3,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 19,
+  "availability": 2,
+  "features": [
+    "USB-C with Power Delivery",
+    "1ms GtG Response Time",
+    "Eyesafe Low Blue Light"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/samsung-viewfinity-27-inch-qd-oled-monitor-1.jpg",
+    "/images/monitors/samsung-viewfinity-27-inch-qd-oled-monitor-2.webp",
+    "/images/monitors/samsung-viewfinity-27-inch-qd-oled-monitor-3.jpg",
+    "/images/monitors/samsung-viewfinity-27-inch-qd-oled-monitor-4.webp"
+  ],
+  "sku": "MON-0013-5KXUU",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:54.230Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58e3"
+  },
+  "name": "Samsung Odyssey 32-Inch Mini LED IPS Monitor",
+  "brand": "Samsung",
+  "displaySize": "32 Inch",
+  "resolution": "3840 x 2160 (4K UHD)",
+  "refreshRate": "144Hz",
+  "displayType": "Mini LED IPS",
+  "color": "Black",
+  "price": 147900,
+  "discount": 8,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 19,
+  "availability": 2,
+  "features": [
+    "Height-Adjustable Stand",
+    "99% sRGB Color Accuracy",
+    "HDR10 Support"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/samsung-odyssey-32-inch-mini-led-ips-monitor-1.webp",
+    "/images/monitors/samsung-odyssey-32-inch-mini-led-ips-monitor-2.jpg",
+    "/images/monitors/samsung-odyssey-32-inch-mini-led-ips-monitor-3.webp",
+    "/images/monitors/samsung-odyssey-32-inch-mini-led-ips-monitor-4.webp"
+  ],
+  "sku": "MON-0014-NYBEZ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:24:59.015Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58e4"
+  },
+  "name": "ASUS TUF Gaming 24-Inch IPS Monitor",
+  "brand": "ASUS",
+  "displaySize": "24 Inch",
+  "resolution": "1920 x 1080 (FHD)",
+  "refreshRate": "100Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 13100,
+  "discount": 18,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 49,
+  "availability": 24,
+  "features": [
+    "Height-Adjustable Stand",
+    "99% sRGB Color Accuracy",
+    "USB-C with Power Delivery"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/asus-tuf-gaming-24-inch-ips-monitor-1.png",
+    "/images/monitors/asus-tuf-gaming-24-inch-ips-monitor-2.jpg",
+    "/images/monitors/asus-tuf-gaming-24-inch-ips-monitor-3.png",
+    "/images/monitors/asus-tuf-gaming-24-inch-ips-monitor-4.png"
+  ],
+  "sku": "MON-0015-FBL99",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:25:21.994Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58e5"
+  },
+  "name": "ASUS TUF Gaming 27-Inch IPS Monitor",
+  "brand": "ASUS",
+  "displaySize": "27 Inch",
+  "resolution": "1920 x 1080 (FHD)",
+  "refreshRate": "180Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 22400,
+  "discount": 14,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 46,
+  "availability": 10,
+  "features": [
+    "HDR10 Support",
+    "Eyesafe Low Blue Light",
+    "Height-Adjustable Stand"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/asus-tuf-gaming-27-inch-ips-monitor-1.jpg",
+    "/images/monitors/asus-tuf-gaming-27-inch-ips-monitor-2.jpg",
+    "/images/monitors/asus-tuf-gaming-27-inch-ips-monitor-3.png",
+    "/images/monitors/asus-tuf-gaming-27-inch-ips-monitor-4.png"
+  ],
+  "sku": "MON-0016-BK3RJ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:25:27.548Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58e6"
+  },
+  "name": "ASUS TUF Gaming 27-Inch IPS Monitor",
+  "brand": "ASUS",
+  "displaySize": "27 Inch",
+  "resolution": "2560 x 1440 (QHD)",
+  "refreshRate": "165Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 35100,
+  "discount": 16,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 40,
+  "availability": 17,
+  "features": [
+    "HDR10 Support",
+    "Ideal for Competitive Gaming",
+    "1ms GtG Response Time"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/asus-tuf-gaming-27-inch-ips-monitor-1.jpg",
+    "/images/monitors/asus-tuf-gaming-27-inch-ips-monitor-2.jpg",
+    "/images/monitors/asus-tuf-gaming-27-inch-ips-monitor-3.png",
+    "/images/monitors/asus-tuf-gaming-27-inch-ips-monitor-4.png"
+  ],
+  "sku": "MON-0017-7VQ7Q",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:25:35.517Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58e7"
+  },
+  "name": "ASUS ProArt Display 32-Inch Fast IPS Monitor",
+  "brand": "ASUS",
+  "displaySize": "32 Inch",
+  "resolution": "2560 x 1440 (QHD)",
+  "refreshRate": "180Hz",
+  "displayType": "Fast IPS",
+  "color": "Black",
+  "price": 47800,
+  "discount": 20,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 35,
+  "availability": 14,
+  "features": [
+    "USB-C with Power Delivery",
+    "Ideal for Competitive Gaming",
+    "G-SYNC Compatible & FreeSync Premium"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/asus-proart-display-32-inch-fast-ips-monitor-1.jpg",
+    "/images/monitors/asus-proart-display-32-inch-fast-ips-monitor-2.jpg",
+    "/images/monitors/asus-proart-display-32-inch-fast-ips-monitor-3.jpg",
+    "/images/monitors/asus-proart-display-32-inch-fast-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0018-9EBJR",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:25:40.571Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58e8"
+  },
+  "name": "ASUS TUF Gaming 27-Inch IPS Monitor",
+  "brand": "ASUS",
+  "displaySize": "27 Inch",
+  "resolution": "2560 x 1440 (QHD)",
+  "refreshRate": "240Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 38100,
+  "discount": 10,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 36,
+  "availability": 17,
+  "features": [
+    "Eyesafe Low Blue Light",
+    "HDR10 Support",
+    "Ideal for Competitive Gaming"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/asus-tuf-gaming-27-inch-ips-monitor-1.jpg",
+    "/images/monitors/asus-tuf-gaming-27-inch-ips-monitor-2.jpg",
+    "/images/monitors/asus-tuf-gaming-27-inch-ips-monitor-3.png",
+    "/images/monitors/asus-tuf-gaming-27-inch-ips-monitor-4.png"
+  ],
+  "sku": "MON-0019-P1PDS",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:25:45.253Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58e9"
+  },
+  "name": "ASUS TUF Gaming 34-Inch Curved VA Monitor",
+  "brand": "ASUS",
+  "displaySize": "34 Inch",
+  "resolution": "3440 x 1440 (WQHD)",
+  "refreshRate": "144Hz",
+  "displayType": "Curved VA",
+  "color": "Black",
+  "price": 69500,
+  "discount": 5,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 23,
+  "availability": 8,
+  "features": [
+    "G-SYNC Compatible & FreeSync Premium",
+    "HDR10 Support",
+    "USB-C with Power Delivery"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/asus-tuf-gaming-34-inch-curved-va-monitor-1.jpg",
+    "/images/monitors/asus-tuf-gaming-34-inch-curved-va-monitor-2.jpg",
+    "/images/monitors/asus-tuf-gaming-34-inch-curved-va-monitor-3.jpg",
+    "/images/monitors/asus-tuf-gaming-34-inch-curved-va-monitor-4.jpg"
+  ],
+  "sku": "MON-0020-NHZDM",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:25:49.277Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58ea"
+  },
+  "name": "ASUS TUF Gaming 27-Inch QD-OLED Monitor",
+  "brand": "ASUS",
+  "displaySize": "27 Inch",
+  "resolution": "3840 x 2160 (4K UHD)",
+  "refreshRate": "120Hz",
+  "displayType": "QD-OLED",
+  "color": "Black",
+  "price": 125800,
+  "discount": 0,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 28,
+  "availability": 2,
+  "features": [
+    "1ms GtG Response Time",
+    "HDR10 Support",
+    "G-SYNC Compatible & FreeSync Premium"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/asus-tuf-gaming-27-inch-qd-oled-monitor-1.jpg",
+    "/images/monitors/asus-tuf-gaming-27-inch-qd-oled-monitor-2.png",
+    "/images/monitors/asus-tuf-gaming-27-inch-qd-oled-monitor-3.webp",
+    "/images/monitors/asus-tuf-gaming-27-inch-qd-oled-monitor-4.jpg"
+  ],
+  "sku": "MON-0021-B5GXJ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:25:54.211Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58eb"
+  },
+  "name": "ASUS TUF Gaming 32-Inch Mini LED IPS Monitor",
+  "brand": "ASUS",
+  "displaySize": "32 Inch",
+  "resolution": "3840 x 2160 (4K UHD)",
+  "refreshRate": "144Hz",
+  "displayType": "Mini LED IPS",
+  "color": "Black",
+  "price": 159100,
+  "discount": 8,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 24,
+  "availability": 4,
+  "features": [
+    "Ideal for Competitive Gaming",
+    "HDR10 Support",
+    "99% sRGB Color Accuracy"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/asus-tuf-gaming-32-inch-mini-led-ips-monitor-1.jpg",
+    "/images/monitors/asus-tuf-gaming-32-inch-mini-led-ips-monitor-2.png",
+    "/images/monitors/asus-tuf-gaming-32-inch-mini-led-ips-monitor-3.png",
+    "/images/monitors/asus-tuf-gaming-32-inch-mini-led-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0022-TH0GY",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:25:59.105Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58ec"
+  },
+  "name": "Dahua DHI-LM 24-Inch IPS Monitor",
+  "brand": "Dahua",
+  "displaySize": "24 Inch",
+  "resolution": "1920 x 1080 (FHD)",
+  "refreshRate": "100Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 12900,
+  "discount": 6,
+  "warranty": "3 Years",
+  "rating": 4.2,
+  "reviewCount": 51,
+  "availability": 17,
+  "features": [
+    "Ideal for Competitive Gaming",
+    "Height-Adjustable Stand",
+    "99% sRGB Color Accuracy"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/dahua-dhi-lm-24-inch-ips-monitor-1.jpg",
+    "/images/monitors/dahua-dhi-lm-24-inch-ips-monitor-2.jpg",
+    "/images/monitors/dahua-dhi-lm-24-inch-ips-monitor-3.jpg",
+    "/images/monitors/dahua-dhi-lm-24-inch-ips-monitor-4.webp"
+  ],
+  "sku": "MON-0023-L4RGU",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:26:05.596Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58ed"
+  },
+  "name": "Dahua DHI-LM 27-Inch IPS Monitor",
+  "brand": "Dahua",
+  "displaySize": "27 Inch",
+  "resolution": "1920 x 1080 (FHD)",
+  "refreshRate": "180Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 21600,
+  "discount": 11,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 53,
+  "availability": 8,
+  "features": [
+    "HDR10 Support",
+    "USB-C with Power Delivery",
+    "Height-Adjustable Stand"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/dahua-dhi-lm-27-inch-ips-monitor-1.webp",
+    "/images/monitors/dahua-dhi-lm-27-inch-ips-monitor-2.webp",
+    "/images/monitors/dahua-dhi-lm-27-inch-ips-monitor-3.webp",
+    "/images/monitors/dahua-dhi-lm-27-inch-ips-monitor-4.webp"
+  ],
+  "sku": "MON-0024-WUEAA",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:26:10.175Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58ee"
+  },
+  "name": "Dahua DHI-LM 27-Inch IPS Monitor",
+  "brand": "Dahua",
+  "displaySize": "27 Inch",
+  "resolution": "2560 x 1440 (QHD)",
+  "refreshRate": "165Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 34500,
+  "discount": 5,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 41,
+  "availability": 13,
+  "features": [
+    "99% sRGB Color Accuracy",
+    "USB-C with Power Delivery",
+    "Ideal for Competitive Gaming"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/dahua-dhi-lm-27-inch-ips-monitor-1.webp",
+    "/images/monitors/dahua-dhi-lm-27-inch-ips-monitor-2.webp",
+    "/images/monitors/dahua-dhi-lm-27-inch-ips-monitor-3.webp",
+    "/images/monitors/dahua-dhi-lm-27-inch-ips-monitor-4.webp"
+  ],
+  "sku": "MON-0025-YBUB6",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:26:15.048Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58ef"
+  },
+  "name": "Dahua DHI-LM 34-Inch Curved VA Monitor",
+  "brand": "Dahua",
+  "displaySize": "34 Inch",
+  "resolution": "3440 x 1440 (WQHD)",
+  "refreshRate": "144Hz",
+  "displayType": "Curved VA",
+  "color": "Black",
+  "price": 66300,
+  "discount": 7,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 32,
+  "availability": 8,
+  "features": [
+    "Ideal for Competitive Gaming",
+    "Height-Adjustable Stand",
+    "G-SYNC Compatible & FreeSync Premium"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/dahua-dhi-lm-34-inch-curved-va-monitor-1.jpg",
+    "/images/monitors/dahua-dhi-lm-34-inch-curved-va-monitor-2.jpg",
+    "/images/monitors/dahua-dhi-lm-34-inch-curved-va-monitor-3.jpg",
+    "/images/monitors/dahua-dhi-lm-34-inch-curved-va-monitor-4.webp"
+  ],
+  "sku": "MON-0026-VR2IU",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:26:19.835Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58f0"
+  },
+  "name": "Dahua DHI-LM 27-Inch QD-OLED Monitor",
+  "brand": "Dahua",
+  "displaySize": "27 Inch",
+  "resolution": "3840 x 2160 (4K UHD)",
+  "refreshRate": "120Hz",
+  "displayType": "QD-OLED",
+  "color": "Black",
+  "price": 135200,
+  "discount": 3,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 29,
+  "availability": 1,
+  "features": [
+    "HDR10 Support",
+    "Ideal for Competitive Gaming",
+    "Eyesafe Low Blue Light"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/dahua-dhi-lm-27-inch-qd-oled-monitor-1.jpg",
+    "/images/monitors/dahua-dhi-lm-27-inch-qd-oled-monitor-2.jpg",
+    "/images/monitors/dahua-dhi-lm-27-inch-qd-oled-monitor-3.jpg",
+    "/images/monitors/dahua-dhi-lm-27-inch-qd-oled-monitor-4.webp"
+  ],
+  "sku": "MON-0027-JTD89",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:26:24.434Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58f1"
+  },
+  "name": "Dahua DHI-LM 32-Inch Mini LED IPS Monitor",
+  "brand": "Dahua",
+  "displaySize": "32 Inch",
+  "resolution": "3840 x 2160 (4K UHD)",
+  "refreshRate": "144Hz",
+  "displayType": "Mini LED IPS",
+  "color": "Black",
+  "price": 143900,
+  "discount": 3,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 20,
+  "availability": 5,
+  "features": [
+    "Height-Adjustable Stand",
+    "USB-C with Power Delivery",
+    "HDR10 Support"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/dahua-dhi-lm-32-inch-mini-led-ips-monitor-1.webp",
+    "/images/monitors/dahua-dhi-lm-32-inch-mini-led-ips-monitor-2.webp",
+    "/images/monitors/dahua-dhi-lm-32-inch-mini-led-ips-monitor-3.webp",
+    "/images/monitors/dahua-dhi-lm-32-inch-mini-led-ips-monitor-4.webp"
+  ],
+  "sku": "MON-0028-IX189",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:26:30.183Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58f2"
+  },
+  "name": "Lenovo ThinkVision 32-Inch Fast IPS Monitor",
+  "brand": "Lenovo",
+  "displaySize": "32 Inch",
+  "resolution": "2560 x 1440 (QHD)",
+  "refreshRate": "180Hz",
+  "displayType": "Fast IPS",
+  "color": "Black",
+  "price": 46300,
+  "discount": 7,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 34,
+  "availability": 16,
+  "features": [
+    "HDR10 Support",
+    "99% sRGB Color Accuracy",
+    "G-SYNC Compatible & FreeSync Premium"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lenovo-thinkvision-32-inch-fast-ips-monitor-1.jpg",
+    "/images/monitors/lenovo-thinkvision-32-inch-fast-ips-monitor-2.jpg",
+    "/images/monitors/lenovo-thinkvision-32-inch-fast-ips-monitor-3.jpg",
+    "/images/monitors/lenovo-thinkvision-32-inch-fast-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0029-QHTAK",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:26:34.686Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58f3"
+  },
+  "name": "Lenovo Legion 32-Inch Mini LED IPS Monitor",
+  "brand": "Lenovo",
+  "displaySize": "32 Inch",
+  "resolution": "3840 x 2160 (4K UHD)",
+  "refreshRate": "144Hz",
+  "displayType": "Mini LED IPS",
+  "color": "Black",
+  "price": 147300,
+  "discount": 5,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 23,
+  "availability": 4,
+  "features": [
+    "G-SYNC Compatible & FreeSync Premium",
+    "Ideal for Competitive Gaming",
+    "99% sRGB Color Accuracy"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lenovo-legion-32-inch-mini-led-ips-monitor-1.jpg",
+    "/images/monitors/lenovo-legion-32-inch-mini-led-ips-monitor-2.jpg",
+    "/images/monitors/lenovo-legion-32-inch-mini-led-ips-monitor-3.jpg",
+    "/images/monitors/lenovo-legion-32-inch-mini-led-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0030-JV8JM",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:26:38.239Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58f4"
+  },
+  "name": "Lenovo Legion 27-Inch IPS Monitor",
+  "brand": "Lenovo",
+  "displaySize": "27 Inch",
+  "resolution": "1920 x 1080 (FHD)",
+  "refreshRate": "180Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 24100,
+  "discount": 5,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 51,
+  "availability": 6,
+  "features": [
+    "99% sRGB Color Accuracy",
+    "HDR10 Support",
+    "Eyesafe Low Blue Light"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lenovo-legion-27-inch-ips-monitor-1.jpg",
+    "/images/monitors/lenovo-legion-27-inch-ips-monitor-2.jpg",
+    "/images/monitors/lenovo-legion-27-inch-ips-monitor-3.jpg",
+    "/images/monitors/lenovo-legion-27-inch-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0031-OUKCI",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:26:43.138Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58f5"
+  },
+  "name": "Lenovo Legion 27-Inch IPS Monitor",
+  "brand": "Lenovo",
+  "displaySize": "27 Inch",
+  "resolution": "2560 x 1440 (QHD)",
+  "refreshRate": "165Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 34300,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 46,
+  "availability": 12,
+  "features": [
+    "USB-C with Power Delivery",
+    "99% sRGB Color Accuracy",
+    "G-SYNC Compatible & FreeSync Premium"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lenovo-legion-27-inch-ips-monitor-1.jpg",
+    "/images/monitors/lenovo-legion-27-inch-ips-monitor-2.jpg",
+    "/images/monitors/lenovo-legion-27-inch-ips-monitor-3.jpg",
+    "/images/monitors/lenovo-legion-27-inch-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0032-MRUDI",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:26:47.489Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58f6"
+  },
+  "name": "Lenovo ThinkVision 27-Inch IPS Monitor",
+  "brand": "Lenovo",
+  "displaySize": "27 Inch",
+  "resolution": "2560 x 1440 (QHD)",
+  "refreshRate": "240Hz",
+  "displayType": "IPS",
+  "color": "Black",
+  "price": 41400,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 28,
+  "availability": 13,
+  "features": [
+    "USB-C with Power Delivery",
+    "Height-Adjustable Stand",
+    "1ms GtG Response Time"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lenovo-thinkvision-27-inch-ips-monitor-1.jpg",
+    "/images/monitors/lenovo-thinkvision-27-inch-ips-monitor-2.jpg",
+    "/images/monitors/lenovo-thinkvision-27-inch-ips-monitor-3.jpg",
+    "/images/monitors/lenovo-thinkvision-27-inch-ips-monitor-4.jpg"
+  ],
+  "sku": "MON-0033-2F1OU",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:26:52.139Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58f7"
+  },
+  "name": "Lenovo Legion 34-Inch Curved VA Monitor",
+  "brand": "Lenovo",
+  "displaySize": "34 Inch",
+  "resolution": "3440 x 1440 (WQHD)",
+  "refreshRate": "144Hz",
+  "displayType": "Curved VA",
+  "color": "Black",
+  "price": 68500,
+  "discount": 10,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 24,
+  "availability": 5,
+  "features": [
+    "99% sRGB Color Accuracy",
+    "HDR10 Support",
+    "Ideal for Competitive Gaming"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lenovo-legion-34-inch-curved-va-monitor-1.jpg",
+    "/images/monitors/lenovo-legion-34-inch-curved-va-monitor-2.jpg",
+    "/images/monitors/lenovo-legion-34-inch-curved-va-monitor-3.jpg",
+    "/images/monitors/lenovo-legion-34-inch-curved-va-monitor-4.jpg"
+  ],
+  "sku": "MON-0034-LB3FW",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:26:56.580Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58f8"
+  },
+  "name": "Lenovo Legion 27-Inch QD-OLED Monitor",
+  "brand": "Lenovo",
+  "displaySize": "27 Inch",
+  "resolution": "3840 x 2160 (4K UHD)",
+  "refreshRate": "120Hz",
+  "displayType": "QD-OLED",
+  "color": "Black",
+  "price": 137300,
+  "discount": 16,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 24,
+  "availability": 4,
+  "features": [
+    "HDR10 Support",
+    "Ideal for Competitive Gaming",
+    "USB-C with Power Delivery"
+  ],
+  "category": "monitors",
+  "images": [
+    "/images/monitors/lenovo-legion-27-inch-qd-oled-monitor-1.jpg",
+    "/images/monitors/lenovo-legion-27-inch-qd-oled-monitor-2.jpg",
+    "/images/monitors/lenovo-legion-27-inch-qd-oled-monitor-3.jpg",
+    "/images/monitors/lenovo-legion-27-inch-qd-oled-monitor-4.jpg"
+  ],
+  "sku": "MON-0035-E9CMR",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:27:00.660Z"
+  }
+}]

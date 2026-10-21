@@ -1,15 +1,18 @@
-import os
 import bcrypt
 
 from datetime import datetime, timedelta, timezone
 
 from bson import ObjectId
-from fastapi import APIRouter, Depends, HTTPException, Header
-from jose import jwt, JWTError
+from fastapi import APIRouter, Depends, HTTPException
+from jose import jwt
 from pymongo.errors import DuplicateKeyError
 
 from app.core.config import settings
 from app.core.database import get_db
+from app.core.security import (
+    get_optional_current_user,
+    require_customer as current_customer,
+)
 from app.schemas.commerce import (
     CustomerRegister,
     CustomerLogin,
@@ -55,38 +58,6 @@ def create_token(customer_id: str) -> str:
     )
 
 
-async def current_customer(
-    authorization: str | None = Header(default=None),
-    db=Depends(get_db),
-):
-    if not authorization or not authorization.startswith("Bearer "):
-        raise HTTPException(status_code=401, detail="Login required")
-
-    try:
-        payload = jwt.decode(
-            authorization[7:],
-            SECRET,
-            algorithms=[ALGORITHM],
-        )
-        customer_id = payload.get("sub")
-
-        if not customer_id or not ObjectId.is_valid(customer_id):
-            raise HTTPException(status_code=401, detail="Invalid token")
-
-    except JWTError:
-        raise HTTPException(status_code=401, detail="Invalid or expired token")
-
-    customer = await db.customers.find_one({
-        "_id": ObjectId(customer_id),
-        "active": True,
-    })
-
-    if customer is None:
-        raise HTTPException(status_code=401, detail="Customer not found")
-
-    return customer
-
-
 async def find_product(db, category_slug: str, product_id: str):
     category = await db.products.find_one({"slug": category_slug})
 
@@ -110,6 +81,7 @@ async def register_customer(
         "phone": body.phone.strip(),
         "email": str(body.email).lower(),
         "passwordHash": hash_password(body.password),
+        "role": "customer",
         "active": True,
         "createdAt": datetime.now(timezone.utc),
         "updatedAt": datetime.now(timezone.utc),
@@ -155,6 +127,7 @@ async def login_customer(
         "customer": {
             "id": str(customer["_id"]),
             "name": customer["name"],
+            "phone": customer["phone"],
             "email": customer["email"],
         },
     }
@@ -304,7 +277,7 @@ async def get_areas(
 @router.post("/coupons/validate")
 async def validate_coupon(
     code: str,
-    customer=Depends(current_customer),
+    subtotal: int = 0,
     db=Depends(get_db),
 ):
     coupon = await db.coupons.find_one({
@@ -334,19 +307,37 @@ async def validate_coupon(
     if coupon.get("usedCount", 0) >= coupon.get("usageLimit", 0):
         raise HTTPException(status_code=400, detail="Coupon usage limit reached")
 
+    minimum = coupon.get("minOrderAmount", 0)
+    if subtotal and subtotal < minimum:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Coupon requires a minimum order of {minimum}",
+        )
+
+    discount = 0
+    if subtotal:
+        if coupon["discountType"] == "percentage":
+            discount = round(subtotal * coupon["discountValue"] / 100)
+        else:
+            discount = int(coupon["discountValue"])
+        if coupon.get("maxDiscount") is not None:
+            discount = min(discount, coupon["maxDiscount"])
+        discount = min(discount, subtotal)
+
     return {
         "code": coupon["code"],
         "discountType": coupon["discountType"],
         "discountValue": coupon["discountValue"],
-        "minOrderAmount": coupon.get("minOrderAmount", 0),
+        "minOrderAmount": minimum,
         "maxDiscount": coupon.get("maxDiscount"),
+        "couponDiscount": discount,
     }
 
 
 @router.post("/orders", status_code=201)
 async def place_order(
     body: CheckoutInput,
-    customer=Depends(current_customer),
+    customer=Depends(get_optional_current_user),
     db=Depends(get_db),
 ):
     # Validate delivery area.
@@ -359,17 +350,24 @@ async def place_order(
     if location is None:
         raise HTTPException(status_code=400, detail="Invalid delivery area")
 
-    cart = await db.carts.find_one({
-        "customerId": customer["_id"]
-    })
+    cart = None
+    items = [
+        item.model_dump() if hasattr(item, "model_dump") else item
+        for item in body.items
+    ]
+    if not items and customer:
+        cart = await db.carts.find_one({
+            "customerId": customer["_id"]
+        })
+        items = cart.get("items", []) if cart else []
 
-    if not cart or not cart.get("items"):
+    if not items:
         raise HTTPException(status_code=400, detail="Cart is empty")
 
     order_items = []
     subtotal = 0
 
-    for item in cart["items"]:
+    for item in items:
         product, category = await find_product(
             db,
             item["categorySlug"],
@@ -418,12 +416,17 @@ async def place_order(
         if coupon is None:
             raise HTTPException(status_code=400, detail="Invalid coupon")
 
+        starts = coupon.get("startsAt")
         expires = coupon.get("expiresAt")
         now = datetime.now(timezone.utc)
 
+        if starts and starts.tzinfo is None:
+            starts = starts.replace(tzinfo=timezone.utc)
         if expires and expires.tzinfo is None:
             expires = expires.replace(tzinfo=timezone.utc)
 
+        if starts and now < starts:
+            raise HTTPException(status_code=400, detail="Coupon not active yet")
         if expires and now > expires:
             raise HTTPException(status_code=400, detail="Coupon expired")
 
@@ -451,7 +454,6 @@ async def place_order(
 
     order = {
         "orderNumber": order_number,
-        "customerId": customer["_id"],
         "customer": {
             "name": body.name,
             "phone": body.phone,
@@ -472,6 +474,8 @@ async def place_order(
         "createdAt": now,
         "updatedAt": now,
     }
+    if customer:
+        order["customerId"] = customer["_id"]
 
     # Stock reservation and coupon usage need a MongoDB transaction
     # for robust concurrent checkout in production.
@@ -483,12 +487,13 @@ async def place_order(
             {"$inc": {"usedCount": 1}},
         )
 
-    await db.carts.update_one(
-        {"customerId": customer["_id"]},
-        {"$set": {"items": [], "updatedAt": now}},
-    )
+    if customer and cart:
+        await db.carts.update_one(
+            {"customerId": customer["_id"]},
+            {"$set": {"items": [], "updatedAt": now}},
+        )
 
-    return {
+    response = {
         "orderNumber": order_number,
         "status": "placed",
         "paymentType": body.paymentType,
@@ -496,6 +501,14 @@ async def place_order(
         "couponDiscount": coupon_discount,
         "total": total,
     }
+    if body.paymentType == "mobile":
+        response["mobilePayment"] = {
+            "provider": "bKash",
+            "simulated": True,
+            "transactionId": f"SIM-{order_number.removeprefix('GT-')}",
+            "message": "Simulated payment only; no money was transferred.",
+        }
+    return response
 
 
 @router.get("/orders/my")
@@ -516,3 +529,53 @@ async def my_orders(
         order["customerId"] = str(order["customerId"])
 
     return orders
+@router.get("/orders/{order_id}")
+async def get_my_order_details(
+    order_id: str,
+    customer=Depends(current_customer),
+    db=Depends(get_db),
+):
+    if not ObjectId.is_valid(order_id):
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid order ID",
+        )
+
+    customer_id = customer["_id"]
+
+    # Support orders that store customerId as either a string
+    # or an ObjectId.
+    order = await db["orders"].find_one({
+        "_id": ObjectId(order_id),
+        "customerId": {
+            "$in": [str(customer_id), customer_id]
+        },
+    })
+
+    if not order:
+        # Do not reveal whether another customer's order exists.
+        raise HTTPException(
+            status_code=404,
+            detail="Order not found",
+        )
+
+    def serialize(value):
+        if isinstance(value, ObjectId):
+            return str(value)
+
+        if isinstance(value, datetime):
+            return value.isoformat()
+
+        if isinstance(value, list):
+            return [serialize(item) for item in value]
+
+        if isinstance(value, dict):
+            return {
+                key: serialize(item)
+                for key, item in value.items()
+                if key != "passwordHash"
+            }
+
+        return value
+
+    return serialize(order)

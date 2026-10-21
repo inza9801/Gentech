@@ -1,3 +1,4 @@
+import asyncio
 from datetime import datetime
 import re
 
@@ -196,6 +197,7 @@ async def filter_category_products(
     max_price: int | None = None,
     in_stock: bool | None = None,
     filters: dict | None = None,
+    sort_by: str = "newest",
     limit: int = 20,
 ):
     query = {}
@@ -255,12 +257,12 @@ async def filter_category_products(
                     "$options": "i",
                 }
 
-    cursor = (
-        db[collection_name]
-        .find(query)
-        .sort("createdAt", -1)
-        .limit(limit)
+    sort = (
+        [("soldCount", -1), ("reviewCount", -1), ("rating", -1), ("createdAt", -1)]
+        if sort_by == "best"
+        else [("createdAt", -1)]
     )
+    cursor = db[collection_name].find(query).sort(sort).limit(limit)
 
     return await cursor.to_list(length=limit)
 
@@ -300,3 +302,67 @@ async def search_products(db, search_text: str, limit: int = 10):
         (document, category)
         for document, category in results[:limit]
     ]
+
+
+async def get_offered_products(db, limit: int = 100, category_slug: str | None = None):
+    categories = await get_product_collections(db)
+    if category_slug:
+        categories = [
+            category for category in categories
+            if category["slug"] == category_slug
+        ]
+    batches = await asyncio.gather(
+        *(
+            db[category["collection"]]
+            .find({"discount": {"$gt": 0}})
+            .sort([("discount", -1), ("createdAt", -1)])
+            .limit(limit)
+            .to_list(length=limit)
+            for category in categories
+        )
+    )
+    products = [
+        (document, category)
+        for category, documents in zip(categories, batches)
+        for document in documents
+    ]
+    products.sort(
+        key=lambda pair: (
+            pair[0].get("discount", 0) or 0,
+            (
+                pair[0]["createdAt"].timestamp()
+                if isinstance(pair[0].get("createdAt"), datetime)
+                else 0
+            ),
+        ),
+        reverse=True,
+    )
+    return products[:limit]
+
+
+async def get_category_filter_options(db, collection_name: str):
+    config = FILTER_CONFIG.get(collection_name, {})
+    options = {}
+    for name, definition in config.items():
+        values = await db[collection_name].distinct(definition["field"])
+        options[name] = sorted(
+            {
+                value
+                for value in values
+                if isinstance(value, (str, int, float))
+                and not isinstance(value, bool)
+                and value != ""
+            },
+            key=lambda value: (str(type(value)), str(value).casefold()),
+        )
+    price_values = await db[collection_name].distinct("price")
+    prices = [
+        value
+        for value in price_values
+        if isinstance(value, (int, float)) and not isinstance(value, bool)
+    ]
+    return {
+        "filters": options,
+        "minPrice": min(prices, default=0),
+        "maxPrice": max(prices, default=0),
+    }

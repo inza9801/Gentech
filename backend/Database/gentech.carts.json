@@ -1,0 +1,26 @@
+{
+  "_id": "671a20000000000000000001",
+  "customerId": "671a10000000000000000001",
+  "items": [
+    {
+      "productId": "671a30000000000000000001",
+      "category": "graphics_cards",
+      "name": "MSI GeForce RTX 4070",
+      "unitPrice": 85000,
+      "discount": 5,
+      "quantity": 1,
+      "subtotal": 80750
+    },
+    {
+      "productId": "671a30000000000000000002",
+      "category": "processors",
+      "name": "AMD Ryzen 7 7800X3D",
+      "unitPrice": 52000,
+      "discount": 0,
+      "quantity": 1,
+      "subtotal": 52000
+    }
+  ],
+  "subtotal": 132750,
+  "updatedAt": "2026-10-18T12:30:00Z"
+}

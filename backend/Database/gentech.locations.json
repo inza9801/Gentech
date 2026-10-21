@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "6acfce8a1c2fd64c10f648d1"
+  },
+  "district": "Dhaka",
+  "area": "Dhanmondi",
+  "active": true
+},
+{
+  "_id": {
+    "$oid": "6acfce8a1c2fd64c10f648d2"
+  },
+  "district": "Dhaka",
+  "area": "Mirpur",
+  "active": true
+},
+{
+  "_id": {
+    "$oid": "6acfce8a1c2fd64c10f648d3"
+  },
+  "district": "Dhaka",
+  "area": "Uttara",
+  "active": true
+},
+{
+  "_id": {
+    "$oid": "6acfce8a1c2fd64c10f648d4"
+  },
+  "district": "Chattogram",
+  "area": "Panchlaish",
+  "active": true
+},
+{
+  "_id": {
+    "$oid": "6acfce8a1c2fd64c10f648d5"
+  },
+  "district": "Chattogram",
+  "area": "Agrabad",
+  "active": true
+}]

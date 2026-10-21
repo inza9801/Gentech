@@ -1,0 +1,11 @@
+{
+  "_id": "671a10000000000000000001",
+  "name": "Rahim Ahmed",
+  "email": "rahim@example.com",
+  "phone": "01712345678",
+  "passwordHash": "$2b$12$exampleHashedPassword",
+  "role": "customer",
+  "active": true,
+  "createdAt": "2026-10-15T10:30:00Z",
+  "updatedAt": "2026-10-15T10:30:00Z"
+}

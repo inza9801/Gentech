@@ -29,3 +29,4 @@ class CheckoutInput(BaseModel):
     notes: str = Field(default="", max_length=1000)
     paymentType: Literal["mobile", "cod"]
     couponCode: str | None = None
+    items: list[CartItemInput] = Field(default_factory=list, max_length=100)

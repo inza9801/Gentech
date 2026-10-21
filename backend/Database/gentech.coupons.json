@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "6acfceac1c2fd64c10f648d6"
+  },
+  "code": "WELCOME10",
+  "discountType": "percentage",
+  "discountValue": 10,
+  "minOrderAmount": 1000,
+  "maxDiscount": 1000,
+  "startsAt": {
+    "$date": "2026-10-14T18:49:16.741Z"
+  },
+  "expiresAt": {
+    "$date": "2027-12-31T23:59:59.000Z"
+  },
+  "usageLimit": 100,
+  "usedCount": 0,
+  "active": true
+}]

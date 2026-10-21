@@ -1,0 +1,555 @@
+[{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58c7"
+  },
+  "name": "Gamdias AURA82 Tempered Mini Tower Case",
+  "brand": "Gamdias",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Mini Tower",
+  "sidePanel": "Tempered Glass",
+  "powerSupply": "Not Included",
+  "color": "Black",
+  "price": 2800,
+  "discount": 5,
+  "warranty": "1 Year",
+  "rating": 4.1,
+  "reviewCount": 55,
+  "availability": 27,
+  "features": [
+    "Front USB 3.0 & USB-C Ports",
+    "Magnetic Dust Filter",
+    "Back-Connector Motherboard Support"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/gamdias-aura82-tempered-mini-tower-case-1.jpg",
+    "/images/casings/gamdias-aura82-tempered-mini-tower-case-2.jpg",
+    "/images/casings/gamdias-aura82-tempered-mini-tower-case-3.jpg",
+    "/images/casings/gamdias-aura82-tempered-mini-tower-case-4.jpg"
+  ],
+  "sku": "CAS-0001-8ER62",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:34.097Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58c8"
+  },
+  "name": "Gamdias AURA22 Tempered Mid Tower Case",
+  "brand": "Gamdias",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Mid Tower",
+  "sidePanel": "Tempered Glass",
+  "powerSupply": "Not Included",
+  "color": "Black",
+  "price": 4900,
+  "discount": 4,
+  "warranty": "1 Year",
+  "rating": 4.3,
+  "reviewCount": 48,
+  "availability": 28,
+  "features": [
+    "Front USB 3.0 & USB-C Ports",
+    "Back-Connector Motherboard Support",
+    "Premium Build Quality"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/gamdias-aura22-tempered-mid-tower-case-1.jpg",
+    "/images/casings/gamdias-aura22-tempered-mid-tower-case-2.jpg",
+    "/images/casings/gamdias-aura22-tempered-mid-tower-case-3.jpg",
+    "/images/casings/gamdias-aura22-tempered-mid-tower-case-4.jpg"
+  ],
+  "sku": "CAS-0002-ZGV5V",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:38.416Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58c9"
+  },
+  "name": "Gamdias APOLLO32 Tempered Mid Tower Case",
+  "brand": "Gamdias",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Mid Tower",
+  "sidePanel": "Tempered Glass",
+  "powerSupply": "Not Included",
+  "color": "Black",
+  "price": 7700,
+  "discount": 16,
+  "warranty": "1 Year",
+  "rating": 4.4,
+  "reviewCount": 43,
+  "availability": 30,
+  "features": [
+    "Front USB 3.0 & USB-C Ports",
+    "High-Airflow Mesh Front Design",
+    "Supports up to 360mm Radiators"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/gamdias-apollo32-tempered-mid-tower-case-1.jpg",
+    "/images/casings/gamdias-apollo32-tempered-mid-tower-case-2.jpg",
+    "/images/casings/gamdias-apollo32-tempered-mid-tower-case-3.jpg",
+    "/images/casings/gamdias-apollo32-tempered-mid-tower-case-4.jpg"
+  ],
+  "sku": "CAS-0003-KH9CQ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:41.610Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58ca"
+  },
+  "name": "Gamdias AURA22 270° Full Tower Case",
+  "brand": "Gamdias",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Full Tower",
+  "sidePanel": "270° Panoramic Tempered Glass",
+  "powerSupply": "Not Included",
+  "color": "White",
+  "price": 12100,
+  "discount": 10,
+  "warranty": "1 Year",
+  "rating": 4.5,
+  "reviewCount": 24,
+  "availability": 30,
+  "features": [
+    "ARGB Pre-Installed Fans",
+    "Back-Connector Motherboard Support",
+    "High-Airflow Mesh Front Design"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/gamdias-aura22-270-full-tower-case-1.jpg",
+    "/images/casings/gamdias-aura22-270-full-tower-case-2.jpg",
+    "/images/casings/gamdias-aura22-270-full-tower-case-3.jpg",
+    "/images/casings/gamdias-aura22-270-full-tower-case-4.jpg"
+  ],
+  "sku": "CAS-0004-BQL3R",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:45.251Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58cb"
+  },
+  "name": "Gamdias AURA63 270° Full Tower Case",
+  "brand": "Gamdias",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Full Tower",
+  "sidePanel": "270° Panoramic Tempered Glass",
+  "powerSupply": "Not Included",
+  "color": "Black",
+  "price": 16200,
+  "discount": 10,
+  "warranty": "1 Year",
+  "rating": 4.5,
+  "reviewCount": 18,
+  "availability": 30,
+  "features": [
+    "Premium Build Quality",
+    "ARGB Pre-Installed Fans",
+    "Back-Connector Motherboard Support"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/gamdias-aura63-270-full-tower-case-1.jpg",
+    "/images/casings/gamdias-aura63-270-full-tower-case-2.jpg",
+    "/images/casings/gamdias-aura63-270-full-tower-case-3.jpg",
+    "/images/casings/gamdias-aura63-270-full-tower-case-4.jpg"
+  ],
+  "sku": "CAS-0005-W5FXP",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:48.527Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58cc"
+  },
+  "name": "MSI MAG17 Tempered Mid Tower Case",
+  "brand": "MSI",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Mid Tower",
+  "sidePanel": "Tempered Glass",
+  "powerSupply": "Not Included",
+  "color": "Black",
+  "price": 3800,
+  "discount": 0,
+  "warranty": "1 Year",
+  "rating": 4.2,
+  "reviewCount": 51,
+  "availability": 22,
+  "features": [
+    "Premium Build Quality",
+    "Magnetic Dust Filter",
+    "ARGB Pre-Installed Fans"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/msi-mag17-tempered-mid-tower-case-1.jpg",
+    "/images/casings/msi-mag17-tempered-mid-tower-case-2.jpg",
+    "/images/casings/msi-mag17-tempered-mid-tower-case-3.jpg",
+    "/images/casings/msi-mag17-tempered-mid-tower-case-4.webp"
+  ],
+  "sku": "CAS-0006-A9P1S",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:52.218Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58cd"
+  },
+  "name": "MSI MAG79 Tempered Mid Tower Case",
+  "brand": "MSI",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Mid Tower",
+  "sidePanel": "Tempered Glass",
+  "powerSupply": "Not Included",
+  "color": "Black",
+  "price": 6300,
+  "discount": 11,
+  "warranty": "1 Year",
+  "rating": 4.3,
+  "reviewCount": 42,
+  "availability": 32,
+  "features": [
+    "ARGB Pre-Installed Fans",
+    "Magnetic Dust Filter",
+    "Premium Build Quality"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/msi-mag79-tempered-mid-tower-case-1.jpg",
+    "/images/casings/msi-mag79-tempered-mid-tower-case-2.jpg",
+    "/images/casings/msi-mag79-tempered-mid-tower-case-3.jpg",
+    "/images/casings/msi-mag79-tempered-mid-tower-case-4.jpg"
+  ],
+  "sku": "CAS-0007-67YL9",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:55.193Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58ce"
+  },
+  "name": "MSI MAG25 Tempered Mid Tower Case",
+  "brand": "MSI",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Mid Tower",
+  "sidePanel": "Tempered Glass",
+  "powerSupply": "Not Included",
+  "color": "White",
+  "price": 8100,
+  "discount": 12,
+  "warranty": "1 Year",
+  "rating": 4.4,
+  "reviewCount": 32,
+  "availability": 23,
+  "features": [
+    "High-Airflow Mesh Front Design",
+    "Supports up to 360mm Radiators",
+    "Front USB 3.0 & USB-C Ports"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/msi-mag25-tempered-mid-tower-case-1.jpg",
+    "/images/casings/msi-mag25-tempered-mid-tower-case-2.jpg",
+    "/images/casings/msi-mag25-tempered-mid-tower-case-3.jpg",
+    "/images/casings/msi-mag25-tempered-mid-tower-case-4.jpg"
+  ],
+  "sku": "CAS-0008-VG82J",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:59.494Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58cf"
+  },
+  "name": "MSI MPG98 Mesh Full Tower Case",
+  "brand": "MSI",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Full Tower",
+  "sidePanel": "Mesh Front Panel",
+  "powerSupply": "Not Included",
+  "color": "Black",
+  "price": 12700,
+  "discount": 8,
+  "warranty": "1 Year",
+  "rating": 4.4,
+  "reviewCount": 21,
+  "availability": 12,
+  "features": [
+    "High-Airflow Mesh Front Design",
+    "Premium Build Quality",
+    "Front USB 3.0 & USB-C Ports"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/msi-mpg98-mesh-full-tower-case-1.jpg",
+    "/images/casings/msi-mpg98-mesh-full-tower-case-2.jpg",
+    "/images/casings/msi-mpg98-mesh-full-tower-case-3.png",
+    "/images/casings/msi-mpg98-mesh-full-tower-case-4.webp"
+  ],
+  "sku": "CAS-0009-8RFVN",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:23:06.203Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58d0"
+  },
+  "name": "MSI MAG59 270° Full Tower Case",
+  "brand": "MSI",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Full Tower",
+  "sidePanel": "270° Panoramic Tempered Glass",
+  "powerSupply": "Not Included",
+  "color": "White",
+  "price": 15200,
+  "discount": 20,
+  "warranty": "1 Year",
+  "rating": 4.5,
+  "reviewCount": 16,
+  "availability": 13,
+  "features": [
+    "Magnetic Dust Filter",
+    "ARGB Pre-Installed Fans",
+    "High-Airflow Mesh Front Design"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/msi-mag59-270-full-tower-case-1.png",
+    "/images/casings/msi-mag59-270-full-tower-case-2.png",
+    "/images/casings/msi-mag59-270-full-tower-case-3.jpg",
+    "/images/casings/msi-mag59-270-full-tower-case-4.jpg"
+  ],
+  "sku": "CAS-0010-R4Q14",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:23:10.356Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58d1"
+  },
+  "name": "Antec P70 Mesh Mini Tower Case",
+  "brand": "Antec",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Mini Tower",
+  "sidePanel": "Mesh Front Panel",
+  "powerSupply": "Not Included",
+  "color": "White",
+  "price": 2400,
+  "discount": 8,
+  "warranty": "1 Year",
+  "rating": 4.2,
+  "reviewCount": 51,
+  "availability": 29,
+  "features": [
+    "ARGB Pre-Installed Fans",
+    "High-Airflow Mesh Front Design",
+    "Back-Connector Motherboard Support"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/antec-p70-mesh-mini-tower-case-1.jpg",
+    "/images/casings/antec-p70-mesh-mini-tower-case-2.jpg",
+    "/images/casings/antec-p70-mesh-mini-tower-case-3.jpg",
+    "/images/casings/antec-p70-mesh-mini-tower-case-4.jpg"
+  ],
+  "sku": "CAS-0011-SP0MT",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:23:16.656Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58d2"
+  },
+  "name": "Antec P47 Mesh Mid Tower Case",
+  "brand": "Antec",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Mid Tower",
+  "sidePanel": "Mesh Front Panel",
+  "powerSupply": "Not Included",
+  "color": "Black",
+  "price": 4800,
+  "discount": 4,
+  "warranty": "1 Year",
+  "rating": 4.2,
+  "reviewCount": 51,
+  "availability": 42,
+  "features": [
+    "Premium Build Quality",
+    "ARGB Pre-Installed Fans",
+    "Back-Connector Motherboard Support"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/antec-p47-mesh-mid-tower-case-1.jpg",
+    "/images/casings/antec-p47-mesh-mid-tower-case-2.jpg",
+    "/images/casings/antec-p47-mesh-mid-tower-case-3.png",
+    "/images/casings/antec-p47-mesh-mid-tower-case-4.jpg"
+  ],
+  "sku": "CAS-0012-9D0ZI",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:23:20.295Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58d3"
+  },
+  "name": "Antec GSK16 Mesh Mid Tower Case",
+  "brand": "Antec",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Mid Tower",
+  "sidePanel": "Mesh Front Panel",
+  "powerSupply": "Not Included",
+  "color": "Black",
+  "price": 7300,
+  "discount": 10,
+  "warranty": "1 Year",
+  "rating": 4.4,
+  "reviewCount": 36,
+  "availability": 27,
+  "features": [
+    "High-Airflow Mesh Front Design",
+    "ARGB Pre-Installed Fans",
+    "Magnetic Dust Filter"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/antec-gsk16-mesh-mid-tower-case-1.jpg",
+    "/images/casings/antec-gsk16-mesh-mid-tower-case-2.png",
+    "/images/casings/antec-gsk16-mesh-mid-tower-case-3.jpg",
+    "/images/casings/antec-gsk16-mesh-mid-tower-case-4.png"
+  ],
+  "sku": "CAS-0013-U2N4S",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:23:27.237Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58d4"
+  },
+  "name": "Antec GSK21 270° Full Tower Case",
+  "brand": "Antec",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Full Tower",
+  "sidePanel": "270° Panoramic Tempered Glass",
+  "powerSupply": "Not Included",
+  "color": "Black",
+  "price": 12700,
+  "discount": 3,
+  "warranty": "1 Year",
+  "rating": 4.4,
+  "reviewCount": 20,
+  "availability": 12,
+  "features": [
+    "Back-Connector Motherboard Support",
+    "ARGB Pre-Installed Fans",
+    "Supports up to 360mm Radiators"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/antec-gsk21-270-full-tower-case-1.jpg",
+    "/images/casings/antec-gsk21-270-full-tower-case-2.jpg",
+    "/images/casings/antec-gsk21-270-full-tower-case-3.png",
+    "/images/casings/antec-gsk21-270-full-tower-case-4.jpg"
+  ],
+  "sku": "CAS-0014-OXZ28",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:23:53.317Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58d5"
+  },
+  "name": "Antec P46 Mesh Full Tower Case",
+  "brand": "Antec",
+  "formFactor": "ATX / Micro-ATX / Mini-ITX",
+  "type": "Full Tower",
+  "sidePanel": "Mesh Front Panel",
+  "powerSupply": "Not Included",
+  "color": "Black",
+  "price": 16600,
+  "discount": 0,
+  "warranty": "1 Year",
+  "rating": 4.4,
+  "reviewCount": 24,
+  "availability": 20,
+  "features": [
+    "Front USB 3.0 & USB-C Ports",
+    "ARGB Pre-Installed Fans",
+    "Premium Build Quality"
+  ],
+  "category": "casings",
+  "images": [
+    "/images/casings/antec-p46-mesh-full-tower-case-1.jpg",
+    "/images/casings/antec-p46-mesh-full-tower-case-2.jpg",
+    "/images/casings/antec-p46-mesh-full-tower-case-3.jpg",
+    "/images/casings/antec-p46-mesh-full-tower-case-4.jpg"
+  ],
+  "sku": "CAS-0015-MKWML",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:23:57.693Z"
+  }
+}]

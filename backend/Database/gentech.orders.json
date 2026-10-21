@@ -1,0 +1,43 @@
+{
+  "_id": "671a40000000000000000001",
+  "orderNumber": "GT-2026-000001",
+  "customerId": "671a10000000000000000001",
+  "items": [
+    {
+      "productId": "671a30000000000000000001",
+      "category": "graphics-cards",
+      "sku": "GT-GPU-001",
+      "name": "MSI GeForce RTX 4070",
+      "unitPrice": 85000,
+      "discount": 5,
+      "quantity": 1,
+      "subtotal": 80750
+    }
+  ],
+  "subtotal": 85000,
+  "discountAmount": 4250,
+  "couponCode": "WELCOME10",
+  "deliveryFee": 100,
+  "total": 80850,
+  "locationId": "671a50000000000000000001",
+  "shippingAddress": {
+    "recipientName": "Rahim Ahmed",
+    "phone": "01712345678",
+    "address": "House 12, Road 5",
+    "area": "Dhanmondi",
+    "city": "Dhaka"
+  },
+  "paymentMethod": "cash_on_delivery",
+  "paymentStatus": "pending",
+  "status": "pending",
+  "statusHistory": [
+    {
+      "status": "pending",
+      "changedAt": "2026-10-18T12:30:00Z",
+      "changedBy": "671a10000000000000000001",
+      "reason": "Order placed"
+    }
+  ],
+  "createdAt": "2026-10-18T12:30:00Z",
+  "updatedAt": "2026-10-18T12:30:00Z"
+}

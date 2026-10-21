@@ -1,0 +1,780 @@
+[{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5881"
+  },
+  "name": "Hiksemi 512GB PCIe Gen3 M.2 NVMe SSD",
+  "brand": "Hiksemi",
+  "ssdSize": "512GB",
+  "interface": "PCIe Gen3x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 2100 MB/s",
+  "writeSpeed": "Up to 1200 MB/s",
+  "generation": "PCIe Gen3",
+  "color": "Black",
+  "price": 10300,
+  "discount": 14,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 47,
+  "availability": 25,
+  "features": [
+    "DRAM Cache for Sustained Speed",
+    "High Endurance Rating",
+    "Compact M.2 2280 Design"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/hiksemi-512gb-pcie-gen3-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/hiksemi-512gb-pcie-gen3-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/hiksemi-512gb-pcie-gen3-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/hiksemi-512gb-pcie-gen3-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0001-97HK9",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:16:29.529Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5882"
+  },
+  "name": "Hiksemi 1TB PCIe Gen3 M.2 NVMe SSD",
+  "brand": "Hiksemi",
+  "ssdSize": "1TB",
+  "interface": "PCIe Gen3x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 1700 MB/s",
+  "writeSpeed": "Up to 2000 MB/s",
+  "generation": "PCIe Gen3",
+  "color": "Black",
+  "price": 17800,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 40,
+  "availability": 28,
+  "features": [
+    "High Endurance Rating",
+    "Built-In Heatsink",
+    "Compact M.2 2280 Design"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/hiksemi-1tb-pcie-gen3-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/hiksemi-1tb-pcie-gen3-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/hiksemi-1tb-pcie-gen3-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/hiksemi-1tb-pcie-gen3-m-2-nvme-ssd-4.webp"
+  ],
+  "sku": "SSD-0002-GGT7F",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:16:35.587Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5883"
+  },
+  "name": "ADATA 512GB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "ADATA",
+  "ssdSize": "512GB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 4500 MB/s",
+  "writeSpeed": "Up to 6700 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 21500,
+  "discount": 14,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 39,
+  "availability": 15,
+  "features": [
+    "Built-In Heatsink",
+    "3D NAND Flash",
+    "Great for Gaming Rigs"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/adata-512gb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/adata-512gb-pcie-gen4-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/adata-512gb-pcie-gen4-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/adata-512gb-pcie-gen4-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0003-J9BAS",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:16:38.967Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5884"
+  },
+  "name": "ADATA 1TB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "ADATA",
+  "ssdSize": "1TB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 7000 MB/s",
+  "writeSpeed": "Up to 2200 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 38800,
+  "discount": 5,
+  "warranty": "5 Years",
+  "rating": 4.4,
+  "reviewCount": 28,
+  "availability": 15,
+  "features": [
+    "High Endurance Rating",
+    "NVMe 2.0 Interface",
+    "DRAM Cache for Sustained Speed"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/adata-1tb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/adata-1tb-pcie-gen4-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/adata-1tb-pcie-gen4-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/adata-1tb-pcie-gen4-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0004-HXVT0",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:16:42.303Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5885"
+  },
+  "name": "ADATA 2TB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "ADATA",
+  "ssdSize": "2TB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 5000 MB/s",
+  "writeSpeed": "Up to 6500 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 90100,
+  "discount": 6,
+  "warranty": "5 Years",
+  "rating": 4.4,
+  "reviewCount": 27,
+  "availability": 3,
+  "features": [
+    "Built-In Heatsink",
+    "Great for Gaming Rigs",
+    "NVMe 2.0 Interface"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/adata-2tb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/adata-2tb-pcie-gen4-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/adata-2tb-pcie-gen4-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/adata-2tb-pcie-gen4-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0005-XAY3C",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:16:47.687Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5886"
+  },
+  "name": "SanDisk 512GB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "SanDisk",
+  "ssdSize": "512GB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 5000 MB/s",
+  "writeSpeed": "Up to 6700 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 19000,
+  "discount": 0,
+  "warranty": "3 Years",
+  "rating": 4.2,
+  "reviewCount": 47,
+  "availability": 18,
+  "features": [
+    "TRIM & S.M.A.R.T Support",
+    "Built-In Heatsink",
+    "Great for Gaming Rigs"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/sandisk-512gb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/sandisk-512gb-pcie-gen4-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/sandisk-512gb-pcie-gen4-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/sandisk-512gb-pcie-gen4-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0006-85XSZ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:16:51.352Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5887"
+  },
+  "name": "SanDisk 1TB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "SanDisk",
+  "ssdSize": "1TB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 7000 MB/s",
+  "writeSpeed": "Up to 4900 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 41900,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 31,
+  "availability": 9,
+  "features": [
+    "NVMe 2.0 Interface",
+    "DRAM Cache for Sustained Speed",
+    "Built-In Heatsink"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/sandisk-1tb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/sandisk-1tb-pcie-gen4-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/sandisk-1tb-pcie-gen4-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/sandisk-1tb-pcie-gen4-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0007-3SMRH",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:16:56.513Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5888"
+  },
+  "name": "SanDisk 2TB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "SanDisk",
+  "ssdSize": "2TB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 7400 MB/s",
+  "writeSpeed": "Up to 6500 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 74400,
+  "discount": 14,
+  "warranty": "5 Years",
+  "rating": 4.4,
+  "reviewCount": 22,
+  "availability": 3,
+  "features": [
+    "Great for Gaming Rigs",
+    "Compact M.2 2280 Design",
+    "3D NAND Flash"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/sandisk-2tb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/sandisk-2tb-pcie-gen4-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/sandisk-2tb-pcie-gen4-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/sandisk-2tb-pcie-gen4-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0008-OT0CN",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:17:01.663Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5889"
+  },
+  "name": "Team 512GB SATA III 2.5-Inch SSD",
+  "brand": "Team",
+  "ssdSize": "512GB",
+  "interface": "SATA III 6Gb/s",
+  "formFactor": "2.5-Inch",
+  "readSpeed": "Up to 540 MB/s",
+  "writeSpeed": "Up to 490 MB/s",
+  "generation": "SATA III",
+  "color": "Black",
+  "price": 6000,
+  "discount": 8,
+  "warranty": "5 Years",
+  "rating": 4.3,
+  "reviewCount": 51,
+  "availability": 20,
+  "features": [
+    "DRAM Cache for Sustained Speed",
+    "High Endurance Rating",
+    "Built-In Heatsink"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/team-512gb-sata-iii-2-5-inch-ssd-1.jpg",
+    "/images/ssds/team-512gb-sata-iii-2-5-inch-ssd-2.jpg",
+    "/images/ssds/team-512gb-sata-iii-2-5-inch-ssd-3.jpg",
+    "/images/ssds/team-512gb-sata-iii-2-5-inch-ssd-4.jpg"
+  ],
+  "sku": "SSD-0009-G1X9C",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:17:06.099Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf588a"
+  },
+  "name": "Team 1TB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "Team",
+  "ssdSize": "1TB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 6000 MB/s",
+  "writeSpeed": "Up to 5800 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 45200,
+  "discount": 18,
+  "warranty": "5 Years",
+  "rating": 4.3,
+  "reviewCount": 39,
+  "availability": 18,
+  "features": [
+    "High Endurance Rating",
+    "Built-In Heatsink",
+    "DRAM Cache for Sustained Speed"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/team-1tb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/team-1tb-pcie-gen4-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/team-1tb-pcie-gen4-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/team-1tb-pcie-gen4-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0010-XTXJQ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:17:11.155Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf588b"
+  },
+  "name": "Lexar 1TB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "Lexar",
+  "ssdSize": "1TB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 6000 MB/s",
+  "writeSpeed": "Up to 6700 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 45700,
+  "discount": 0,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 41,
+  "availability": 7,
+  "features": [
+    "High Endurance Rating",
+    "Built-In Heatsink",
+    "Compact M.2 2280 Design"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/lexar-1tb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/lexar-1tb-pcie-gen4-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/lexar-1tb-pcie-gen4-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/lexar-1tb-pcie-gen4-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0011-YG26B",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:17:15.326Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf588c"
+  },
+  "name": "Lexar 1TB PCIe Gen5 M.2 NVMe SSD",
+  "brand": "Lexar",
+  "ssdSize": "1TB",
+  "interface": "PCIe Gen5x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 13000 MB/s",
+  "writeSpeed": "Up to 12500 MB/s",
+  "generation": "PCIe Gen5",
+  "color": "Black",
+  "price": 64600,
+  "discount": 8,
+  "warranty": "5 Years",
+  "rating": 4.3,
+  "reviewCount": 33,
+  "availability": 4,
+  "features": [
+    "Great for Gaming Rigs",
+    "3D NAND Flash",
+    "Compact M.2 2280 Design"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/lexar-1tb-pcie-gen5-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/lexar-1tb-pcie-gen5-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/lexar-1tb-pcie-gen5-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/lexar-1tb-pcie-gen5-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0012-FZRKW",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:17:19.822Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf588d"
+  },
+  "name": "Corsair 512GB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "Corsair",
+  "ssdSize": "512GB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 4500 MB/s",
+  "writeSpeed": "Up to 4900 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 26800,
+  "discount": 7,
+  "warranty": "3 Years",
+  "rating": 4.2,
+  "reviewCount": 52,
+  "availability": 18,
+  "features": [
+    "Built-In Heatsink",
+    "DRAM Cache for Sustained Speed",
+    "Great for Gaming Rigs"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/corsair-512gb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/corsair-512gb-pcie-gen4-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/corsair-512gb-pcie-gen4-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/corsair-512gb-pcie-gen4-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0013-MWDH8",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:17:25.439Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf588e"
+  },
+  "name": "Corsair 1TB PCIe Gen5 M.2 NVMe SSD",
+  "brand": "Corsair",
+  "ssdSize": "1TB",
+  "interface": "PCIe Gen5x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 12000 MB/s",
+  "writeSpeed": "Up to 14000 MB/s",
+  "generation": "PCIe Gen5",
+  "color": "Black",
+  "price": 69900,
+  "discount": 11,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 34,
+  "availability": 8,
+  "features": [
+    "NVMe 2.0 Interface",
+    "3D NAND Flash",
+    "High Endurance Rating"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/corsair-1tb-pcie-gen5-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/corsair-1tb-pcie-gen5-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/corsair-1tb-pcie-gen5-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/corsair-1tb-pcie-gen5-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0014-HUR4G",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:17:29.279Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf588f"
+  },
+  "name": "Corsair 2TB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "Corsair",
+  "ssdSize": "2TB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 5000 MB/s",
+  "writeSpeed": "Up to 6700 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 98100,
+  "discount": 0,
+  "warranty": "5 Years",
+  "rating": 4.4,
+  "reviewCount": 30,
+  "availability": 8,
+  "features": [
+    "Great for Gaming Rigs",
+    "High Endurance Rating",
+    "DRAM Cache for Sustained Speed"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/corsair-2tb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/corsair-2tb-pcie-gen4-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/corsair-2tb-pcie-gen4-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/corsair-2tb-pcie-gen4-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0015-H3DHU",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:17:34.976Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5890"
+  },
+  "name": "MSI 512GB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "MSI",
+  "ssdSize": "512GB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 5000 MB/s",
+  "writeSpeed": "Up to 6700 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 17100,
+  "discount": 16,
+  "warranty": "5 Years",
+  "rating": 4.2,
+  "reviewCount": 45,
+  "availability": 14,
+  "features": [
+    "NVMe 2.0 Interface",
+    "TRIM & S.M.A.R.T Support",
+    "Great for Gaming Rigs"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/msi-512gb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/msi-512gb-pcie-gen4-m-2-nvme-ssd-2.webp",
+    "/images/ssds/msi-512gb-pcie-gen4-m-2-nvme-ssd-3.webp",
+    "/images/ssds/msi-512gb-pcie-gen4-m-2-nvme-ssd-4.webp"
+  ],
+  "sku": "SSD-0016-ZB4AT",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:17:39.389Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5891"
+  },
+  "name": "MSI 1TB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "MSI",
+  "ssdSize": "1TB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 7400 MB/s",
+  "writeSpeed": "Up to 2200 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 35800,
+  "discount": 8,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 31,
+  "availability": 17,
+  "features": [
+    "NVMe 2.0 Interface",
+    "Built-In Heatsink",
+    "Great for Gaming Rigs"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/msi-1tb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/msi-1tb-pcie-gen4-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/msi-1tb-pcie-gen4-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/msi-1tb-pcie-gen4-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0017-0ABKZ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:17:46.705Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5892"
+  },
+  "name": "Kingston 512GB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "Kingston",
+  "ssdSize": "512GB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 5000 MB/s",
+  "writeSpeed": "Up to 2200 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 21800,
+  "discount": 4,
+  "warranty": "3 Years",
+  "rating": 4.2,
+  "reviewCount": 45,
+  "availability": 13,
+  "features": [
+    "Compact M.2 2280 Design",
+    "3D NAND Flash",
+    "DRAM Cache for Sustained Speed"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/kingston-512gb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/kingston-512gb-pcie-gen4-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/kingston-512gb-pcie-gen4-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/kingston-512gb-pcie-gen4-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0018-D4174",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:17:58.142Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5893"
+  },
+  "name": "Kingston 2TB PCIe Gen4 M.2 NVMe SSD",
+  "brand": "Kingston",
+  "ssdSize": "2TB",
+  "interface": "PCIe Gen4x4 NVMe",
+  "formFactor": "M.2 2280",
+  "readSpeed": "Up to 7000 MB/s",
+  "writeSpeed": "Up to 1900 MB/s",
+  "generation": "PCIe Gen4",
+  "color": "Black",
+  "price": 87000,
+  "discount": 0,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 28,
+  "availability": 5,
+  "features": [
+    "High Endurance Rating",
+    "Great for Gaming Rigs",
+    "Compact M.2 2280 Design"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/kingston-2tb-pcie-gen4-m-2-nvme-ssd-1.jpg",
+    "/images/ssds/kingston-2tb-pcie-gen4-m-2-nvme-ssd-2.jpg",
+    "/images/ssds/kingston-2tb-pcie-gen4-m-2-nvme-ssd-3.jpg",
+    "/images/ssds/kingston-2tb-pcie-gen4-m-2-nvme-ssd-4.jpg"
+  ],
+  "sku": "SSD-0019-GJ7EV",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:18:03.119Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5894"
+  },
+  "name": "KingSpec 1TB SATA III 2.5-Inch SSD",
+  "brand": "KingSpec",
+  "ssdSize": "1TB",
+  "interface": "SATA III 6Gb/s",
+  "formFactor": "2.5-Inch",
+  "readSpeed": "Up to 540 MB/s",
+  "writeSpeed": "Up to 490 MB/s",
+  "generation": "SATA III",
+  "color": "Black",
+  "price": 9100,
+  "discount": 12,
+  "warranty": "5 Years",
+  "rating": 4.4,
+  "reviewCount": 33,
+  "availability": 22,
+  "features": [
+    "High Endurance Rating",
+    "NVMe 2.0 Interface",
+    "TRIM & S.M.A.R.T Support"
+  ],
+  "category": "ssds",
+  "images": [
+    "/images/ssds/kingspec-1tb-sata-iii-2-5-inch-ssd-1.jpg",
+    "/images/ssds/kingspec-1tb-sata-iii-2-5-inch-ssd-2.jpg",
+    "/images/ssds/kingspec-1tb-sata-iii-2-5-inch-ssd-3.jpg",
+    "/images/ssds/kingspec-1tb-sata-iii-2-5-inch-ssd-4.jpg"
+  ],
+  "sku": "SSD-0020-4ZR35",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:18:07.089Z"
+  }
+}]

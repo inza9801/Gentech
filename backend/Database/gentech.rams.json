@@ -1,0 +1,720 @@
+[{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf586d"
+  },
+  "name": "Netac 8GB DDR4 3200MHz Desktop RAM",
+  "brand": "Netac",
+  "ramSpeed": "3200MHz",
+  "ramType": "DDR4",
+  "ramSize": "8GB",
+  "color": "Black",
+  "price": 6600,
+  "discount": 18,
+  "warranty": "3 Years",
+  "rating": 4.1,
+  "reviewCount": 59,
+  "availability": 25,
+  "features": [
+    "CL38 Latency",
+    "1.35V Low Voltage",
+    "AMD EXPO Support"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/netac-8gb-ddr4-3200mhz-desktop-ram-1.jpg",
+    "/images/rams/netac-8gb-ddr4-3200mhz-desktop-ram-2.jpg",
+    "/images/rams/netac-8gb-ddr4-3200mhz-desktop-ram-3.jpg",
+    "/images/rams/netac-8gb-ddr4-3200mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0001-8A01Z",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:04.174Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf586e"
+  },
+  "name": "Netac 16GB DDR4 3200MHz Desktop RAM",
+  "brand": "Netac",
+  "ramSpeed": "3200MHz",
+  "ramType": "DDR4",
+  "ramSize": "16GB",
+  "color": "White",
+  "price": 13900,
+  "discount": 8,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 33,
+  "availability": 23,
+  "features": [
+    "CL16 Latency",
+    "Heatsink-Equipped Design",
+    "1.35V Low Voltage"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/netac-16gb-ddr4-3200mhz-desktop-ram-1.jpg",
+    "/images/rams/netac-16gb-ddr4-3200mhz-desktop-ram-2.jpg",
+    "/images/rams/netac-16gb-ddr4-3200mhz-desktop-ram-3.jpg",
+    "/images/rams/netac-16gb-ddr4-3200mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0002-QOLTM",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:08.003Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf586f"
+  },
+  "name": "Netac 32GB DDR4 3200MHz Desktop RAM",
+  "brand": "Netac",
+  "ramSpeed": "3200MHz",
+  "ramType": "DDR4",
+  "ramSize": "32GB",
+  "color": "Black",
+  "price": 27200,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 32,
+  "availability": 8,
+  "features": [
+    "CL18 Latency",
+    "Built-In OLED Display",
+    "1.35V Low Voltage"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/netac-32gb-ddr4-3200mhz-desktop-ram-1.jpg",
+    "/images/rams/netac-32gb-ddr4-3200mhz-desktop-ram-2.jpg",
+    "/images/rams/netac-32gb-ddr4-3200mhz-desktop-ram-3.jpg",
+    "/images/rams/netac-32gb-ddr4-3200mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0003-H2GED",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:11.563Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5870"
+  },
+  "name": "Corsair 8GB DDR4 3200MHz Desktop RAM",
+  "brand": "Corsair",
+  "ramSpeed": "3200MHz",
+  "ramType": "DDR4",
+  "ramSize": "8GB",
+  "color": "Black",
+  "price": 8200,
+  "discount": 5,
+  "warranty": "Lifetime",
+  "rating": 4.2,
+  "reviewCount": 51,
+  "availability": 26,
+  "features": [
+    "CL22 Latency",
+    "Low-Profile Heat Spreader",
+    "Intel XMP Ready"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/corsair-8gb-ddr4-3200mhz-desktop-ram-1.jpg",
+    "/images/rams/corsair-8gb-ddr4-3200mhz-desktop-ram-2.jpg",
+    "/images/rams/corsair-8gb-ddr4-3200mhz-desktop-ram-3.jpg",
+    "/images/rams/corsair-8gb-ddr4-3200mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0004-MI8SF",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:14.680Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5871"
+  },
+  "name": "Corsair 16GB DDR4 3200MHz Desktop RAM",
+  "brand": "Corsair",
+  "ramSpeed": "3200MHz",
+  "ramType": "DDR4",
+  "ramSize": "16GB",
+  "color": "Black",
+  "price": 16600,
+  "discount": 16,
+  "warranty": "Lifetime",
+  "rating": 4.3,
+  "reviewCount": 38,
+  "availability": 27,
+  "features": [
+    "CL28 Latency",
+    "Low-Profile Heat Spreader",
+    "Aluminum Heat Spreader"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/corsair-16gb-ddr4-3200mhz-desktop-ram-1.jpg",
+    "/images/rams/corsair-16gb-ddr4-3200mhz-desktop-ram-2.jpg",
+    "/images/rams/corsair-16gb-ddr4-3200mhz-desktop-ram-3.jpg",
+    "/images/rams/corsair-16gb-ddr4-3200mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0005-E3UE2",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:18.287Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5872"
+  },
+  "name": "Corsair 32GB DDR4 3200MHz Desktop RAM",
+  "brand": "Corsair",
+  "ramSpeed": "3200MHz",
+  "ramType": "DDR4",
+  "ramSize": "32GB",
+  "color": "Black",
+  "price": 30400,
+  "discount": 0,
+  "warranty": "Lifetime",
+  "rating": 4.5,
+  "reviewCount": 23,
+  "availability": 18,
+  "features": [
+    "CL22 Latency",
+    "RGB Lighting",
+    "Intel XMP Ready"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/corsair-32gb-ddr4-3200mhz-desktop-ram-1.jpg",
+    "/images/rams/corsair-32gb-ddr4-3200mhz-desktop-ram-2.jpg",
+    "/images/rams/corsair-32gb-ddr4-3200mhz-desktop-ram-3.jpg",
+    "/images/rams/corsair-32gb-ddr4-3200mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0006-UYWVB",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:23.316Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5873"
+  },
+  "name": "Corsair 8GB DDR5 6000MHz Desktop RAM",
+  "brand": "Corsair",
+  "ramSpeed": "6000MHz",
+  "ramType": "DDR5",
+  "ramSize": "8GB",
+  "color": "Gray/Black",
+  "price": 16900,
+  "discount": 0,
+  "warranty": "Lifetime",
+  "rating": 4.2,
+  "reviewCount": 53,
+  "availability": 23,
+  "features": [
+    "CL32 Latency",
+    "Intel XMP Ready",
+    "Heatsink-Equipped Design"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/corsair-8gb-ddr5-6000mhz-desktop-ram-1.jpg",
+    "/images/rams/corsair-8gb-ddr5-6000mhz-desktop-ram-2.jpg",
+    "/images/rams/corsair-8gb-ddr5-6000mhz-desktop-ram-3.jpg",
+    "/images/rams/corsair-8gb-ddr5-6000mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0007-QD8XQ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:26.682Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5874"
+  },
+  "name": "Corsair 16GB DDR5 6000MHz Desktop RAM",
+  "brand": "Corsair",
+  "ramSpeed": "6000MHz",
+  "ramType": "DDR5",
+  "ramSize": "16GB",
+  "color": "Gray/Black",
+  "price": 36600,
+  "discount": 0,
+  "warranty": "Lifetime",
+  "rating": 4.3,
+  "reviewCount": 37,
+  "availability": 6,
+  "features": [
+    "CL28 Latency",
+    "Built-In OLED Display",
+    "Intel XMP Ready"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/corsair-16gb-ddr5-6000mhz-desktop-ram-1.jpg",
+    "/images/rams/corsair-16gb-ddr5-6000mhz-desktop-ram-2.jpg",
+    "/images/rams/corsair-16gb-ddr5-6000mhz-desktop-ram-3.jpg",
+    "/images/rams/corsair-16gb-ddr5-6000mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0008-MCIP6",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:29.589Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5875"
+  },
+  "name": "Corsair 32GB DDR5 6000MHz Desktop RAM",
+  "brand": "Corsair",
+  "ramSpeed": "6000MHz",
+  "ramType": "DDR5",
+  "ramSize": "32GB",
+  "color": "Black",
+  "price": 70700,
+  "discount": 0,
+  "warranty": "Lifetime",
+  "rating": 4.4,
+  "reviewCount": 24,
+  "availability": 3,
+  "features": [
+    "CL32 Latency",
+    "Aluminum Heat Spreader",
+    "AMD EXPO Support"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/corsair-32gb-ddr5-6000mhz-desktop-ram-1.jpg",
+    "/images/rams/corsair-32gb-ddr5-6000mhz-desktop-ram-2.jpg",
+    "/images/rams/corsair-32gb-ddr5-6000mhz-desktop-ram-3.jpg",
+    "/images/rams/corsair-32gb-ddr5-6000mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0009-GTR94",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:33.226Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5876"
+  },
+  "name": "Kingston 8GB DDR4 3200MHz Desktop RAM",
+  "brand": "Kingston",
+  "ramSpeed": "3200MHz",
+  "ramType": "DDR4",
+  "ramSize": "8GB",
+  "color": "Black",
+  "price": 7800,
+  "discount": 0,
+  "warranty": "Lifetime",
+  "rating": 4.2,
+  "reviewCount": 50,
+  "availability": 22,
+  "features": [
+    "CL18 Latency",
+    "Built-In OLED Display",
+    "RGB Lighting"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/kingston-8gb-ddr4-3200mhz-desktop-ram-1.jpg",
+    "/images/rams/kingston-8gb-ddr4-3200mhz-desktop-ram-2.jpg",
+    "/images/rams/kingston-8gb-ddr4-3200mhz-desktop-ram-3.jpg",
+    "/images/rams/kingston-8gb-ddr4-3200mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0010-MU638",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:37.072Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5877"
+  },
+  "name": "Kingston 16GB DDR4 3200MHz Desktop RAM",
+  "brand": "Kingston",
+  "ramSpeed": "3200MHz",
+  "ramType": "DDR4",
+  "ramSize": "16GB",
+  "color": "Black",
+  "price": 14400,
+  "discount": 10,
+  "warranty": "Lifetime",
+  "rating": 4.3,
+  "reviewCount": 40,
+  "availability": 17,
+  "features": [
+    "CL16 Latency",
+    "Low-Profile Heat Spreader",
+    "AMD EXPO Support"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/kingston-16gb-ddr4-3200mhz-desktop-ram-1.jpg",
+    "/images/rams/kingston-16gb-ddr4-3200mhz-desktop-ram-2.jpg",
+    "/images/rams/kingston-16gb-ddr4-3200mhz-desktop-ram-3.jpg",
+    "/images/rams/kingston-16gb-ddr4-3200mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0011-H1ZO8",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:41.828Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5878"
+  },
+  "name": "Kingston 32GB DDR4 3200MHz Desktop RAM",
+  "brand": "Kingston",
+  "ramSpeed": "3200MHz",
+  "ramType": "DDR4",
+  "ramSize": "32GB",
+  "color": "Black",
+  "price": 33600,
+  "discount": 0,
+  "warranty": "Lifetime",
+  "rating": 4.5,
+  "reviewCount": 22,
+  "availability": 10,
+  "features": [
+    "CL36 Latency",
+    "1.35V Low Voltage",
+    "Built-In OLED Display"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/kingston-32gb-ddr4-3200mhz-desktop-ram-1.jpg",
+    "/images/rams/kingston-32gb-ddr4-3200mhz-desktop-ram-2.jpg",
+    "/images/rams/kingston-32gb-ddr4-3200mhz-desktop-ram-3.jpg",
+    "/images/rams/kingston-32gb-ddr4-3200mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0012-Y8XFU",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:45.694Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5879"
+  },
+  "name": "Kingston 16GB DDR5 6000MHz Desktop RAM",
+  "brand": "Kingston",
+  "ramSpeed": "6000MHz",
+  "ramType": "DDR5",
+  "ramSize": "16GB",
+  "color": "Black",
+  "price": 31600,
+  "discount": 11,
+  "warranty": "Lifetime",
+  "rating": 4.3,
+  "reviewCount": 40,
+  "availability": 9,
+  "features": [
+    "CL36 Latency",
+    "Intel XMP Ready",
+    "Built-In OLED Display"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/kingston-16gb-ddr5-6000mhz-desktop-ram-1.jpg",
+    "/images/rams/kingston-16gb-ddr5-6000mhz-desktop-ram-2.jpg",
+    "/images/rams/kingston-16gb-ddr5-6000mhz-desktop-ram-3.jpg",
+    "/images/rams/kingston-16gb-ddr5-6000mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0013-RQ3AL",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:50.086Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf587a"
+  },
+  "name": "Kingston 32GB DDR5 6000MHz Desktop RAM",
+  "brand": "Kingston",
+  "ramSpeed": "6000MHz",
+  "ramType": "DDR5",
+  "ramSize": "32GB",
+  "color": "Black",
+  "price": 63600,
+  "discount": 7,
+  "warranty": "Lifetime",
+  "rating": 4.5,
+  "reviewCount": 25,
+  "availability": 7,
+  "features": [
+    "CL30 Latency",
+    "Heatsink-Equipped Design",
+    "Intel XMP Ready"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/kingston-32gb-ddr5-6000mhz-desktop-ram-1.jpg",
+    "/images/rams/kingston-32gb-ddr5-6000mhz-desktop-ram-2.jpg",
+    "/images/rams/kingston-32gb-ddr5-6000mhz-desktop-ram-3.jpg",
+    "/images/rams/kingston-32gb-ddr5-6000mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0014-VRLB6",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:53.762Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf587b"
+  },
+  "name": "G.Skill 8GB DDR5 6000MHz Desktop RAM",
+  "brand": "G.Skill",
+  "ramSpeed": "6000MHz",
+  "ramType": "DDR5",
+  "ramSize": "8GB",
+  "color": "Black",
+  "price": 15400,
+  "discount": 18,
+  "warranty": "Lifetime",
+  "rating": 4.2,
+  "reviewCount": 50,
+  "availability": 24,
+  "features": [
+    "CL28 Latency",
+    "1.35V Low Voltage",
+    "Built-In OLED Display"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/g-skill-8gb-ddr5-6000mhz-desktop-ram-1.jpg",
+    "/images/rams/g-skill-8gb-ddr5-6000mhz-desktop-ram-2.webp",
+    "/images/rams/g-skill-8gb-ddr5-6000mhz-desktop-ram-3.jpg",
+    "/images/rams/g-skill-8gb-ddr5-6000mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0015-B5MJY",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:16:00.421Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf587c"
+  },
+  "name": "G.Skill 16GB DDR5 6000MHz Desktop RAM",
+  "brand": "G.Skill",
+  "ramSpeed": "6000MHz",
+  "ramType": "DDR5",
+  "ramSize": "16GB",
+  "color": "Black",
+  "price": 34300,
+  "discount": 4,
+  "warranty": "Lifetime",
+  "rating": 4.3,
+  "reviewCount": 36,
+  "availability": 10,
+  "features": [
+    "CL30 Latency",
+    "Heatsink-Equipped Design",
+    "Built-In OLED Display"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/g-skill-16gb-ddr5-6000mhz-desktop-ram-1.jpg",
+    "/images/rams/g-skill-16gb-ddr5-6000mhz-desktop-ram-2.jpg",
+    "/images/rams/g-skill-16gb-ddr5-6000mhz-desktop-ram-3.jpg",
+    "/images/rams/g-skill-16gb-ddr5-6000mhz-desktop-ram-4.webp"
+  ],
+  "sku": "RAM-0016-NPOHU",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:16:06.470Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf587d"
+  },
+  "name": "G.Skill 32GB DDR5 6000MHz Desktop RAM",
+  "brand": "G.Skill",
+  "ramSpeed": "6000MHz",
+  "ramType": "DDR5",
+  "ramSize": "32GB",
+  "color": "White",
+  "price": 70100,
+  "discount": 8,
+  "warranty": "Lifetime",
+  "rating": 4.4,
+  "reviewCount": 31,
+  "availability": 8,
+  "features": [
+    "CL36 Latency",
+    "RGB Lighting",
+    "Low-Profile Heat Spreader"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/g-skill-32gb-ddr5-6000mhz-desktop-ram-1.jpg",
+    "/images/rams/g-skill-32gb-ddr5-6000mhz-desktop-ram-2.jpg",
+    "/images/rams/g-skill-32gb-ddr5-6000mhz-desktop-ram-3.jpg",
+    "/images/rams/g-skill-32gb-ddr5-6000mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0017-LPSJV",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:16:10.742Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf587e"
+  },
+  "name": "ADATA 16GB DDR4 3200MHz Desktop RAM",
+  "brand": "ADATA",
+  "ramSpeed": "3200MHz",
+  "ramType": "DDR4",
+  "ramSize": "16GB",
+  "color": "White",
+  "price": 14700,
+  "discount": 10,
+  "warranty": "Lifetime",
+  "rating": 4.3,
+  "reviewCount": 38,
+  "availability": 13,
+  "features": [
+    "CL18 Latency",
+    "Low-Profile Heat Spreader",
+    "AMD EXPO Support"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/adata-16gb-ddr4-3200mhz-desktop-ram-1.jpg",
+    "/images/rams/adata-16gb-ddr4-3200mhz-desktop-ram-2.jpg",
+    "/images/rams/adata-16gb-ddr4-3200mhz-desktop-ram-3.jpg",
+    "/images/rams/adata-16gb-ddr4-3200mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0018-RUHEJ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:16:14.341Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf587f"
+  },
+  "name": "Team 16GB DDR5 6000MHz Desktop RAM",
+  "brand": "Team",
+  "ramSpeed": "6000MHz",
+  "ramType": "DDR5",
+  "ramSize": "16GB",
+  "color": "Black",
+  "price": 29200,
+  "discount": 0,
+  "warranty": "Lifetime",
+  "rating": 4.3,
+  "reviewCount": 37,
+  "availability": 15,
+  "features": [
+    "CL30 Latency",
+    "Intel XMP Ready",
+    "Low-Profile Heat Spreader"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/team-16gb-ddr5-6000mhz-desktop-ram-1.jpg",
+    "/images/rams/team-16gb-ddr5-6000mhz-desktop-ram-2.jpg",
+    "/images/rams/team-16gb-ddr5-6000mhz-desktop-ram-3.jpg",
+    "/images/rams/team-16gb-ddr5-6000mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0019-BZE5D",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:16:20.785Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5880"
+  },
+  "name": "Team 32GB DDR5 6000MHz Desktop RAM",
+  "brand": "Team",
+  "ramSpeed": "6000MHz",
+  "ramType": "DDR5",
+  "ramSize": "32GB",
+  "color": "Black",
+  "price": 66300,
+  "discount": 18,
+  "warranty": "Lifetime",
+  "rating": 4.4,
+  "reviewCount": 31,
+  "availability": 7,
+  "features": [
+    "CL30 Latency",
+    "RGB Lighting",
+    "Built-In OLED Display"
+  ],
+  "category": "rams",
+  "images": [
+    "/images/rams/team-32gb-ddr5-6000mhz-desktop-ram-1.jpg",
+    "/images/rams/team-32gb-ddr5-6000mhz-desktop-ram-2.jpg",
+    "/images/rams/team-32gb-ddr5-6000mhz-desktop-ram-3.jpg",
+    "/images/rams/team-32gb-ddr5-6000mhz-desktop-ram-4.jpg"
+  ],
+  "sku": "RAM-0020-OWX3V",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:16:25.885Z"
+  }
+}]

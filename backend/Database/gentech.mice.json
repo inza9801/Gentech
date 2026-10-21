@@ -1,0 +1,370 @@
+[{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5912"
+  },
+  "name": "Logitech M484 Optical Mouse",
+  "brand": "Logitech",
+  "lighting": "None",
+  "numberOfButtons": 3,
+  "interface": "Wired (USB)",
+  "resolution": "800 DPI",
+  "color": "Black",
+  "price": 400,
+  "discount": 10,
+  "warranty": "3 Years",
+  "rating": 4.2,
+  "reviewCount": 58,
+  "availability": 43,
+  "features": [
+    "Ultra-Lightweight Esports Design",
+    "Ambidextrous Design",
+    "Adjustable Weight System"
+  ],
+  "category": "mice",
+  "images": [
+    "/images/mice/logitech-m484-optical-mouse-1.png",
+    "/images/mice/logitech-m484-optical-mouse-2.png",
+    "/images/mice/logitech-m484-optical-mouse-3.png",
+    "/images/mice/logitech-m484-optical-mouse-4.jpg"
+  ],
+  "sku": "MIC-0001-NVZLK",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:34.415Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5913"
+  },
+  "name": "Logitech B282 Optical Mouse",
+  "brand": "Logitech",
+  "lighting": "None",
+  "numberOfButtons": 3,
+  "interface": "Wired (USB)",
+  "resolution": "800 DPI",
+  "color": "Black",
+  "price": 400,
+  "discount": 20,
+  "warranty": "3 Years",
+  "rating": 4.2,
+  "reviewCount": 58,
+  "availability": 22,
+  "features": [
+    "Ultra-Lightweight Esports Design",
+    "Adjustable Weight System",
+    "Programmable Side Buttons"
+  ],
+  "category": "mice",
+  "images": [
+    "/images/mice/logitech-b282-optical-mouse-1.jpg",
+    "/images/mice/logitech-b282-optical-mouse-2.jpg",
+    "/images/mice/logitech-b282-optical-mouse-3.jpg",
+    "/images/mice/logitech-b282-optical-mouse-4.jpg"
+  ],
+  "sku": "MIC-0002-DY45Q",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:38.145Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5914"
+  },
+  "name": "Logitech G Pro352 RGB Gaming Mouse",
+  "brand": "Logitech",
+  "lighting": "RGB",
+  "numberOfButtons": 6,
+  "interface": "Wired (USB)",
+  "resolution": "200-8000 DPI",
+  "color": "White",
+  "price": 2200,
+  "discount": 9,
+  "warranty": "2 Years",
+  "rating": 4.3,
+  "reviewCount": 48,
+  "availability": 36,
+  "features": [
+    "Ultra-Lightweight Esports Design",
+    "HERO Optical Sensor",
+    "Programmable Side Buttons"
+  ],
+  "category": "mice",
+  "images": [
+    "/images/mice/logitech-g-pro352-rgb-gaming-mouse-1.jpg",
+    "/images/mice/logitech-g-pro352-rgb-gaming-mouse-2.jpg",
+    "/images/mice/logitech-g-pro352-rgb-gaming-mouse-3.jpg",
+    "/images/mice/logitech-g-pro352-rgb-gaming-mouse-4.jpg"
+  ],
+  "sku": "MIC-0003-IAP3H",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:41.895Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5915"
+  },
+  "name": "Logitech M96 RGB Gaming Mouse",
+  "brand": "Logitech",
+  "lighting": "RGB",
+  "numberOfButtons": 6,
+  "interface": "Wired (USB)",
+  "resolution": "200-12000 DPI",
+  "color": "White",
+  "price": 4200,
+  "discount": 14,
+  "warranty": "2 Years",
+  "rating": 4.4,
+  "reviewCount": 45,
+  "availability": 32,
+  "features": [
+    "Programmable Side Buttons",
+    "Onboard Memory for Multiple Profiles",
+    "Ultra-Lightweight Esports Design"
+  ],
+  "category": "mice",
+  "images": [
+    "/images/mice/logitech-m96-rgb-gaming-mouse-1.jpg",
+    "/images/mice/logitech-m96-rgb-gaming-mouse-2.jpg",
+    "/images/mice/logitech-m96-rgb-gaming-mouse-3.jpg",
+    "/images/mice/logitech-m96-rgb-gaming-mouse-4.jpg"
+  ],
+  "sku": "MIC-0004-ZYGTZ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:46.609Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5916"
+  },
+  "name": "Logitech M405 Optical Gaming Mouse",
+  "brand": "Logitech",
+  "lighting": "None",
+  "numberOfButtons": 6,
+  "interface": "2.4GHz Wireless (LIGHTSPEED)",
+  "resolution": "200-12000 DPI",
+  "color": "White",
+  "price": 4000,
+  "discount": 5,
+  "warranty": "2 Years",
+  "rating": 4.4,
+  "reviewCount": 43,
+  "availability": 34,
+  "features": [
+    "Ambidextrous Design",
+    "HERO Optical Sensor",
+    "Ultra-Lightweight Esports Design"
+  ],
+  "category": "mice",
+  "images": [
+    "/images/mice/logitech-m405-optical-gaming-mouse-1.jpg",
+    "/images/mice/logitech-m405-optical-gaming-mouse-2.jpg",
+    "/images/mice/logitech-m405-optical-gaming-mouse-3.jpg",
+    "/images/mice/logitech-m405-optical-gaming-mouse-4.jpg"
+  ],
+  "sku": "MIC-0005-G2RZM",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:50.217Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5917"
+  },
+  "name": "Logitech M350 RGB Gaming Mouse",
+  "brand": "Logitech",
+  "lighting": "RGB",
+  "numberOfButtons": 11,
+  "interface": "Wired (USB)",
+  "resolution": "200-16000 DPI",
+  "color": "Black",
+  "price": 4900,
+  "discount": 0,
+  "warranty": "2 Years",
+  "rating": 4.4,
+  "reviewCount": 43,
+  "availability": 20,
+  "features": [
+    "Ambidextrous Design",
+    "Ultra-Lightweight Esports Design",
+    "Onboard Memory for Multiple Profiles"
+  ],
+  "category": "mice",
+  "images": [
+    "/images/mice/logitech-m350-rgb-gaming-mouse-1.jpg",
+    "/images/mice/logitech-m350-rgb-gaming-mouse-2.jpg",
+    "/images/mice/logitech-m350-rgb-gaming-mouse-3.jpg",
+    "/images/mice/logitech-m350-rgb-gaming-mouse-4.jpg"
+  ],
+  "sku": "MIC-0006-T3A6P",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:53.407Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5918"
+  },
+  "name": "Logitech M527 RGB Gaming Mouse",
+  "brand": "Logitech",
+  "lighting": "RGB",
+  "numberOfButtons": 8,
+  "interface": "2.4GHz Wireless",
+  "resolution": "200-19000 DPI",
+  "color": "Black",
+  "price": 6300,
+  "discount": 18,
+  "warranty": "2 Years",
+  "rating": 4.5,
+  "reviewCount": 38,
+  "availability": 26,
+  "features": [
+    "Ambidextrous Design",
+    "Ultra-Lightweight Esports Design",
+    "Adjustable Weight System"
+  ],
+  "category": "mice",
+  "images": [
+    "/images/mice/logitech-m527-rgb-gaming-mouse-1.png",
+    "/images/mice/logitech-m527-rgb-gaming-mouse-2.jpg",
+    "/images/mice/logitech-m527-rgb-gaming-mouse-3.jpg",
+    "/images/mice/logitech-m527-rgb-gaming-mouse-4.jpg"
+  ],
+  "sku": "MIC-0007-8ZQX4",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:29:57.057Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5919"
+  },
+  "name": "Logitech M407 RGB Gaming Mouse",
+  "brand": "Logitech",
+  "lighting": "RGB",
+  "numberOfButtons": 11,
+  "interface": "Bluetooth / 2.4GHz Wireless",
+  "resolution": "200-25600 DPI",
+  "color": "White",
+  "price": 9200,
+  "discount": 7,
+  "warranty": "2 Years",
+  "rating": 4.5,
+  "reviewCount": 31,
+  "availability": 26,
+  "features": [
+    "Programmable Side Buttons",
+    "HERO Optical Sensor",
+    "Ambidextrous Design"
+  ],
+  "category": "mice",
+  "images": [
+    "/images/mice/logitech-m407-rgb-gaming-mouse-1.jpg",
+    "/images/mice/logitech-m407-rgb-gaming-mouse-2.jpg",
+    "/images/mice/logitech-m407-rgb-gaming-mouse-3.jpg",
+    "/images/mice/logitech-m407-rgb-gaming-mouse-4.jpg"
+  ],
+  "sku": "MIC-0008-ERNK1",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:30:00.265Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf591a"
+  },
+  "name": "Logitech M160 RGB Gaming Mouse",
+  "brand": "Logitech",
+  "lighting": "RGB",
+  "numberOfButtons": 13,
+  "interface": "Wired (USB)",
+  "resolution": "100-25600 DPI",
+  "color": "White",
+  "price": 10700,
+  "discount": 4,
+  "warranty": "2 Years",
+  "rating": 4.5,
+  "reviewCount": 25,
+  "availability": 25,
+  "features": [
+    "Adjustable Weight System",
+    "Ultra-Lightweight Esports Design",
+    "HERO Optical Sensor"
+  ],
+  "category": "mice",
+  "images": [
+    "/images/mice/logitech-m160-rgb-gaming-mouse-1.jpg",
+    "/images/mice/logitech-m160-rgb-gaming-mouse-2.jpg",
+    "/images/mice/logitech-m160-rgb-gaming-mouse-3.jpg",
+    "/images/mice/logitech-m160-rgb-gaming-mouse-4.jpg"
+  ],
+  "sku": "MIC-0009-NT4EV",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:30:03.262Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf591b"
+  },
+  "name": "Logitech M731 RGB Gaming Mouse",
+  "brand": "Logitech",
+  "lighting": "RGB",
+  "numberOfButtons": 13,
+  "interface": "2.4GHz Wireless (LIGHTSPEED)",
+  "resolution": "100-25600 DPI",
+  "color": "Black",
+  "price": 13800,
+  "discount": 16,
+  "warranty": "2 Years",
+  "rating": 4.6,
+  "reviewCount": 19,
+  "availability": 22,
+  "features": [
+    "Ambidextrous Design",
+    "Ultra-Lightweight Esports Design",
+    "Onboard Memory for Multiple Profiles"
+  ],
+  "category": "mice",
+  "images": [
+    "/images/mice/logitech-m731-rgb-gaming-mouse-1.png",
+    "/images/mice/logitech-m731-rgb-gaming-mouse-2.jpg",
+    "/images/mice/logitech-m731-rgb-gaming-mouse-3.png",
+    "/images/mice/logitech-m731-rgb-gaming-mouse-4.jpg"
+  ],
+  "sku": "MIC-0010-TQ2TD",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:30:09.381Z"
+  }
+}]

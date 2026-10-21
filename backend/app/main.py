@@ -1,9 +1,11 @@
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
 from app.core.database import connect, close
-from app.routers import categories, products, commerce
+from app.routers import categories, products, commerce, admin
 
 
 @asynccontextmanager
@@ -25,6 +27,15 @@ app = FastAPI(
 app.include_router(categories.router)
 app.include_router(products.router)
 app.include_router(commerce.router)
+app.include_router(admin.router)
+app.mount(
+    "/images",
+    StaticFiles(
+        directory=Path(__file__).resolve().parents[1] / "data" / "images",
+        check_dir=False,
+    ),
+    name="product-images",
+)
 
 @app.get("/api/health")
 async def health_check():

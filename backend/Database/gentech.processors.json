@@ -1,0 +1,1680 @@
+[{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf582c"
+  },
+  "name": "AMD Ryzen 3 5300G 4-Core AM4 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 3 5300G",
+  "numberOfCores": 4,
+  "numberOfThreads": 8,
+  "clockSpeed": "3.8GHz Base / 4.2GHz Boost",
+  "socket": "AM4",
+  "generation": "Ryzen 5000 Series",
+  "cacheMemory": "2MB L2 + 4MB L3",
+  "color": "Black",
+  "price": 9500,
+  "discount": 14,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 55,
+  "availability": 29,
+  "features": [
+    "4 Cores / 8 Threads",
+    "AM4 Socket",
+    "DDR4 Platform",
+    "Strong Gaming Uplift",
+    "Efficient Power Draw"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-3-5300g-4-core-am4-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-3-5300g-4-core-am4-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-3-5300g-4-core-am4-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-3-5300g-4-core-am4-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0001-DX6M8",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:10:37.516Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf582d"
+  },
+  "name": "AMD Ryzen 5 5600X 6-Core AM4 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 5 5600X",
+  "numberOfCores": 6,
+  "numberOfThreads": 12,
+  "clockSpeed": "3.7GHz Base / 4.6GHz Boost",
+  "socket": "AM4",
+  "generation": "Ryzen 5000 Series",
+  "cacheMemory": "3MB L2 + 32MB L3",
+  "color": "Black",
+  "price": 17500,
+  "discount": 10,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 39,
+  "availability": 15,
+  "features": [
+    "6 Cores / 12 Threads",
+    "AM4 Socket",
+    "DDR4 Platform",
+    "Balanced Gaming & Productivity",
+    "Efficient Power Draw"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-5-5600x-6-core-am4-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-5-5600x-6-core-am4-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-5-5600x-6-core-am4-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-5-5600x-6-core-am4-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0002-37FJ1",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:10:41.447Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf582e"
+  },
+  "name": "AMD Ryzen 7 5700X 8-Core AM4 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 7 5700X",
+  "numberOfCores": 8,
+  "numberOfThreads": 16,
+  "clockSpeed": "3.4GHz Base / 4.6GHz Boost",
+  "socket": "AM4",
+  "generation": "Ryzen 5000 Series",
+  "cacheMemory": "4MB L2 + 32MB L3",
+  "color": "Black",
+  "price": 21200,
+  "discount": 3,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 31,
+  "availability": 9,
+  "features": [
+    "8 Cores / 16 Threads",
+    "AM4 Socket",
+    "DDR4 Platform",
+    "Strong Gaming Uplift",
+    "Unlocked for Overclocking"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-7-5700x-8-core-am4-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-7-5700x-8-core-am4-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-7-5700x-8-core-am4-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-7-5700x-8-core-am4-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0003-ZJ6LQ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:10:44.835Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf582f"
+  },
+  "name": "AMD Ryzen 9 5900X 12-Core AM4 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 9 5900X",
+  "numberOfCores": 12,
+  "numberOfThreads": 24,
+  "clockSpeed": "3.7GHz Base / 4.8GHz Boost",
+  "socket": "AM4",
+  "generation": "Ryzen 5000 Series",
+  "cacheMemory": "6MB L2 + 64MB L3",
+  "color": "Black",
+  "price": 28500,
+  "discount": 10,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 15,
+  "availability": 17,
+  "features": [
+    "12 Cores / 24 Threads",
+    "AM4 Socket",
+    "DDR4 Platform",
+    "Great for Content Creation",
+    "Strong Gaming Uplift"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-9-5900x-12-core-am4-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-9-5900x-12-core-am4-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-9-5900x-12-core-am4-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-9-5900x-12-core-am4-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0004-9TO13",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:10:49.255Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5830"
+  },
+  "name": "AMD Ryzen 5 7600 6-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 5 7600",
+  "numberOfCores": 6,
+  "numberOfThreads": 12,
+  "clockSpeed": "3.8GHz Base / 5.1GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 7000 Series",
+  "cacheMemory": "6MB L2 + 32MB L3",
+  "color": "Black",
+  "price": 19500,
+  "discount": 3,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 49,
+  "availability": 22,
+  "features": [
+    "6 Cores / 12 Threads",
+    "AM5 Socket",
+    "DDR5 Platform",
+    "Great for Content Creation",
+    "Unlocked for Overclocking"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-5-7600-6-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-5-7600-6-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-5-7600-6-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-5-7600-6-core-am5-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0005-R9SUM",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:10:53.151Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5831"
+  },
+  "name": "AMD Ryzen 5 7600X 6-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 5 7600X",
+  "numberOfCores": 6,
+  "numberOfThreads": 12,
+  "clockSpeed": "4.7GHz Base / 5.3GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 7000 Series",
+  "cacheMemory": "6MB L2 + 32MB L3",
+  "color": "Black",
+  "price": 22800,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 45,
+  "availability": 18,
+  "features": [
+    "6 Cores / 12 Threads",
+    "AM5 Socket",
+    "DDR5 Platform",
+    "Strong Gaming Uplift",
+    "AI-Ready Platform"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-5-7600x-6-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-5-7600x-6-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-5-7600x-6-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-5-7600x-6-core-am5-desktop-processor-4.webp"
+  ],
+  "sku": "PRO-0006-MQNVW",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:10:57.443Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5832"
+  },
+  "name": "AMD Ryzen 7 7700X 8-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 7 7700X",
+  "numberOfCores": 8,
+  "numberOfThreads": 16,
+  "clockSpeed": "4.5GHz Base / 5.4GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 7000 Series",
+  "cacheMemory": "8MB L2 + 32MB L3",
+  "color": "Black",
+  "price": 29900,
+  "discount": 0,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 31,
+  "availability": 16,
+  "features": [
+    "8 Cores / 16 Threads",
+    "AM5 Socket",
+    "DDR5 Platform",
+    "AI-Ready Platform",
+    "Unlocked for Overclocking"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-7-7700x-8-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-7-7700x-8-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-7-7700x-8-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-7-7700x-8-core-am5-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0007-IQW0V",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:00.494Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5833"
+  },
+  "name": "AMD Ryzen 7 7800X3D 8-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 7 7800X3D",
+  "numberOfCores": 8,
+  "numberOfThreads": 16,
+  "clockSpeed": "4.2GHz Base / 5.0GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 7000 Series",
+  "cacheMemory": "96MB Total (3D V-Cache)",
+  "color": "Black",
+  "price": 42500,
+  "discount": 18,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 28,
+  "availability": 16,
+  "features": [
+    "8 Cores / 16 Threads",
+    "AM5 Socket",
+    "DDR5 Platform",
+    "Balanced Gaming & Productivity",
+    "AI-Ready Platform"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-7-7800x3d-8-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-7-7800x3d-8-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-7-7800x3d-8-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-7-7800x3d-8-core-am5-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0008-ZZG2K",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:04.398Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5834"
+  },
+  "name": "AMD Ryzen 9 7950X 16-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 9 7950X",
+  "numberOfCores": 16,
+  "numberOfThreads": 32,
+  "clockSpeed": "4.5GHz Base / 5.7GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 7000 Series",
+  "cacheMemory": "16MB L2 + 64MB L3",
+  "color": "Black",
+  "price": 62000,
+  "discount": 7,
+  "warranty": "3 Years",
+  "rating": 4.7,
+  "reviewCount": 15,
+  "availability": 6,
+  "features": [
+    "16 Cores / 32 Threads",
+    "AM5 Socket",
+    "DDR5 Platform",
+    "Great for Content Creation",
+    "Unlocked for Overclocking"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-9-7950x-16-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-9-7950x-16-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-9-7950x-16-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-9-7950x-16-core-am5-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0009-MJ7ZC",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:08.394Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5835"
+  },
+  "name": "AMD Ryzen 5 8600G 6-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 5 8600G",
+  "numberOfCores": 6,
+  "numberOfThreads": 12,
+  "clockSpeed": "4.3GHz Base / 5.0GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 8000 Series",
+  "cacheMemory": "6MB L2 + 16MB L3",
+  "color": "Black",
+  "price": 16500,
+  "discount": 6,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 50,
+  "availability": 19,
+  "features": [
+    "6 Cores / 12 Threads",
+    "AM5 Socket",
+    "DDR5 Platform (APU Refresh)",
+    "Efficient Power Draw",
+    "Unlocked for Overclocking"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-5-8600g-6-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-5-8600g-6-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-5-8600g-6-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-5-8600g-6-core-am5-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0010-D8ZET",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:12.568Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5836"
+  },
+  "name": "AMD Ryzen 7 8700G 8-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 7 8700G",
+  "numberOfCores": 8,
+  "numberOfThreads": 16,
+  "clockSpeed": "4.2GHz Base / 5.1GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 8000 Series",
+  "cacheMemory": "8MB L2 + 16MB L3",
+  "color": "Black",
+  "price": 24500,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 36,
+  "availability": 8,
+  "features": [
+    "8 Cores / 16 Threads",
+    "AM5 Socket",
+    "DDR5 Platform (APU Refresh)",
+    "Great for Content Creation",
+    "Balanced Gaming & Productivity"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-7-8700g-8-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-7-8700g-8-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-7-8700g-8-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-7-8700g-8-core-am5-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0011-F0R3Y",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:15.971Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5837"
+  },
+  "name": "AMD Ryzen 9 8945HS 8-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 9 8945HS",
+  "numberOfCores": 8,
+  "numberOfThreads": 16,
+  "clockSpeed": "4.0GHz Base / 5.2GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 8000 Series",
+  "cacheMemory": "8MB L2 + 16MB L3",
+  "color": "Black",
+  "price": 31000,
+  "discount": 4,
+  "warranty": "3 Years",
+  "rating": 4.7,
+  "reviewCount": 13,
+  "availability": 7,
+  "features": [
+    "8 Cores / 16 Threads",
+    "AM5 Socket",
+    "DDR5 Platform (APU Refresh)",
+    "Great for Content Creation",
+    "Efficient Power Draw"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-9-8945hs-8-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-9-8945hs-8-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-9-8945hs-8-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-9-8945hs-8-core-am5-desktop-processor-4.png"
+  ],
+  "sku": "PRO-0012-TS26U",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:19.571Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5838"
+  },
+  "name": "AMD Ryzen 5 9600X 6-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 5 9600X",
+  "numberOfCores": 6,
+  "numberOfThreads": 12,
+  "clockSpeed": "3.9GHz Base / 5.4GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 9000 Series",
+  "cacheMemory": "6MB L2 + 32MB L3",
+  "color": "Black",
+  "price": 23300,
+  "discount": 5,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 59,
+  "availability": 15,
+  "features": [
+    "6 Cores / 12 Threads",
+    "AM5 Socket",
+    "DDR5 Platform",
+    "Unlocked for Overclocking",
+    "Balanced Gaming & Productivity"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-5-9600x-6-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-5-9600x-6-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-5-9600x-6-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-5-9600x-6-core-am5-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0013-LRCGO",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:24.740Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5839"
+  },
+  "name": "AMD Ryzen 7 9700X 8-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 7 9700X",
+  "numberOfCores": 8,
+  "numberOfThreads": 16,
+  "clockSpeed": "3.8GHz Base / 5.5GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 9000 Series",
+  "cacheMemory": "8MB L2 + 32MB L3",
+  "color": "Black",
+  "price": 28300,
+  "discount": 7,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 51,
+  "availability": 16,
+  "features": [
+    "8 Cores / 16 Threads",
+    "AM5 Socket",
+    "DDR5 Platform",
+    "Unlocked for Overclocking",
+    "No Integrated Graphics"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-7-9700x-8-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-7-9700x-8-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-7-9700x-8-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-7-9700x-8-core-am5-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0014-9ZOF5",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:27.940Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf583a"
+  },
+  "name": "AMD Ryzen 7 9800X3D 8-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 7 9800X3D",
+  "numberOfCores": 8,
+  "numberOfThreads": 16,
+  "clockSpeed": "4.7GHz Base / 5.2GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 9000 Series",
+  "cacheMemory": "96MB Total (3D V-Cache)",
+  "color": "Black",
+  "price": 51000,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 46,
+  "availability": 10,
+  "features": [
+    "8 Cores / 16 Threads",
+    "AM5 Socket",
+    "DDR5 Platform",
+    "Strong Gaming Uplift",
+    "No Integrated Graphics"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-7-9800x3d-8-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-7-9800x3d-8-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-7-9800x3d-8-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-7-9800x3d-8-core-am5-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0015-PDNLL",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:32.652Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf583b"
+  },
+  "name": "AMD Ryzen 9 9900X 12-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 9 9900X",
+  "numberOfCores": 12,
+  "numberOfThreads": 24,
+  "clockSpeed": "4.4GHz Base / 5.6GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 9000 Series",
+  "cacheMemory": "12MB L2 + 64MB L3",
+  "color": "Black",
+  "price": 43000,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 47,
+  "availability": 8,
+  "features": [
+    "12 Cores / 24 Threads",
+    "AM5 Socket",
+    "DDR5 Platform",
+    "AI-Ready Platform",
+    "Strong Gaming Uplift"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-9-9900x-12-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-9-9900x-12-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-9-9900x-12-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-9-9900x-12-core-am5-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0016-NGEGY",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:36.131Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf583c"
+  },
+  "name": "AMD Ryzen 9 9950X 16-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 9 9950X",
+  "numberOfCores": 16,
+  "numberOfThreads": 32,
+  "clockSpeed": "4.3GHz Base / 5.7GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 9000 Series",
+  "cacheMemory": "16MB L2 + 64MB L3",
+  "color": "Black",
+  "price": 71500,
+  "discount": 0,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 31,
+  "availability": 4,
+  "features": [
+    "16 Cores / 32 Threads",
+    "AM5 Socket",
+    "DDR5 Platform",
+    "Efficient Power Draw",
+    "AI-Ready Platform"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-9-9950x-16-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-9-9950x-16-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-9-9950x-16-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-9-9950x-16-core-am5-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0017-FJB5N",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:39.666Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf583d"
+  },
+  "name": "AMD Ryzen 9 9950X3D 16-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen 9 9950X3D",
+  "numberOfCores": 16,
+  "numberOfThreads": 32,
+  "clockSpeed": "4.3GHz Base / 5.7GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 9000 Series",
+  "cacheMemory": "144MB Total (3D V-Cache)",
+  "color": "Black",
+  "price": 78600,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 27,
+  "availability": 6,
+  "features": [
+    "16 Cores / 32 Threads",
+    "AM5 Socket",
+    "DDR5 Platform",
+    "AI-Ready Platform",
+    "Strong Gaming Uplift"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-9-9950x3d-16-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-9-9950x3d-16-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-9-9950x3d-16-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-9-9950x3d-16-core-am5-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0018-XL8GE",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:43.234Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf583e"
+  },
+  "name": "AMD Ryzen Threadripper 9960X 24-Core AM5 Desktop Processor",
+  "brand": "AMD",
+  "processorModel": "Ryzen Threadripper 9960X",
+  "numberOfCores": 24,
+  "numberOfThreads": 48,
+  "clockSpeed": "4.0GHz Base / 5.4GHz Boost",
+  "socket": "AM5",
+  "generation": "Ryzen 9000 Series",
+  "cacheMemory": "152MB Total Cache",
+  "color": "Black",
+  "price": 145000,
+  "discount": 14,
+  "warranty": "3 Years",
+  "rating": 4.7,
+  "reviewCount": 16,
+  "availability": 2,
+  "features": [
+    "24 Cores / 48 Threads",
+    "AM5 Socket",
+    "DDR5 Platform",
+    "No Integrated Graphics",
+    "Efficient Power Draw"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/amd-ryzen-threadripper-9960x-24-core-am5-desktop-processor-1.jpg",
+    "/images/processors/amd-ryzen-threadripper-9960x-24-core-am5-desktop-processor-2.jpg",
+    "/images/processors/amd-ryzen-threadripper-9960x-24-core-am5-desktop-processor-3.jpg",
+    "/images/processors/amd-ryzen-threadripper-9960x-24-core-am5-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0019-2NFKE",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:49.211Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf583f"
+  },
+  "name": "Intel Core i3-10100 4-Core LGA1200 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core i3-10100",
+  "numberOfCores": 4,
+  "numberOfThreads": 8,
+  "clockSpeed": "3.6GHz Base / 4.3GHz Turbo",
+  "socket": "LGA1200",
+  "generation": "10th Gen",
+  "cacheMemory": "6MB Smart Cache",
+  "color": "Silver",
+  "price": 8900,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 54,
+  "availability": 20,
+  "features": [
+    "4 Cores / 8 Threads",
+    "LGA1200 Socket",
+    "Comet Lake",
+    "Balanced Gaming & Productivity",
+    "Great for Content Creation"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-i3-10100-4-core-lga1200-desktop-processor-1.jpg",
+    "/images/processors/intel-core-i3-10100-4-core-lga1200-desktop-processor-2.jpg",
+    "/images/processors/intel-core-i3-10100-4-core-lga1200-desktop-processor-3.jpg",
+    "/images/processors/intel-core-i3-10100-4-core-lga1200-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0020-9MHD0",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:52.549Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5840"
+  },
+  "name": "Intel Core i5-10400 6-Core LGA1200 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core i5-10400",
+  "numberOfCores": 6,
+  "numberOfThreads": 12,
+  "clockSpeed": "2.9GHz Base / 4.3GHz Turbo",
+  "socket": "LGA1200",
+  "generation": "10th Gen",
+  "cacheMemory": "12MB Smart Cache",
+  "color": "Silver",
+  "price": 12500,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 50,
+  "availability": 14,
+  "features": [
+    "6 Cores / 12 Threads",
+    "LGA1200 Socket",
+    "Comet Lake",
+    "Integrated Graphics",
+    "AI-Ready Platform"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-i5-10400-6-core-lga1200-desktop-processor-1.jpg",
+    "/images/processors/intel-core-i5-10400-6-core-lga1200-desktop-processor-2.jpg",
+    "/images/processors/intel-core-i5-10400-6-core-lga1200-desktop-processor-3.jpg",
+    "/images/processors/intel-core-i5-10400-6-core-lga1200-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0021-1FAVG",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:11:56.347Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5841"
+  },
+  "name": "Intel Core i5-10600K 6-Core LGA1200 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core i5-10600K",
+  "numberOfCores": 6,
+  "numberOfThreads": 12,
+  "clockSpeed": "4.1GHz Base / 4.8GHz Turbo",
+  "socket": "LGA1200",
+  "generation": "10th Gen",
+  "cacheMemory": "12MB Smart Cache",
+  "color": "Silver",
+  "price": 16800,
+  "discount": 7,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 29,
+  "availability": 25,
+  "features": [
+    "6 Cores / 12 Threads",
+    "LGA1200 Socket",
+    "Comet Lake",
+    "Integrated Graphics",
+    "AI-Ready Platform"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-i5-10600k-6-core-lga1200-desktop-processor-1.jpg",
+    "/images/processors/intel-core-i5-10600k-6-core-lga1200-desktop-processor-2.jpg",
+    "/images/processors/intel-core-i5-10600k-6-core-lga1200-desktop-processor-3.jpg",
+    "/images/processors/intel-core-i5-10600k-6-core-lga1200-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0022-FLVUJ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:01.618Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5842"
+  },
+  "name": "Intel Core i7-10700K 8-Core LGA1200 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core i7-10700K",
+  "numberOfCores": 8,
+  "numberOfThreads": 16,
+  "clockSpeed": "3.8GHz Base / 5.1GHz Turbo",
+  "socket": "LGA1200",
+  "generation": "10th Gen",
+  "cacheMemory": "16MB Smart Cache",
+  "color": "Silver",
+  "price": 24500,
+  "discount": 18,
+  "warranty": "3 Years",
+  "rating": 4.7,
+  "reviewCount": 15,
+  "availability": 15,
+  "features": [
+    "8 Cores / 16 Threads",
+    "LGA1200 Socket",
+    "Comet Lake",
+    "Unlocked for Overclocking",
+    "Efficient Power Draw"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-i7-10700k-8-core-lga1200-desktop-processor-1.jpg",
+    "/images/processors/intel-core-i7-10700k-8-core-lga1200-desktop-processor-2.jpg",
+    "/images/processors/intel-core-i7-10700k-8-core-lga1200-desktop-processor-3.jpg",
+    "/images/processors/intel-core-i7-10700k-8-core-lga1200-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0023-EOHFW",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:04.864Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5843"
+  },
+  "name": "Intel Core i3-14100 4-Core LGA1700 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core i3-14100",
+  "numberOfCores": 4,
+  "numberOfThreads": 8,
+  "clockSpeed": "3.5GHz Base / 4.7GHz Turbo",
+  "socket": "LGA1700",
+  "generation": "14th Gen",
+  "cacheMemory": "12MB Smart Cache",
+  "color": "Silver",
+  "price": 15900,
+  "discount": 20,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 59,
+  "availability": 16,
+  "features": [
+    "4 Cores / 8 Threads",
+    "LGA1700 Socket",
+    "Raptor Lake Refresh",
+    "Integrated Graphics",
+    "Balanced Gaming & Productivity"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-i3-14100-4-core-lga1700-desktop-processor-1.jpg",
+    "/images/processors/intel-core-i3-14100-4-core-lga1700-desktop-processor-2.jpg",
+    "/images/processors/intel-core-i3-14100-4-core-lga1700-desktop-processor-3.jpg",
+    "/images/processors/intel-core-i3-14100-4-core-lga1700-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0024-XFBK4",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:10.020Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5844"
+  },
+  "name": "Intel Core i5-14400 10-Core LGA1700 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core i5-14400",
+  "numberOfCores": 10,
+  "numberOfThreads": 16,
+  "clockSpeed": "2.5GHz Base / 4.7GHz Turbo",
+  "socket": "LGA1700",
+  "generation": "14th Gen",
+  "cacheMemory": "20MB Smart Cache",
+  "color": "Silver",
+  "price": 19500,
+  "discount": 5,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 48,
+  "availability": 18,
+  "features": [
+    "10 Cores / 16 Threads",
+    "LGA1700 Socket",
+    "Raptor Lake Refresh",
+    "Balanced Gaming & Productivity",
+    "AI-Ready Platform"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-i5-14400-10-core-lga1700-desktop-processor-1.jpg",
+    "/images/processors/intel-core-i5-14400-10-core-lga1700-desktop-processor-2.jpg",
+    "/images/processors/intel-core-i5-14400-10-core-lga1700-desktop-processor-3.jpg",
+    "/images/processors/intel-core-i5-14400-10-core-lga1700-desktop-processor-4.webp"
+  ],
+  "sku": "PRO-0025-B5ICG",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:14.990Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5845"
+  },
+  "name": "Intel Core i5-14500 14-Core LGA1700 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core i5-14500",
+  "numberOfCores": 14,
+  "numberOfThreads": 20,
+  "clockSpeed": "2.6GHz Base / 5.0GHz Turbo",
+  "socket": "LGA1700",
+  "generation": "14th Gen",
+  "cacheMemory": "24MB Smart Cache",
+  "color": "Silver",
+  "price": 22500,
+  "discount": 16,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 36,
+  "availability": 17,
+  "features": [
+    "14 Cores / 20 Threads",
+    "LGA1700 Socket",
+    "Raptor Lake Refresh",
+    "Strong Gaming Uplift",
+    "Integrated Graphics"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-i5-14500-14-core-lga1700-desktop-processor-1.jpg",
+    "/images/processors/intel-core-i5-14500-14-core-lga1700-desktop-processor-2.jpg",
+    "/images/processors/intel-core-i5-14500-14-core-lga1700-desktop-processor-3.jpg",
+    "/images/processors/intel-core-i5-14500-14-core-lga1700-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0026-39SQ4",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:18.481Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5846"
+  },
+  "name": "Intel Core i5-14600K 14-Core LGA1700 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core i5-14600K",
+  "numberOfCores": 14,
+  "numberOfThreads": 20,
+  "clockSpeed": "3.5GHz Base / 5.3GHz Turbo",
+  "socket": "LGA1700",
+  "generation": "14th Gen",
+  "cacheMemory": "24MB Smart Cache",
+  "color": "Silver",
+  "price": 28500,
+  "discount": 16,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 39,
+  "availability": 8,
+  "features": [
+    "14 Cores / 20 Threads",
+    "LGA1700 Socket",
+    "Raptor Lake Refresh",
+    "Strong Gaming Uplift",
+    "Great for Content Creation"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-i5-14600k-14-core-lga1700-desktop-processor-1.jpg",
+    "/images/processors/intel-core-i5-14600k-14-core-lga1700-desktop-processor-2.jpg",
+    "/images/processors/intel-core-i5-14600k-14-core-lga1700-desktop-processor-3.jpg",
+    "/images/processors/intel-core-i5-14600k-14-core-lga1700-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0027-8NI8M",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:22.114Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5847"
+  },
+  "name": "Intel Core i7-14700K 20-Core LGA1700 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core i7-14700K",
+  "numberOfCores": 20,
+  "numberOfThreads": 28,
+  "clockSpeed": "3.4GHz Base / 5.6GHz Turbo",
+  "socket": "LGA1700",
+  "generation": "14th Gen",
+  "cacheMemory": "33MB Smart Cache",
+  "color": "Silver",
+  "price": 39500,
+  "discount": 5,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 29,
+  "availability": 15,
+  "features": [
+    "20 Cores / 28 Threads",
+    "LGA1700 Socket",
+    "Raptor Lake Refresh",
+    "Balanced Gaming & Productivity",
+    "Unlocked for Overclocking"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-i7-14700k-20-core-lga1700-desktop-processor-1.jpg",
+    "/images/processors/intel-core-i7-14700k-20-core-lga1700-desktop-processor-2.jpg",
+    "/images/processors/intel-core-i7-14700k-20-core-lga1700-desktop-processor-3.webp",
+    "/images/processors/intel-core-i7-14700k-20-core-lga1700-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0028-L4G44",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:26.839Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5848"
+  },
+  "name": "Intel Core i9-14900K 24-Core LGA1700 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core i9-14900K",
+  "numberOfCores": 24,
+  "numberOfThreads": 32,
+  "clockSpeed": "3.2GHz Base / 6.0GHz Turbo",
+  "socket": "LGA1700",
+  "generation": "14th Gen",
+  "cacheMemory": "36MB Smart Cache",
+  "color": "Silver",
+  "price": 56500,
+  "discount": 4,
+  "warranty": "3 Years",
+  "rating": 4.7,
+  "reviewCount": 13,
+  "availability": 6,
+  "features": [
+    "24 Cores / 32 Threads",
+    "LGA1700 Socket",
+    "Raptor Lake Refresh",
+    "Balanced Gaming & Productivity",
+    "Great for Content Creation"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-i9-14900k-24-core-lga1700-desktop-processor-1.jpg",
+    "/images/processors/intel-core-i9-14900k-24-core-lga1700-desktop-processor-2.jpg",
+    "/images/processors/intel-core-i9-14900k-24-core-lga1700-desktop-processor-3.jpg",
+    "/images/processors/intel-core-i9-14900k-24-core-lga1700-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0029-KAF8Q",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:30.211Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5849"
+  },
+  "name": "Intel Core Ultra 5 225 10-Core LGA1851 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core Ultra 5 225",
+  "numberOfCores": 10,
+  "numberOfThreads": 10,
+  "clockSpeed": "3.3GHz Base / 4.9GHz Turbo",
+  "socket": "LGA1851",
+  "generation": "Core Ultra Series",
+  "cacheMemory": "20MB Cache",
+  "color": "Silver",
+  "price": 20500,
+  "discount": 0,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 62,
+  "availability": 13,
+  "features": [
+    "10 Cores / 10 Threads",
+    "LGA1851 Socket",
+    "Arrow Lake-S",
+    "Efficient Power Draw",
+    "Strong Gaming Uplift"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-ultra-5-225-10-core-lga1851-desktop-processor-1.jpg",
+    "/images/processors/intel-core-ultra-5-225-10-core-lga1851-desktop-processor-2.jpg",
+    "/images/processors/intel-core-ultra-5-225-10-core-lga1851-desktop-processor-3.jpg",
+    "/images/processors/intel-core-ultra-5-225-10-core-lga1851-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0030-6XMVX",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:33.452Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf584a"
+  },
+  "name": "Intel Core Ultra 5 245K 14-Core LGA1851 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core Ultra 5 245K",
+  "numberOfCores": 14,
+  "numberOfThreads": 14,
+  "clockSpeed": "3.6GHz Base / 5.2GHz Turbo",
+  "socket": "LGA1851",
+  "generation": "Core Ultra Series",
+  "cacheMemory": "24MB Smart Cache",
+  "color": "Silver",
+  "price": 24300,
+  "discount": 8,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 44,
+  "availability": 14,
+  "features": [
+    "14 Cores / 14 Threads",
+    "LGA1851 Socket",
+    "Arrow Lake-S",
+    "Balanced Gaming & Productivity",
+    "Great for Content Creation"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-ultra-5-245k-14-core-lga1851-desktop-processor-1.jpg",
+    "/images/processors/intel-core-ultra-5-245k-14-core-lga1851-desktop-processor-2.jpg",
+    "/images/processors/intel-core-ultra-5-245k-14-core-lga1851-desktop-processor-3.jpg",
+    "/images/processors/intel-core-ultra-5-245k-14-core-lga1851-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0031-3A32R",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:36.451Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf584b"
+  },
+  "name": "Intel Core Ultra 7 255 20-Core LGA1851 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core Ultra 7 255",
+  "numberOfCores": 20,
+  "numberOfThreads": 20,
+  "clockSpeed": "3.6GHz Base / 5.4GHz Turbo",
+  "socket": "LGA1851",
+  "generation": "Core Ultra Series",
+  "cacheMemory": "30MB Smart Cache",
+  "color": "Silver",
+  "price": 31500,
+  "discount": 8,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 34,
+  "availability": 16,
+  "features": [
+    "20 Cores / 20 Threads",
+    "LGA1851 Socket",
+    "Arrow Lake-S",
+    "Strong Gaming Uplift",
+    "Unlocked for Overclocking"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-ultra-7-255-20-core-lga1851-desktop-processor-1.jpg",
+    "/images/processors/intel-core-ultra-7-255-20-core-lga1851-desktop-processor-2.jpg",
+    "/images/processors/intel-core-ultra-7-255-20-core-lga1851-desktop-processor-3.jpg",
+    "/images/processors/intel-core-ultra-7-255-20-core-lga1851-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0032-LWM53",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:39.384Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf584c"
+  },
+  "name": "Intel Core Ultra 7 265K 20-Core LGA1851 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core Ultra 7 265K",
+  "numberOfCores": 20,
+  "numberOfThreads": 20,
+  "clockSpeed": "3.9GHz Base / 5.5GHz Turbo",
+  "socket": "LGA1851",
+  "generation": "Core Ultra Series",
+  "cacheMemory": "30MB Smart Cache",
+  "color": "Silver",
+  "price": 34500,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 29,
+  "availability": 9,
+  "features": [
+    "20 Cores / 20 Threads",
+    "LGA1851 Socket",
+    "Arrow Lake-S",
+    "Strong Gaming Uplift",
+    "Efficient Power Draw"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-ultra-7-265k-20-core-lga1851-desktop-processor-1.jpg",
+    "/images/processors/intel-core-ultra-7-265k-20-core-lga1851-desktop-processor-2.jpg",
+    "/images/processors/intel-core-ultra-7-265k-20-core-lga1851-desktop-processor-3.jpg",
+    "/images/processors/intel-core-ultra-7-265k-20-core-lga1851-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0033-5KEAG",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:42.680Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf584d"
+  },
+  "name": "Intel Core Ultra 7 270K 24-Core LGA1851 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core Ultra 7 270K",
+  "numberOfCores": 24,
+  "numberOfThreads": 24,
+  "clockSpeed": "4.0GHz Base / 5.5GHz Turbo",
+  "socket": "LGA1851",
+  "generation": "Core Ultra Series (Arrow Lake)",
+  "cacheMemory": "36MB Intel Smart Cache",
+  "color": "Silver",
+  "price": 41500,
+  "discount": 8,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 41,
+  "availability": 7,
+  "features": [
+    "24 Cores / 24 Threads",
+    "LGA1851 Socket",
+    "Arrow Lake-S Enthusiast",
+    "Unlocked for Overclocking",
+    "Integrated Graphics"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-ultra-7-270k-24-core-lga1851-desktop-processor-1.jpg",
+    "/images/processors/intel-core-ultra-7-270k-24-core-lga1851-desktop-processor-2.jpg",
+    "/images/processors/intel-core-ultra-7-270k-24-core-lga1851-desktop-processor-3.jpg",
+    "/images/processors/intel-core-ultra-7-270k-24-core-lga1851-desktop-processor-4.webp"
+  ],
+  "sku": "PRO-0034-CYN5H",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:47.183Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf584e"
+  },
+  "name": "Intel Core Ultra 9 275K 24-Core LGA1851 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core Ultra 9 275K",
+  "numberOfCores": 24,
+  "numberOfThreads": 24,
+  "clockSpeed": "4.0GHz Base / 5.6GHz Turbo",
+  "socket": "LGA1851",
+  "generation": "Core Ultra Series",
+  "cacheMemory": "36MB Smart Cache",
+  "color": "Silver",
+  "price": 52500,
+  "discount": 6,
+  "warranty": "3 Years",
+  "rating": 4.7,
+  "reviewCount": 21,
+  "availability": 9,
+  "features": [
+    "24 Cores / 24 Threads",
+    "LGA1851 Socket",
+    "Arrow Lake-S",
+    "Integrated Graphics",
+    "Efficient Power Draw"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-ultra-9-275k-24-core-lga1851-desktop-processor-1.jpg",
+    "/images/processors/intel-core-ultra-9-275k-24-core-lga1851-desktop-processor-2.jpg",
+    "/images/processors/intel-core-ultra-9-275k-24-core-lga1851-desktop-processor-3.jpg",
+    "/images/processors/intel-core-ultra-9-275k-24-core-lga1851-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0035-JS8EH",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:52.017Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf584f"
+  },
+  "name": "Intel Core Ultra 9 285K 24-Core LGA1851 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core Ultra 9 285K",
+  "numberOfCores": 24,
+  "numberOfThreads": 24,
+  "clockSpeed": "3.7GHz Base / 5.7GHz Turbo",
+  "socket": "LGA1851",
+  "generation": "Core Ultra Series (Arrow Lake)",
+  "cacheMemory": "36MB Smart Cache",
+  "color": "Silver",
+  "price": 59900,
+  "discount": 16,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 41,
+  "availability": 7,
+  "features": [
+    "24 Cores / 24 Threads",
+    "LGA1851 Socket",
+    "Arrow Lake-S Enthusiast",
+    "Integrated Graphics",
+    "Efficient Power Draw"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-ultra-9-285k-24-core-lga1851-desktop-processor-1.jpg",
+    "/images/processors/intel-core-ultra-9-285k-24-core-lga1851-desktop-processor-2.jpg",
+    "/images/processors/intel-core-ultra-9-285k-24-core-lga1851-desktop-processor-3.jpg",
+    "/images/processors/intel-core-ultra-9-285k-24-core-lga1851-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0036-HUFJL",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:12:55.548Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5850"
+  },
+  "name": "Intel Core Ultra 9 295K 24-Core LGA1851 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core Ultra 9 295K",
+  "numberOfCores": 24,
+  "numberOfThreads": 24,
+  "clockSpeed": "3.9GHz Base / 5.8GHz Turbo",
+  "socket": "LGA1851",
+  "generation": "Core Ultra Series (Arrow Lake)",
+  "cacheMemory": "40MB Smart Cache",
+  "color": "Silver",
+  "price": 68500,
+  "discount": 3,
+  "warranty": "3 Years",
+  "rating": 4.7,
+  "reviewCount": 19,
+  "availability": 6,
+  "features": [
+    "24 Cores / 24 Threads",
+    "LGA1851 Socket",
+    "Arrow Lake-S Enthusiast",
+    "Unlocked for Overclocking",
+    "AI-Ready Platform"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-ultra-9-295k-24-core-lga1851-desktop-processor-1.jpg",
+    "/images/processors/intel-core-ultra-9-295k-24-core-lga1851-desktop-processor-2.jpg",
+    "/images/processors/intel-core-ultra-9-295k-24-core-lga1851-desktop-processor-3.jpg",
+    "/images/processors/intel-core-ultra-9-295k-24-core-lga1851-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0037-Z7R7P",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:00.315Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5851"
+  },
+  "name": "Intel Core i3-14100F 4-Core LGA1700 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core i3-14100F",
+  "numberOfCores": 4,
+  "numberOfThreads": 8,
+  "clockSpeed": "3.5GHz Base / 4.7GHz Turbo",
+  "socket": "LGA1700",
+  "generation": "14th Gen",
+  "cacheMemory": "12MB Smart Cache",
+  "color": "Silver",
+  "price": 13500,
+  "discount": 5,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 61,
+  "availability": 15,
+  "features": [
+    "4 Cores / 8 Threads",
+    "LGA1700 Socket",
+    "Raptor Lake Refresh",
+    "Balanced Gaming & Productivity",
+    "Integrated Graphics"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-i3-14100f-4-core-lga1700-desktop-processor-1.jpg",
+    "/images/processors/intel-core-i3-14100f-4-core-lga1700-desktop-processor-2.jpg",
+    "/images/processors/intel-core-i3-14100f-4-core-lga1700-desktop-processor-3.jpg",
+    "/images/processors/intel-core-i3-14100f-4-core-lga1700-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0038-WHUZ3",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:03.601Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5852"
+  },
+  "name": "Intel Core Ultra 5 245KF 14-Core LGA1851 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core Ultra 5 245KF",
+  "numberOfCores": 14,
+  "numberOfThreads": 14,
+  "clockSpeed": "3.6GHz Base / 5.2GHz Turbo",
+  "socket": "LGA1851",
+  "generation": "Core Ultra Series (Arrow Lake)",
+  "cacheMemory": "24MB Intel Smart Cache",
+  "color": "Silver",
+  "price": 38000,
+  "discount": 7,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 55,
+  "availability": 17,
+  "features": [
+    "14 Cores / 14 Threads",
+    "LGA1851 Socket",
+    "Arrow Lake-S Enthusiast",
+    "Strong Gaming Uplift",
+    "Great for Content Creation"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-ultra-5-245kf-14-core-lga1851-desktop-processor-1.jpg",
+    "/images/processors/intel-core-ultra-5-245kf-14-core-lga1851-desktop-processor-2.jpg",
+    "/images/processors/intel-core-ultra-5-245kf-14-core-lga1851-desktop-processor-3.jpg",
+    "/images/processors/intel-core-ultra-5-245kf-14-core-lga1851-desktop-processor-4.webp"
+  ],
+  "sku": "PRO-0039-294KE",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:07.837Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5853"
+  },
+  "name": "Intel Core Ultra 9 295KS 24-Core LGA1851 Desktop Processor",
+  "brand": "Intel",
+  "processorModel": "Core Ultra 9 295KS",
+  "numberOfCores": 24,
+  "numberOfThreads": 24,
+  "clockSpeed": "4.1GHz Base / 5.9GHz Turbo",
+  "socket": "LGA1851",
+  "generation": "Core Ultra Series (Arrow Lake)",
+  "cacheMemory": "40MB Smart Cache",
+  "color": "Silver",
+  "price": 74500,
+  "discount": 4,
+  "warranty": "3 Years",
+  "rating": 4.7,
+  "reviewCount": 18,
+  "availability": 9,
+  "features": [
+    "24 Cores / 24 Threads",
+    "LGA1851 Socket",
+    "Arrow Lake-S Enthusiast",
+    "Unlocked for Overclocking",
+    "Strong Gaming Uplift"
+  ],
+  "category": "processors",
+  "images": [
+    "/images/processors/intel-core-ultra-9-295ks-24-core-lga1851-desktop-processor-1.jpg",
+    "/images/processors/intel-core-ultra-9-295ks-24-core-lga1851-desktop-processor-2.jpg",
+    "/images/processors/intel-core-ultra-9-295ks-24-core-lga1851-desktop-processor-3.jpg",
+    "/images/processors/intel-core-ultra-9-295ks-24-core-lga1851-desktop-processor-4.jpg"
+  ],
+  "sku": "PRO-0040-6GEOO",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:11.066Z"
+  }
+}]

@@ -1,0 +1,1050 @@
+[{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5854"
+  },
+  "name": "MSI H610M Plus DDR4 Motherboard",
+  "brand": "MSI",
+  "chipset": "Intel H610",
+  "processorBrand": "Intel",
+  "processorType": "Intel 12th/13th/14th Gen (LGA1700)",
+  "maximumMemory": "128GB",
+  "ramSlots": 4,
+  "ramType": "DDR4",
+  "formFactor": "Micro-ATX",
+  "color": "Black",
+  "price": 12600,
+  "discount": 0,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 51,
+  "availability": 28,
+  "features": [
+    "Intel H610 Chipset",
+    "Supports Intel 12th/13th/14th Gen (LGA1700)",
+    "DDR4 Memory Support",
+    "Dual M.2 Storage Slots",
+    "2.5G LAN"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/msi-h610m-plus-ddr4-motherboard-1.webp",
+    "/images/motherboards/msi-h610m-plus-ddr4-motherboard-2.webp",
+    "/images/motherboards/msi-h610m-plus-ddr4-motherboard-3.webp",
+    "/images/motherboards/msi-h610m-plus-ddr4-motherboard-4.webp"
+  ],
+  "sku": "MOT-0001-PP2CI",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:14.737Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5855"
+  },
+  "name": "MSI H610M WIFI7 DDR4 Motherboard",
+  "brand": "MSI",
+  "chipset": "Intel H610",
+  "processorBrand": "Intel",
+  "processorType": "Intel 12th/13th/14th Gen (LGA1700)",
+  "maximumMemory": "128GB",
+  "ramSlots": 4,
+  "ramType": "DDR4",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 15700,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 22,
+  "availability": 14,
+  "features": [
+    "Intel H610 Chipset",
+    "Supports Intel 12th/13th/14th Gen (LGA1700)",
+    "DDR4 Memory Support",
+    "Dual M.2 Storage Slots",
+    "Triple M.2 Storage Slots"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/msi-h610m-wifi7-ddr4-motherboard-1.webp",
+    "/images/motherboards/msi-h610m-wifi7-ddr4-motherboard-2.webp",
+    "/images/motherboards/msi-h610m-wifi7-ddr4-motherboard-3.webp",
+    "/images/motherboards/msi-h610m-wifi7-ddr4-motherboard-4.webp"
+  ],
+  "sku": "MOT-0002-40DN5",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:17.989Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5856"
+  },
+  "name": "MSI B550M Pro DDR4 AM4 Motherboard",
+  "brand": "MSI",
+  "chipset": "AMD B550",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 5000/4000G/3000 (AM4)",
+  "maximumMemory": "128GB",
+  "ramSlots": 4,
+  "ramType": "DDR4",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 15700,
+  "discount": 5,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 40,
+  "availability": 16,
+  "features": [
+    "AMD B550 Chipset",
+    "Supports AMD Ryzen 5000/4000G/3000 (AM4)",
+    "DDR4 Memory Support",
+    "5G LAN",
+    "PCIe 5.0 Ready"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/msi-b550m-pro-ddr4-am4-motherboard-1.webp",
+    "/images/motherboards/msi-b550m-pro-ddr4-am4-motherboard-2.webp",
+    "/images/motherboards/msi-b550m-pro-ddr4-am4-motherboard-3.webp",
+    "/images/motherboards/msi-b550m-pro-ddr4-am4-motherboard-4.webp"
+  ],
+  "sku": "MOT-0003-65TAQ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:21.286Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5857"
+  },
+  "name": "MSI B850M Pro DDR5 Motherboard",
+  "brand": "MSI",
+  "chipset": "AMD B850",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 9000/8000/7000 (AM5)",
+  "maximumMemory": "256GB",
+  "ramSlots": 4,
+  "ramType": "DDR5",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 30600,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 43,
+  "availability": 10,
+  "features": [
+    "AMD B850 Chipset",
+    "Supports AMD Ryzen 9000/8000/7000 (AM5)",
+    "DDR5 Memory Support",
+    "Reinforced PCIe Slot",
+    "Triple M.2 Storage Slots"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/msi-b850m-pro-ddr5-motherboard-1.jpg",
+    "/images/motherboards/msi-b850m-pro-ddr5-motherboard-2.jpg",
+    "/images/motherboards/msi-b850m-pro-ddr5-motherboard-3.jpg",
+    "/images/motherboards/msi-b850m-pro-ddr5-motherboard-4.webp"
+  ],
+  "sku": "MOT-0004-XUSZP",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:24.481Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5858"
+  },
+  "name": "MSI X870EM Pro DDR5 Motherboard",
+  "brand": "MSI",
+  "chipset": "AMD X870E",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 9000/8000/7000 (AM5)",
+  "maximumMemory": "256GB",
+  "ramSlots": 4,
+  "ramType": "DDR5",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 59800,
+  "discount": 20,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 35,
+  "availability": 4,
+  "features": [
+    "AMD X870E Chipset",
+    "Supports AMD Ryzen 9000/8000/7000 (AM5)",
+    "DDR5 Memory Support",
+    "WiFi 6E Connectivity",
+    "Dual M.2 Storage Slots"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/msi-x870em-pro-ddr5-motherboard-1.jpg",
+    "/images/motherboards/msi-x870em-pro-ddr5-motherboard-2.jpg",
+    "/images/motherboards/msi-x870em-pro-ddr5-motherboard-3.jpg",
+    "/images/motherboards/msi-x870em-pro-ddr5-motherboard-4.jpg"
+  ],
+  "sku": "MOT-0005-M3GSL",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:27.999Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5859"
+  },
+  "name": "MSI B860M Pro DDR5 Motherboard",
+  "brand": "MSI",
+  "chipset": "Intel B860",
+  "processorBrand": "Intel",
+  "processorType": "Intel Core Ultra Series 2 (LGA1851)",
+  "maximumMemory": "128GB",
+  "ramSlots": 4,
+  "ramType": "DDR5",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 20400,
+  "discount": 8,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 36,
+  "availability": 14,
+  "features": [
+    "Intel B860 Chipset",
+    "Supports Intel Core Ultra Series 2 (LGA1851)",
+    "DDR5 Memory Support",
+    "RGB Header Support",
+    "WiFi 7 Connectivity"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/msi-b860m-pro-ddr5-motherboard-1.webp",
+    "/images/motherboards/msi-b860m-pro-ddr5-motherboard-2.webp",
+    "/images/motherboards/msi-b860m-pro-ddr5-motherboard-3.webp",
+    "/images/motherboards/msi-b860m-pro-ddr5-motherboard-4.webp"
+  ],
+  "sku": "MOT-0006-XS67M",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:31.507Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf585a"
+  },
+  "name": "MSI Z890M Pro DDR5 Motherboard",
+  "brand": "MSI",
+  "chipset": "Intel Z890",
+  "processorBrand": "Intel",
+  "processorType": "Intel Core Ultra Series 2 (LGA1851)",
+  "maximumMemory": "256GB",
+  "ramSlots": 4,
+  "ramType": "DDR5",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 45300,
+  "discount": 16,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 32,
+  "availability": 7,
+  "features": [
+    "Intel Z890 Chipset",
+    "Supports Intel Core Ultra Series 2 (LGA1851)",
+    "DDR5 Memory Support",
+    "RGB Header Support",
+    "Premium VRM Design"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/msi-z890m-pro-ddr5-motherboard-1.webp",
+    "/images/motherboards/msi-z890m-pro-ddr5-motherboard-2.jpg",
+    "/images/motherboards/msi-z890m-pro-ddr5-motherboard-3.webp",
+    "/images/motherboards/msi-z890m-pro-ddr5-motherboard-4.webp"
+  ],
+  "sku": "MOT-0007-6GAUM",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:34.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf585b"
+  },
+  "name": "Gigabyte B860M Pro DDR5 Motherboard",
+  "brand": "Gigabyte",
+  "chipset": "Intel B860",
+  "processorBrand": "Intel",
+  "processorType": "Intel Core Ultra Series (LGA1851)",
+  "maximumMemory": "128GB",
+  "ramSlots": 4,
+  "ramType": "DDR5",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 20400,
+  "discount": 7,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 40,
+  "availability": 8,
+  "features": [
+    "Intel B860 Chipset",
+    "Supports Intel Core Ultra Series (LGA1851)",
+    "DDR5 Memory Support",
+    "PCIe 4.0 Ready",
+    "Dual M.2 Storage Slots"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/gigabyte-b860m-pro-ddr5-motherboard-1.png",
+    "/images/motherboards/gigabyte-b860m-pro-ddr5-motherboard-2.png",
+    "/images/motherboards/gigabyte-b860m-pro-ddr5-motherboard-3.png",
+    "/images/motherboards/gigabyte-b860m-pro-ddr5-motherboard-4.jpg"
+  ],
+  "sku": "MOT-0008-KZ86E",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:42.007Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf585c"
+  },
+  "name": "Gigabyte Z890M Pro DDR5 Motherboard",
+  "brand": "Gigabyte",
+  "chipset": "Intel Z890",
+  "processorBrand": "Intel",
+  "processorType": "Intel Core Ultra Series 2 (LGA1851)",
+  "maximumMemory": "256GB",
+  "ramSlots": 4,
+  "ramType": "DDR5",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 45100,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 42,
+  "availability": 18,
+  "features": [
+    "Intel Z890 Chipset",
+    "Supports Intel Core Ultra Series 2 (LGA1851)",
+    "DDR5 Memory Support",
+    "2.5G LAN",
+    "5G LAN"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/gigabyte-z890m-pro-ddr5-motherboard-1.png",
+    "/images/motherboards/gigabyte-z890m-pro-ddr5-motherboard-2.png",
+    "/images/motherboards/gigabyte-z890m-pro-ddr5-motherboard-3.png",
+    "/images/motherboards/gigabyte-z890m-pro-ddr5-motherboard-4.png"
+  ],
+  "sku": "MOT-0009-UJY1W",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:50.779Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf585d"
+  },
+  "name": "Gigabyte B550M Pro DDR4 AM4 Motherboard",
+  "brand": "Gigabyte",
+  "chipset": "AMD B550",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 5000/3000 (AM4)",
+  "maximumMemory": "128GB",
+  "ramSlots": 4,
+  "ramType": "DDR4",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 15800,
+  "discount": 3,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 37,
+  "availability": 20,
+  "features": [
+    "AMD B550 Chipset",
+    "Supports AMD Ryzen 5000/3000 (AM4)",
+    "DDR4 Memory Support",
+    "WiFi 6E Connectivity",
+    "Premium VRM Design"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/gigabyte-b550m-pro-ddr4-am4-motherboard-1.png",
+    "/images/motherboards/gigabyte-b550m-pro-ddr4-am4-motherboard-2.jpg",
+    "/images/motherboards/gigabyte-b550m-pro-ddr4-am4-motherboard-3.jpg",
+    "/images/motherboards/gigabyte-b550m-pro-ddr4-am4-motherboard-4.png"
+  ],
+  "sku": "MOT-0010-NXZRS",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:54.914Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf585e"
+  },
+  "name": "Gigabyte X870EM Pro DDR5 Motherboard",
+  "brand": "Gigabyte",
+  "chipset": "AMD X870E",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 9000/8000/7000 (AM5)",
+  "maximumMemory": "256GB",
+  "ramSlots": 4,
+  "ramType": "DDR5",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 59400,
+  "discount": 7,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 33,
+  "availability": 6,
+  "features": [
+    "AMD X870E Chipset",
+    "Supports AMD Ryzen 9000/8000/7000 (AM5)",
+    "DDR5 Memory Support",
+    "Reinforced PCIe Slot",
+    "PCIe 4.0 Ready"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/gigabyte-x870em-pro-ddr5-motherboard-1.jpg",
+    "/images/motherboards/gigabyte-x870em-pro-ddr5-motherboard-2.png",
+    "/images/motherboards/gigabyte-x870em-pro-ddr5-motherboard-3.png",
+    "/images/motherboards/gigabyte-x870em-pro-ddr5-motherboard-4.jpg"
+  ],
+  "sku": "MOT-0011-B8AX8",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:13:59.681Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf585f"
+  },
+  "name": "Gigabyte A520M Elite DDR4 AM4 Motherboard",
+  "brand": "Gigabyte",
+  "chipset": "AMD A520",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen Processors (AM4)",
+  "maximumMemory": "64GB",
+  "ramSlots": 2,
+  "ramType": "DDR4",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 16100,
+  "discount": 7,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 22,
+  "availability": 18,
+  "features": [
+    "AMD A520 Chipset",
+    "Supports AMD Ryzen Processors (AM4)",
+    "DDR4 Memory Support",
+    "Triple M.2 Storage Slots",
+    "Dual M.2 Storage Slots"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/gigabyte-a520m-elite-ddr4-am4-motherboard-1.jpg",
+    "/images/motherboards/gigabyte-a520m-elite-ddr4-am4-motherboard-2.jpg",
+    "/images/motherboards/gigabyte-a520m-elite-ddr4-am4-motherboard-3.jpg",
+    "/images/motherboards/gigabyte-a520m-elite-ddr4-am4-motherboard-4.png"
+  ],
+  "sku": "MOT-0012-SX84M",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:14:04.406Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5860"
+  },
+  "name": "ASUS X870M Pro DDR5 Motherboard",
+  "brand": "ASUS",
+  "chipset": "AMD X870",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 9000/8000/7000 (AM5)",
+  "maximumMemory": "192GB",
+  "ramSlots": 4,
+  "ramType": "DDR5",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 77800,
+  "discount": 4,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 38,
+  "availability": 7,
+  "features": [
+    "AMD X870 Chipset",
+    "Supports AMD Ryzen 9000/8000/7000 (AM5)",
+    "DDR5 Memory Support",
+    "Dual M.2 Storage Slots",
+    "Triple M.2 Storage Slots"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/asus-x870m-pro-ddr5-motherboard-1.png",
+    "/images/motherboards/asus-x870m-pro-ddr5-motherboard-2.png",
+    "/images/motherboards/asus-x870m-pro-ddr5-motherboard-3.jpg",
+    "/images/motherboards/asus-x870m-pro-ddr5-motherboard-4.png"
+  ],
+  "sku": "MOT-0013-2QSGP",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:14:10.168Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5861"
+  },
+  "name": "ASUS B650M Pro DDR5 Motherboard",
+  "brand": "ASUS",
+  "chipset": "AMD B650",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 7000 Series (AM5)",
+  "maximumMemory": "96GB",
+  "ramSlots": 4,
+  "ramType": "DDR5",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 22600,
+  "discount": 16,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 36,
+  "availability": 6,
+  "features": [
+    "AMD B650 Chipset",
+    "Supports AMD Ryzen 7000 Series (AM5)",
+    "DDR5 Memory Support",
+    "WiFi 6E Connectivity",
+    "2.5G LAN"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/asus-b650m-pro-ddr5-motherboard-1.png",
+    "/images/motherboards/asus-b650m-pro-ddr5-motherboard-2.jpg",
+    "/images/motherboards/asus-b650m-pro-ddr5-motherboard-3.png",
+    "/images/motherboards/asus-b650m-pro-ddr5-motherboard-4.jpg"
+  ],
+  "sku": "MOT-0014-CK84X",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:14:13.772Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5862"
+  },
+  "name": "ASUS B450M Pro DDR4 AM4 Motherboard",
+  "brand": "ASUS",
+  "chipset": "AMD B450",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 3rd/2nd/1st Gen (AM4)",
+  "maximumMemory": "128GB",
+  "ramSlots": 4,
+  "ramType": "DDR4",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 16400,
+  "discount": 10,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 41,
+  "availability": 13,
+  "features": [
+    "AMD B450 Chipset",
+    "Supports AMD Ryzen 3rd/2nd/1st Gen (AM4)",
+    "DDR4 Memory Support",
+    "Reinforced PCIe Slot",
+    "WiFi 6E Connectivity"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/asus-b450m-pro-ddr4-am4-motherboard-1.jpg",
+    "/images/motherboards/asus-b450m-pro-ddr4-am4-motherboard-2.jpg",
+    "/images/motherboards/asus-b450m-pro-ddr4-am4-motherboard-3.jpg",
+    "/images/motherboards/asus-b450m-pro-ddr4-am4-motherboard-4.jpg"
+  ],
+  "sku": "MOT-0015-PF51V",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:14:17.128Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5863"
+  },
+  "name": "ASUS A520M Pro DDR4 AM4 Motherboard",
+  "brand": "ASUS",
+  "chipset": "AMD A520",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 5000 G-Series & Earlier (AM4)",
+  "maximumMemory": "64GB",
+  "ramSlots": 2,
+  "ramType": "DDR4",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 12900,
+  "discount": 0,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 40,
+  "availability": 17,
+  "features": [
+    "AMD A520 Chipset",
+    "Supports AMD Ryzen 5000 G-Series & Earlier (AM4)",
+    "DDR4 Memory Support",
+    "WiFi 6E Connectivity",
+    "Dual M.2 Storage Slots"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/asus-a520m-pro-ddr4-am4-motherboard-1.jpg",
+    "/images/motherboards/asus-a520m-pro-ddr4-am4-motherboard-2.png",
+    "/images/motherboards/asus-a520m-pro-ddr4-am4-motherboard-3.png",
+    "/images/motherboards/asus-a520m-pro-ddr4-am4-motherboard-4.jpg"
+  ],
+  "sku": "MOT-0016-EW56E",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:14:22.146Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5864"
+  },
+  "name": "ASUS B550M Pro DDR4 AM4 Motherboard",
+  "brand": "ASUS",
+  "chipset": "AMD B550",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 5000/3000/G-Series (AM4)",
+  "maximumMemory": "64GB",
+  "ramSlots": 2,
+  "ramType": "DDR4",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 15500,
+  "discount": 10,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 31,
+  "availability": 28,
+  "features": [
+    "AMD B550 Chipset",
+    "Supports AMD Ryzen 5000/3000/G-Series (AM4)",
+    "DDR4 Memory Support",
+    "HDMI & DisplayPort Output",
+    "Triple M.2 Storage Slots"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/asus-b550m-pro-ddr4-am4-motherboard-1.webp",
+    "/images/motherboards/asus-b550m-pro-ddr4-am4-motherboard-2.png",
+    "/images/motherboards/asus-b550m-pro-ddr4-am4-motherboard-3.png",
+    "/images/motherboards/asus-b550m-pro-ddr4-am4-motherboard-4.png"
+  ],
+  "sku": "MOT-0017-EXB9Y",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:14:26.069Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5865"
+  },
+  "name": "MSI H610M S DDR4 Motherboard",
+  "brand": "MSI",
+  "chipset": "Intel H610",
+  "processorBrand": "Intel",
+  "processorType": "Intel 12th/13th/14th Gen (LGA1700)",
+  "maximumMemory": "128GB",
+  "ramSlots": 4,
+  "ramType": "DDR4",
+  "formFactor": "Micro-ATX",
+  "color": "Black",
+  "price": 10700,
+  "discount": 6,
+  "warranty": "3 Years",
+  "rating": 4.2,
+  "reviewCount": 53,
+  "availability": 21,
+  "features": [
+    "Intel H610 Chipset",
+    "Supports Intel 12th/13th/14th Gen (LGA1700)",
+    "DDR4 Memory Support",
+    "2.5G LAN",
+    "Dual M.2 Storage Slots"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/msi-h610m-s-ddr4-motherboard-1.webp",
+    "/images/motherboards/msi-h610m-s-ddr4-motherboard-2.webp",
+    "/images/motherboards/msi-h610m-s-ddr4-motherboard-3.webp",
+    "/images/motherboards/msi-h610m-s-ddr4-motherboard-4.png"
+  ],
+  "sku": "MOT-0018-S2QC6",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:14:29.415Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5866"
+  },
+  "name": "Gigabyte B860M Basic DDR5 Motherboard",
+  "brand": "Gigabyte",
+  "chipset": "Intel B860",
+  "processorBrand": "Intel",
+  "processorType": "Intel Core Ultra Series (LGA1851)",
+  "maximumMemory": "128GB",
+  "ramSlots": 4,
+  "ramType": "DDR5",
+  "formFactor": "Micro-ATX",
+  "color": "Black",
+  "price": 14300,
+  "discount": 16,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 57,
+  "availability": 27,
+  "features": [
+    "Intel B860 Chipset",
+    "Supports Intel Core Ultra Series (LGA1851)",
+    "DDR5 Memory Support",
+    "2.5G LAN",
+    "WiFi 7 Connectivity"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/gigabyte-b860m-basic-ddr5-motherboard-1.jpg",
+    "/images/motherboards/gigabyte-b860m-basic-ddr5-motherboard-2.jpg",
+    "/images/motherboards/gigabyte-b860m-basic-ddr5-motherboard-3.png",
+    "/images/motherboards/gigabyte-b860m-basic-ddr5-motherboard-4.png"
+  ],
+  "sku": "MOT-0019-Q1NAS",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:14:35.755Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5867"
+  },
+  "name": "Gigabyte B850M Plus DDR5 Motherboard",
+  "brand": "Gigabyte",
+  "chipset": "AMD B850",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 9000/8000/7000 (AM5)",
+  "maximumMemory": "256GB",
+  "ramSlots": 4,
+  "ramType": "DDR5",
+  "formFactor": "Micro-ATX",
+  "color": "Black",
+  "price": 26700,
+  "discount": 11,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 46,
+  "availability": 7,
+  "features": [
+    "AMD B850 Chipset",
+    "Supports AMD Ryzen 9000/8000/7000 (AM5)",
+    "DDR5 Memory Support",
+    "5G LAN",
+    "Dual M.2 Storage Slots"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/gigabyte-b850m-plus-ddr5-motherboard-1.jpg",
+    "/images/motherboards/gigabyte-b850m-plus-ddr5-motherboard-2.png",
+    "/images/motherboards/gigabyte-b850m-plus-ddr5-motherboard-3.png",
+    "/images/motherboards/gigabyte-b850m-plus-ddr5-motherboard-4.jpg"
+  ],
+  "sku": "MOT-0020-BAM6L",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:14:41.359Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5868"
+  },
+  "name": "ASUS X870M WIFI7 DDR5 Motherboard",
+  "brand": "ASUS",
+  "chipset": "AMD X870",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 9000/8000/7000 (AM5)",
+  "maximumMemory": "192GB",
+  "ramSlots": 4,
+  "ramType": "DDR5",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 86900,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 29,
+  "availability": 5,
+  "features": [
+    "AMD X870 Chipset",
+    "Supports AMD Ryzen 9000/8000/7000 (AM5)",
+    "DDR5 Memory Support",
+    "5G LAN",
+    "Reinforced PCIe Slot"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/asus-x870m-wifi7-ddr5-motherboard-1.jpg",
+    "/images/motherboards/asus-x870m-wifi7-ddr5-motherboard-2.webp",
+    "/images/motherboards/asus-x870m-wifi7-ddr5-motherboard-3.jpg",
+    "/images/motherboards/asus-x870m-wifi7-ddr5-motherboard-4.jpg"
+  ],
+  "sku": "MOT-0021-3IR1G",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:14:45.022Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5869"
+  },
+  "name": "ASUS A520M Elite DDR4 AM4 Motherboard",
+  "brand": "ASUS",
+  "chipset": "AMD A520",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 5000 G-Series & Earlier (AM4)",
+  "maximumMemory": "64GB",
+  "ramSlots": 2,
+  "ramType": "DDR4",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 16000,
+  "discount": 7,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 13,
+  "availability": 14,
+  "features": [
+    "AMD A520 Chipset",
+    "Supports AMD Ryzen 5000 G-Series & Earlier (AM4)",
+    "DDR4 Memory Support",
+    "WiFi 7 Connectivity",
+    "HDMI & DisplayPort Output"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/asus-a520m-elite-ddr4-am4-motherboard-1.jpg",
+    "/images/motherboards/asus-a520m-elite-ddr4-am4-motherboard-2.jpg",
+    "/images/motherboards/asus-a520m-elite-ddr4-am4-motherboard-3.jpg",
+    "/images/motherboards/asus-a520m-elite-ddr4-am4-motherboard-4.png"
+  ],
+  "sku": "MOT-0022-1QK81",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:14:49.048Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf586a"
+  },
+  "name": "Xenthra H311M Plus DDR4 Motherboard",
+  "brand": "Xenthra",
+  "chipset": "Intel H311",
+  "processorBrand": "Intel",
+  "processorType": "Intel 8th/9th Gen (LGA1151)",
+  "maximumMemory": "32GB",
+  "ramSlots": 2,
+  "ramType": "DDR4",
+  "formFactor": "Micro-ATX",
+  "color": "Black",
+  "price": 8600,
+  "discount": 0,
+  "warranty": "2 Years",
+  "rating": 4.3,
+  "reviewCount": 45,
+  "availability": 28,
+  "features": [
+    "Intel H311 Chipset",
+    "Supports Intel 8th/9th Gen (LGA1151)",
+    "DDR4 Memory Support",
+    "WiFi 6E Connectivity",
+    "RGB Header Support"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/xenthra-h311m-plus-ddr4-motherboard-1.jpg",
+    "/images/motherboards/xenthra-h311m-plus-ddr4-motherboard-2.jpg",
+    "/images/motherboards/xenthra-h311m-plus-ddr4-motherboard-3.webp",
+    "/images/motherboards/xenthra-h311m-plus-ddr4-motherboard-4.webp"
+  ],
+  "sku": "MOT-0023-QFJ9O",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:14:52.916Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf586b"
+  },
+  "name": "Xenthra H81M Pro DDR3 Motherboard",
+  "brand": "Xenthra",
+  "chipset": "Intel H81",
+  "processorBrand": "Intel",
+  "processorType": "Intel 4th Gen (LGA1150)",
+  "maximumMemory": "16GB",
+  "ramSlots": 2,
+  "ramType": "DDR3",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 8200,
+  "discount": 9,
+  "warranty": "1 Year",
+  "rating": 4.4,
+  "reviewCount": 32,
+  "availability": 25,
+  "features": [
+    "Intel H81 Chipset",
+    "Supports Intel 4th Gen (LGA1150)",
+    "DDR3 Memory Support",
+    "PCIe 4.0 Ready",
+    "5G LAN"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/xenthra-h81m-pro-ddr3-motherboard-1.jpg",
+    "/images/motherboards/xenthra-h81m-pro-ddr3-motherboard-2.jpg",
+    "/images/motherboards/xenthra-h81m-pro-ddr3-motherboard-3.webp",
+    "/images/motherboards/xenthra-h81m-pro-ddr3-motherboard-4.webp"
+  ],
+  "sku": "MOT-0024-2KNFR",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:14:56.847Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf586c"
+  },
+  "name": "MSI B550M WIFI7 DDR4 AM4 Motherboard",
+  "brand": "MSI",
+  "chipset": "AMD B550",
+  "processorBrand": "AMD",
+  "processorType": "AMD Ryzen 5000/4000G/3000 (AM4)",
+  "maximumMemory": "128GB",
+  "ramSlots": 4,
+  "ramType": "DDR4",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 17300,
+  "discount": 0,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 31,
+  "availability": 19,
+  "features": [
+    "AMD B550 Chipset",
+    "Supports AMD Ryzen 5000/4000G/3000 (AM4)",
+    "DDR4 Memory Support",
+    "RGB Header Support",
+    "HDMI & DisplayPort Output"
+  ],
+  "category": "motherboards",
+  "images": [
+    "/images/motherboards/msi-b550m-wifi7-ddr4-am4-motherboard-1.webp",
+    "/images/motherboards/msi-b550m-wifi7-ddr4-am4-motherboard-2.png",
+    "/images/motherboards/msi-b550m-wifi7-ddr4-am4-motherboard-3.png",
+    "/images/motherboards/msi-b550m-wifi7-ddr4-am4-motherboard-4.jpg"
+  ],
+  "sku": "MOT-0025-TOFX9",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:15:00.419Z"
+  }
+}]

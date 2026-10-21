@@ -1,0 +1,430 @@
+[{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf591c"
+  },
+  "name": "Acer Swift 96 Ryzen 5 Laptop",
+  "brand": "Acer",
+  "laptopType": "Everyday / Productivity",
+  "processorType": "AMD Ryzen 5",
+  "processorModel": "Ryzen 5 7535HS",
+  "generation": "7000 Series",
+  "displaySize": "16 Inch WUXGA",
+  "ramType": "LPDDR5",
+  "ramSize": "16GB",
+  "graphics": "AMD Radeon Graphics (Shared)",
+  "ssd": "512GB NVMe SSD",
+  "hardDisk": null,
+  "color": "Silver",
+  "price": 87300,
+  "discount": 4,
+  "warranty": "2 Years",
+  "rating": 4.3,
+  "reviewCount": 52,
+  "availability": 8,
+  "features": [
+    "MIL-STD 810H Durability",
+    "Backlit Keyboard",
+    "Fast Charging Support"
+  ],
+  "category": "laptops",
+  "images": [
+    "/images/laptops/acer-swift-96-ryzen-5-laptop-1.jpg",
+    "/images/laptops/acer-swift-96-ryzen-5-laptop-2.jpg",
+    "/images/laptops/acer-swift-96-ryzen-5-laptop-3.jpg",
+    "/images/laptops/acer-swift-96-ryzen-5-laptop-4.jpg"
+  ],
+  "sku": "LAP-0001-A4QGD",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:30:13.020Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf591d"
+  },
+  "name": "Acer Nitro 92 Core i5 Laptop",
+  "brand": "Acer",
+  "laptopType": "Gaming",
+  "processorType": "Intel Core i5",
+  "processorModel": "Core i5-13420H",
+  "generation": "13th Gen",
+  "displaySize": "15.6 Inch FHD",
+  "ramType": "LPDDR5",
+  "ramSize": "16GB",
+  "graphics": "NVIDIA GeForce RTX 3050 4GB",
+  "ssd": "512GB PCIe Gen4 NVMe SSD",
+  "hardDisk": null,
+  "color": "Silver",
+  "price": 124100,
+  "discount": 0,
+  "warranty": "2 Years",
+  "rating": 4.4,
+  "reviewCount": 37,
+  "availability": 3,
+  "features": [
+    "144Hz Display Support",
+    "MIL-STD 810H Durability",
+    "Privacy Camera Shutter"
+  ],
+  "category": "laptops",
+  "images": [
+    "/images/laptops/acer-nitro-92-core-i5-laptop-1.jpg",
+    "/images/laptops/acer-nitro-92-core-i5-laptop-2.jpg",
+    "/images/laptops/acer-nitro-92-core-i5-laptop-3.jpg",
+    "/images/laptops/acer-nitro-92-core-i5-laptop-4.webp"
+  ],
+  "sku": "LAP-0002-2PD1T",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:30:16.563Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf591e"
+  },
+  "name": "Acer Predator Helios 49 Core i9 Laptop",
+  "brand": "Acer",
+  "laptopType": "Workstation",
+  "processorType": "Intel Core i9",
+  "processorModel": "Core i9-14900HX",
+  "generation": "14th Gen",
+  "displaySize": "17.3 Inch QHD",
+  "ramType": "LPDDR5",
+  "ramSize": "32GB",
+  "graphics": "NVIDIA GeForce RTX 4080 12GB",
+  "ssd": "2TB PCIe Gen4 NVMe SSD",
+  "hardDisk": null,
+  "color": "Gray",
+  "price": 316800,
+  "discount": 6,
+  "warranty": "2 Years",
+  "rating": 4.6,
+  "reviewCount": 16,
+  "availability": 3,
+  "features": [
+    "Aluminum Chassis",
+    "All-Day Battery Life",
+    "144Hz Display Support"
+  ],
+  "category": "laptops",
+  "images": [
+    "/images/laptops/acer-predator-helios-49-core-i9-laptop-1.jpg",
+    "/images/laptops/acer-predator-helios-49-core-i9-laptop-2.jpg",
+    "/images/laptops/acer-predator-helios-49-core-i9-laptop-3.jpg",
+    "/images/laptops/acer-predator-helios-49-core-i9-laptop-4.webp"
+  ],
+  "sku": "LAP-0003-N87UI",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:30:19.625Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf591f"
+  },
+  "name": "MSI Cyborg 38 Core i5 Laptop",
+  "brand": "MSI",
+  "laptopType": "Gaming",
+  "processorType": "Intel Core i5",
+  "processorModel": "Core i5-13420H",
+  "generation": "13th Gen",
+  "displaySize": "15.6 Inch FHD",
+  "ramType": "DDR5",
+  "ramSize": "16GB",
+  "graphics": "NVIDIA GeForce RTX 3050 4GB",
+  "ssd": "512GB PCIe Gen4 NVMe SSD",
+  "hardDisk": null,
+  "color": "Silver",
+  "price": 131100,
+  "discount": 20,
+  "warranty": "2 Years",
+  "rating": 4.4,
+  "reviewCount": 38,
+  "availability": 3,
+  "features": [
+    "Fast Charging Support",
+    "Aluminum Chassis",
+    "All-Day Battery Life"
+  ],
+  "category": "laptops",
+  "images": [
+    "/images/laptops/msi-cyborg-38-core-i5-laptop-1.jpg",
+    "/images/laptops/msi-cyborg-38-core-i5-laptop-2.jpg",
+    "/images/laptops/msi-cyborg-38-core-i5-laptop-3.jpg",
+    "/images/laptops/msi-cyborg-38-core-i5-laptop-4.webp"
+  ],
+  "sku": "LAP-0004-X4DRM",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:30:23.659Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5920"
+  },
+  "name": "MSI Katana 63 Core i7 Laptop",
+  "brand": "MSI",
+  "laptopType": "Gaming",
+  "processorType": "Intel Core i7",
+  "processorModel": "Core i7-14700HX",
+  "generation": "14th Gen",
+  "displaySize": "16 Inch WUXGA",
+  "ramType": "DDR5",
+  "ramSize": "32GB",
+  "graphics": "NVIDIA GeForce RTX 4070 8GB",
+  "ssd": "1TB PCIe Gen4 NVMe SSD",
+  "hardDisk": null,
+  "color": "Black",
+  "price": 224400,
+  "discount": 0,
+  "warranty": "2 Years",
+  "rating": 4.6,
+  "reviewCount": 25,
+  "availability": 2,
+  "features": [
+    "Privacy Camera Shutter",
+    "Backlit Keyboard",
+    "Aluminum Chassis"
+  ],
+  "category": "laptops",
+  "images": [
+    "/images/laptops/msi-katana-63-core-i7-laptop-1.jpg",
+    "/images/laptops/msi-katana-63-core-i7-laptop-2.jpg",
+    "/images/laptops/msi-katana-63-core-i7-laptop-3.webp",
+    "/images/laptops/msi-katana-63-core-i7-laptop-4.jpg"
+  ],
+  "sku": "LAP-0005-W4DIN",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:30:26.755Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5921"
+  },
+  "name": "ASUS TUF Gaming 78 Core i5 Laptop",
+  "brand": "ASUS",
+  "laptopType": "Gaming",
+  "processorType": "Intel Core i5",
+  "processorModel": "Core i5-13420H",
+  "generation": "13th Gen",
+  "displaySize": "14 Inch FHD",
+  "ramType": "LPDDR5",
+  "ramSize": "16GB",
+  "graphics": "NVIDIA GeForce RTX 3050 4GB",
+  "ssd": "512GB PCIe Gen4 NVMe SSD",
+  "hardDisk": null,
+  "color": "Silver",
+  "price": 121600,
+  "discount": 16,
+  "warranty": "2 Years",
+  "rating": 4.4,
+  "reviewCount": 32,
+  "availability": 2,
+  "features": [
+    "Privacy Camera Shutter",
+    "Aluminum Chassis",
+    "Fast Charging Support"
+  ],
+  "category": "laptops",
+  "images": [
+    "/images/laptops/asus-tuf-gaming-78-core-i5-laptop-1.jpg",
+    "/images/laptops/asus-tuf-gaming-78-core-i5-laptop-2.jpg",
+    "/images/laptops/asus-tuf-gaming-78-core-i5-laptop-3.jpg",
+    "/images/laptops/asus-tuf-gaming-78-core-i5-laptop-4.png"
+  ],
+  "sku": "LAP-0006-F19KV",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:30:31.195Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5922"
+  },
+  "name": "ASUS ROG Strix 95 Core i9 Laptop",
+  "brand": "ASUS",
+  "laptopType": "Workstation",
+  "processorType": "Intel Core i9",
+  "processorModel": "Core i9-14900HX",
+  "generation": "14th Gen",
+  "displaySize": "16 Inch WUXGA",
+  "ramType": "DDR5",
+  "ramSize": "32GB",
+  "graphics": "NVIDIA GeForce RTX 4080 12GB",
+  "ssd": "2TB PCIe Gen4 NVMe SSD",
+  "hardDisk": null,
+  "color": "Gray",
+  "price": 291000,
+  "discount": 9,
+  "warranty": "2 Years",
+  "rating": 4.6,
+  "reviewCount": 20,
+  "availability": 5,
+  "features": [
+    "All-Day Battery Life",
+    "144Hz Display Support",
+    "Aluminum Chassis"
+  ],
+  "category": "laptops",
+  "images": [
+    "/images/laptops/asus-rog-strix-95-core-i9-laptop-1.jpg",
+    "/images/laptops/asus-rog-strix-95-core-i9-laptop-2.jpg",
+    "/images/laptops/asus-rog-strix-95-core-i9-laptop-3.png",
+    "/images/laptops/asus-rog-strix-95-core-i9-laptop-4.png"
+  ],
+  "sku": "LAP-0007-L2ML4",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:30:34.614Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5923"
+  },
+  "name": "HP Victus 27 Ryzen 7 Laptop",
+  "brand": "HP",
+  "laptopType": "Gaming",
+  "processorType": "AMD Ryzen 7",
+  "processorModel": "Ryzen 7 7735HS",
+  "generation": "7000 Series",
+  "displaySize": "16 Inch WUXGA",
+  "ramType": "LPDDR5",
+  "ramSize": "16GB",
+  "graphics": "NVIDIA GeForce RTX 4050 6GB",
+  "ssd": "1TB PCIe Gen4 NVMe SSD",
+  "hardDisk": null,
+  "color": "Black",
+  "price": 153400,
+  "discount": 6,
+  "warranty": "1 Year",
+  "rating": 4.5,
+  "reviewCount": 32,
+  "availability": 1,
+  "features": [
+    "All-Day Battery Life",
+    "Backlit Keyboard",
+    "MIL-STD 810H Durability"
+  ],
+  "category": "laptops",
+  "images": [
+    "/images/laptops/hp-victus-27-ryzen-7-laptop-1.jpg",
+    "/images/laptops/hp-victus-27-ryzen-7-laptop-2.jpg",
+    "/images/laptops/hp-victus-27-ryzen-7-laptop-3.jpg",
+    "/images/laptops/hp-victus-27-ryzen-7-laptop-4.jpg"
+  ],
+  "sku": "LAP-0008-9Y4HT",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:30:39.369Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5924"
+  },
+  "name": "Lenovo LOQ 16 Ryzen 7 Laptop",
+  "brand": "Lenovo",
+  "laptopType": "Gaming",
+  "processorType": "AMD Ryzen 7",
+  "processorModel": "Ryzen 7 7735HS",
+  "generation": "7000 Series",
+  "displaySize": "16 Inch WUXGA",
+  "ramType": "DDR5",
+  "ramSize": "16GB",
+  "graphics": "NVIDIA GeForce RTX 4050 6GB",
+  "ssd": "1TB PCIe Gen4 NVMe SSD",
+  "hardDisk": null,
+  "color": "Black",
+  "price": 151000,
+  "discount": 20,
+  "warranty": "1 Year",
+  "rating": 4.4,
+  "reviewCount": 38,
+  "availability": 4,
+  "features": [
+    "Fast Charging Support",
+    "144Hz Display Support",
+    "Backlit Keyboard"
+  ],
+  "category": "laptops",
+  "images": [
+    "/images/laptops/lenovo-loq-16-ryzen-7-laptop-1.jpg",
+    "/images/laptops/lenovo-loq-16-ryzen-7-laptop-2.jpg",
+    "/images/laptops/lenovo-loq-16-ryzen-7-laptop-3.jpg",
+    "/images/laptops/lenovo-loq-16-ryzen-7-laptop-4.jpg"
+  ],
+  "sku": "LAP-0009-SL5NR",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:30:42.882Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5925"
+  },
+  "name": "Apple MacBook Pro 30 M5 Pro Laptop",
+  "brand": "Apple",
+  "laptopType": "Workstation",
+  "processorType": "Apple Silicon",
+  "processorModel": "Apple M5 Pro",
+  "generation": "M5 Pro",
+  "displaySize": "14.2 Inch Liquid Retina XDR",
+  "ramType": "Unified Memory",
+  "ramSize": "24GB",
+  "graphics": "Integrated 16-Core Apple GPU",
+  "ssd": "1TB SSD",
+  "hardDisk": null,
+  "color": "Silver",
+  "price": 280000,
+  "discount": 4,
+  "warranty": "1 Year",
+  "rating": 4.5,
+  "reviewCount": 32,
+  "availability": 4,
+  "features": [
+    "Privacy Camera Shutter",
+    "144Hz Display Support",
+    "All-Day Battery Life"
+  ],
+  "category": "laptops",
+  "images": [
+    "/images/laptops/apple-macbook-pro-30-m5-pro-laptop-1.jpg",
+    "/images/laptops/apple-macbook-pro-30-m5-pro-laptop-2.jpg",
+    "/images/laptops/apple-macbook-pro-30-m5-pro-laptop-3.jpg",
+    "/images/laptops/apple-macbook-pro-30-m5-pro-laptop-4.webp"
+  ],
+  "sku": "LAP-0010-BQW64",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:30:47.915Z"
+  }
+}]

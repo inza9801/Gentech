@@ -1,0 +1,570 @@
+[{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58b8"
+  },
+  "name": "Corsair RMe550 550W Power Supply",
+  "brand": "Corsair",
+  "watts": 550,
+  "modular": "Semi Modular",
+  "efficiency": "80 Plus Bronze",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 8900,
+  "discount": 18,
+  "warranty": "5 Years",
+  "rating": 4.2,
+  "reviewCount": 61,
+  "availability": 12,
+  "features": [
+    "550W Continuous Output",
+    "80 Plus Bronze",
+    "Fully Modular Cables",
+    "Wide 100-240V Input Range"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/corsair-rme550-550w-power-supply-1.jpg",
+    "/images/power_supplies/corsair-rme550-550w-power-supply-2.jpg",
+    "/images/power_supplies/corsair-rme550-550w-power-supply-3.jpg",
+    "/images/power_supplies/corsair-rme550-550w-power-supply-4.jpg"
+  ],
+  "sku": "POW-0001-TQY4C",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:21:16.975Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58b9"
+  },
+  "name": "Corsair CX750 750W Power Supply",
+  "brand": "Corsair",
+  "watts": 750,
+  "modular": "Full Modular",
+  "efficiency": "80 Plus Gold",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 20100,
+  "discount": 7,
+  "warranty": "5 Years",
+  "rating": 4.4,
+  "reviewCount": 51,
+  "availability": 17,
+  "features": [
+    "750W Continuous Output",
+    "80 Plus Gold",
+    "Fully Modular Cables",
+    "Wide 100-240V Input Range"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/corsair-cx750-750w-power-supply-1.jpg",
+    "/images/power_supplies/corsair-cx750-750w-power-supply-2.jpg",
+    "/images/power_supplies/corsair-cx750-750w-power-supply-3.jpg",
+    "/images/power_supplies/corsair-cx750-750w-power-supply-4.jpg"
+  ],
+  "sku": "POW-0002-7TSUR",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:21:21.140Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58ba"
+  },
+  "name": "Corsair RMe850 850W Power Supply",
+  "brand": "Corsair",
+  "watts": 850,
+  "modular": "Full Modular",
+  "efficiency": "80 Plus Gold",
+  "formFactor": "ATX 3.1",
+  "color": "Black",
+  "price": 18500,
+  "discount": 7,
+  "warranty": "5 Years",
+  "rating": 4.4,
+  "reviewCount": 42,
+  "availability": 28,
+  "features": [
+    "850W Continuous Output",
+    "80 Plus Gold",
+    "OVP/UVP/OPP/OCVP/SCP Protection",
+    "Wide 100-240V Input Range"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/corsair-rme850-850w-power-supply-1.jpg",
+    "/images/power_supplies/corsair-rme850-850w-power-supply-2.jpg",
+    "/images/power_supplies/corsair-rme850-850w-power-supply-3.jpg",
+    "/images/power_supplies/corsair-rme850-850w-power-supply-4.jpg"
+  ],
+  "sku": "POW-0003-NUYUF",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:21:24.006Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58bb"
+  },
+  "name": "Corsair CX1000 1000W Power Supply",
+  "brand": "Corsair",
+  "watts": 1000,
+  "modular": "Full Modular",
+  "efficiency": "80 Plus Gold",
+  "formFactor": "ATX 3.1",
+  "color": "Black",
+  "price": 21400,
+  "discount": 3,
+  "warranty": "5 Years",
+  "rating": 4.5,
+  "reviewCount": 39,
+  "availability": 16,
+  "features": [
+    "1000W Continuous Output",
+    "80 Plus Gold",
+    "ATX 3.1 & PCIe 5.1 Ready",
+    "OVP/UVP/OPP/OCVP/SCP Protection"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/corsair-cx1000-1000w-power-supply-1.jpg",
+    "/images/power_supplies/corsair-cx1000-1000w-power-supply-2.jpg",
+    "/images/power_supplies/corsair-cx1000-1000w-power-supply-3.jpg",
+    "/images/power_supplies/corsair-cx1000-1000w-power-supply-4.jpg"
+  ],
+  "sku": "POW-0004-JK7J6",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:21:27.417Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58bc"
+  },
+  "name": "Thermaltake Toughpower650 650W Power Supply",
+  "brand": "Thermaltake",
+  "watts": 650,
+  "modular": "Full Modular",
+  "efficiency": "80 Plus Bronze",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 10800,
+  "discount": 5,
+  "warranty": "5 Years",
+  "rating": 4.3,
+  "reviewCount": 54,
+  "availability": 29,
+  "features": [
+    "650W Continuous Output",
+    "80 Plus Bronze",
+    "Reliable Continuous Power Delivery",
+    "OVP/UVP/OPP/OCVP/SCP Protection"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/thermaltake-toughpower650-650w-power-supply-1.jpg",
+    "/images/power_supplies/thermaltake-toughpower650-650w-power-supply-2.jpg",
+    "/images/power_supplies/thermaltake-toughpower650-650w-power-supply-3.jpg",
+    "/images/power_supplies/thermaltake-toughpower650-650w-power-supply-4.jpg"
+  ],
+  "sku": "POW-0005-Z0X7H",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:21:37.416Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58bd"
+  },
+  "name": "Thermaltake Toughpower GT750 750W Power Supply",
+  "brand": "Thermaltake",
+  "watts": 750,
+  "modular": "Full Modular",
+  "efficiency": "80 Plus Gold",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 15800,
+  "discount": 14,
+  "warranty": "5 Years",
+  "rating": 4.4,
+  "reviewCount": 49,
+  "availability": 21,
+  "features": [
+    "750W Continuous Output",
+    "80 Plus Gold",
+    "Reliable Continuous Power Delivery",
+    "OVP/UVP/OPP/OCVP/SCP Protection"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/thermaltake-toughpower-gt750-750w-power-supply-1.jpg",
+    "/images/power_supplies/thermaltake-toughpower-gt750-750w-power-supply-2.jpg",
+    "/images/power_supplies/thermaltake-toughpower-gt750-750w-power-supply-3.jpg",
+    "/images/power_supplies/thermaltake-toughpower-gt750-750w-power-supply-4.jpg"
+  ],
+  "sku": "POW-0006-7UNPT",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:21:41.979Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58be"
+  },
+  "name": "Thermaltake Toughpower1000 1000W Power Supply",
+  "brand": "Thermaltake",
+  "watts": 1000,
+  "modular": "Full Modular",
+  "efficiency": "80 Plus Gold",
+  "formFactor": "ATX 3.1",
+  "color": "Black",
+  "price": 26500,
+  "discount": 8,
+  "warranty": "5 Years",
+  "rating": 4.4,
+  "reviewCount": 33,
+  "availability": 14,
+  "features": [
+    "1000W Continuous Output",
+    "80 Plus Gold",
+    "Wide 100-240V Input Range",
+    "Reliable Continuous Power Delivery"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/thermaltake-toughpower1000-1000w-power-supply-1.jpg",
+    "/images/power_supplies/thermaltake-toughpower1000-1000w-power-supply-2.jpg",
+    "/images/power_supplies/thermaltake-toughpower1000-1000w-power-supply-3.jpg",
+    "/images/power_supplies/thermaltake-toughpower1000-1000w-power-supply-4.jpg"
+  ],
+  "sku": "POW-0007-YDNTD",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:21:46.020Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58bf"
+  },
+  "name": "Thermaltake Toughpower GT1200 1200W Power Supply",
+  "brand": "Thermaltake",
+  "watts": 1200,
+  "modular": "Full Modular",
+  "efficiency": "80 Plus Gold",
+  "formFactor": "ATX 3.1",
+  "color": "Black",
+  "price": 30400,
+  "discount": 9,
+  "warranty": "5 Years",
+  "rating": 4.5,
+  "reviewCount": 22,
+  "availability": 11,
+  "features": [
+    "1200W Continuous Output",
+    "80 Plus Gold",
+    "OVP/UVP/OPP/OCVP/SCP Protection",
+    "Reliable Continuous Power Delivery"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/thermaltake-toughpower-gt1200-1200w-power-supply-1.jpg",
+    "/images/power_supplies/thermaltake-toughpower-gt1200-1200w-power-supply-2.jpg",
+    "/images/power_supplies/thermaltake-toughpower-gt1200-1200w-power-supply-3.jpg",
+    "/images/power_supplies/thermaltake-toughpower-gt1200-1200w-power-supply-4.jpg"
+  ],
+  "sku": "POW-0008-VCJ0T",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:21:51.103Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58c0"
+  },
+  "name": "Antec NE650 650W Power Supply",
+  "brand": "Antec",
+  "watts": 650,
+  "modular": "Full Modular",
+  "efficiency": "80 Plus Bronze",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 10600,
+  "discount": 3,
+  "warranty": "5 Years",
+  "rating": 4.3,
+  "reviewCount": 47,
+  "availability": 25,
+  "features": [
+    "650W Continuous Output",
+    "80 Plus Bronze",
+    "Reliable Continuous Power Delivery",
+    "ATX 3.1 & PCIe 5.1 Ready"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/antec-ne650-650w-power-supply-1.png",
+    "/images/power_supplies/antec-ne650-650w-power-supply-2.jpg",
+    "/images/power_supplies/antec-ne650-650w-power-supply-3.jpg",
+    "/images/power_supplies/antec-ne650-650w-power-supply-4.jpg"
+  ],
+  "sku": "POW-0009-3BP6M",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:21:56.194Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58c1"
+  },
+  "name": "Antec VP750 750W Power Supply",
+  "brand": "Antec",
+  "watts": 750,
+  "modular": "Full Modular",
+  "efficiency": "80 Plus Gold",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 20100,
+  "discount": 14,
+  "warranty": "5 Years",
+  "rating": 4.3,
+  "reviewCount": 50,
+  "availability": 17,
+  "features": [
+    "750W Continuous Output",
+    "80 Plus Gold",
+    "ATX 3.1 & PCIe 5.1 Ready",
+    "OVP/UVP/OPP/OCVP/SCP Protection"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/antec-vp750-750w-power-supply-1.jpg",
+    "/images/power_supplies/antec-vp750-750w-power-supply-2.jpg",
+    "/images/power_supplies/antec-vp750-750w-power-supply-3.png",
+    "/images/power_supplies/antec-vp750-750w-power-supply-4.png"
+  ],
+  "sku": "POW-0010-KDJLW",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:00.326Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58c2"
+  },
+  "name": "Antec GSK1000 1000W Power Supply",
+  "brand": "Antec",
+  "watts": 1000,
+  "modular": "Full Modular",
+  "efficiency": "80 Plus Gold",
+  "formFactor": "ATX 3.1",
+  "color": "Black",
+  "price": 25300,
+  "discount": 4,
+  "warranty": "5 Years",
+  "rating": 4.5,
+  "reviewCount": 33,
+  "availability": 11,
+  "features": [
+    "1000W Continuous Output",
+    "80 Plus Gold",
+    "Reliable Continuous Power Delivery",
+    "Fully Modular Cables"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/antec-gsk1000-1000w-power-supply-1.png",
+    "/images/power_supplies/antec-gsk1000-1000w-power-supply-2.jpg",
+    "/images/power_supplies/antec-gsk1000-1000w-power-supply-3.jpg",
+    "/images/power_supplies/antec-gsk1000-1000w-power-supply-4.jpg"
+  ],
+  "sku": "POW-0011-2GNRP",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:07.391Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58c3"
+  },
+  "name": "Antec NE1200 1200W Power Supply",
+  "brand": "Antec",
+  "watts": 1200,
+  "modular": "Full Modular",
+  "efficiency": "80 Plus Gold",
+  "formFactor": "ATX 3.1",
+  "color": "Black",
+  "price": 28500,
+  "discount": 20,
+  "warranty": "5 Years",
+  "rating": 4.5,
+  "reviewCount": 32,
+  "availability": 17,
+  "features": [
+    "1200W Continuous Output",
+    "80 Plus Gold",
+    "120mm Silent Cooling Fan",
+    "OVP/UVP/OPP/OCVP/SCP Protection"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/antec-ne1200-1200w-power-supply-1.jpg",
+    "/images/power_supplies/antec-ne1200-1200w-power-supply-2.png",
+    "/images/power_supplies/antec-ne1200-1200w-power-supply-3.png",
+    "/images/power_supplies/antec-ne1200-1200w-power-supply-4.jpg"
+  ],
+  "sku": "POW-0012-W8YCV",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:11.892Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58c4"
+  },
+  "name": "T-Wolf Phantom P650 650W Power Supply",
+  "brand": "T-Wolf",
+  "watts": 650,
+  "modular": "Full Modular",
+  "efficiency": "Standard",
+  "formFactor": "ATX",
+  "color": "Black",
+  "price": 11600,
+  "discount": 20,
+  "warranty": "1 Year",
+  "rating": 4.3,
+  "reviewCount": 54,
+  "availability": 17,
+  "features": [
+    "650W Continuous Output",
+    "Standard",
+    "Reliable Continuous Power Delivery",
+    "OVP/UVP/OPP/OCVP/SCP Protection"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/t-wolf-phantom-p650-650w-power-supply-1.png",
+    "/images/power_supplies/t-wolf-phantom-p650-650w-power-supply-2.png",
+    "/images/power_supplies/t-wolf-phantom-p650-650w-power-supply-3.webp",
+    "/images/power_supplies/t-wolf-phantom-p650-650w-power-supply-4.png"
+  ],
+  "sku": "POW-0013-3C3W5",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:18.112Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58c5"
+  },
+  "name": "T-Wolf Phantom P850 850W Power Supply",
+  "brand": "T-Wolf",
+  "watts": 850,
+  "modular": "Full Modular",
+  "efficiency": "80 Plus Bronze",
+  "formFactor": "ATX 3.1",
+  "color": "Black",
+  "price": 17000,
+  "discount": 9,
+  "warranty": "1 Year",
+  "rating": 4.4,
+  "reviewCount": 41,
+  "availability": 17,
+  "features": [
+    "850W Continuous Output",
+    "80 Plus Bronze",
+    "Reliable Continuous Power Delivery",
+    "120mm Silent Cooling Fan"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/t-wolf-phantom-p850-850w-power-supply-1.jpg",
+    "/images/power_supplies/t-wolf-phantom-p850-850w-power-supply-2.jpg",
+    "/images/power_supplies/t-wolf-phantom-p850-850w-power-supply-3.jpg",
+    "/images/power_supplies/t-wolf-phantom-p850-850w-power-supply-4.jpg"
+  ],
+  "sku": "POW-0014-40AGP",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:23.751Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58c6"
+  },
+  "name": "T-Wolf Phantom P1200 1200W Power Supply",
+  "brand": "T-Wolf",
+  "watts": 1200,
+  "modular": "Full Modular",
+  "efficiency": "80 Plus Bronze",
+  "formFactor": "ATX 3.1",
+  "color": "Black",
+  "price": 18500,
+  "discount": 9,
+  "warranty": "1 Year",
+  "rating": 4.5,
+  "reviewCount": 31,
+  "availability": 25,
+  "features": [
+    "1200W Continuous Output",
+    "80 Plus Bronze",
+    "Fully Modular Cables",
+    "ATX 3.1 & PCIe 5.1 Ready"
+  ],
+  "category": "power_supplies",
+  "images": [
+    "/images/power_supplies/t-wolf-phantom-p1200-1200w-power-supply-1.jpg",
+    "/images/power_supplies/t-wolf-phantom-p1200-1200w-power-supply-2.jpg",
+    "/images/power_supplies/t-wolf-phantom-p1200-1200w-power-supply-3.jpg",
+    "/images/power_supplies/t-wolf-phantom-p1200-1200w-power-supply-4.jpg"
+  ],
+  "sku": "POW-0015-IMYGV",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:22:30.241Z"
+  }
+}]

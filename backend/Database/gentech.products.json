@@ -1,0 +1,96 @@
+[{
+  "_id": {
+    "$oid": "6a9885d954f0980d17e5d8a1"
+  },
+  "name": "Casings",
+  "slug": "casings",
+  "collection": "casings"
+},
+{
+  "_id": {
+    "$oid": "6a9885d954f0980d17e5d8a2"
+  },
+  "name": "Graphics Cards",
+  "slug": "graphics-cards",
+  "collection": "graphics_cards"
+},
+{
+  "_id": {
+    "$oid": "6a9885d954f0980d17e5d8a3"
+  },
+  "name": "Keyboards",
+  "slug": "keyboards",
+  "collection": "keyboards"
+},
+{
+  "_id": {
+    "$oid": "6a9885d954f0980d17e5d8a4"
+  },
+  "name": "Laptops",
+  "slug": "laptops",
+  "collection": "laptops"
+},
+{
+  "_id": {
+    "$oid": "6a9885d954f0980d17e5d8a5"
+  },
+  "name": "Mice",
+  "slug": "mice",
+  "collection": "mice"
+},
+{
+  "_id": {
+    "$oid": "6a9885d954f0980d17e5d8a6"
+  },
+  "name": "Monitors",
+  "slug": "monitors",
+  "collection": "monitors"
+},
+{
+  "_id": {
+    "$oid": "6a9885d954f0980d17e5d8a7"
+  },
+  "name": "Motherboards",
+  "slug": "motherboards",
+  "collection": "motherboards"
+},
+{
+  "_id": {
+    "$oid": "6a9885d954f0980d17e5d8a8"
+  },
+  "name": "Power Supplies",
+  "slug": "power-supplies",
+  "collection": "power_supplies"
+},
+{
+  "_id": {
+    "$oid": "6a9885d954f0980d17e5d8a9"
+  },
+  "name": "Processors",
+  "slug": "processors",
+  "collection": "processors"
+},
+{
+  "_id": {
+    "$oid": "6a9885d954f0980d17e5d8aa"
+  },
+  "name": "RAM",
+  "slug": "ram",
+  "collection": "rams"
+},
+{
+  "_id": {
+    "$oid": "6a9885d954f0980d17e5d8ab"
+  },
+  "name": "SSDs",
+  "slug": "ssds",
+  "collection": "ssds"
+},
+{
+  "_id": {
+    "$oid": "6a9885d954f0980d17e5d8ac"
+  },
+  "name": "UPS",
+  "slug": "ups",
+  "collection": "ups"
+}]

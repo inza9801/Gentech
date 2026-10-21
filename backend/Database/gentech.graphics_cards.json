@@ -1,0 +1,1330 @@
+[{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5895"
+  },
+  "name": "PNY NVIDIA GeForce RTX 5050 Graphics Card",
+  "brand": "PNY",
+  "graphicsChipset": "NVIDIA GeForce RTX 5050",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR6",
+  "memorySize": "8GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 28000,
+  "discount": 3,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 56,
+  "availability": 7,
+  "features": [
+    "RGB Lighting",
+    "Ideal for 4K Gaming",
+    "Factory Overclocked"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5050-graphics-card-1.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5050-graphics-card-2.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5050-graphics-card-3.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5050-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0001-M1YIP",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:18:11.091Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5896"
+  },
+  "name": "PNY NVIDIA GeForce RTX 5060 Graphics Card",
+  "brand": "PNY",
+  "graphicsChipset": "NVIDIA GeForce RTX 5060",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "8GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 38000,
+  "discount": 6,
+  "warranty": "3 Years",
+  "rating": 4.2,
+  "reviewCount": 60,
+  "availability": 18,
+  "features": [
+    "FSR Support",
+    "Triple-Fan Cooling",
+    "DLSS 4 Support"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5060-graphics-card-1.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5060-graphics-card-2.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5060-graphics-card-3.png",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5060-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0002-W7J8E",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:18:17.166Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5897"
+  },
+  "name": "PNY NVIDIA GeForce RTX 5060 Ti 16GB Graphics Card",
+  "brand": "PNY",
+  "graphicsChipset": "NVIDIA GeForce RTX 5060 Ti 16GB",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "White",
+  "price": 68000,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 46,
+  "availability": 10,
+  "features": [
+    "Strong 1440p Performance",
+    "PCIe 5.0 Interface",
+    "Dual-Fan Cooling"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5060-ti-16gb-graphics-card-1.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5060-ti-16gb-graphics-card-2.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5060-ti-16gb-graphics-card-3.png",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5060-ti-16gb-graphics-card-4.png"
+  ],
+  "sku": "GRA-0003-677FQ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:18:21.205Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5898"
+  },
+  "name": "PNY NVIDIA GeForce RTX 5070 Graphics Card",
+  "brand": "PNY",
+  "graphicsChipset": "NVIDIA GeForce RTX 5070",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "12GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 82000,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 37,
+  "availability": 4,
+  "features": [
+    "Factory Overclocked",
+    "PCIe 5.0 Interface",
+    "Triple-Fan Cooling"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5070-graphics-card-1.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5070-graphics-card-2.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5070-graphics-card-3.png",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5070-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0004-D0CZ4",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:18:26.933Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf5899"
+  },
+  "name": "PNY NVIDIA GeForce RTX 5070 Ti Graphics Card",
+  "brand": "PNY",
+  "graphicsChipset": "NVIDIA GeForce RTX 5070 Ti",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 118000,
+  "discount": 11,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 38,
+  "availability": 2,
+  "features": [
+    "Large VRAM Buffer for Heavy Workloads",
+    "Triple-Fan Cooling",
+    "Factory Overclocked"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5070-ti-graphics-card-1.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5070-ti-graphics-card-2.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5070-ti-graphics-card-3.png",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5070-ti-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0005-824JQ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:18:32.746Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf589a"
+  },
+  "name": "PNY NVIDIA GeForce RTX 5080 Graphics Card",
+  "brand": "PNY",
+  "graphicsChipset": "NVIDIA GeForce RTX 5080",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 165000,
+  "discount": 5,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 33,
+  "availability": 4,
+  "features": [
+    "FSR Support",
+    "Large VRAM Buffer for Heavy Workloads",
+    "Ideal for 4K Gaming"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5080-graphics-card-1.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5080-graphics-card-2.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5080-graphics-card-3.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5080-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0006-KJDCR",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:18:36.073Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf589b"
+  },
+  "name": "PNY NVIDIA GeForce RTX 5090 Graphics Card",
+  "brand": "PNY",
+  "graphicsChipset": "NVIDIA GeForce RTX 5090",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "32GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 320000,
+  "discount": 3,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 23,
+  "availability": 1,
+  "features": [
+    "Factory Overclocked",
+    "Triple-Fan Cooling",
+    "FSR Support"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5090-graphics-card-1.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5090-graphics-card-2.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5090-graphics-card-3.jpg",
+    "/images/graphics_cards/pny-nvidia-geforce-rtx-5090-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0007-YKE7N",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:18:40.158Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf589c"
+  },
+  "name": "Gigabyte AMD Radeon RX 9060 XT 8GB Graphics Card",
+  "brand": "Gigabyte",
+  "graphicsChipset": "AMD Radeon RX 9060 XT 8GB",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "8GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 48000,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.2,
+  "reviewCount": 62,
+  "availability": 14,
+  "features": [
+    "FSR Support",
+    "Dual-Fan Cooling",
+    "Strong 1440p Performance"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/gigabyte-amd-radeon-rx-9060-xt-8gb-graphics-card-1.jpg",
+    "/images/graphics_cards/gigabyte-amd-radeon-rx-9060-xt-8gb-graphics-card-2.jpg",
+    "/images/graphics_cards/gigabyte-amd-radeon-rx-9060-xt-8gb-graphics-card-3.jpg",
+    "/images/graphics_cards/gigabyte-amd-radeon-rx-9060-xt-8gb-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0008-EQI1G",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:18:44.245Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf589d"
+  },
+  "name": "Gigabyte AMD Radeon RX 9070 Graphics Card",
+  "brand": "Gigabyte",
+  "graphicsChipset": "AMD Radeon RX 9070",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 88000,
+  "discount": 7,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 55,
+  "availability": 7,
+  "features": [
+    "BTF Back-Connector Design",
+    "Strong 1440p Performance",
+    "FSR Support"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/gigabyte-amd-radeon-rx-9070-graphics-card-1.png",
+    "/images/graphics_cards/gigabyte-amd-radeon-rx-9070-graphics-card-2.jpg",
+    "/images/graphics_cards/gigabyte-amd-radeon-rx-9070-graphics-card-3.jpg",
+    "/images/graphics_cards/gigabyte-amd-radeon-rx-9070-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0009-SLF3S",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:18:49.803Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf589e"
+  },
+  "name": "Gigabyte AMD Radeon RX 9070 XT Graphics Card",
+  "brand": "Gigabyte",
+  "graphicsChipset": "AMD Radeon RX 9070 XT",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 108000,
+  "discount": 18,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 51,
+  "availability": 3,
+  "features": [
+    "DLSS 4 Support",
+    "BTF Back-Connector Design",
+    "Triple-Fan Cooling"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/gigabyte-amd-radeon-rx-9070-xt-graphics-card-1.png",
+    "/images/graphics_cards/gigabyte-amd-radeon-rx-9070-xt-graphics-card-2.jpg",
+    "/images/graphics_cards/gigabyte-amd-radeon-rx-9070-xt-graphics-card-3.jpg",
+    "/images/graphics_cards/gigabyte-amd-radeon-rx-9070-xt-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0010-PZL5S",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:18:58.477Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf589f"
+  },
+  "name": "Gigabyte NVIDIA GeForce RTX 5060 Graphics Card",
+  "brand": "Gigabyte",
+  "graphicsChipset": "NVIDIA GeForce RTX 5060",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "8GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "White",
+  "price": 39000,
+  "discount": 10,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 45,
+  "availability": 11,
+  "features": [
+    "RGB Lighting",
+    "PCIe 5.0 Interface",
+    "Ideal for 4K Gaming"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5060-graphics-card-1.jpg",
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5060-graphics-card-2.png",
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5060-graphics-card-3.png",
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5060-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0011-AS5C0",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:19:05.433Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58a0"
+  },
+  "name": "Gigabyte NVIDIA GeForce RTX 5070 Graphics Card",
+  "brand": "Gigabyte",
+  "graphicsChipset": "NVIDIA GeForce RTX 5070",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "12GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 84000,
+  "discount": 4,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 38,
+  "availability": 8,
+  "features": [
+    "Strong 1440p Performance",
+    "Triple-Fan Cooling",
+    "FSR Support"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5070-graphics-card-1.png",
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5070-graphics-card-2.png",
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5070-graphics-card-3.jpg",
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5070-graphics-card-4.png"
+  ],
+  "sku": "GRA-0012-PFJCP",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:19:14.671Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58a1"
+  },
+  "name": "Gigabyte NVIDIA GeForce RTX 5080 Graphics Card",
+  "brand": "Gigabyte",
+  "graphicsChipset": "NVIDIA GeForce RTX 5080",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 168000,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 26,
+  "availability": 2,
+  "features": [
+    "RGB Lighting",
+    "BTF Back-Connector Design",
+    "Strong 1440p Performance"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5080-graphics-card-1.png",
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5080-graphics-card-2.jpg",
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5080-graphics-card-3.jpg",
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5080-graphics-card-4.png"
+  ],
+  "sku": "GRA-0013-02064",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:19:21.458Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58a2"
+  },
+  "name": "Gigabyte NVIDIA GeForce RTX 5090 Graphics Card",
+  "brand": "Gigabyte",
+  "graphicsChipset": "NVIDIA GeForce RTX 5090",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "32GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "White",
+  "price": 335000,
+  "discount": 16,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 18,
+  "availability": 5,
+  "features": [
+    "Strong 1440p Performance",
+    "PCIe 5.0 Interface",
+    "BTF Back-Connector Design"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5090-graphics-card-1.jpg",
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5090-graphics-card-2.jpg",
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5090-graphics-card-3.png",
+    "/images/graphics_cards/gigabyte-nvidia-geforce-rtx-5090-graphics-card-4.png"
+  ],
+  "sku": "GRA-0014-TFA3U",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:19:27.072Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58a3"
+  },
+  "name": "MSI NVIDIA GeForce RTX 5050 8G Gaming OC Graphics Card",
+  "brand": "MSI",
+  "graphicsChipset": "NVIDIA GeForce RTX 5050 8G Gaming OC",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR6",
+  "memorySize": "8GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 44500,
+  "discount": 18,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 49,
+  "availability": 10,
+  "features": [
+    "Triple-Fan Cooling",
+    "Ideal for 4K Gaming",
+    "DLSS 4 Support"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5050-8g-gaming-oc-graphics-card-1.jpg",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5050-8g-gaming-oc-graphics-card-2.jpg",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5050-8g-gaming-oc-graphics-card-3.jpg",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5050-8g-gaming-oc-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0015-PHWN0",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:19:30.940Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58a4"
+  },
+  "name": "MSI NVIDIA GeForce RTX 5060 Gaming Graphics Card",
+  "brand": "MSI",
+  "graphicsChipset": "NVIDIA GeForce RTX 5060 Gaming",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "8GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 40500,
+  "discount": 3,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 56,
+  "availability": 7,
+  "features": [
+    "BTF Back-Connector Design",
+    "Dual-Fan Cooling",
+    "PCIe 5.0 Interface"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5060-gaming-graphics-card-1.jpg",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5060-gaming-graphics-card-2.jpg",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5060-gaming-graphics-card-3.png",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5060-gaming-graphics-card-4.png"
+  ],
+  "sku": "GRA-0016-YYJ6R",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:19:34.934Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58a5"
+  },
+  "name": "MSI NVIDIA GeForce RTX 5070 Gaming Graphics Card",
+  "brand": "MSI",
+  "graphicsChipset": "NVIDIA GeForce RTX 5070 Gaming",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "12GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "White",
+  "price": 86500,
+  "discount": 16,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 38,
+  "availability": 9,
+  "features": [
+    "PCIe 5.0 Interface",
+    "DLSS 4 Support",
+    "Ideal for 4K Gaming"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5070-gaming-graphics-card-1.png",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5070-gaming-graphics-card-2.webp",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5070-gaming-graphics-card-3.png",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5070-gaming-graphics-card-4.png"
+  ],
+  "sku": "GRA-0017-F32O2",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:19:42.221Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58a6"
+  },
+  "name": "MSI NVIDIA GeForce RTX 5080 Gaming Graphics Card",
+  "brand": "MSI",
+  "graphicsChipset": "NVIDIA GeForce RTX 5080 Gaming",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 172000,
+  "discount": 8,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 36,
+  "availability": 3,
+  "features": [
+    "Dual-Fan Cooling",
+    "Factory Overclocked",
+    "RGB Lighting"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5080-gaming-graphics-card-1.jpg",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5080-gaming-graphics-card-2.png",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5080-gaming-graphics-card-3.png",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5080-gaming-graphics-card-4.png"
+  ],
+  "sku": "GRA-0018-4I18E",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:19:47.438Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58a7"
+  },
+  "name": "MSI NVIDIA GeForce RTX 5090 Suprim Graphics Card",
+  "brand": "MSI",
+  "graphicsChipset": "NVIDIA GeForce RTX 5090 Suprim",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "32GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "White",
+  "price": 345000,
+  "discount": 5,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 29,
+  "availability": 1,
+  "features": [
+    "Strong 1440p Performance",
+    "RGB Lighting",
+    "FSR Support"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5090-suprim-graphics-card-1.png",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5090-suprim-graphics-card-2.jpg",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5090-suprim-graphics-card-3.jpg",
+    "/images/graphics_cards/msi-nvidia-geforce-rtx-5090-suprim-graphics-card-4.png"
+  ],
+  "sku": "GRA-0019-TI43N",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:19:52.384Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58a8"
+  },
+  "name": "MSI AMD Radeon RX 9070 XT Gaming Graphics Card",
+  "brand": "MSI",
+  "graphicsChipset": "AMD Radeon RX 9070 XT Gaming",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 112000,
+  "discount": 9,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 29,
+  "availability": 2,
+  "features": [
+    "Ideal for 4K Gaming",
+    "PCIe 5.0 Interface",
+    "FSR Support"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/msi-amd-radeon-rx-9070-xt-gaming-graphics-card-1.webp",
+    "/images/graphics_cards/msi-amd-radeon-rx-9070-xt-gaming-graphics-card-2.webp",
+    "/images/graphics_cards/msi-amd-radeon-rx-9070-xt-gaming-graphics-card-3.jpg",
+    "/images/graphics_cards/msi-amd-radeon-rx-9070-xt-gaming-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0020-DOS7T",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:19:58.026Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58a9"
+  },
+  "name": "MSI AMD Radeon RX 9060 XT Gaming Graphics Card",
+  "brand": "MSI",
+  "graphicsChipset": "AMD Radeon RX 9060 XT Gaming",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 64500,
+  "discount": 11,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 23,
+  "availability": 9,
+  "features": [
+    "Large VRAM Buffer for Heavy Workloads",
+    "PCIe 5.0 Interface",
+    "BTF Back-Connector Design"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/msi-amd-radeon-rx-9060-xt-gaming-graphics-card-1.jpg",
+    "/images/graphics_cards/msi-amd-radeon-rx-9060-xt-gaming-graphics-card-2.jpg",
+    "/images/graphics_cards/msi-amd-radeon-rx-9060-xt-gaming-graphics-card-3.jpg",
+    "/images/graphics_cards/msi-amd-radeon-rx-9060-xt-gaming-graphics-card-4.webp"
+  ],
+  "sku": "GRA-0021-IDE18",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:20:02.318Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58aa"
+  },
+  "name": "ASUS NVIDIA Dual GeForce RTX 5060 Graphics Card",
+  "brand": "ASUS",
+  "graphicsChipset": "NVIDIA Dual GeForce RTX 5060",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "8GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "White",
+  "price": 41000,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.2,
+  "reviewCount": 66,
+  "availability": 10,
+  "features": [
+    "Triple-Fan Cooling",
+    "BTF Back-Connector Design",
+    "FSR Support"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/asus-nvidia-dual-geforce-rtx-5060-graphics-card-1.jpg",
+    "/images/graphics_cards/asus-nvidia-dual-geforce-rtx-5060-graphics-card-2.jpg",
+    "/images/graphics_cards/asus-nvidia-dual-geforce-rtx-5060-graphics-card-3.png",
+    "/images/graphics_cards/asus-nvidia-dual-geforce-rtx-5060-graphics-card-4.png"
+  ],
+  "sku": "GRA-0022-U8KIX",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:20:08.334Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58ab"
+  },
+  "name": "ASUS NVIDIA TUF Gaming RTX 5070 Graphics Card",
+  "brand": "ASUS",
+  "graphicsChipset": "NVIDIA TUF Gaming RTX 5070",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "12GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 89000,
+  "discount": 14,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 48,
+  "availability": 3,
+  "features": [
+    "Factory Overclocked",
+    "PCIe 5.0 Interface",
+    "Large VRAM Buffer for Heavy Workloads"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/asus-nvidia-tuf-gaming-rtx-5070-graphics-card-1.jpg",
+    "/images/graphics_cards/asus-nvidia-tuf-gaming-rtx-5070-graphics-card-2.jpg",
+    "/images/graphics_cards/asus-nvidia-tuf-gaming-rtx-5070-graphics-card-3.png",
+    "/images/graphics_cards/asus-nvidia-tuf-gaming-rtx-5070-graphics-card-4.png"
+  ],
+  "sku": "GRA-0023-X7NDG",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:20:12.672Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58ac"
+  },
+  "name": "ASUS NVIDIA TUF Gaming RTX 5070 Ti Graphics Card",
+  "brand": "ASUS",
+  "graphicsChipset": "NVIDIA TUF Gaming RTX 5070 Ti",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "White",
+  "price": 125000,
+  "discount": 0,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 51,
+  "availability": 2,
+  "features": [
+    "BTF Back-Connector Design",
+    "RGB Lighting",
+    "FSR Support"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/asus-nvidia-tuf-gaming-rtx-5070-ti-graphics-card-1.jpg",
+    "/images/graphics_cards/asus-nvidia-tuf-gaming-rtx-5070-ti-graphics-card-2.jpg",
+    "/images/graphics_cards/asus-nvidia-tuf-gaming-rtx-5070-ti-graphics-card-3.png",
+    "/images/graphics_cards/asus-nvidia-tuf-gaming-rtx-5070-ti-graphics-card-4.png"
+  ],
+  "sku": "GRA-0024-DBH75",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:20:16.965Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58ad"
+  },
+  "name": "ASUS NVIDIA ROG Strix RTX 5080 OC Graphics Card",
+  "brand": "ASUS",
+  "graphicsChipset": "NVIDIA ROG Strix RTX 5080 OC",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "White",
+  "price": 178000,
+  "discount": 11,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 40,
+  "availability": 2,
+  "features": [
+    "DLSS 4 Support",
+    "Factory Overclocked",
+    "Large VRAM Buffer for Heavy Workloads"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/asus-nvidia-rog-strix-rtx-5080-oc-graphics-card-1.jpg",
+    "/images/graphics_cards/asus-nvidia-rog-strix-rtx-5080-oc-graphics-card-2.jpg",
+    "/images/graphics_cards/asus-nvidia-rog-strix-rtx-5080-oc-graphics-card-3.png",
+    "/images/graphics_cards/asus-nvidia-rog-strix-rtx-5080-oc-graphics-card-4.png"
+  ],
+  "sku": "GRA-0025-WOBTC",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:20:20.289Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58ae"
+  },
+  "name": "ASUS NVIDIA ROG Astral RTX 5090 32GB OC Graphics Card",
+  "brand": "ASUS",
+  "graphicsChipset": "NVIDIA ROG Astral RTX 5090 32GB OC",
+  "gpuSeries": "NVIDIA Blackwell",
+  "memoryType": "GDDR7",
+  "memorySize": "32GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "White",
+  "price": 728000,
+  "discount": 0,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 33,
+  "availability": 3,
+  "features": [
+    "FSR Support",
+    "Ideal for 4K Gaming",
+    "PCIe 5.0 Interface"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/asus-nvidia-rog-astral-rtx-5090-32gb-oc-graphics-card-1.jpg",
+    "/images/graphics_cards/asus-nvidia-rog-astral-rtx-5090-32gb-oc-graphics-card-2.jpg",
+    "/images/graphics_cards/asus-nvidia-rog-astral-rtx-5090-32gb-oc-graphics-card-3.jpg",
+    "/images/graphics_cards/asus-nvidia-rog-astral-rtx-5090-32gb-oc-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0026-NL8ZL",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:20:23.528Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58af"
+  },
+  "name": "ASUS AMD Prime Radeon RX 9070 Graphics Card",
+  "brand": "ASUS",
+  "graphicsChipset": "AMD Prime Radeon RX 9070",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "White",
+  "price": 90000,
+  "discount": 18,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 34,
+  "availability": 10,
+  "features": [
+    "DLSS 4 Support",
+    "Ideal for 4K Gaming",
+    "Triple-Fan Cooling"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/asus-amd-prime-radeon-rx-9070-graphics-card-1.jpg",
+    "/images/graphics_cards/asus-amd-prime-radeon-rx-9070-graphics-card-2.jpg",
+    "/images/graphics_cards/asus-amd-prime-radeon-rx-9070-graphics-card-3.jpg",
+    "/images/graphics_cards/asus-amd-prime-radeon-rx-9070-graphics-card-4.png"
+  ],
+  "sku": "GRA-0027-8FE4K",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:20:28.971Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58b0"
+  },
+  "name": "ASUS AMD TUF Gaming RX 9070 XT Graphics Card",
+  "brand": "ASUS",
+  "graphicsChipset": "AMD TUF Gaming RX 9070 XT",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 114500,
+  "discount": 3,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 27,
+  "availability": 1,
+  "features": [
+    "FSR Support",
+    "PCIe 5.0 Interface",
+    "Large VRAM Buffer for Heavy Workloads"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/asus-amd-tuf-gaming-rx-9070-xt-graphics-card-1.jpg",
+    "/images/graphics_cards/asus-amd-tuf-gaming-rx-9070-xt-graphics-card-2.png",
+    "/images/graphics_cards/asus-amd-tuf-gaming-rx-9070-xt-graphics-card-3.png",
+    "/images/graphics_cards/asus-amd-tuf-gaming-rx-9070-xt-graphics-card-4.png"
+  ],
+  "sku": "GRA-0028-9936G",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:20:35.857Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58b1"
+  },
+  "name": "ASUS AMD ROG Strix RX 9070 XT OC Graphics Card",
+  "brand": "ASUS",
+  "graphicsChipset": "AMD ROG Strix RX 9070 XT OC",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 121000,
+  "discount": 14,
+  "warranty": "3 Years",
+  "rating": 4.6,
+  "reviewCount": 23,
+  "availability": 5,
+  "features": [
+    "Strong 1440p Performance",
+    "RGB Lighting",
+    "Factory Overclocked"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/asus-amd-rog-strix-rx-9070-xt-oc-graphics-card-1.jpg",
+    "/images/graphics_cards/asus-amd-rog-strix-rx-9070-xt-oc-graphics-card-2.jpg",
+    "/images/graphics_cards/asus-amd-rog-strix-rx-9070-xt-oc-graphics-card-3.jpg",
+    "/images/graphics_cards/asus-amd-rog-strix-rx-9070-xt-oc-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0029-4AJDD",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:20:39.087Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58b2"
+  },
+  "name": "PowerColor AMD Hellhound RX 9060 XT 16GB Graphics Card",
+  "brand": "PowerColor",
+  "graphicsChipset": "AMD Hellhound RX 9060 XT 16GB",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "White",
+  "price": 62500,
+  "discount": 10,
+  "warranty": "3 Years",
+  "rating": 4.2,
+  "reviewCount": 59,
+  "availability": 4,
+  "features": [
+    "Strong 1440p Performance",
+    "PCIe 5.0 Interface",
+    "Large VRAM Buffer for Heavy Workloads"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/powercolor-amd-hellhound-rx-9060-xt-16gb-graphics-card-1.jpg",
+    "/images/graphics_cards/powercolor-amd-hellhound-rx-9060-xt-16gb-graphics-card-2.jpg",
+    "/images/graphics_cards/powercolor-amd-hellhound-rx-9060-xt-16gb-graphics-card-3.jpg",
+    "/images/graphics_cards/powercolor-amd-hellhound-rx-9060-xt-16gb-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0030-37JGY",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:20:44.970Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58b3"
+  },
+  "name": "PowerColor AMD Hellhound RX 9070 XT 16GB Graphics Card",
+  "brand": "PowerColor",
+  "graphicsChipset": "AMD Hellhound RX 9070 XT 16GB",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 115500,
+  "discount": 10,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 35,
+  "availability": 2,
+  "features": [
+    "Dual-Fan Cooling",
+    "RGB Lighting",
+    "FSR Support"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/powercolor-amd-hellhound-rx-9070-xt-16gb-graphics-card-1.jpg",
+    "/images/graphics_cards/powercolor-amd-hellhound-rx-9070-xt-16gb-graphics-card-2.jpg",
+    "/images/graphics_cards/powercolor-amd-hellhound-rx-9070-xt-16gb-graphics-card-3.jpg",
+    "/images/graphics_cards/powercolor-amd-hellhound-rx-9070-xt-16gb-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0031-FJ7Y3",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:20:49.875Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58b4"
+  },
+  "name": "PowerColor AMD Red Devil RX 9070 XT Graphics Card",
+  "brand": "PowerColor",
+  "graphicsChipset": "AMD Red Devil RX 9070 XT",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 129000,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.3,
+  "reviewCount": 48,
+  "availability": 5,
+  "features": [
+    "Dual-Fan Cooling",
+    "DLSS 4 Support",
+    "Ideal for 4K Gaming"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/powercolor-amd-red-devil-rx-9070-xt-graphics-card-1.jpg",
+    "/images/graphics_cards/powercolor-amd-red-devil-rx-9070-xt-graphics-card-2.jpg",
+    "/images/graphics_cards/powercolor-amd-red-devil-rx-9070-xt-graphics-card-3.jpg",
+    "/images/graphics_cards/powercolor-amd-red-devil-rx-9070-xt-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0032-8YW48",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:20:54.093Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58b5"
+  },
+  "name": "PowerColor AMD Fighter RX 9060 XT 8GB Graphics Card",
+  "brand": "PowerColor",
+  "graphicsChipset": "AMD Fighter RX 9060 XT 8GB",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "8GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "White",
+  "price": 47500,
+  "discount": 16,
+  "warranty": "3 Years",
+  "rating": 4.4,
+  "reviewCount": 41,
+  "availability": 17,
+  "features": [
+    "Triple-Fan Cooling",
+    "FSR Support",
+    "PCIe 5.0 Interface"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/powercolor-amd-fighter-rx-9060-xt-8gb-graphics-card-1.jpg",
+    "/images/graphics_cards/powercolor-amd-fighter-rx-9060-xt-8gb-graphics-card-2.jpg",
+    "/images/graphics_cards/powercolor-amd-fighter-rx-9060-xt-8gb-graphics-card-3.jpg",
+    "/images/graphics_cards/powercolor-amd-fighter-rx-9060-xt-8gb-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0033-3MO59",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:20:59.426Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58b6"
+  },
+  "name": "PowerColor AMD Reaper RX 9060 XT Graphics Card",
+  "brand": "PowerColor",
+  "graphicsChipset": "AMD Reaper RX 9060 XT",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 64000,
+  "discount": 5,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 28,
+  "availability": 5,
+  "features": [
+    "Strong 1440p Performance",
+    "Ideal for 4K Gaming",
+    "Large VRAM Buffer for Heavy Workloads"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/powercolor-amd-reaper-rx-9060-xt-graphics-card-1.jpg",
+    "/images/graphics_cards/powercolor-amd-reaper-rx-9060-xt-graphics-card-2.jpg",
+    "/images/graphics_cards/powercolor-amd-reaper-rx-9060-xt-graphics-card-3.jpg",
+    "/images/graphics_cards/powercolor-amd-reaper-rx-9060-xt-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0034-IK6SF",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:21:06.272Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03cbc2b1005fccf58b7"
+  },
+  "name": "PowerColor AMD Red Devil RX 9070 Graphics Card",
+  "brand": "PowerColor",
+  "graphicsChipset": "AMD Red Devil RX 9070",
+  "gpuSeries": "AMD RDNA 4",
+  "memoryType": "GDDR6",
+  "memorySize": "16GB",
+  "gpuMaxResolution": "7680 x 4320",
+  "color": "Black",
+  "price": 96500,
+  "discount": 12,
+  "warranty": "3 Years",
+  "rating": 4.5,
+  "reviewCount": 18,
+  "availability": 6,
+  "features": [
+    "DLSS 4 Support",
+    "Triple-Fan Cooling",
+    "Ideal for 4K Gaming"
+  ],
+  "category": "graphics_cards",
+  "images": [
+    "/images/graphics_cards/powercolor-amd-red-devil-rx-9070-graphics-card-1.jpg",
+    "/images/graphics_cards/powercolor-amd-red-devil-rx-9070-graphics-card-2.jpg",
+    "/images/graphics_cards/powercolor-amd-red-devil-rx-9070-graphics-card-3.jpg",
+    "/images/graphics_cards/powercolor-amd-red-devil-rx-9070-graphics-card-4.jpg"
+  ],
+  "sku": "GRA-0035-USH24",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:21:09.850Z"
+  }
+}]

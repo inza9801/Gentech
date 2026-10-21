@@ -25,6 +25,7 @@ class ProductCard(BaseModel):
 
     rating: float = 0
     reviewCount: int = 0
+    soldCount: int = 0
     availability: int = 0
     inStock: bool
     lowStock: bool

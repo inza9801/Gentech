@@ -1,0 +1,370 @@
+[{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58f9"
+  },
+  "name": "Uniview UPS850 850VA Offline UPS",
+  "brand": "Uniview",
+  "bodyMaterial": "Metal & ABS Plastic",
+  "outputCapacity": "510W",
+  "voltAmpere": 850,
+  "loadCapacity": 510,
+  "color": "Black",
+  "price": 4600,
+  "discount": 6,
+  "warranty": "2 Years",
+  "rating": 4.1,
+  "reviewCount": 50,
+  "availability": 23,
+  "features": [
+    "Line-Interactive",
+    "LCD Status Display",
+    "Pure Sine Wave Output"
+  ],
+  "category": "ups",
+  "images": [
+    "/images/ups/uniview-ups850-850va-offline-ups-1.jpg",
+    "/images/ups/uniview-ups850-850va-offline-ups-2.jpg",
+    "/images/ups/uniview-ups850-850va-offline-ups-3.jpg",
+    "/images/ups/uniview-ups850-850va-offline-ups-4.jpg"
+  ],
+  "sku": "UPS-0001-BLPAA",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:27:06.006Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58fa"
+  },
+  "name": "Uniview UPS1500 1500VA Offline UPS",
+  "brand": "Uniview",
+  "bodyMaterial": "ABS Plastic",
+  "outputCapacity": "900W",
+  "voltAmpere": 1500,
+  "loadCapacity": 900,
+  "color": "Black",
+  "price": 9500,
+  "discount": 12,
+  "warranty": "2 Years",
+  "rating": 4.2,
+  "reviewCount": 42,
+  "availability": 25,
+  "features": [
+    "Line-Interactive",
+    "Automatic Voltage Regulation (AVR)",
+    "Pure Sine Wave Output"
+  ],
+  "category": "ups",
+  "images": [
+    "/images/ups/uniview-ups1500-1500va-offline-ups-1.jpg",
+    "/images/ups/uniview-ups1500-1500va-offline-ups-2.jpg",
+    "/images/ups/uniview-ups1500-1500va-offline-ups-3.jpg",
+    "/images/ups/uniview-ups1500-1500va-offline-ups-4.jpg"
+  ],
+  "sku": "UPS-0002-C0WZA",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:27:10.704Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58fb"
+  },
+  "name": "Uniview UPS2000 2000VA Online UPS",
+  "brand": "Uniview",
+  "bodyMaterial": "Metal Body",
+  "outputCapacity": "1200W",
+  "voltAmpere": 2000,
+  "loadCapacity": 1200,
+  "color": "Black",
+  "price": 15000,
+  "discount": 14,
+  "warranty": "2 Years",
+  "rating": 4.3,
+  "reviewCount": 30,
+  "availability": 24,
+  "features": [
+    "Online Double Conversion",
+    "LCD Status Display",
+    "Pure Sine Wave Output"
+  ],
+  "category": "ups",
+  "images": [
+    "/images/ups/uniview-ups2000-2000va-online-ups-1.jpg",
+    "/images/ups/uniview-ups2000-2000va-online-ups-2.jpg",
+    "/images/ups/uniview-ups2000-2000va-online-ups-3.jpg",
+    "/images/ups/uniview-ups2000-2000va-online-ups-4.jpg"
+  ],
+  "sku": "UPS-0003-PAGNL",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:27:14.088Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58fc"
+  },
+  "name": "Uniview UPS3000 3000VA Online UPS",
+  "brand": "Uniview",
+  "bodyMaterial": "Metal & ABS Plastic",
+  "outputCapacity": "1800W",
+  "voltAmpere": 3000,
+  "loadCapacity": 1800,
+  "color": "Black",
+  "price": 17100,
+  "discount": 16,
+  "warranty": "2 Years",
+  "rating": 4.3,
+  "reviewCount": 26,
+  "availability": 27,
+  "features": [
+    "Online Double Conversion",
+    "Surge & Voltage Protection",
+    "Automatic Voltage Regulation (AVR)"
+  ],
+  "category": "ups",
+  "images": [
+    "/images/ups/uniview-ups3000-3000va-online-ups-1.jpg",
+    "/images/ups/uniview-ups3000-3000va-online-ups-2.jpg",
+    "/images/ups/uniview-ups3000-3000va-online-ups-3.jpg",
+    "/images/ups/uniview-ups3000-3000va-online-ups-4.jpg"
+  ],
+  "sku": "UPS-0004-NESVS",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:27:17.338Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58fd"
+  },
+  "name": "MaxGreen MG-LI-KSP1000 1000VA Offline UPS",
+  "brand": "MaxGreen",
+  "bodyMaterial": "ABS Plastic",
+  "outputCapacity": "600W",
+  "voltAmpere": 1000,
+  "loadCapacity": 600,
+  "color": "Black",
+  "price": 5400,
+  "discount": 10,
+  "warranty": "2 Years",
+  "rating": 4.1,
+  "reviewCount": 48,
+  "availability": 42,
+  "features": [
+    "Offline (Standby)",
+    "20-40 Minute Backup Time",
+    "Automatic Voltage Regulation (AVR)"
+  ],
+  "category": "ups",
+  "images": [
+    "/images/ups/maxgreen-mg-li-ksp1000-1000va-offline-ups-1.jpg",
+    "/images/ups/maxgreen-mg-li-ksp1000-1000va-offline-ups-2.jpg",
+    "/images/ups/maxgreen-mg-li-ksp1000-1000va-offline-ups-3.jpg",
+    "/images/ups/maxgreen-mg-li-ksp1000-1000va-offline-ups-4.webp"
+  ],
+  "sku": "UPS-0005-ZD6OM",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:27:45.968Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58fe"
+  },
+  "name": "MaxGreen MG-LI-KSP2000 2000VA Online UPS",
+  "brand": "MaxGreen",
+  "bodyMaterial": "Metal Body",
+  "outputCapacity": "1200W",
+  "voltAmpere": 2000,
+  "loadCapacity": 1200,
+  "color": "Black",
+  "price": 12400,
+  "discount": 20,
+  "warranty": "2 Years",
+  "rating": 4.3,
+  "reviewCount": 33,
+  "availability": 24,
+  "features": [
+    "Online Double Conversion",
+    "LCD Status Display",
+    "Surge & Voltage Protection"
+  ],
+  "category": "ups",
+  "images": [
+    "/images/ups/maxgreen-mg-li-ksp2000-2000va-online-ups-1.webp",
+    "/images/ups/maxgreen-mg-li-ksp2000-2000va-online-ups-2.jpg",
+    "/images/ups/maxgreen-mg-li-ksp2000-2000va-online-ups-3.jpg",
+    "/images/ups/maxgreen-mg-li-ksp2000-2000va-online-ups-4.webp"
+  ],
+  "sku": "UPS-0006-S74AJ",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:27:51.222Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf58ff"
+  },
+  "name": "Dahua DH-PFM33501500 1500VA Offline UPS",
+  "brand": "Dahua",
+  "bodyMaterial": "Metal & ABS Plastic",
+  "outputCapacity": "900W",
+  "voltAmpere": 1500,
+  "loadCapacity": 900,
+  "color": "Black",
+  "price": 7900,
+  "discount": 9,
+  "warranty": "1 Year",
+  "rating": 4.2,
+  "reviewCount": 39,
+  "availability": 22,
+  "features": [
+    "Line-Interactive",
+    "Compact Desktop Footprint",
+    "Pure Sine Wave Output"
+  ],
+  "category": "ups",
+  "images": [
+    "/images/ups/dahua-dh-pfm33501500-1500va-offline-ups-1.webp",
+    "/images/ups/dahua-dh-pfm33501500-1500va-offline-ups-2.jpg",
+    "/images/ups/dahua-dh-pfm33501500-1500va-offline-ups-3.jpg",
+    "/images/ups/dahua-dh-pfm33501500-1500va-offline-ups-4.jpg"
+  ],
+  "sku": "UPS-0007-OIBNF",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:27:57.883Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5900"
+  },
+  "name": "Dahua DH-PFM33503000 3000VA Online UPS",
+  "brand": "Dahua",
+  "bodyMaterial": "ABS Plastic",
+  "outputCapacity": "1800W",
+  "voltAmpere": 3000,
+  "loadCapacity": 1800,
+  "color": "Black",
+  "price": 22400,
+  "discount": 5,
+  "warranty": "1 Year",
+  "rating": 4.4,
+  "reviewCount": 26,
+  "availability": 6,
+  "features": [
+    "Online Double Conversion",
+    "Surge & Voltage Protection",
+    "Pure Sine Wave Output"
+  ],
+  "category": "ups",
+  "images": [
+    "/images/ups/dahua-dh-pfm33503000-3000va-online-ups-1.jpg",
+    "/images/ups/dahua-dh-pfm33503000-3000va-online-ups-2.jpg",
+    "/images/ups/dahua-dh-pfm33503000-3000va-online-ups-3.png",
+    "/images/ups/dahua-dh-pfm33503000-3000va-online-ups-4.webp"
+  ],
+  "sku": "UPS-0008-2FBSC",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:28:07.143Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5901"
+  },
+  "name": "Hikvision DS-UPS1500 1500VA Offline UPS",
+  "brand": "Hikvision",
+  "bodyMaterial": "Metal & ABS Plastic",
+  "outputCapacity": "900W",
+  "voltAmpere": 1500,
+  "loadCapacity": 900,
+  "color": "Black",
+  "price": 9500,
+  "discount": 8,
+  "warranty": "2 Years",
+  "rating": 4.3,
+  "reviewCount": 43,
+  "availability": 22,
+  "features": [
+    "Offline (Standby)",
+    "Compact Desktop Footprint",
+    "LCD Status Display"
+  ],
+  "category": "ups",
+  "images": [
+    "/images/ups/hikvision-ds-ups1500-1500va-offline-ups-1.webp",
+    "/images/ups/hikvision-ds-ups1500-1500va-offline-ups-2.jpg",
+    "/images/ups/hikvision-ds-ups1500-1500va-offline-ups-3.jpg",
+    "/images/ups/hikvision-ds-ups1500-1500va-offline-ups-4.png"
+  ],
+  "sku": "UPS-0009-AM1U1",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:28:16.517Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91c03dbc2b1005fccf5902"
+  },
+  "name": "Hikvision DS-UPS3000 3000VA Online UPS",
+  "brand": "Hikvision",
+  "bodyMaterial": "Metal Body",
+  "outputCapacity": "1800W",
+  "voltAmpere": 3000,
+  "loadCapacity": 1800,
+  "color": "Black",
+  "price": 18400,
+  "discount": 16,
+  "warranty": "2 Years",
+  "rating": 4.3,
+  "reviewCount": 26,
+  "availability": 14,
+  "features": [
+    "Online Double Conversion",
+    "LCD Status Display",
+    "Automatic Voltage Regulation (AVR)"
+  ],
+  "category": "ups",
+  "images": [
+    "/images/ups/hikvision-ds-ups3000-3000va-online-ups-1.jpg",
+    "/images/ups/hikvision-ds-ups3000-3000va-online-ups-2.webp",
+    "/images/ups/hikvision-ds-ups3000-3000va-online-ups-3.webp",
+    "/images/ups/hikvision-ds-ups3000-3000va-online-ups-4.png"
+  ],
+  "sku": "UPS-0010-9UNSU",
+  "createdAt": {
+    "$date": "2026-08-28T17:07:08.880Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T17:28:23.977Z"
+  }
+}]
