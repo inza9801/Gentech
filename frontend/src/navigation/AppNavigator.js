@@ -1,7 +1,8 @@
+import styles from '../styles/AppNavigatorStyles';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BrandMark } from '../components/BrandMark';
 import { colors } from '../theme/colors';
@@ -18,11 +19,16 @@ import { LoginScreen } from '../screens/LoginScreen';
 import { RegisterScreen } from '../screens/RegisterScreen';
 import { CheckoutScreen } from '../screens/CheckoutScreen';
 import { OrdersScreen } from '../screens/OrdersScreen';
+import { EditProfileScreen } from '../screens/EditProfileScreen';
+import { AdminConsoleScreen } from '../screens/AdminConsoleScreen';
+import { NotificationsScreen } from '../screens/NotificationsScreen';
+import { useNotifications } from '../context/NotificationContext';
 
 const Tabs = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 function BottomTabs() {
+  const { unreadCount } = useNotifications();
   return (
     <Tabs.Navigator
       screenOptions={({ route }) => ({
@@ -31,12 +37,15 @@ function BottomTabs() {
         tabBarInactiveTintColor: colors.muted,
         tabBarStyle: styles.tabBar,
         tabBarLabelStyle: styles.tabLabel,
+        tabBarBadge: route.name === 'Notifications' && unreadCount ? unreadCount : undefined,
+        tabBarBadgeStyle: styles.tabBadge,
         tabBarIcon: ({ color, size, focused }) => {
           const icons = {
             Home: focused ? 'home' : 'home-outline',
             Offers: focused ? 'pricetag' : 'pricetag-outline',
             Account: focused ? 'person' : 'person-outline',
             Chat: focused ? 'chatbubble-ellipses' : 'chatbubble-ellipses-outline',
+            Notifications: focused ? 'notifications' : 'notifications-outline',
           };
           return <Ionicons name={icons[route.name]} size={size} color={color} />;
         },
@@ -44,6 +53,7 @@ function BottomTabs() {
     >
       <Tabs.Screen name="Home" component={HomeScreen} />
       <Tabs.Screen name="Offers" component={OffersScreen} />
+      <Tabs.Screen name="Notifications" component={NotificationsScreen} />
       <Tabs.Screen name="Account" component={AccountScreen} />
       <Tabs.Screen name="Chat" component={ChatScreen} />
     </Tabs.Navigator>
@@ -57,7 +67,7 @@ function ScreenHeader({ title, onHomePress, onCartPress }) {
       <Pressable onPress={onHomePress} accessibilityLabel="GenTech home">
         <BrandMark compact />
       </Pressable>
-      <Text style={styles.headerTitle}>{title}</Text>
+      <Text numberOfLines={2} style={styles.headerTitle}>{title}</Text>
       <Pressable
         onPress={onCartPress}
         style={styles.cartButton}
@@ -110,6 +120,24 @@ export function AppNavigator() {
           />
         )}
       </Stack.Screen>
+      <Stack.Screen name="EditProfile">
+        {(props) => (
+          <StackScreen
+            {...props}
+            title="Edit profile"
+            component={EditProfileScreen}
+          />
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="AdminConsole">
+        {(props) => (
+          <StackScreen
+            {...props}
+            title="Admin"
+            component={AdminConsoleScreen}
+          />
+        )}
+      </Stack.Screen>
       <Stack.Screen name="CategoryBrands">
         {(props) => (
           <StackScreen
@@ -123,7 +151,7 @@ export function AppNavigator() {
         {(props) => (
           <StackScreen
             {...props}
-            title={props.route.params.brand}
+            title={props.route.params.brand || props.route.params.categoryName || 'Products'}
             component={BrandProductsScreen}
           />
         )}
@@ -156,48 +184,3 @@ export function AppNavigator() {
     </Stack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  tabBar: {
-    height: 66,
-    paddingHorizontal: 3,
-    paddingTop: 8,
-    paddingBottom: 7,
-    backgroundColor: colors.surface,
-    borderTopColor: colors.border,
-    elevation: 16,
-  },
-  tabLabel: { fontSize: 9, fontWeight: '700' },
-  stackScreen: { flex: 1, backgroundColor: colors.background },
-  screenHeader: {
-    height: 58,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: colors.ink,
-    paddingHorizontal: 18,
-  },
-  headerTitle: { color: '#FFFFFF', fontSize: 16, fontWeight: '800' },
-  cartButton: {
-    width: 38,
-    height: 38,
-    borderRadius: 14,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.inkSoft,
-    position: 'relative',
-  },
-  cartBadge: {
-    position: 'absolute',
-    top: -3,
-    right: -3,
-    minWidth: 17,
-    height: 17,
-    borderRadius: 9,
-    backgroundColor: colors.blue,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 3,
-  },
-  cartBadgeText: { color: '#FFFFFF', fontSize: 9, fontWeight: '900' },
-});

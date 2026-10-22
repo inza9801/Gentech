@@ -24,6 +24,7 @@ class ProductCard(BaseModel):
     warranty: str | None = None
 
     rating: float = 0
+    ratingCount: int = 0
     reviewCount: int = 0
     soldCount: int = 0
     availability: int = 0

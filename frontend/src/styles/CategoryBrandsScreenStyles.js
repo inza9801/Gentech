@@ -1,0 +1,67 @@
+import { StyleSheet } from 'react-native';
+import { colors } from '../theme/colors';
+
+const styles = StyleSheet.create({
+  root: { flex: 1, backgroundColor: colors.background },
+  content: { padding: 18, paddingBottom: 35 },
+  intro: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+    padding: 17,
+    backgroundColor: colors.surface,
+    borderRadius: 21,
+    borderWidth: 1,
+    borderColor: colors.border,
+    marginBottom: 21,
+  },
+  categoryIcon: {
+    width: 60,
+    height: 60,
+    borderRadius: 19,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  introCopy: { flex: 1, gap: 4 },
+  eyebrow: { color: colors.blue, fontSize: 9, fontWeight: '900', letterSpacing: 1.1 },
+  title: { color: colors.text, fontSize: 19, fontWeight: '900' },
+  subtitle: { color: colors.muted, fontSize: 11, lineHeight: 16 },
+  allProductsButton: {
+    minHeight: 48,
+    marginBottom: 15,
+    paddingHorizontal: 15,
+    borderRadius: 14,
+    backgroundColor: colors.blue,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  allProductsText: { color: '#FFFFFF', fontSize: 12, fontWeight: '900' },
+  loading: { minHeight: 200, alignItems: 'center', justifyContent: 'center', gap: 12 },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 11 },
+  brandCard: {
+    width: '48%',
+    minHeight: 111,
+    padding: 13,
+    borderRadius: 17,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  pressed: { opacity: 0.82 },
+  brandLogo: {
+    width: 39,
+    height: 39,
+    borderRadius: 13,
+    backgroundColor: colors.blueLight,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 9,
+  },
+  brandInitial: { color: colors.blue, fontSize: 18, fontWeight: '900' },
+  brandName: { color: colors.text, fontSize: 13, fontWeight: '800', paddingRight: 14 },
+  empty: { minHeight: 210, justifyContent: 'center', alignItems: 'center', gap: 8 },
+  emptyTitle: { color: colors.text, fontSize: 15, fontWeight: '800' },
+});
+
+export default styles;

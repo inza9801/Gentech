@@ -38,11 +38,12 @@ at `/images`.
 
 ```text
 src/
-  components/   Reusable product cards, image fallbacks, headings, load states
-  context/      Local shopping-bag state for the preview
-  navigation/   Home, Account and Chat tabs plus product/category stack screens
-  screens/      Home, product, brand, bag, account and chat views
-  services/     API client and endpoint-specific requests
+  components/   Shared product, form, selection and loading components
+  context/      Authentication, persistent cart and order notifications
+  navigation/   Home, Offers, Notifications, Account and Chat tabs
+  screens/      Storefront, checkout, profile and admin management screens
+  services/     API clients for catalog, commerce and protected admin endpoints
+  styles/       Screen- and component-specific React Native StyleSheet modules
   theme/        Shared palette and spacing
   utils/        Product formatting and category icon helpers
 ```
@@ -51,4 +52,8 @@ Home content, live search suggestions, category brands, product details,
 category filters and offers use the backend APIs. Customers can register and
 sign in, shop with a locally persisted guest cart, apply coupons, and place
 guest or authenticated orders. Mobile banking is an explicit bKash simulation
-and does not transfer money. The support chat remains presentation-only.
+and does not transfer money. Signed-in customers can edit their profile and see
+order-status updates in the in-app Notifications tab. Admin accounts can manage
+categories, products, coupons and order status from the Account tab's Admin
+console. Order notifications are refreshed while the app is active; remote push
+notifications are not configured. The support chat remains presentation-only.

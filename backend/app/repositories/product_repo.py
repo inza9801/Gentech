@@ -238,24 +238,24 @@ async def filter_category_products(
                 condition = {}
 
                 if "min" in value:
-                    condition["$gte"] = float(value["min"])
+                    condition["$gte"] = value["min"]
 
                 if "max" in value:
-                    condition["$lte"] = float(value["max"])
+                    condition["$lte"] = value["max"]
 
                 if condition:
                     query[field] = condition
             else:
-                query[field] = float(value)
+                query[field] = value
 
         elif definition["type"] == "text":
-            if isinstance(value, list):
-                query[field] = {"$in": value}
-            else:
-                query[field] = {
-                    "$regex": f"^{re.escape(str(value))}$",
-                    "$options": "i",
-                }
+            selected_values = value if isinstance(value, list) else [value]
+            query[field] = {
+                "$in": [
+                    re.compile(f"^{re.escape(str(item))}$", re.IGNORECASE)
+                    for item in selected_values
+                ]
+            }
 
     sort = (
         [("soldCount", -1), ("reviewCount", -1), ("rating", -1), ("createdAt", -1)]
@@ -343,18 +343,28 @@ async def get_offered_products(db, limit: int = 100, category_slug: str | None =
 async def get_category_filter_options(db, collection_name: str):
     config = FILTER_CONFIG.get(collection_name, {})
     options = {}
+    definitions = []
     for name, definition in config.items():
         values = await db[collection_name].distinct(definition["field"])
-        options[name] = sorted(
+        values = sorted(
             {
-                value
+                value.strip() if isinstance(value, str) else value
                 for value in values
                 if isinstance(value, (str, int, float))
                 and not isinstance(value, bool)
-                and value != ""
+                and (not isinstance(value, str) or value.strip())
             },
             key=lambda value: (str(type(value)), str(value).casefold()),
         )
+        options[name] = values
+        definitions.append({
+            "key": name,
+            "label": definition["label"],
+            "type": definition["type"],
+            "options": values if definition["type"] == "text" else [],
+            "min": min(values) if definition["type"] == "number" and values else None,
+            "max": max(values) if definition["type"] == "number" and values else None,
+        })
     price_values = await db[collection_name].distinct("price")
     prices = [
         value
@@ -363,6 +373,7 @@ async def get_category_filter_options(db, collection_name: str):
     ]
     return {
         "filters": options,
+        "filterDefinitions": definitions,
         "minPrice": min(prices, default=0),
         "maxPrice": max(prices, default=0),
     }

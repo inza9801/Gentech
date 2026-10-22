@@ -1,4 +1,4 @@
-import { apiGet } from './api';
+import { apiGet, apiRequest } from './api';
 
 export const getLatestProducts = () => apiGet('/products/latest?limit=10');
 
@@ -10,6 +10,18 @@ export const searchProducts = (query, options) =>
 
 export const getProductDetails = (productId) =>
   apiGet(`/products/${encodeURIComponent(productId)}`);
+
+export const getProductReviews = (productId, categorySlug, token) =>
+  apiGet(
+    `/products/${encodeURIComponent(productId)}/reviews?categorySlug=${encodeURIComponent(categorySlug)}`,
+    { token },
+  );
+
+export const saveProductReview = (productId, categorySlug, body, token) =>
+  apiRequest(
+    `/products/${encodeURIComponent(productId)}/reviews?categorySlug=${encodeURIComponent(categorySlug)}`,
+    { method: 'PUT', body, token },
+  );
 
 export const getCategoryProducts = (slug, brand) =>
   apiGet(

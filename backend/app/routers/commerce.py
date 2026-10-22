@@ -10,12 +10,13 @@ from pymongo.errors import DuplicateKeyError
 from app.core.config import settings
 from app.core.database import get_db
 from app.core.security import (
-    get_optional_current_user,
+    get_current_user as authenticated_user,
     require_customer as current_customer,
 )
 from app.schemas.commerce import (
     CustomerRegister,
     CustomerLogin,
+    CustomerProfileUpdate,
     CartItemInput,
     CheckoutInput,
 )
@@ -129,19 +130,50 @@ async def login_customer(
             "name": customer["name"],
             "phone": customer["phone"],
             "email": customer["email"],
+            "role": customer.get("role", "customer"),
         },
     }
 
 
 @router.get("/customers/me")
 async def get_my_profile(
-    customer=Depends(current_customer),
+    customer=Depends(authenticated_user),
 ):
     return {
         "id": str(customer["_id"]),
         "name": customer["name"],
         "phone": customer["phone"],
         "email": customer["email"],
+        "role": customer.get("role", "customer"),
+    }
+
+
+@router.patch("/customers/me")
+async def update_my_profile(
+    body: CustomerProfileUpdate,
+    customer=Depends(authenticated_user),
+    db=Depends(get_db),
+):
+    changes = body.model_dump(exclude_unset=True)
+    changes = {
+        key: value.strip()
+        for key, value in changes.items()
+        if value is not None
+    }
+    if not changes:
+        raise HTTPException(status_code=400, detail="No profile changes supplied")
+
+    changes["updatedAt"] = datetime.now(timezone.utc)
+    await db.customers.update_one(
+        {"_id": customer["_id"]},
+        {"$set": changes},
+    )
+    return {
+        "id": str(customer["_id"]),
+        "name": changes.get("name", customer["name"]),
+        "phone": changes.get("phone", customer["phone"]),
+        "email": customer["email"],
+        "role": customer.get("role", "customer"),
     }
 
 
@@ -278,6 +310,7 @@ async def get_areas(
 async def validate_coupon(
     code: str,
     subtotal: int = 0,
+    customer=Depends(current_customer),
     db=Depends(get_db),
 ):
     coupon = await db.coupons.find_one({
@@ -337,7 +370,7 @@ async def validate_coupon(
 @router.post("/orders", status_code=201)
 async def place_order(
     body: CheckoutInput,
-    customer=Depends(get_optional_current_user),
+    customer=Depends(current_customer),
     db=Depends(get_db),
 ):
     # Validate delivery area.
@@ -363,6 +396,15 @@ async def place_order(
 
     if not items:
         raise HTTPException(status_code=400, detail="Cart is empty")
+
+    consolidated = {}
+    for item in items:
+        key = (item["categorySlug"], item["productId"])
+        consolidated[key] = consolidated.get(key, 0) + item["quantity"]
+    items = [
+        {"categorySlug": category_slug, "productId": product_id, "quantity": quantity}
+        for (category_slug, product_id), quantity in consolidated.items()
+    ]
 
     order_items = []
     subtotal = 0
@@ -451,6 +493,16 @@ async def place_order(
 
     now = datetime.now(timezone.utc)
     order_number = "GT-" + str(ObjectId())
+    mobile_payment = None
+    if body.paymentType == "mobile":
+        mobile_payment = {
+            "provider": "bKash demo",
+            "simulated": True,
+            "transactionId": f"SIM-{order_number.removeprefix('GT-')}",
+            "payer": f"******{body.paymentPhone[-4:]}",
+            "status": "successful",
+            "message": "Demo payment simulated successfully; no real payment was made.",
+        }
 
     order = {
         "orderNumber": order_number,
@@ -464,7 +516,8 @@ async def place_order(
             "notes": body.notes,
         },
         "paymentType": body.paymentType,
-        "paymentStatus": "pending",
+        "paymentStatus": "paid" if mobile_payment else "pending",
+        "mobilePayment": mobile_payment,
         "status": "placed",
         "items": order_items,
         "subtotal": subtotal,
@@ -502,12 +555,7 @@ async def place_order(
         "total": total,
     }
     if body.paymentType == "mobile":
-        response["mobilePayment"] = {
-            "provider": "bKash",
-            "simulated": True,
-            "transactionId": f"SIM-{order_number.removeprefix('GT-')}",
-            "message": "Simulated payment only; no money was transferred.",
-        }
+        response["mobilePayment"] = mobile_payment
     return response
 
 

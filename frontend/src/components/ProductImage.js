@@ -1,5 +1,6 @@
+import styles from '../styles/ProductImageStyles';
 import { useState } from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { imageUrl } from '../services/api';
 import { colors } from '../theme/colors';
@@ -38,19 +39,4 @@ export function ProductImage({
   );
 }
 
-const styles = StyleSheet.create({
-  base: {
-    overflow: 'hidden',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  card: { width: '100%', height: 124, borderRadius: 15 },
-  row: { width: 70, height: 70, borderRadius: 14 },
-  large: { width: '100%', height: 300, borderRadius: 24 },
-  image: { width: '100%', height: '100%' },
-  fallback: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+

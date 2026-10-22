@@ -1,4 +1,4 @@
-import { apiDelete, apiGet, apiPost } from './api';
+import { apiDelete, apiGet, apiPost, apiRequest } from './api';
 
 export const registerCustomer = (body) =>
   apiPost('/customers/register', body);
@@ -9,15 +9,19 @@ export const loginCustomer = (body) =>
 export const getMyProfile = (token) =>
   apiGet('/customers/me', { token });
 
+export const updateMyProfile = (body, token) =>
+  apiRequest('/customers/me', { token, method: 'PATCH', body });
+
 export const getDistricts = () => apiGet('/locations/districts');
 
 export const getAreas = (district) =>
   apiGet(`/locations/areas?district=${encodeURIComponent(district)}`);
 
-export const validateCoupon = (code, subtotal) =>
+export const validateCoupon = (code, subtotal, token) =>
   apiPost(
     `/coupons/validate?code=${encodeURIComponent(code)}&subtotal=${subtotal}`,
     {},
+    { token },
   );
 
 export const placeOrder = (body, token) =>

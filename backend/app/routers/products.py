@@ -1,9 +1,15 @@
 import json
+import math
+from datetime import datetime, timezone
 from typing import Literal
 
+from bson import ObjectId
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
+from pymongo.errors import DuplicateKeyError
 
 from app.core.database import get_db
+from app.core.security import get_optional_current_user, require_customer
+from app.schemas.commerce import ProductReviewInput
 from app.schemas.product import ProductCard, ProductDetail
 from app.services import product_service
 from app.repositories import category_repo, product_repo
@@ -93,12 +99,60 @@ async def filter_products(
                 detail=f"Unsupported filters: {', '.join(sorted(unknown))}",
             )
         supplied = parsed_filters
+        filter_config = FILTER_CONFIG.get(category["collection"], {})
+        for key, value in supplied.items():
+            definition = filter_config[key]
+            if definition["type"] == "text":
+                values = value if isinstance(value, list) else [value]
+                if not values or any(not isinstance(item, str) or not item.strip() for item in values):
+                    raise HTTPException(
+                        status_code=422,
+                        detail=f"Filter {key} must contain non-empty text values",
+                    )
+                supplied[key] = [item.strip() for item in values]
+                continue
+
+            bounds = value if isinstance(value, dict) else {"min": value, "max": value}
+            if not bounds or set(bounds) - {"min", "max"}:
+                raise HTTPException(
+                    status_code=422,
+                    detail=f"Filter {key} must contain numeric min/max bounds",
+                )
+            for bound, bound_value in bounds.items():
+                if (
+                    isinstance(bound_value, bool)
+                    or not isinstance(bound_value, (int, float))
+                    or not math.isfinite(bound_value)
+                ):
+                    raise HTTPException(
+                        status_code=422,
+                        detail=f"Filter {key} {bound} must be a finite number",
+                    )
+            if (
+                "min" in bounds
+                and "max" in bounds
+                and bounds["min"] > bounds["max"]
+            ):
+                raise HTTPException(
+                    status_code=422,
+                    detail=f"Filter {key} minimum cannot exceed its maximum",
+                )
 
     # Keep the original scalar query parameters working for existing clients.
     for key in FILTER_CONFIG.get(category["collection"], {}):
         value = request.query_params.get(key)
         if value is not None and key not in supplied:
-            supplied[key] = value
+            definition = FILTER_CONFIG[category["collection"]][key]
+            if definition["type"] == "number":
+                try:
+                    supplied[key] = float(value)
+                except ValueError as error:
+                    raise HTTPException(
+                        status_code=422,
+                        detail=f"Filter {key} must be a number",
+                    ) from error
+            else:
+                supplied[key] = value
 
     documents = await product_repo.filter_category_products(
         db,
@@ -142,6 +196,147 @@ async def search_products(
         product_service.to_card(document, category)
         for document, category in results
     ]
+
+@router.get("/{product_id}/reviews")
+async def get_product_reviews(
+    product_id: str,
+    category_slug: str = Query(alias="categorySlug"),
+    customer=Depends(get_optional_current_user),
+    db=Depends(get_db),
+):
+    result = await product_repo.get_product_by_id(db, product_id)
+    if result is None or result[1]["slug"] != category_slug:
+        raise HTTPException(status_code=404, detail="Product not found")
+
+    query = {"productId": product_id, "categorySlug": category_slug}
+    reviews = await (
+        db.reviews.find(query)
+        .sort("updatedAt", -1)
+        .limit(100)
+        .to_list(length=100)
+    )
+    summary = await db.reviews.aggregate([
+        {"$match": query},
+        {
+            "$group": {
+                "_id": None,
+                "reviewCount": {"$sum": 1},
+                "ratingCount": {
+                    "$sum": {"$cond": [{"$ne": ["$rating", None]}, 1, 0]}
+                },
+                "averageRating": {"$avg": "$rating"},
+            }
+        },
+    ]).to_list(length=1)
+    own_review = None
+    if customer:
+        own_review = await db.reviews.find_one(
+            {**query, "customerId": customer["_id"]}
+        )
+
+    def serialize(review):
+        return {
+            "id": str(review["_id"]),
+            "customerName": review["customerName"],
+            "rating": review.get("rating"),
+            "text": review.get("text"),
+            "createdAt": review["createdAt"].isoformat(),
+            "updatedAt": review["updatedAt"].isoformat(),
+        }
+
+    stats = summary[0] if summary else {}
+    has_saved_reviews = stats.get("reviewCount", 0) > 0
+    return {
+        "reviews": [serialize(review) for review in reviews],
+        "reviewCount": (
+            stats.get("reviewCount", 0)
+            if has_saved_reviews
+            else result[0].get("reviewCount", 0)
+        ),
+        "ratingCount": (
+            stats.get("ratingCount", 0)
+            if has_saved_reviews
+            else result[0].get("ratingCount", result[0].get("reviewCount", 0))
+        ),
+        "averageRating": round(
+            (stats.get("averageRating") or 0)
+            if has_saved_reviews
+            else (result[0].get("rating", 0) or 0),
+            1,
+        ),
+        "myReview": serialize(own_review) if own_review else None,
+    }
+
+
+@router.put("/{product_id}/reviews")
+async def upsert_product_review(
+    product_id: str,
+    body: ProductReviewInput,
+    category_slug: str = Query(alias="categorySlug"),
+    customer=Depends(require_customer),
+    db=Depends(get_db),
+):
+    result = await product_repo.get_product_by_id(db, product_id)
+    if result is None or result[1]["slug"] != category_slug:
+        raise HTTPException(status_code=404, detail="Product not found")
+
+    now = datetime.now(timezone.utc)
+    query = {
+        "productId": product_id,
+        "categorySlug": category_slug,
+        "customerId": customer["_id"],
+    }
+    changes = {
+        "rating": body.rating,
+        "text": body.text,
+        "customerName": customer["name"],
+        "updatedAt": now,
+    }
+    try:
+        await db.reviews.update_one(
+            query,
+            {
+                "$set": changes,
+                "$setOnInsert": {"createdAt": now},
+            },
+            upsert=True,
+        )
+    except DuplicateKeyError:
+        await db.reviews.update_one(query, {"$set": changes})
+
+    stats = await db.reviews.aggregate([
+        {"$match": {"productId": product_id, "categorySlug": category_slug}},
+        {
+            "$group": {
+                "_id": None,
+                "reviewCount": {"$sum": 1},
+                "ratingCount": {
+                    "$sum": {"$cond": [{"$ne": ["$rating", None]}, 1, 0]}
+                },
+                "averageRating": {"$avg": "$rating"},
+            }
+        },
+    ]).to_list(length=1)
+    summary = stats[0] if stats else {}
+    await db[result[1]["collection"]].update_one(
+        {"_id": ObjectId(product_id)},
+        {
+            "$set": {
+                "rating": round(summary.get("averageRating") or 0, 1),
+                "ratingCount": summary.get("ratingCount", 0),
+                "reviewCount": summary.get("reviewCount", 0),
+            }
+        },
+    )
+    review = await db.reviews.find_one(query)
+    return {
+        "id": str(review["_id"]),
+        "customerName": review["customerName"],
+        "rating": review.get("rating"),
+        "text": review.get("text"),
+        "createdAt": review["createdAt"].isoformat(),
+        "updatedAt": review["updatedAt"].isoformat(),
+    }
 
 @router.get("/{product_id}", response_model=ProductDetail)
 async def product_details(

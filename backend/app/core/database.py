@@ -13,6 +13,11 @@ async def connect():
 
     # Check whether MongoDB is reachable
     await client.admin.command("ping")
+    await db.reviews.create_index(
+        [("productId", 1), ("categorySlug", 1), ("customerId", 1)],
+        unique=True,
+        name="one_review_per_customer_product",
+    )
 
     print("Connected to MongoDB:", settings.mongodb_db)
 

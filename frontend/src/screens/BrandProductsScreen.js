@@ -1,3 +1,4 @@
+import styles from '../styles/BrandProductsScreenStyles';
 import { useCallback, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -5,7 +6,6 @@ import {
   Modal,
   Pressable,
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   View,
@@ -38,13 +38,18 @@ export function BrandProductsScreen({ route, navigation }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const cardWidth = (width - 18 * 2 - 10) / 2;
+  const selectedFilterCount = Object.values(selected).reduce((count, value) => {
+    if (Array.isArray(value)) return count + value.length;
+    if (value && typeof value === 'object') {
+      return count + Number(Boolean(value.min)) + Number(Boolean(value.max));
+    }
+    return count + Number(Boolean(value));
+  }, 0);
 
   const loadFilterOptions = useCallback(async () => {
     try {
       const options = await getCategoryFilterOptions(slug);
       setFilterOptions(options);
-      setMinPrice(String(options.minPrice || ''));
-      setMaxPrice(String(options.maxPrice || ''));
     } catch (reason) {
       setError(reason.message);
     }
@@ -54,12 +59,13 @@ export function BrandProductsScreen({ route, navigation }) {
     setLoading(true);
     setError(null);
     try {
+      const normalizedFilters = normalizeFilters(filterState);
       const result = await filterCategoryProducts(slug, {
-        brand,
+        brand: brand || undefined,
         min_price: (overrides.minPrice ?? minPrice) === '' ? undefined : Number(overrides.minPrice ?? minPrice),
         max_price: (overrides.maxPrice ?? maxPrice) === '' ? undefined : Number(overrides.maxPrice ?? maxPrice),
         in_stock: (overrides.inStock ?? inStock) ? true : undefined,
-        filters: filterState,
+        filters: normalizedFilters,
         sort: sort === 'best' ? 'best' : 'newest',
       });
       setProducts(result);
@@ -81,7 +87,17 @@ export function BrandProductsScreen({ route, navigation }) {
   const chooseFilter = (key, value) => {
     setSelected((current) => ({
       ...current,
-      [key]: current[key] === value ? undefined : value,
+      [key]: (Array.isArray(current[key]) ? current[key] : current[key] ? [current[key]] : [])
+        .includes(value)
+        ? (Array.isArray(current[key]) ? current[key] : [current[key]]).filter((item) => item !== value)
+        : [...(Array.isArray(current[key]) ? current[key] : current[key] ? [current[key]] : []), value],
+    }));
+  };
+
+  const updateNumericFilter = (key, bound, value) => {
+    setSelected((current) => ({
+      ...current,
+      [key]: { ...(current[key] || {}), [bound]: value },
     }));
   };
 
@@ -93,6 +109,34 @@ export function BrandProductsScreen({ route, navigation }) {
     loadProducts({}, { minPrice: '', maxPrice: '', inStock: false });
   };
 
+  const applyFilters = () => {
+    const currentMin = minPrice.trim() ? Number(minPrice) : undefined;
+    const currentMax = maxPrice.trim() ? Number(maxPrice) : undefined;
+    if (
+      (currentMin !== undefined && !Number.isFinite(currentMin))
+      || (currentMax !== undefined && !Number.isFinite(currentMax))
+      || (currentMin !== undefined && currentMax !== undefined && currentMin > currentMax)
+    ) {
+      setError('Enter a valid price range.');
+      return;
+    }
+    try {
+      normalizeFilters(selected);
+    } catch (reason) {
+      setError(reason.message);
+      return;
+    }
+    setDrawerOpen(false);
+    loadProducts();
+  };
+
+  const filterDefinitions = filterOptions.filterDefinitions
+    || Object.entries(filterOptions.filters || {}).map(([key, options]) => ({
+      key,
+      label: formatLabel(key),
+      type: 'text',
+      options,
+    }));
   const visibleProducts = products;
 
   return (
@@ -100,11 +144,13 @@ export function BrandProductsScreen({ route, navigation }) {
       <View style={styles.titleRow}>
         <View style={styles.titleCopy}>
           <Text style={styles.category}>{categoryName || 'Products'}</Text>
-          <Text style={styles.title}>{brand}</Text>
+          <Text style={styles.title}>{brand || 'All products'}</Text>
         </View>
         <Pressable onPress={() => setDrawerOpen(true)} style={styles.filterButton}>
           <Ionicons name="options-outline" size={17} color="#FFFFFF" />
-          <Text style={styles.filterButtonText}>Filter</Text>
+          <Text style={styles.filterButtonText}>
+            Filter{selectedFilterCount ? ` (${selectedFilterCount})` : ''}
+          </Text>
         </Pressable>
       </View>
       <View style={styles.sortRow}>
@@ -116,7 +162,7 @@ export function BrandProductsScreen({ route, navigation }) {
         {!loading && !error ? <Text style={styles.count}>{visibleProducts.length} items</Text> : null}
       </View>
       {loading ? (
-        <View style={styles.loading}><ActivityIndicator size="large" color={colors.blue} /><Text style={styles.hint}>Finding {brand} products...</Text></View>
+        <View style={styles.loading}><ActivityIndicator size="large" color={colors.blue} /><Text style={styles.hint}>Finding {brand ? `${brand} ` : ''}products...</Text></View>
       ) : error ? (
         <View style={styles.error}><ErrorState message={error} onRetry={loadProducts} /></View>
       ) : visibleProducts.length ? (
@@ -144,7 +190,7 @@ export function BrandProductsScreen({ route, navigation }) {
           <Pressable style={styles.scrim} onPress={() => setDrawerOpen(false)} />
           <View style={styles.drawer}>
             <View style={styles.drawerHeader}>
-              <View><Text style={styles.drawerTitle}>Filter products</Text><Text style={styles.drawerSubtitle}>{categoryName} · {brand}</Text></View>
+              <View><Text style={styles.drawerTitle}>Filter products</Text><Text style={styles.drawerSubtitle}>{categoryName} · {brand || 'All brands'}</Text></View>
               <Pressable onPress={() => setDrawerOpen(false)}><Ionicons name="close" size={23} color={colors.text} /></Pressable>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -158,25 +204,54 @@ export function BrandProductsScreen({ route, navigation }) {
                 <Ionicons name={inStock ? 'checkbox' : 'square-outline'} size={19} color={inStock ? colors.blue : colors.muted} />
                 <Text style={styles.filterValue}>In stock only</Text>
               </Pressable>
-              {Object.entries(filterOptions.filters || {}).map(([key, values]) => values?.length ? (
-                <View key={key} style={styles.filterGroup}>
-                  <Text style={styles.filterLabel}>{formatLabel(key)}</Text>
-                  <View style={styles.chips}>
-                    {values.map((value) => {
-                      const active = selected[key] === value;
-                      return (
-                        <Pressable key={String(value)} onPress={() => chooseFilter(key, value)} style={[styles.chip, active && styles.chipActive]}>
-                          <Text style={[styles.chipText, active && styles.chipTextActive]}>{String(value)}</Text>
-                        </Pressable>
-                      );
-                    })}
-                  </View>
+              {filterDefinitions.map((definition) => (
+                <View key={definition.key} style={styles.filterGroup}>
+                  <Text style={styles.filterLabel}>{definition.label}</Text>
+                  {definition.type === 'number' ? (
+                    <View style={styles.priceInputs}>
+                      <TextInput
+                        value={selected[definition.key]?.min || ''}
+                        onChangeText={(value) => updateNumericFilter(definition.key, 'min', value)}
+                        keyboardType="numeric"
+                        placeholder={definition.min == null ? 'Min' : `Min ${definition.min}`}
+                        style={styles.priceInput}
+                      />
+                      <Text style={styles.priceDash}>–</Text>
+                      <TextInput
+                        value={selected[definition.key]?.max || ''}
+                        onChangeText={(value) => updateNumericFilter(definition.key, 'max', value)}
+                        keyboardType="numeric"
+                        placeholder={definition.max == null ? 'Max' : `Max ${definition.max}`}
+                        style={styles.priceInput}
+                      />
+                    </View>
+                  ) : definition.options?.length ? (
+                    <View style={styles.chips}>
+                      {definition.options.map((value) => {
+                        const selectedValues = Array.isArray(selected[definition.key])
+                          ? selected[definition.key]
+                          : selected[definition.key] ? [selected[definition.key]] : [];
+                        const active = selectedValues.includes(value);
+                        return (
+                          <Pressable
+                            key={String(value)}
+                            onPress={() => chooseFilter(definition.key, value)}
+                            style={[styles.chip, active && styles.chipActive]}
+                          >
+                            <Text style={[styles.chipText, active && styles.chipTextActive]}>
+                              {String(value)}
+                            </Text>
+                          </Pressable>
+                        );
+                      })}
+                    </View>
+                  ) : null}
                 </View>
-              ) : null)}
+              ))}
             </ScrollView>
             <View style={styles.drawerActions}>
               <Pressable onPress={clearFilters} style={styles.clearButton}><Text style={styles.clearText}>Clear</Text></Pressable>
-              <Pressable onPress={() => { setDrawerOpen(false); loadProducts(); }} style={styles.applyButton}><Text style={styles.applyText}>Show products</Text></Pressable>
+              <Pressable onPress={applyFilters} style={styles.applyButton}><Text style={styles.applyText}>Show products</Text></Pressable>
             </View>
           </View>
         </View>
@@ -189,46 +264,27 @@ function formatLabel(value) {
   return value.replace(/([A-Z])/g, ' $1').replace(/^./, (char) => char.toUpperCase());
 }
 
-const styles = StyleSheet.create({
-  root: { flex: 1, backgroundColor: colors.background },
-  titleRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 18, paddingTop: 16, paddingBottom: 10 },
-  titleCopy: { flex: 1 },
-  category: { color: colors.muted, fontSize: 11, fontWeight: '700' },
-  title: { color: colors.text, fontSize: 21, fontWeight: '900', marginTop: 3 },
-  filterButton: { height: 40, paddingHorizontal: 12, borderRadius: 12, backgroundColor: colors.blue, flexDirection: 'row', alignItems: 'center', gap: 6 },
-  filterButtonText: { color: '#fff', fontSize: 11, fontWeight: '900' },
-  sortRow: { paddingHorizontal: 18, paddingBottom: 12, flexDirection: 'row', alignItems: 'center', gap: 8 },
-  sortPill: { paddingVertical: 7, paddingHorizontal: 10, borderRadius: 10, backgroundColor: '#E8EDF4' },
-  sortSelected: { backgroundColor: colors.blueLight },
-  sortText: { color: colors.muted, fontSize: 10, fontWeight: '800' },
-  sortTextSelected: { color: colors.blue },
-  count: { color: colors.blue, fontSize: 10, fontWeight: '800', marginLeft: 'auto' },
-  grid: { paddingHorizontal: 14, paddingBottom: 30 },
-  row: { gap: 10, marginBottom: 10 },
-  loading: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12 },
-  hint: { color: colors.muted, fontSize: 12 },
-  error: { padding: 18 },
-  modalRoot: { flex: 1, justifyContent: 'flex-end' },
-  scrim: { ...StyleSheet.absoluteFillObject, backgroundColor: '#0008' },
-  drawer: { height: '88%', backgroundColor: colors.background, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 18, paddingBottom: 24 },
-  drawerHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingBottom: 16 },
-  drawerTitle: { color: colors.text, fontSize: 19, fontWeight: '900' },
-  drawerSubtitle: { color: colors.muted, fontSize: 11, marginTop: 3 },
-  filterGroup: { marginTop: 17 },
-  filterLabel: { color: colors.text, fontSize: 12, fontWeight: '900', marginBottom: 9 },
-  priceInputs: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  priceInput: { flex: 1, height: 43, borderRadius: 11, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.surface, paddingHorizontal: 11, color: colors.text },
-  priceDash: { color: colors.muted },
-  stockOption: { minHeight: 44, flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8 },
-  filterValue: { color: colors.text, fontSize: 11 },
-  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 7 },
-  chip: { paddingVertical: 7, paddingHorizontal: 10, borderWidth: 1, borderColor: colors.border, borderRadius: 10, backgroundColor: colors.surface },
-  chipActive: { borderColor: colors.blue, backgroundColor: colors.blueLight },
-  chipText: { color: colors.text, fontSize: 10, fontWeight: '700' },
-  chipTextActive: { color: colors.blue },
-  drawerActions: { flexDirection: 'row', gap: 10, paddingTop: 12 },
-  clearButton: { flex: 0.8, minHeight: 48, borderRadius: 13, backgroundColor: '#E8EDF4', alignItems: 'center', justifyContent: 'center' },
-  clearText: { color: colors.text, fontWeight: '800' },
-  applyButton: { flex: 1.2, minHeight: 48, borderRadius: 13, backgroundColor: colors.blue, alignItems: 'center', justifyContent: 'center' },
-  applyText: { color: '#fff', fontWeight: '900' },
-});
+function normalizeFilters(filters) {
+  return Object.fromEntries(
+    Object.entries(filters).flatMap(([key, value]) => {
+      if (value && typeof value === 'object' && !Array.isArray(value)) {
+        const range = {};
+        for (const bound of ['min', 'max']) {
+          if (value[bound] !== undefined && String(value[bound]).trim()) {
+            const parsed = Number(value[bound]);
+            if (!Number.isFinite(parsed)) {
+              throw new Error(`Enter a valid ${bound} value for ${formatLabel(key)}.`);
+            }
+            range[bound] = parsed;
+          }
+        }
+        if (range.min !== undefined && range.max !== undefined && range.min > range.max) {
+          throw new Error(`The minimum ${formatLabel(key)} cannot exceed its maximum.`);
+        }
+        return Object.keys(range).length ? [[key, range]] : [];
+      }
+      const values = Array.isArray(value) ? value : value ? [value] : [];
+      return values.length ? [[key, values]] : [];
+    }),
+  );
+}

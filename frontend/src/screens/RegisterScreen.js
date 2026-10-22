@@ -1,5 +1,6 @@
+import styles from '../styles/RegisterScreenStyles';
 import { useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text } from 'react-native';
+import { ActivityIndicator, Pressable, ScrollView, Text } from 'react-native';
 import { FormField } from '../components/FormField';
 import { useAuth } from '../context/AuthContext';
 import { registerCustomer } from '../services/commerceService';
@@ -53,12 +54,4 @@ export function RegisterScreen({ navigation, route }) {
   );
 }
 
-const styles = StyleSheet.create({
-  content: { flexGrow: 1, padding: 22, gap: 14, backgroundColor: colors.background },
-  eyebrow: { color: colors.blue, fontSize: 10, fontWeight: '900', letterSpacing: 1.3, marginTop: 10 },
-  title: { color: colors.text, fontSize: 25, fontWeight: '900', marginBottom: 5 },
-  primary: { minHeight: 49, borderRadius: 14, backgroundColor: colors.blue, alignItems: 'center', justifyContent: 'center', marginTop: 5 },
-  primaryText: { color: '#fff', fontSize: 13, fontWeight: '900' },
-  muted: { opacity: 0.6 },
-  error: { color: colors.red, fontSize: 12 },
-});
+

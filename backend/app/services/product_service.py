@@ -76,6 +76,9 @@ def to_card(
             doc.get("rating", 0) or 0
         ),
 
+        ratingCount=int(
+            doc.get("ratingCount", doc.get("reviewCount", 0)) or 0
+        ),
         reviewCount=int(
             doc.get("reviewCount", 0) or 0
         ),
@@ -189,7 +192,7 @@ async def get_product_details(db, product_id: str):
     details = {
         key: value
         for key, value in document.items()
-        if key != "_id"
+        if key not in {"_id", "deliveryAdjustmentKeys"}
     }
 
     # Add the API fields calculated by your existing converter.

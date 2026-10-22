@@ -1,3 +1,4 @@
+import styles from '../styles/HomeScreenStyles';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
@@ -7,7 +8,6 @@ import {
   Pressable,
   RefreshControl,
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   View,
@@ -64,7 +64,6 @@ function ProductSection({
     </View>
   );
 }
-
 function CategoryTile({ category, onPress }) {
   return (
     <Pressable onPress={onPress} style={styles.categoryTile}>
@@ -330,15 +329,13 @@ export function HomeScreen({ navigation }) {
               </View>
               <Text style={styles.promoTitle}>Big performance.{'\n'}Better value.</Text>
               <Text style={styles.promoCaption}>
-                Your next build starts here.
+                Explore today’s best deals across the store.
               </Text>
               <Pressable
-                onPress={() => {
-                  if (categories.length) openCategory(categories[0]);
-                }}
+                onPress={() => navigation.navigate('Offers')}
                 style={styles.promoButton}
               >
-                <Text style={styles.promoButtonText}>Explore gear</Text>
+                <Text style={styles.promoButtonText}>Explore offers</Text>
                 <Ionicons name="arrow-forward" size={15} color={colors.ink} />
               </Pressable>
             </View>
@@ -397,18 +394,16 @@ export function HomeScreen({ navigation }) {
             onAdd={addItem}
           />
 
-          <View style={styles.latestSection}>
-            <ProductSection
-              title="Just arrived"
-              subtitle="Fresh finds for your setup"
-              products={latest}
-              loading={latestState.loading}
-              error={latestState.error}
-              onRetry={loadHome}
-              onProductPress={openProduct}
-              onAdd={addItem}
-            />
-          </View>
+          <ProductSection
+            title="Just arrived"
+            subtitle="Fresh finds for your setup"
+            products={latest}
+            loading={latestState.loading}
+            error={latestState.error}
+            onRetry={loadHome}
+            onProductPress={openProduct}
+            onAdd={addItem}
+          />
 
           <View style={styles.trustRow}>
             <View style={styles.trustItem}>
@@ -492,293 +487,3 @@ export function HomeScreen({ navigation }) {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.ink },
-  topBar: {
-    height: 62,
-    backgroundColor: colors.ink,
-    paddingHorizontal: 18,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  topLeft: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  topActions: { flexDirection: 'row', gap: 9 },
-  headerIcon: {
-    width: 39,
-    height: 39,
-    borderRadius: 14,
-    backgroundColor: colors.inkSoft,
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-  },
-  bagBadge: {
-    position: 'absolute',
-    right: -3,
-    top: -3,
-    minWidth: 17,
-    height: 17,
-    borderRadius: 9,
-    paddingHorizontal: 3,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.blue,
-  },
-  bagBadgeText: { color: '#FFFFFF', fontSize: 9, fontWeight: '900' },
-  heroTop: {
-    backgroundColor: colors.ink,
-    paddingHorizontal: 20,
-    paddingTop: 12,
-    paddingBottom: 21,
-    zIndex: 10,
-  },
-  welcome: {
-    color: colors.cyan,
-    fontSize: 10,
-    fontWeight: '900',
-    letterSpacing: 1.9,
-    marginBottom: 9,
-  },
-  headline: {
-    color: '#FFFFFF',
-    fontSize: 29,
-    lineHeight: 34,
-    fontWeight: '900',
-    letterSpacing: -0.9,
-  },
-  subheadline: { color: '#A8B5C8', fontSize: 13, marginTop: 8, marginBottom: 18 },
-  searchWrap: {
-    height: 51,
-    paddingHorizontal: 14,
-    borderRadius: 16,
-    backgroundColor: '#FFFFFF',
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    zIndex: 12,
-  },
-  searchInput: { flex: 1, color: colors.text, fontSize: 13, paddingVertical: 0 },
-  suggestions: {
-    marginTop: 8,
-    backgroundColor: colors.surface,
-    borderRadius: 17,
-    padding: 9,
-    borderWidth: 1,
-    borderColor: colors.border,
-    zIndex: 25,
-    elevation: 14,
-    shadowColor: colors.ink,
-    shadowOpacity: 0.18,
-    shadowRadius: 16,
-    shadowOffset: { width: 0, height: 8 },
-  },
-  suggestionRow: {
-    minHeight: 73,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    padding: 5,
-    borderBottomWidth: 1,
-    borderBottomColor: '#F0F3F7',
-  },
-  suggestionCopy: { flex: 1, gap: 3 },
-  suggestionBrand: {
-    color: colors.blue,
-    fontSize: 9,
-    fontWeight: '900',
-    textTransform: 'uppercase',
-  },
-  suggestionName: { color: colors.text, fontSize: 12, fontWeight: '700' },
-  suggestionStatus: {
-    height: 62,
-    flexDirection: 'row',
-    gap: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  suggestionHint: {
-    color: colors.muted,
-    fontSize: 12,
-    textAlign: 'center',
-    padding: 17,
-  },
-  suggestionError: { color: colors.red, fontSize: 12, padding: 14 },
-  content: { paddingTop: 18, paddingBottom: 24 },
-  promo: {
-    marginHorizontal: 18,
-    marginBottom: 25,
-    minHeight: 177,
-    borderRadius: 23,
-    backgroundColor: '#0B2441',
-    overflow: 'hidden',
-    flexDirection: 'row',
-    padding: 18,
-  },
-  promoCopy: { flex: 1.15, zIndex: 2, justifyContent: 'center' },
-  promoPill: {
-    alignSelf: 'flex-start',
-    borderRadius: 6,
-    paddingHorizontal: 8,
-    paddingVertical: 5,
-    backgroundColor: '#173A5C',
-    marginBottom: 10,
-  },
-  promoPillText: {
-    color: colors.cyan,
-    fontSize: 9,
-    fontWeight: '900',
-    letterSpacing: 1,
-  },
-  promoTitle: {
-    color: '#FFFFFF',
-    fontSize: 20,
-    lineHeight: 23,
-    fontWeight: '900',
-    letterSpacing: -0.4,
-  },
-  promoCaption: { color: '#B3C5DC', fontSize: 10, marginTop: 6 },
-  promoButton: {
-    marginTop: 13,
-    alignSelf: 'flex-start',
-    backgroundColor: colors.cyan,
-    borderRadius: 11,
-    paddingHorizontal: 11,
-    paddingVertical: 9,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-  },
-  promoButtonText: { color: colors.ink, fontWeight: '900', fontSize: 10 },
-  promoArt: { flex: 0.85, alignItems: 'center', justifyContent: 'center' },
-  artGlow: {
-    position: 'absolute',
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    backgroundColor: '#12385C',
-    right: -14,
-    top: 6,
-  },
-  artChip: {
-    width: 34,
-    height: 34,
-    borderRadius: 11,
-    backgroundColor: colors.blue,
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
-    bottom: 17,
-    right: 11,
-    borderWidth: 3,
-    borderColor: '#0B2441',
-  },
-  categorySection: { marginBottom: 25 },
-  section: { marginBottom: 26 },
-  categoryList: { paddingHorizontal: 18, flexDirection: 'row', flexWrap: 'wrap', gap: 13 },
-  categoryTile: { width: 72, alignItems: 'center', gap: 7 },
-  categoryIcon: {
-    width: 58,
-    height: 58,
-    borderRadius: 19,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#E7EDF5',
-  },
-  categoryName: {
-    color: colors.text,
-    fontSize: 10,
-    lineHeight: 13,
-    fontWeight: '700',
-    textAlign: 'center',
-    minHeight: 26,
-  },
-  productList: { paddingHorizontal: 18, paddingVertical: 2 },
-  emptyHint: { color: colors.muted, fontSize: 12, paddingHorizontal: 18 },
-  latestSection: {
-    paddingTop: 20,
-    paddingBottom: 1,
-    backgroundColor: '#EAF2FC',
-  },
-  trustRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginHorizontal: 18,
-    marginTop: 20,
-    paddingVertical: 15,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: colors.border,
-  },
-  trustItem: { flexDirection: 'row', alignItems: 'center', gap: 5 },
-  trustText: { color: colors.muted, fontSize: 9, fontWeight: '700' },
-  modalRoot: { flex: 1, flexDirection: 'row' },
-  modalScrim: { ...StyleSheet.absoluteFillObject, backgroundColor: '#020817AA' },
-  drawer: {
-    width: '84%',
-    maxWidth: 360,
-    flex: 1,
-    backgroundColor: colors.ink,
-    paddingTop: 58,
-    paddingHorizontal: 18,
-    paddingBottom: 20,
-    borderTopRightRadius: 25,
-    borderBottomRightRadius: 25,
-  },
-  drawerHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 27,
-  },
-  closeButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 13,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.inkSoft,
-  },
-  drawerEyebrow: {
-    color: colors.cyan,
-    fontSize: 10,
-    fontWeight: '900',
-    letterSpacing: 1.6,
-  },
-  drawerTitle: {
-    color: '#FFFFFF',
-    fontSize: 22,
-    fontWeight: '900',
-    marginTop: 5,
-    marginBottom: 15,
-  },
-  drawerItem: {
-    minHeight: 57,
-    borderBottomWidth: 1,
-    borderBottomColor: '#1B2B41',
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
-  drawerCategory: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: 11 },
-  drawerIcon: {
-    width: 36,
-    height: 36,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  drawerItemText: { flex: 1, color: '#EAF0F8', fontSize: 13, fontWeight: '700' },
-  drawerBrands: { marginLeft: 45, marginBottom: 8, paddingLeft: 10, borderLeftWidth: 1, borderLeftColor: '#263A53' },
-  drawerBrand: { minHeight: 34, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 9 },
-  drawerBrandText: { color: '#CAD6E6', fontSize: 11, flex: 1 },
-  drawerNoBrands: { color: '#91A0B4', fontSize: 10, padding: 9 },
-  drawerFooter: {
-    color: '#74869D',
-    fontSize: 11,
-    textAlign: 'center',
-    paddingTop: 16,
-  },
-});

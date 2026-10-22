@@ -39,6 +39,10 @@ export async function apiPost(path, body, options = {}) {
   return apiRequest(path, { ...options, method: 'POST', body });
 }
 
+export async function apiPatch(path, body, options = {}) {
+  return apiRequest(path, { ...options, method: 'PATCH', body });
+}
+
 export async function apiDelete(path, options = {}) {
   return apiRequest(path, { ...options, method: 'DELETE' });
 }

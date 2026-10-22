@@ -112,9 +112,15 @@ async def update_order_status(
     order_id: ObjectId,
     current_status: str,
     update: dict,
+    delivery_processing: bool = False,
 ):
+    query = {"_id": order_id, "status": current_status}
+    if delivery_processing:
+        query["deliveryInventoryStatus"] = "processing"
+    elif current_status == "accepted":
+        query["deliveryInventoryStatus"] = {"$ne": "processing"}
     result = await db["orders"].update_one(
-        {"_id": order_id, "status": current_status},
+        query,
         update,
     )
     if result.modified_count != 1:

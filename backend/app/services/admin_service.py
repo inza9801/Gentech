@@ -5,6 +5,7 @@ from fastapi import HTTPException
 from pymongo.errors import DuplicateKeyError
 
 from app.repositories import admin_repo
+from app.repositories import product_repo
 from app.schemas.admin import (
     CategoryCreate,
     CategoryUpdate,
@@ -49,7 +50,7 @@ def serialize(value):
         return {
             key: serialize(item)
             for key, item in value.items()
-            if key != "passwordHash"
+            if key not in {"passwordHash", "deliveryAdjustmentKeys"}
         }
 
     return value
@@ -67,7 +68,13 @@ async def _get_category(db, slug: str):
 
 
 def _clean_product_fields(data: dict, creating: bool = False):
-    forbidden = {"_id", "createdAt", "updatedAt", "passwordHash"}
+    forbidden = {
+        "_id",
+        "createdAt",
+        "updatedAt",
+        "passwordHash",
+        "deliveryAdjustmentKeys",
+    }
     if forbidden.intersection(data):
         raise HTTPException(400, "Protected fields cannot be supplied")
 
@@ -312,6 +319,9 @@ async def update_order_status(
 
     current = order.get("status", "pending")
     target = payload.status
+    if target == "delivered":
+        return await _deliver_order(db, object_id, order, payload, admin)
+
     allowed_transitions = {
         "pending": {"accepted", "cancelled"},
         "placed": {"accepted", "cancelled"},
@@ -354,6 +364,156 @@ async def update_order_status(
         raise HTTPException(
             409,
             "Order status changed concurrently; reload and try again",
+        )
+    return serialize(updated)
+
+
+async def _deliver_order(db, order_id, order, payload, admin):
+    current = order.get("status", "pending")
+    if current == "delivered" and order.get("deliveryInventoryStatus") == "applied":
+        return serialize(order)
+    if current != "accepted":
+        raise HTTPException(
+            409,
+            f"Cannot change order status from '{current}' to 'delivered'",
+        )
+
+    grouped_items = {}
+    for item in order.get("items", []):
+        product_id = str(item.get("productId", ""))
+        quantity = item.get("quantity")
+        if not ObjectId.is_valid(product_id) or not isinstance(quantity, int) or quantity < 1:
+            raise HTTPException(409, "Order contains an invalid product or quantity")
+        grouped_items[product_id] = grouped_items.get(product_id, 0) + quantity
+
+    delivery_items = []
+    for product_id, quantity in grouped_items.items():
+        product_result = await product_repo.get_product_by_id(db, product_id)
+        if product_result is None:
+            raise HTTPException(409, "An ordered product no longer exists")
+        product, category = product_result
+        matching_items = [
+            item for item in order.get("items", [])
+            if str(item.get("productId", "")) == product_id
+        ]
+        if any(
+            item.get("categorySlug") and item["categorySlug"] != category["slug"]
+            for item in matching_items
+        ):
+            raise HTTPException(409, "An order item has an invalid product category")
+        delivery_items.append((product_id, quantity, product, category))
+
+    for product_id, quantity, product, category in delivery_items:
+        if product.get("availability", 0) < quantity and not await db[
+            category["collection"]
+        ].find_one(
+            {
+                "_id": ObjectId(product_id),
+                "deliveryAdjustmentKeys": f"{order_id}:{product_id}",
+            },
+            {"_id": 1},
+        ):
+            raise HTTPException(
+                409,
+                f"Insufficient stock to complete delivery for {product['name']}",
+            )
+
+    if order.get("deliveryInventoryStatus") != "processing":
+        claim = await db.orders.update_one(
+            {
+                "_id": order_id,
+                "status": "accepted",
+                "deliveryInventoryStatus": {"$ne": "processing"},
+            },
+            {"$set": {"deliveryInventoryStatus": "processing"}},
+        )
+        if claim.modified_count != 1:
+            order = await admin_repo.get_order(db, order_id)
+            if order is None:
+                raise HTTPException(404, "Order not found")
+            if order.get("status") == "delivered":
+                return serialize(order)
+            if (
+                order.get("status") != "accepted"
+                or order.get("deliveryInventoryStatus") != "processing"
+            ):
+                raise HTTPException(
+                    409,
+                    "Order status changed concurrently; reload and try again",
+                )
+
+    adjustments = []
+    for product_id, quantity, product, category in delivery_items:
+        marker = f"{order_id}:{product_id}"
+        product_object_id = ObjectId(product_id)
+        collection = db[category["collection"]]
+        stock_update = await collection.update_one(
+            {
+                "_id": product_object_id,
+                "availability": {"$gte": quantity},
+                "deliveryAdjustmentKeys": {"$ne": marker},
+            },
+            {
+                "$inc": {
+                    "availability": -quantity,
+                    "soldCount": quantity,
+                },
+                "$addToSet": {"deliveryAdjustmentKeys": marker},
+            },
+        )
+        if stock_update.matched_count == 0:
+            already_adjusted = await collection.find_one(
+                {
+                    "_id": product_object_id,
+                    "deliveryAdjustmentKeys": marker,
+                },
+                {"_id": 1},
+            )
+            if already_adjusted is None:
+                raise HTTPException(
+                    409,
+                    f"Insufficient stock to complete delivery for {product['name']}",
+                )
+
+        adjustments.append((collection, product_object_id, marker))
+
+    timestamp = now_utc()
+    event = {
+        "status": "delivered",
+        "changedAt": timestamp,
+        "changedBy": str(admin["_id"]),
+    }
+    if payload.reason:
+        event["reason"] = payload.reason
+
+    updated = await admin_repo.update_order_status(
+        db,
+        order_id,
+        "accepted",
+        {
+            "$set": {
+                "status": "delivered",
+                "deliveryInventoryStatus": "applied",
+                "deliveredAt": timestamp,
+                "updatedAt": timestamp,
+            },
+            "$push": {"statusHistory": event},
+        },
+        delivery_processing=True,
+    )
+    if updated is None:
+        latest = await admin_repo.get_order(db, order_id)
+        if latest and latest.get("status") == "delivered":
+            return serialize(latest)
+        raise HTTPException(
+            409,
+            "Order status changed concurrently; reload and try again",
+        )
+
+    for collection, product_id, marker in adjustments:
+        await collection.update_one(
+            {"_id": product_id},
+            {"$pull": {"deliveryAdjustmentKeys": marker}},
         )
     return serialize(updated)
 

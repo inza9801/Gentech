@@ -1,47 +1,90 @@
+import styles from '../styles/ProductDetailsScreenStyles';
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Pressable,
   ScrollView,
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { FormField } from '../components/FormField';
 import { ProductImage } from '../components/ProductImage';
+import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-import { getProductDetails } from '../services/productService';
+import {
+  getProductDetails,
+  getProductReviews,
+  saveProductReview,
+} from '../services/productService';
 import { colors } from '../theme/colors';
 import { formatPrice } from '../utils/product';
 import { ErrorState } from '../components/LoadState';
 
 export function ProductDetailsScreen({ route, navigation }) {
   const { productId } = route.params;
+  const { token } = useAuth();
   const { addItem } = useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [added, setAdded] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [reviews, setReviews] = useState([]);
+  const [myReview, setMyReview] = useState(null);
+  const [rating, setRating] = useState(null);
+  const [reviewText, setReviewText] = useState('');
+  const [reviewLoading, setReviewLoading] = useState(true);
+  const [reviewBusy, setReviewBusy] = useState(false);
+  const [reviewError, setReviewError] = useState(null);
 
   useEffect(() => {
     let active = true;
     setLoading(true);
+    setReviewLoading(true);
     setError(null);
+    setReviewError(null);
     getProductDetails(productId)
       .then((result) => {
-        if (active) setProduct(result);
+        if (!active) return;
+        setProduct(result);
+        return getProductReviews(result.id, result.category.slug, token)
+          .then((reviewResult) => {
+            if (!active) return;
+            setReviews(reviewResult.reviews);
+            setMyReview(reviewResult.myReview);
+            setRating(reviewResult.myReview?.rating ?? null);
+            setReviewText(reviewResult.myReview?.text || '');
+            const hasLiveReviews = reviewResult.reviews.length > 0;
+            setProduct((current) => current && ({
+              ...current,
+              rating: hasLiveReviews ? reviewResult.averageRating : current.rating,
+              ratingCount: hasLiveReviews
+                ? reviewResult.ratingCount
+                : current.ratingCount ?? current.reviewCount ?? 0,
+              reviewCount: hasLiveReviews ? reviewResult.reviewCount : current.reviewCount,
+            }));
+          })
+          .catch((reason) => {
+            if (active) setReviewError(reason.message);
+          })
+          .finally(() => {
+            if (active) setReviewLoading(false);
+          });
       })
       .catch((reason) => {
         if (active) setError(reason.message);
       })
       .finally(() => {
-        if (active) setLoading(false);
+        if (active) {
+          setLoading(false);
+          setReviewLoading(false);
+        }
       });
     return () => {
       active = false;
     };
-  }, [productId]);
+  }, [productId, token]);
 
   useEffect(() => {
     setSelectedImage(0);
@@ -75,6 +118,49 @@ export function ProductDetailsScreen({ route, navigation }) {
   }
 
   if (!product) return null;
+
+  const submitReview = async () => {
+    if (!token) {
+      navigation.navigate('Login', {
+        loginFirst: true,
+        returnTo: 'ProductDetails',
+        returnParams: { productId },
+      });
+      return;
+    }
+    if (!rating && !reviewText.trim()) {
+      setReviewError('Add a star rating, written review, or both.');
+      return;
+    }
+    setReviewBusy(true);
+    setReviewError(null);
+    try {
+      await saveProductReview(
+        product.id,
+        product.category.slug,
+        {
+          rating: rating ? Number(rating) : null,
+          text: reviewText.trim() || null,
+        },
+        token,
+      );
+      const result = await getProductReviews(product.id, product.category.slug, token);
+      setReviews(result.reviews);
+      setMyReview(result.myReview);
+      setRating(result.myReview?.rating ?? null);
+      setReviewText(result.myReview?.text || '');
+      setProduct((current) => current && ({
+        ...current,
+        rating: result.averageRating,
+        ratingCount: result.ratingCount,
+        reviewCount: result.reviewCount,
+      }));
+    } catch (reason) {
+      setReviewError(reason.message);
+    } finally {
+      setReviewBusy(false);
+    }
+  };
 
   const specs = product.specs && typeof product.specs === 'object'
     ? Object.entries(product.specs)
@@ -126,10 +212,16 @@ export function ProductDetailsScreen({ route, navigation }) {
       </View>
       <Text style={styles.name}>{product.name}</Text>
       <View style={styles.ratingRow}>
-        <Ionicons name="star" size={15} color="#F1AA32" />
-        <Text style={styles.rating}>
-          {Number(product.rating || 0).toFixed(1)}
-        </Text>
+        {product.ratingCount ? (
+          <>
+            <Ionicons name="star" size={15} color="#F1AA32" />
+            <Text style={styles.rating}>
+              {Number(product.rating || 0).toFixed(1)}
+            </Text>
+          </>
+        ) : (
+          <Text style={styles.reviews}>Not rated yet</Text>
+        )}
         <Text style={styles.reviews}>
           ({product.reviewCount || 0} reviews)
         </Text>
@@ -198,6 +290,107 @@ export function ProductDetailsScreen({ route, navigation }) {
         </View>
       ) : null}
 
+      <View style={styles.reviewBlock}>
+        <View style={styles.reviewHeading}>
+          <View>
+            <Text style={styles.blockTitle}>Customer reviews</Text>
+            <Text style={styles.reviewSummary}>
+              {product.ratingCount
+                ? `${Number(product.rating || 0).toFixed(1)} average · ${product.reviewCount} reviews`
+                : product.reviewCount
+                  ? `${product.reviewCount} written reviews`
+                : 'Be the first to share your thoughts'}
+            </Text>
+          </View>
+        </View>
+        {token ? (
+          <View style={styles.reviewForm}>
+            <Text style={styles.reviewPrompt}>
+              {myReview ? 'Update your review' : 'Share your experience'}
+            </Text>
+            <View style={styles.reviewStars}>
+              {[1, 2, 3, 4, 5].map((value) => (
+                <Pressable
+                  key={value}
+                  onPress={() => setRating((current) => current === value ? null : value)}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${value} star${value === 1 ? '' : 's'}`}
+                >
+                  <Ionicons
+                    name={rating >= value ? 'star' : 'star-outline'}
+                    size={27}
+                    color="#F1AA32"
+                  />
+                </Pressable>
+              ))}
+            </View>
+            <FormField
+              label="Written review (optional)"
+              value={reviewText}
+              onChangeText={setReviewText}
+              multiline
+              maxLength={2000}
+              placeholder="What did you think of this product?"
+            />
+            <Text style={styles.reviewHint}>A rating, written review, or both are required.</Text>
+            {reviewError ? <Text style={styles.reviewError}>{reviewError}</Text> : null}
+            <Pressable
+              disabled={reviewBusy || (!rating && !reviewText.trim())}
+              onPress={submitReview}
+              style={[
+                styles.reviewSubmit,
+                (reviewBusy || (!rating && !reviewText.trim())) && styles.reviewSubmitDisabled,
+              ]}
+            >
+              {reviewBusy
+                ? <ActivityIndicator color="#FFFFFF" />
+                : <Text style={styles.reviewSubmitText}>{myReview ? 'Update review' : 'Submit review'}</Text>}
+            </Pressable>
+          </View>
+        ) : (
+          <Pressable
+            onPress={() => navigation.navigate('Login', {
+              loginFirst: true,
+              returnTo: 'ProductDetails',
+              returnParams: { productId },
+            })}
+            style={styles.reviewLogin}
+          >
+            <Text style={styles.reviewLoginText}>Login to add a review or rating</Text>
+          </Pressable>
+        )}
+        {reviewLoading ? (
+          <ActivityIndicator color={colors.blue} />
+        ) : reviews.length ? (
+          <View style={styles.reviewList}>
+            {reviews.map((review) => (
+              <View key={review.id} style={styles.reviewItem}>
+                <View style={styles.reviewItemHeading}>
+                  <Text style={styles.reviewAuthor}>{review.customerName}</Text>
+                  {review.rating ? (
+                    <View style={styles.reviewItemStars}>
+                      {[1, 2, 3, 4, 5].map((value) => (
+                        <Ionicons
+                          key={value}
+                          name={value <= review.rating ? 'star' : 'star-outline'}
+                          size={13}
+                          color="#F1AA32"
+                        />
+                      ))}
+                    </View>
+                  ) : (
+                    <Text style={styles.reviewTextOnly}>Written review</Text>
+                  )}
+                </View>
+                {review.text ? <Text style={styles.reviewBody}>{review.text}</Text> : null}
+              </View>
+            ))}
+          </View>
+        ) : reviewError ? (
+          <Text style={styles.reviewError}>{reviewError}</Text>
+        ) : null}
+      </View>
+
       <Pressable
         disabled={!product.inStock}
         onPress={() => {
@@ -240,116 +433,3 @@ function formatLabel(value) {
     .replace(/([A-Z])/g, ' $1')
     .replace(/^./, (character) => character.toUpperCase());
 }
-
-const styles = StyleSheet.create({
-  root: { flex: 1, backgroundColor: colors.background },
-  content: { padding: 18, paddingBottom: 36, gap: 15 },
-  gallery: { gap: 9, paddingVertical: 2 },
-  thumbnail: { borderRadius: 15, borderWidth: 2, borderColor: 'transparent', padding: 2 },
-  thumbnailSelected: { borderColor: colors.blue },
-  buyButton: { minHeight: 48, borderRadius: 15, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' },
-  buyButtonText: { color: '#FFFFFF', fontSize: 13, fontWeight: '900' },
-  center: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.background,
-    gap: 12,
-  },
-  loadingText: { color: colors.muted, fontSize: 13 },
-  productHeading: {
-    flexDirection: 'row',
-    gap: 8,
-    alignItems: 'center',
-    marginTop: 3,
-  },
-  brandPill: {
-    paddingVertical: 6,
-    paddingHorizontal: 10,
-    borderRadius: 9,
-    backgroundColor: colors.blueLight,
-  },
-  brandText: {
-    color: colors.blue,
-    fontSize: 10,
-    fontWeight: '900',
-    textTransform: 'uppercase',
-    letterSpacing: 0.6,
-  },
-  salePill: {
-    paddingVertical: 6,
-    paddingHorizontal: 10,
-    borderRadius: 9,
-    backgroundColor: '#FFF0E7',
-  },
-  saleText: { color: '#CC5E1E', fontSize: 10, fontWeight: '900' },
-  name: { color: colors.text, fontSize: 22, lineHeight: 29, fontWeight: '900' },
-  ratingRow: { flexDirection: 'row', alignItems: 'center', gap: 5 },
-  rating: { color: colors.text, fontSize: 13, fontWeight: '800' },
-  reviews: { color: colors.muted, fontSize: 11 },
-  stock: { flexDirection: 'row', alignItems: 'center', gap: 5, marginLeft: 'auto' },
-  stockDot: { width: 7, height: 7, borderRadius: 4 },
-  stockText: { color: colors.muted, fontSize: 10, fontWeight: '700' },
-  priceBox: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 15,
-    borderRadius: 18,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  priceLabel: {
-    color: colors.muted,
-    fontSize: 9,
-    letterSpacing: 1,
-    fontWeight: '900',
-  },
-  price: { color: colors.text, fontSize: 23, fontWeight: '900', marginTop: 5 },
-  savings: { alignItems: 'flex-end', gap: 5 },
-  oldPrice: { color: colors.muted, fontSize: 12, textDecorationLine: 'line-through' },
-  saveText: { color: colors.green, fontSize: 10, fontWeight: '800' },
-  block: {
-    padding: 15,
-    borderRadius: 18,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-    gap: 11,
-  },
-  blockTitle: { color: colors.text, fontSize: 15, fontWeight: '900' },
-  feature: { flexDirection: 'row', gap: 8, alignItems: 'center' },
-  featureText: { color: '#4F5E73', fontSize: 12, flex: 1 },
-  specRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    gap: 16,
-    paddingVertical: 8,
-    borderTopWidth: 1,
-    borderTopColor: colors.border,
-  },
-  specLabel: { flex: 1, color: colors.muted, fontSize: 11 },
-  specValue: { flex: 1, color: colors.text, fontSize: 11, fontWeight: '700', textAlign: 'right' },
-  warranty: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 9,
-    backgroundColor: colors.blueLight,
-    borderRadius: 14,
-    padding: 13,
-  },
-  warrantyText: { color: colors.text, fontSize: 12, fontWeight: '700' },
-  addButton: {
-    minHeight: 54,
-    borderRadius: 17,
-    backgroundColor: colors.blue,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 9,
-    marginTop: 3,
-  },
-  addButtonMuted: { backgroundColor: '#92A2B7' },
-  addButtonText: { color: '#FFFFFF', fontSize: 14, fontWeight: '900' },
-});

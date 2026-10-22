@@ -1,5 +1,6 @@
+import styles from '../styles/LoginScreenStyles';
 import { useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { FormField } from '../components/FormField';
 import { useAuth } from '../context/AuthContext';
 import { colors } from '../theme/colors';
@@ -29,7 +30,7 @@ export function LoginScreen({ navigation, route }) {
     <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
       <Text style={styles.eyebrow}>WELCOME BACK</Text>
       <Text style={styles.title}>Login to GenTech</Text>
-      <Text style={styles.subtitle}>{route.params?.loginFirst ? 'Login first to access your account.' : 'Sign in to view your account and orders.'}</Text>
+      <Text style={styles.subtitle}>{route.params?.loginFirst ? 'Login to continue with checkout, coupons, and reviews.' : 'Sign in to view your account and orders.'}</Text>
       <FormField label="Email" value={email} onChangeText={setEmail} placeholder="you@example.com" autoCapitalize="none" keyboardType="email-address" />
       <FormField label="Password" value={password} onChangeText={setPassword} placeholder="Your password" secureTextEntry />
       {error ? <Text style={styles.error}>{error}</Text> : null}
@@ -45,16 +46,3 @@ export function LoginScreen({ navigation, route }) {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  content: { flexGrow: 1, padding: 22, gap: 16, backgroundColor: colors.background, justifyContent: 'center' },
-  eyebrow: { color: colors.blue, fontSize: 10, fontWeight: '900', letterSpacing: 1.3 },
-  title: { color: colors.text, fontSize: 25, fontWeight: '900' },
-  subtitle: { color: colors.muted, fontSize: 12, lineHeight: 18 },
-  primary: { minHeight: 49, borderRadius: 14, backgroundColor: colors.blue, alignItems: 'center', justifyContent: 'center' },
-  primaryText: { color: '#fff', fontSize: 13, fontWeight: '900' },
-  muted: { opacity: 0.6 },
-  error: { color: colors.red, fontSize: 12 },
-  linkRow: { flexDirection: 'row', justifyContent: 'center', gap: 6 },
-  link: { color: colors.blue, fontSize: 12, fontWeight: '900' },
-});

@@ -1,0 +1,23 @@
+import { StyleSheet } from 'react-native';
+import { colors } from '../theme/colors';
+
+const styles = StyleSheet.create({
+  root: { flex: 1, backgroundColor: colors.background },
+  intro: { backgroundColor: colors.ink, paddingHorizontal: 18, paddingTop: 20, paddingBottom: 22 },
+  introTitle: { flexDirection: 'row', alignItems: 'center', gap: 9 },
+  title: { color: '#FFFFFF', fontSize: 19, lineHeight: 25, fontWeight: '900', flexShrink: 1 },
+  subtitle: { color: '#AAB9CC', fontSize: 11, lineHeight: 16, marginTop: 6 },
+  filters: { padding: 14, gap: 10, backgroundColor: colors.surface, borderBottomWidth: 1, borderBottomColor: colors.border },
+  priceRow: { flexDirection: 'row', gap: 8 },
+  priceInput: { flex: 1, height: 42, borderRadius: 11, borderWidth: 1, borderColor: colors.border, paddingHorizontal: 10, color: colors.text },
+  sortButton: { borderRadius: 11, backgroundColor: colors.blue, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 4 },
+  sortButtonText: { color: '#fff', fontSize: 10, fontWeight: '800' },
+  count: { color: colors.muted, fontSize: 10, fontWeight: '800' },
+  grid: { paddingHorizontal: 14, paddingVertical: 12, paddingBottom: 30 },
+  gridRow: { gap: 10, marginBottom: 10 },
+  center: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 25, gap: 10 },
+  error: { color: colors.red, fontSize: 12, textAlign: 'center' },
+  retry: { color: colors.blue, fontWeight: '900' },
+});
+
+export default styles;
