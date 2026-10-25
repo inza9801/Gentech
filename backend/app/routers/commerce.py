@@ -3,7 +3,7 @@ import bcrypt
 from datetime import datetime, timedelta, timezone
 
 from bson import ObjectId
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from jose import jwt
 from pymongo.errors import DuplicateKeyError
 
@@ -20,6 +20,7 @@ from app.schemas.commerce import (
     CartItemInput,
     CheckoutInput,
 )
+from app.services.shipping_policy import quote_delivery
 
 router = APIRouter(prefix="/api", tags=["Commerce"])
 
@@ -306,6 +307,38 @@ async def get_areas(
     )
 
 
+@router.get("/delivery/quote")
+async def get_delivery_quote(
+    district: str,
+    area: str,
+    order_total: int = Query(ge=0),
+    db=Depends(get_db),
+):
+    location = await db.locations.find_one({
+        "district": district,
+        "area": area,
+        "active": True,
+    })
+    if location is None:
+        raise HTTPException(status_code=400, detail="Invalid delivery area")
+    try:
+        quote = quote_delivery(
+            order_total,
+            district,
+            area,
+            configured_zone=location.get("deliveryZone"),
+        )
+    except ValueError as error:
+        raise HTTPException(status_code=400, detail=str(error)) from error
+    return {
+        "zone": quote.zone,
+        "zoneLabel": quote.zone_label,
+        "deliveryFee": quote.fee,
+        "freeDeliveryThreshold": quote.free_delivery_threshold,
+        "orderTotalAfterDiscounts": order_total,
+    }
+
+
 @router.post("/coupons/validate")
 async def validate_coupon(
     code: str,
@@ -489,7 +522,28 @@ async def place_order(
 
         coupon_discount = min(coupon_discount, subtotal)
 
-    total = subtotal - coupon_discount
+    order_total_after_discounts = subtotal - coupon_discount
+    try:
+        delivery_quote = quote_delivery(
+            order_total_after_discounts,
+            body.district,
+            body.area,
+            configured_zone=location.get("deliveryZone"),
+        )
+    except ValueError as error:
+        raise HTTPException(status_code=400, detail=str(error)) from error
+
+    if body.paymentType == "cod" and order_total_after_discounts > 50_000:
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "Cash on delivery is available up to BDT 50,000. "
+                "For higher-value orders, the policy requires a 20% advance "
+                "or full online payment."
+            ),
+        )
+
+    total = order_total_after_discounts + delivery_quote.fee
 
     now = datetime.now(timezone.utc)
     order_number = "GT-" + str(ObjectId())
@@ -514,6 +568,7 @@ async def place_order(
             "district": body.district,
             "area": body.area,
             "notes": body.notes,
+            "zone": delivery_quote.zone,
         },
         "paymentType": body.paymentType,
         "paymentStatus": "paid" if mobile_payment else "pending",
@@ -523,6 +578,7 @@ async def place_order(
         "subtotal": subtotal,
         "couponCode": coupon["code"] if coupon else None,
         "couponDiscount": coupon_discount,
+        "deliveryFee": delivery_quote.fee,
         "total": total,
         "createdAt": now,
         "updatedAt": now,
@@ -552,6 +608,7 @@ async def place_order(
         "paymentType": body.paymentType,
         "subtotal": subtotal,
         "couponDiscount": coupon_discount,
+        "deliveryFee": delivery_quote.fee,
         "total": total,
     }
     if body.paymentType == "mobile":

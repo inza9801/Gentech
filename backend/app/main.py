@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 from app.core.database import connect, close
-from app.routers import categories, products, commerce, admin
+from app.routers import categories, products, commerce, admin, policy_qa
 
 
 @asynccontextmanager
@@ -28,6 +28,7 @@ app.include_router(categories.router)
 app.include_router(products.router)
 app.include_router(commerce.router)
 app.include_router(admin.router)
+app.include_router(policy_qa.router)
 app.mount(
     "/images",
     StaticFiles(

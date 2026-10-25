@@ -5,7 +5,7 @@ import { FormField } from '../components/FormField';
 import { SelectField } from '../components/SelectField';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-import { getAreas, getDistricts, placeOrder } from '../services/commerceService';
+import { getAreas, getDeliveryQuote, getDistricts, placeOrder } from '../services/commerceService';
 import { colors } from '../theme/colors';
 import { formatPrice } from '../utils/product';
 
@@ -14,6 +14,7 @@ export function CheckoutScreen({ navigation, route }) {
   const { items, clearCart } = useCart();
   const [districts, setDistricts] = useState([]);
   const [areas, setAreas] = useState([]);
+  const [deliveryQuoteState, setDeliveryQuoteState] = useState(null);
   const [form, setForm] = useState({
     name: customer?.name || '',
     phone: customer?.phone || '',
@@ -30,7 +31,22 @@ export function CheckoutScreen({ navigation, route }) {
     () => items.reduce((sum, item) => sum + Number(item.product.finalPrice ?? item.product.price) * item.quantity, 0),
     [items],
   );
-  const total = Math.max(0, subtotal - Number(route.params?.couponDiscount || 0));
+  const orderTotalAfterDiscounts = Math.max(
+    0,
+    subtotal - Number(route.params?.couponDiscount || 0),
+  );
+  const quoteKey = JSON.stringify([
+    form.district,
+    form.area,
+    orderTotalAfterDiscounts,
+  ]);
+  const quoteStateIsCurrent = deliveryQuoteState?.key === quoteKey;
+  const deliveryQuote = quoteStateIsCurrent ? deliveryQuoteState.quote : null;
+  const quoteError = quoteStateIsCurrent ? deliveryQuoteState.error : null;
+  const loadingQuote = Boolean(
+    form.district && form.area && !quoteStateIsCurrent,
+  );
+  const total = orderTotalAfterDiscounts + (deliveryQuote?.deliveryFee || 0);
   const update = (key) => (value) => setForm((current) => ({ ...current, [key]: value }));
 
   useEffect(() => {
@@ -63,6 +79,27 @@ export function CheckoutScreen({ navigation, route }) {
       .catch((reason) => { if (active) setError(reason.message); });
     return () => { active = false; };
   }, [form.district]);
+
+  useEffect(() => {
+    if (!form.district || !form.area) return undefined;
+    let active = true;
+    getDeliveryQuote(form.district, form.area, orderTotalAfterDiscounts)
+      .then((quote) => {
+        if (active) {
+          setDeliveryQuoteState({ key: quoteKey, quote, error: null });
+        }
+      })
+      .catch((reason) => {
+        if (active) {
+          setDeliveryQuoteState({
+            key: quoteKey,
+            quote: null,
+            error: reason.message,
+          });
+        }
+      });
+    return () => { active = false; };
+  }, [form.district, form.area, orderTotalAfterDiscounts, quoteKey]);
 
   useEffect(() => {
     if (customer) {
@@ -118,8 +155,12 @@ export function CheckoutScreen({ navigation, route }) {
       setError('Your cart is empty.');
       return;
     }
-    if (!form.name.trim() || !form.phone.trim() || !form.district || !form.area || !form.paymentType) {
+    if (!form.name.trim() || !form.phone.trim() || !form.district || !form.area || !form.paymentType || !deliveryQuote) {
       setError('Complete all required checkout fields before placing your order.');
+      return;
+    }
+    if (form.paymentType === 'cod' && orderTotalAfterDiscounts > 50000) {
+      setError('Cash on delivery is available up to BDT 50,000. Higher-value orders require a 20% advance or full online payment under the policy.');
       return;
     }
     if (form.paymentType === 'mobile' && !form.paymentPhone.trim()) {
@@ -193,10 +234,22 @@ export function CheckoutScreen({ navigation, route }) {
       <View style={styles.totalCard}>
         <View style={styles.totalRow}><Text style={styles.groupLabel}>Subtotal</Text><Text style={styles.total}>{formatPrice(subtotal)}</Text></View>
         {route.params?.couponCode ? <View style={styles.totalRow}><Text style={styles.coupon}>Coupon ({route.params.couponCode})</Text><Text style={styles.coupon}>− {formatPrice(route.params.couponDiscount || 0)}</Text></View> : null}
+        <View style={styles.totalRow}>
+          <Text style={styles.groupLabel}>
+            Delivery{deliveryQuote?.zoneLabel ? ` (${deliveryQuote.zoneLabel})` : ''}
+          </Text>
+          {loadingQuote ? (
+            <ActivityIndicator color={colors.blue} />
+          ) : (
+            <Text style={styles.total}>
+              {deliveryQuote ? formatPrice(deliveryQuote.deliveryFee) : 'Select an area'}
+            </Text>
+          )}
+        </View>
         <View style={styles.totalRow}><Text style={styles.groupLabel}>Total</Text><Text style={styles.total}>{formatPrice(total)}</Text></View>
       </View>
-      {error ? <Text style={styles.error}>{error}</Text> : null}
-      <Pressable disabled={busy || loadingLocations || !form.name.trim() || !form.phone.trim() || !form.district || !form.area || !form.paymentType || (form.paymentType === 'mobile' && !form.paymentPhone.trim())} onPress={submit} style={[styles.primary, (busy || loadingLocations || !form.name.trim() || !form.phone.trim() || !form.district || !form.area || !form.paymentType || (form.paymentType === 'mobile' && !form.paymentPhone.trim())) && styles.disabled]}>
+      {error || quoteError ? <Text style={styles.error}>{error || quoteError}</Text> : null}
+      <Pressable disabled={busy || loadingLocations || loadingQuote || !deliveryQuote || !form.name.trim() || !form.phone.trim() || !form.district || !form.area || !form.paymentType || (form.paymentType === 'mobile' && !form.paymentPhone.trim())} onPress={submit} style={[styles.primary, (busy || loadingLocations || loadingQuote || !deliveryQuote || !form.name.trim() || !form.phone.trim() || !form.district || !form.area || !form.paymentType || (form.paymentType === 'mobile' && !form.paymentPhone.trim())) && styles.disabled]}>
         {busy ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryText}>Place order</Text>}
       </Pressable>
     </ScrollView>

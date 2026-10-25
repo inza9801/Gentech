@@ -10,3 +10,4 @@ node_modules/
 .expo/
 dist/
 build/
+/backend/data/policy_chroma/

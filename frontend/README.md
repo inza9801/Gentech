@@ -1,6 +1,6 @@
 # GenTech mobile app
 
-Expo React Native app written in JavaScript.
+Expo SDK 58 React Native app written in JavaScript.
 
 ## Run on a phone
 
@@ -18,6 +18,11 @@ Expo React Native app written in JavaScript.
 
 3. Install Expo Go on the phone, connect the phone to the same Wi-Fi as the
    computer, and scan the QR code shown by Expo.
+
+The Expo Go app installed on the phone must support SDK 58. Expo's SDK 58
+release notes state that the SDK 58 Expo Go builds for the app stores are
+coming soon; until they are available, use an SDK 58 development build to run
+the app on a device.
 
 The app uses the Expo development host address to reach the backend at port
 `8000`. If the backend is on another machine or port, copy `.env.example` to

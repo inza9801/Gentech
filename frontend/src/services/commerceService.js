@@ -17,6 +17,12 @@ export const getDistricts = () => apiGet('/locations/districts');
 export const getAreas = (district) =>
   apiGet(`/locations/areas?district=${encodeURIComponent(district)}`);
 
+export const getDeliveryQuote = (district, area, orderTotal, options) =>
+  apiGet(
+    `/delivery/quote?district=${encodeURIComponent(district)}&area=${encodeURIComponent(area)}&order_total=${orderTotal}`,
+    options,
+  );
+
 export const validateCoupon = (code, subtotal, token) =>
   apiPost(
     `/coupons/validate?code=${encodeURIComponent(code)}&subtotal=${subtotal}`,
