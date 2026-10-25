@@ -9,7 +9,7 @@ from collections.abc import Awaitable, Callable
 from pathlib import Path
 from typing import Any
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 if str(PROJECT_ROOT) not in sys.path:
@@ -21,19 +21,18 @@ from ai_agent.policy_rag.answer import (
     answer_policy_question,
 )
 from ai_agent.policy_rag.settings import settings
+from app.core.database import get_db
 from app.schemas.policy_qa import PolicyQARequest, PolicyQAResponse
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api", tags=["Policy QA"])
-ChatAnswer = Callable[
-    [str, list[dict[str, str]]],
-    Awaitable[dict[str, Any]],
-]
+ChatAnswer = Callable[..., Awaitable[dict[str, Any]]]
 
 
 async def _run_chat(
     body: PolicyQARequest,
     answer_function: ChatAnswer,
+    db: Any = None,
 ) -> PolicyQAResponse:
     question = body.question.strip()
     if not question:
@@ -41,7 +40,9 @@ async def _run_chat(
     history = [message.model_dump() for message in body.history]
     try:
         result = await asyncio.wait_for(
-            answer_function(question, history),
+            answer_function(question, history, db)
+            if db is not None
+            else answer_function(question, history),
             timeout=settings.policy_timeout_seconds,
         )
     except PolicyConfigurationError as error:
@@ -66,9 +67,12 @@ async def _run_chat(
 
 
 @router.post("/chat", response_model=PolicyQAResponse)
-async def chat(body: PolicyQARequest) -> PolicyQAResponse:
+async def chat(
+    body: PolicyQARequest,
+    db: Any = Depends(get_db),
+) -> PolicyQAResponse:
     """Handle normal chat and route Gentech policy questions to PDF retrieval."""
-    return await _run_chat(body, answer_chat_message)
+    return await _run_chat(body, answer_chat_message, db)
 
 
 @router.post("/policy-qa", response_model=PolicyQAResponse)

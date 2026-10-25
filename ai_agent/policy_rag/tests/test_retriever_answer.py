@@ -251,6 +251,9 @@ def test_chat_answers_general_questions_without_policy_retrieval(monkeypatch):
     [
         ("What is your return policy?", [], "POLICY"),
         ("How are you?", [], "GENERAL"),
+        ("Where is my order?", [], "ORDER"),
+        ("Build me a PC under BDT 100,000", [], "BUILD"),
+        ("Compare an RTX 4070 vs RTX 5070", [], "COMPARE"),
         (
             "What about outside Dhaka?",
             [{"role": "user", "content": "How much is delivery to Chattogram?"}],
@@ -298,7 +301,7 @@ def test_chat_model_uses_configured_ollama_settings(monkeypatch):
 @pytest.mark.parametrize(
     ("question", "expected"),
     [
-        ("Where is my order now?", True),
+        ("Where is my order now?", False),
         ("What are the specs of an RTX 5070?", True),
         ("RTX 5070-এর দাম কত?", True),
         ("What does it cost to live in Dhaka?", False),
@@ -307,6 +310,109 @@ def test_chat_model_uses_configured_ollama_settings(monkeypatch):
 )
 def test_scope_detection_distinguishes_lookup_from_policy_question(question, expected):
     assert answer.is_out_of_scope(question) is expected
+
+
+def test_order_and_build_followups_are_routed_from_history():
+    assert answer._classify_chat_intent(
+        "GT-2026-000001",
+        [
+            {
+                "role": "assistant",
+                "content": "Please share your order number or order ID.",
+            }
+        ],
+    ) == "ORDER"
+    assert answer._classify_chat_intent(
+        "BDT 100,000",
+        [{"role": "user", "content": "Suggest a desktop PC build."}],
+    ) == "BUILD"
+
+
+def test_budget_parser_normalizes_common_bdt_formats():
+    assert answer._extract_budget_bdt("Build a PC under BDT 100k") == 100000
+    assert answer._extract_budget_bdt("My 1 lakh budget is fixed") == 100000
+    assert answer._extract_budget_bdt("Suggest a PC for ৳75,000") == 75000
+
+
+def test_order_status_asks_for_id_without_calling_model(monkeypatch):
+    async def fail_model(*_args, **_kwargs):
+        raise AssertionError("An order lookup without an ID must ask for it first.")
+
+    monkeypatch.setattr(answer, "_create_chat_model", fail_model)
+    result = asyncio.run(answer.answer_chat_message("Where is my order?"))
+
+    assert "order number" in result["answer"]
+    assert result["sources"] == []
+
+
+def test_pc_build_asks_for_budget_without_calling_model(monkeypatch):
+    async def fail_model(*_args, **_kwargs):
+        raise AssertionError("A PC build without a budget must ask for one first.")
+
+    monkeypatch.setattr(answer, "_create_chat_model", fail_model)
+    result = asyncio.run(answer.answer_chat_message("Suggest a full PC build."))
+
+    assert "budget in BDT" in result["answer"]
+    assert result["sources"] == []
+
+
+def test_order_tool_call_uses_database_result(monkeypatch):
+    from langchain_core.messages import AIMessage, ToolMessage
+
+    class FakeOrders:
+        async def find_one(self, query, projection):
+            assert query["$or"][0] == {"orderNumber": "GT-2026-000001"}
+            assert "shippingAddress" not in projection
+            return {
+                "orderNumber": "GT-2026-000001",
+                "status": "accepted",
+                "createdAt": "2026-10-18T12:30:00Z",
+                "statusHistory": [],
+            }
+
+    class FakeDatabase:
+        def __getitem__(self, name):
+            assert name == "orders"
+            return FakeOrders()
+
+    class FakeModel:
+        def bind_tools(self, tools):
+            assert {tool.name for tool in tools} == {
+                "lookup_order_status",
+                "get_pc_build_inventory",
+            }
+            return self
+
+        async def ainvoke(self, messages):
+            if not any(isinstance(message, ToolMessage) for message in messages):
+                return AIMessage(
+                    content="",
+                    tool_calls=[
+                        {
+                            "name": "lookup_order_status",
+                            "args": {"order_id": "GT-2026-000001"},
+                            "id": "order-lookup",
+                            "type": "tool_call",
+                        }
+                    ],
+                )
+            tool_result = next(
+                message.content
+                for message in messages
+                if isinstance(message, ToolMessage)
+            )
+            assert '"status": "accepted"' in tool_result
+            return AIMessage(content="Your order has been accepted.")
+
+    monkeypatch.setattr(answer, "_create_chat_model", lambda: FakeModel())
+    result = asyncio.run(
+        answer.answer_chat_message(
+            "Where is my order GT-2026-000001?",
+            db=FakeDatabase(),
+        )
+    )
+
+    assert result == {"answer": "Your order has been accepted.", "sources": []}
 
 
 def test_unanswerable_policy_query_uses_support_fallback(monkeypatch):

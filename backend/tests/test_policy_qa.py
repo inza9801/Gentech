@@ -3,12 +3,14 @@ import asyncio
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
+from app.core.database import get_db
 from app.routers import policy_qa
 
 
 def _client() -> TestClient:
     app = FastAPI()
     app.include_router(policy_qa.router)
+    app.dependency_overrides[get_db] = lambda: object()
     return TestClient(app)
 
 
@@ -44,9 +46,10 @@ def test_policy_endpoint_returns_validated_answer_and_sources(monkeypatch):
 
 
 def test_chat_endpoint_uses_unified_chat_answer(monkeypatch):
-    async def fake_answer(question, history):
+    async def fake_answer(question, history, db):
         assert question == "Hello"
         assert history == []
+        assert db is not None
         return {"answer": "Hi! How can I help?", "sources": []}
 
     monkeypatch.setattr(policy_qa, "answer_chat_message", fake_answer)

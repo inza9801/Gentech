@@ -1,4 +1,4 @@
-"""Request and response schemas for policy-only assistant queries."""
+"""Request and response schemas for customer chat and policy questions."""
 
 from typing import Literal
 

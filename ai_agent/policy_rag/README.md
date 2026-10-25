@@ -67,9 +67,17 @@ The endpoint handles ordinary conversation with the configured Ollama chat
 model and routes questions about Gentech's written policies through PDF
 retrieval. Policy answers include citations from retrieved source metadata.
 `POST /api/policy-qa` remains available for policy-only requests. Policy text is
-always treated as untrusted data, never as model instructions. Live prices,
-stock, product-specific warranty periods, cart contents, and order status
-remain out of scope.
+always treated as untrusted data, never as model instructions.
+
+For order-status requests, the assistant asks for an order number or database ID
+if one is missing. It looks up the recorded status and estimates a 3–5 business
+day delivery window from the order date (an estimate, not a delivery promise);
+it does not disclose customer or shipping details. PC-build recommendations
+require a stated BDT budget and use in-stock products and current discounted
+prices across all 12 catalog categories. Product comparisons use the local
+model's general knowledge and are not verified against live inventory. Other
+live price, stock, cart, and product-specific warranty questions remain out of
+scope.
 
 ## Tests and evaluation
 
