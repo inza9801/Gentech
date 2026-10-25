@@ -2,6 +2,8 @@ import asyncio
 import json
 from datetime import datetime, timezone
 
+import pytest
+
 from app.services.chat_tools import (
     _add_business_days,
     _estimated_delivery,
@@ -100,6 +102,50 @@ def test_pc_inventory_tool_returns_live_discounted_inventory_for_all_categories(
         assert result["budgetBDT"] == 100000
         assert len(result["categories"]) == 12
         assert result["categories"]["processors"]["products"][0]["finalPriceBDT"] == 9000
+
+    asyncio.run(run())
+
+
+def test_product_tool_sorts_in_stock_products_by_discounted_price_distance():
+    async def run():
+        database = FakeDatabase()
+        database.collections["monitors"] = FakeCollection(
+            [
+                {"name": "Far", "price": 50000, "availability": 1},
+                {"name": "Nearest", "price": 21000, "discount": 10, "availability": 2},
+                {"name": "Next", "price": 25000, "availability": 1},
+                {"name": "Out of stock", "price": 20000, "availability": 0},
+            ]
+        )
+        tool = create_chat_tools(database)[2]
+        result = json.loads(
+            await tool.ainvoke(
+                {"category": "Monitor", "target_price_bdt": 20000}
+            )
+        )
+
+        assert result["category"] == "monitors"
+        assert result["catalogCount"] == 4
+        assert result["availableCount"] == 3
+        assert [item["name"] for item in result["products"]] == [
+            "Nearest",
+            "Next",
+            "Far",
+        ]
+        assert result["products"][0]["finalPriceBDT"] == 18900
+        assert result["products"][0]["priceDistanceBDT"] == 1100
+        assert database.collections["monitors"].query == {}
+
+    asyncio.run(run())
+
+
+def test_product_tool_rejects_unknown_category():
+    async def run():
+        tool = create_chat_tools(FakeDatabase())[2]
+        with pytest.raises(ValueError, match="supported"):
+            await tool.ainvoke(
+                {"category": "unknown", "target_price_bdt": 20000}
+            )
 
     asyncio.run(run())
 

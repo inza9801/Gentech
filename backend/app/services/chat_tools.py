@@ -235,4 +235,88 @@ def create_chat_tools(db: Any) -> list[Any]:
             ensure_ascii=False,
         )
 
-    return [lookup_order_status, get_pc_build_inventory]
+    @tool(
+        description=(
+            "Find in-stock products closest to a customer's target BDT price in "
+            "exactly one category: casings, graphics_cards, keyboards, laptops, "
+            "mice, monitors, motherboards, power_supplies, processors, rams, ssds, "
+            "or ups. Read that category's catalog, calculate discounted prices, "
+            "and return the nearest 10 matches sorted by price distance with their "
+            "features. Use for a single-product recommendation, not a PC build."
+        )
+    )
+    async def find_products_near_price(category: str, target_price_bdt: int) -> str:
+        category_key = category.strip().casefold().replace("-", "_").replace(" ", "_")
+        category_key = {
+            "case": "casings",
+            "casing": "casings",
+            "graphics_card": "graphics_cards",
+            "gpu": "graphics_cards",
+            "keyboard": "keyboards",
+            "laptop": "laptops",
+            "mouse": "mice",
+            "monitor": "monitors",
+            "motherboard": "motherboards",
+            "power_supply": "power_supplies",
+            "psu": "power_supplies",
+            "processor": "processors",
+            "cpu": "processors",
+            "ram": "rams",
+            "memory": "rams",
+            "ssd": "ssds",
+        }.get(category_key, category_key)
+        if category_key not in _CATALOG_CATEGORIES:
+            raise ValueError("Choose one of the supported Gentech product categories.")
+        if target_price_bdt <= 0:
+            raise ValueError("The target price must be greater than zero.")
+
+        cursor = db[category_key].find(
+            {},
+            {
+                "name": 1,
+                "sku": 1,
+                "brand": 1,
+                "price": 1,
+                "discount": 1,
+                "availability": 1,
+                **{field: 1 for field in _PRODUCT_FIELDS},
+            },
+        )
+        documents = await cursor.to_list(length=None)
+        available = [
+            document
+            for document in documents
+            if isinstance(document.get("availability"), (int, float))
+            and not isinstance(document.get("availability"), bool)
+            and document["availability"] > 0
+        ]
+        products = [
+            compact
+            for document in available
+            if (compact := _compact_product(document))
+        ]
+        products.sort(
+            key=lambda product: (
+                abs(product["finalPriceBDT"] - target_price_bdt),
+                product["finalPriceBDT"],
+                product["name"] or "",
+            )
+        )
+        matches = products[:10]
+        for product in matches:
+            product["priceDistanceBDT"] = abs(
+                product["finalPriceBDT"] - target_price_bdt
+            )
+
+        return json.dumps(
+            {
+                "category": category_key,
+                "targetPriceBDT": target_price_bdt,
+                "catalogCount": len(documents),
+                "availableCount": len(available),
+                "products": matches,
+            },
+            ensure_ascii=False,
+        )
+
+    return [lookup_order_status, get_pc_build_inventory, find_products_near_price]

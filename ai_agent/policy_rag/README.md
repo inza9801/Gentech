@@ -77,7 +77,10 @@ require a stated BDT budget and use in-stock products and current discounted
 prices across all 12 catalog categories. Product comparisons use the local
 model's general knowledge and are not verified against live inventory. Other
 live price, stock, cart, and product-specific warranty questions remain out of
-scope.
+scope. For a single-product recommendation, the assistant can search one stated
+category near a target BDT price, ask about feature priorities, then recommend
+from the matching in-stock products. Catalog access is read-only and restricted
+to that validated category; the model has no unrestricted database access.
 
 ## Tests and evaluation
 

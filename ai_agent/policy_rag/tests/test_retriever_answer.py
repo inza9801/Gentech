@@ -253,6 +253,7 @@ def test_chat_answers_general_questions_without_policy_retrieval(monkeypatch):
         ("How are you?", [], "GENERAL"),
         ("Where is my order?", [], "ORDER"),
         ("Build me a PC under BDT 100,000", [], "BUILD"),
+        ("Suggest a monitor around BDT 25,000", [], "PRODUCT_RECOMMENDATION"),
         ("Compare an RTX 4070 vs RTX 5070", [], "COMPARE"),
         (
             "What about outside Dhaka?",
@@ -326,6 +327,46 @@ def test_order_and_build_followups_are_routed_from_history():
         "BDT 100,000",
         [{"role": "user", "content": "Suggest a desktop PC build."}],
     ) == "BUILD"
+    assert answer._classify_chat_intent(
+        "I care most about refresh rate",
+        [{"role": "user", "content": "Suggest a monitor around BDT 25,000"}],
+    ) == "PRODUCT_RECOMMENDATION"
+
+
+def test_product_category_extraction_and_near_price_parsing():
+    assert answer._extract_product_category("looking for a graphics card") == "graphics_cards"
+    assert answer._extract_product_category("monitor") == "monitors"
+    assert answer._extract_product_category("graphics_cards") == "graphics_cards"
+    assert answer._extract_product_category("which is best?") is None
+    assert answer._extract_budget_bdt("Suggest a monitor near ৳25,000") == 25000
+    assert answer._extract_bare_price_bdt("25,000") == 25000
+    assert answer._extract_bare_price_bdt("25k") == 25000
+    assert answer._extract_bare_price_bdt("Refresh rate matters more") is None
+
+
+def test_product_recommendation_context_resolves_latest_category_and_price_from_history():
+    category, price = answer._resolve_product_recommendation_context(
+        "25,000",
+        [
+            {"role": "user", "content": "Suggest a monitor"},
+            {"role": "assistant", "content": "I found a few options around your budget."},
+        ],
+    )
+    assert category == "monitors"
+    assert price == 25000
+
+    category, price = answer._resolve_product_recommendation_context(
+        "monitor",
+        [
+            {"role": "user", "content": "Suggest a product around BDT 25,000"},
+            {
+                "role": "assistant",
+                "content": "Which category should I search: casings, graphics cards, keyboards, laptops, mice, monitors, motherboards, power supplies, processors, RAM, SSDs, or UPS?",
+            },
+        ],
+    )
+    assert category == "monitors"
+    assert price == 25000
 
 
 def test_budget_parser_normalizes_common_bdt_formats():
@@ -356,6 +397,19 @@ def test_pc_build_asks_for_budget_without_calling_model(monkeypatch):
     assert result["sources"] == []
 
 
+def test_product_recommendation_asks_for_category_before_model_call(monkeypatch):
+    async def fail_model(*_args, **_kwargs):
+        raise AssertionError("A product recommendation without a category must clarify first.")
+
+    monkeypatch.setattr(answer, "_create_chat_model", fail_model)
+    result = asyncio.run(
+        answer.answer_chat_message("Suggest a product around BDT 25,000")
+    )
+
+    assert "Which category" in result["answer"]
+    assert result["sources"] == []
+
+
 def test_order_tool_call_uses_database_result(monkeypatch):
     from langchain_core.messages import AIMessage, ToolMessage
 
@@ -380,6 +434,7 @@ def test_order_tool_call_uses_database_result(monkeypatch):
             assert {tool.name for tool in tools} == {
                 "lookup_order_status",
                 "get_pc_build_inventory",
+                "find_products_near_price",
             }
             return self
 
@@ -413,6 +468,88 @@ def test_order_tool_call_uses_database_result(monkeypatch):
     )
 
     assert result == {"answer": "Your order has been accepted.", "sources": []}
+
+
+def test_product_recommendation_asks_priorities_then_selects_from_live_products(monkeypatch):
+    class FakeCursor:
+        async def to_list(self, length=None):
+            return [
+                {
+                    "name": "Monitor A",
+                    "price": 26000,
+                    "availability": 3,
+                    "resolution": "1920x1080",
+                    "refreshRate": "180Hz",
+                },
+                {
+                    "name": "Monitor B",
+                    "price": 24000,
+                    "availability": 1,
+                    "resolution": "2560x1440",
+                    "refreshRate": "144Hz",
+                },
+            ]
+
+    class FakeMonitors:
+        def find(self, query, projection):
+            assert query == {}
+            return FakeCursor()
+
+    class FakeDatabase:
+        def __getitem__(self, name):
+            assert name == "monitors"
+            return FakeMonitors()
+
+    initial = asyncio.run(
+        answer.answer_chat_message(
+            "Suggest a product around BDT 25,000",
+        )
+    )
+    first = asyncio.run(
+        answer.answer_chat_message(
+            "monitor",
+            history=[
+                {"role": "user", "content": "Suggest a product around BDT 25,000"},
+                {"role": "assistant", "content": initial["answer"]},
+            ],
+            db=FakeDatabase(),
+        )
+    )
+    second = asyncio.run(
+        answer.answer_chat_message(
+            "Refresh rate matters more",
+            history=[
+                {"role": "user", "content": "Suggest a product around BDT 25,000"},
+                {"role": "assistant", "content": initial["answer"]},
+                {"role": "user", "content": "monitor"},
+                {"role": "assistant", "content": first["answer"]},
+            ],
+            db=FakeDatabase(),
+        )
+    )
+
+    assert "Which category" in initial["answer"]
+    assert "Which matters more" in first["answer"]
+    assert "resolution" in first["answer"] and "refresh rate" in first["answer"]
+    assert "Monitor A" in second["answer"]
+    assert "refresh rate priority" in second["answer"]
+
+    price_prompt = asyncio.run(
+        answer.answer_chat_message("Suggest a monitor")
+    )
+    price_reply = asyncio.run(
+        answer.answer_chat_message(
+            "25,000",
+            history=[
+                {"role": "user", "content": "Suggest a monitor"},
+                {"role": "assistant", "content": price_prompt["answer"]},
+            ],
+            db=FakeDatabase(),
+        )
+    )
+
+    assert "target price" in price_prompt["answer"]
+    assert "Which matters more" in price_reply["answer"]
 
 
 def test_unanswerable_policy_query_uses_support_fallback(monkeypatch):
