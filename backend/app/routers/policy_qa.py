@@ -8,6 +8,7 @@ import sys
 from collections.abc import Awaitable, Callable
 from pathlib import Path
 from typing import Any
+from uuid import uuid4
 
 from fastapi import APIRouter, Depends, HTTPException
 
@@ -33,6 +34,7 @@ async def _run_chat(
     body: PolicyQARequest,
     answer_function: ChatAnswer,
     db: Any = None,
+    conversation_id: str | None = None,
 ) -> PolicyQAResponse:
     question = body.question.strip()
     if not question:
@@ -40,7 +42,12 @@ async def _run_chat(
     history = [message.model_dump() for message in body.history]
     try:
         result = await asyncio.wait_for(
-            answer_function(question, history, db)
+            answer_function(
+                question,
+                history,
+                db,
+                conversation_id=conversation_id,
+            )
             if db is not None
             else answer_function(question, history),
             timeout=settings.policy_timeout_seconds,
@@ -63,7 +70,10 @@ async def _run_chat(
             status_code=502,
             detail="Chat service is temporarily unavailable.",
         ) from error
-    return PolicyQAResponse.model_validate(result)
+    response = dict(result)
+    if conversation_id is not None:
+        response.setdefault("conversation_id", conversation_id)
+    return PolicyQAResponse.model_validate(response)
 
 
 @router.post("/chat", response_model=PolicyQAResponse)
@@ -72,7 +82,8 @@ async def chat(
     db: Any = Depends(get_db),
 ) -> PolicyQAResponse:
     """Handle normal chat and route Gentech policy questions to PDF retrieval."""
-    return await _run_chat(body, answer_chat_message, db)
+    conversation_id = body.conversation_id or uuid4().hex
+    return await _run_chat(body, answer_chat_message, db, conversation_id)
 
 
 @router.post("/policy-qa", response_model=PolicyQAResponse)

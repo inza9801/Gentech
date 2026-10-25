@@ -156,7 +156,7 @@ export function ChatScreen() {
     try {
       const result = await apiPost(
         '/chat',
-        { question, history },
+        { question, history, conversation_id: conversation.id },
         { signal: controller.signal },
       );
       if (mountedRef.current) {

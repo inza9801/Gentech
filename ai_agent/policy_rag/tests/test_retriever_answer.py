@@ -478,15 +478,22 @@ def test_product_recommendation_asks_priorities_then_selects_from_live_products(
                     "name": "Monitor A",
                     "price": 26000,
                     "availability": 3,
-                    "resolution": "1920x1080",
-                    "refreshRate": "180Hz",
+                    "features": [
+                        "180Hz refresh rate",
+                        "Adaptive-Sync",
+                        "Low blue light",
+                        "Curved display",
+                    ],
                 },
                 {
                     "name": "Monitor B",
                     "price": 24000,
                     "availability": 1,
-                    "resolution": "2560x1440",
-                    "refreshRate": "144Hz",
+                    "features": [
+                        "HDR10",
+                        "Low blue light",
+                        "Wide color gamut",
+                    ],
                 },
             ]
 
@@ -503,6 +510,7 @@ def test_product_recommendation_asks_priorities_then_selects_from_live_products(
     initial = asyncio.run(
         answer.answer_chat_message(
             "Suggest a product around BDT 25,000",
+            conversation_id="feature-choice-test",
         )
     )
     first = asyncio.run(
@@ -513,11 +521,12 @@ def test_product_recommendation_asks_priorities_then_selects_from_live_products(
                 {"role": "assistant", "content": initial["answer"]},
             ],
             db=FakeDatabase(),
+            conversation_id="feature-choice-test",
         )
     )
     second = asyncio.run(
         answer.answer_chat_message(
-            "Refresh rate matters more",
+            "4",
             history=[
                 {"role": "user", "content": "Suggest a product around BDT 25,000"},
                 {"role": "assistant", "content": initial["answer"]},
@@ -525,14 +534,28 @@ def test_product_recommendation_asks_priorities_then_selects_from_live_products(
                 {"role": "assistant", "content": first["answer"]},
             ],
             db=FakeDatabase(),
+            conversation_id="feature-choice-test",
         )
     )
 
     assert "Which category" in initial["answer"]
-    assert "Which matters more" in first["answer"]
-    assert "resolution" in first["answer"] and "refresh rate" in first["answer"]
+    assert "Which feature should I prioritize?" in first["answer"]
+    assert "brand" not in first["answer"].casefold()
+    assert "resolution" not in first["answer"].casefold()
+    assert "4. 180Hz refresh rate" in first["answer"]
+    assert "Curved display" in first["answer"]
+    assert first["answer"].count("Low blue light") == 1
     assert "Monitor A" in second["answer"]
-    assert "refresh rate priority" in second["answer"]
+    assert "selected feature: 180Hz refresh rate" in second["answer"]
+    assert answer._resolve_product_recommendation_context(
+        "4",
+        [
+            {"role": "user", "content": "Suggest a product around BDT 25,000"},
+            {"role": "assistant", "content": initial["answer"]},
+            {"role": "user", "content": "monitor"},
+            {"role": "assistant", "content": first["answer"]},
+        ],
+    ) == ("monitors", 25000)
 
     price_prompt = asyncio.run(
         answer.answer_chat_message("Suggest a monitor")
@@ -549,7 +572,7 @@ def test_product_recommendation_asks_priorities_then_selects_from_live_products(
     )
 
     assert "target price" in price_prompt["answer"]
-    assert "Which matters more" in price_reply["answer"]
+    assert "Which feature should I prioritize?" in price_reply["answer"]
 
 
 def test_unanswerable_policy_query_uses_support_fallback(monkeypatch):

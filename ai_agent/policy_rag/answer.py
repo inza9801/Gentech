@@ -7,6 +7,7 @@ import json
 import logging
 import re
 from typing import Any
+from uuid import uuid4
 
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_ollama import ChatOllama
@@ -99,33 +100,6 @@ _CATEGORY_MENU_PROMPT = re.compile(
     r"\bwhich category should i search\b|\bwhich category\b.*\bsearch\b",
     re.IGNORECASE,
 )
-_PRODUCT_BASE_FIELDS = {
-    "name",
-    "sku",
-    "priceBDT",
-    "discountPercent",
-    "finalPriceBDT",
-    "stock",
-    "priceDistanceBDT",
-}
-_PRODUCT_FEATURE_SYNONYMS = {
-    "displaySize": ("screen size", "display size", "size"),
-    "displayType": ("display type", "panel", "panel type"),
-    "resolution": ("resolution", "image quality", "sharpness"),
-    "refreshRate": ("refresh rate", "refresh", "hz"),
-    "ramSize": ("ram size", "memory size", "memory capacity"),
-    "ramSpeed": ("ram speed", "memory speed"),
-    "ssdSize": ("ssd size", "storage size", "storage capacity"),
-    "readSpeed": ("read speed",),
-    "writeSpeed": ("write speed",),
-    "memorySize": ("vram", "graphics memory"),
-    "graphicsChipset": ("chipset", "graphics chipset"),
-    "numberOfCores": ("cores", "number of cores"),
-    "numberOfThreads": ("threads", "number of threads"),
-    "watts": ("wattage", "watts", "power"),
-    "formFactor": ("form factor",),
-    "features": ("features",),
-}
 _ORDER_IDENTIFIER = re.compile(
     r"\bGT-[A-Z0-9-]{4,}\b|\b[0-9a-f]{24}\b",
     re.IGNORECASE,
@@ -144,6 +118,7 @@ _BUDGET_AMOUNT = re.compile(
     r"\s*(?P<symbol_unit>k|thousand|lakh|lac)?\b)",
     re.IGNORECASE,
 )
+_FEATURE_CHOICE_CHECKPOINTER = None
 
 
 def _extract_budget_bdt(text: str) -> int | None:
@@ -207,6 +182,187 @@ def _conversation_text_for_recommendation(question: str, history: list[dict[str,
     return "\n".join(parts)
 
 
+def _feature_menu_options(history: list[dict[str, str]]) -> dict[str, str]:
+    for message in reversed(history[-8:]):
+        content = str(message.get("content", ""))
+        if message.get("role") != "assistant" or "Choose one:" not in content:
+            continue
+        menu = content.split("Choose one:", 1)[1]
+        return {
+            number: feature.strip()
+            for number, feature in re.findall(r"(?m)^\s*(\d+)\.\s*(.+?)\s*$", menu)
+        }
+    return {}
+
+
+def _feature_choice_prompt(products: list[dict[str, Any]], features: list[str], target_price_bdt: int) -> str:
+    choices = "\n".join(
+        f"{index}. {feature}" for index, feature in enumerate(features, start=1)
+    )
+    return (
+        f"I found {len(products)} in-stock products near BDT {target_price_bdt:,}. "
+        f"Which feature should I prioritize? Choose one:\n{choices}"
+    )
+
+
+def _create_feature_choice_agent(prompt: str):
+    from langchain.agents import create_agent
+    from langchain.agents.middleware import HumanInTheLoopMiddleware
+    from langchain_core.language_models.chat_models import BaseChatModel
+    from langchain_core.messages import AIMessage, ToolMessage
+    from langchain_core.outputs import ChatGeneration, ChatResult
+    from langchain_core.tools import tool
+    from langgraph.checkpoint.memory import InMemorySaver
+
+    global _FEATURE_CHOICE_CHECKPOINTER
+    if _FEATURE_CHOICE_CHECKPOINTER is None:
+        _FEATURE_CHOICE_CHECKPOINTER = InMemorySaver()
+
+    @tool
+    def ask_customer_to_choose_feature(question: str) -> str:
+        """Ask the customer to choose one product feature from the shortlist."""
+        return question
+
+    class FeatureChoiceToolCaller(BaseChatModel):
+        tool_name: str = "ask_customer_to_choose_feature"
+        feature_question: str = prompt
+
+        @property
+        def _llm_type(self) -> str:
+            return "deterministic-feature-choice"
+
+        def bind_tools(self, tools, **kwargs):
+            return self
+
+        def _generate(self, messages, stop=None, run_manager=None, **kwargs):
+            tool_message = next(
+                (
+                    message
+                    for message in reversed(messages)
+                    if isinstance(message, ToolMessage)
+                ),
+                None,
+            )
+            if tool_message is not None:
+                response = AIMessage(content=str(tool_message.content))
+            else:
+                response = AIMessage(
+                    content="",
+                    tool_calls=[
+                        {
+                            "name": self.tool_name,
+                            "args": {"question": self.feature_question},
+                            "id": uuid4().hex,
+                            "type": "tool_call",
+                        }
+                    ],
+                )
+            return ChatResult(generations=[ChatGeneration(message=response)])
+
+    agent = create_agent(
+        model=FeatureChoiceToolCaller(),
+        tools=[ask_customer_to_choose_feature],
+        system_prompt=(
+            "You are a product recommendation assistant. The app has already "
+            "shortlisted products using the customer's category and target price. "
+            "Call ask_customer_to_choose_feature exactly once with the exact "
+            "feature-choice question provided by the application. Do not add brand, "
+            "price, specs, or features not in the shortlist."
+        ),
+        middleware=[
+            HumanInTheLoopMiddleware(
+                interrupt_on={
+                    "ask_customer_to_choose_feature": {
+                        "allowed_decisions": ["respond"]
+                    }
+                }
+            )
+        ],
+        checkpointer=_FEATURE_CHOICE_CHECKPOINTER,
+    )
+    return agent
+
+
+async def _run_feature_choice_human_review(
+    question: str,
+    history: list[dict[str, str]],
+    conversation_id: str,
+    prompt: str,
+) -> bool:
+    from langchain_core.messages import HumanMessage
+    from langgraph.types import Command
+
+    agent = _create_feature_choice_agent(prompt)
+    config = {"configurable": {"thread_id": conversation_id}}
+    snapshot = await agent.aget_state(config)
+    pending = any(
+        getattr(task, "interrupts", ())
+        for task in getattr(snapshot, "tasks", ())
+    )
+    if _feature_menu_options(history):
+        if not pending:
+            result = await agent.ainvoke(
+                {
+                    "messages": [
+                        HumanMessage(
+                            content=(
+                                f"Call ask_customer_to_choose_feature with this exact "
+                                f"question, then wait for the customer: {prompt}"
+                            )
+                        )
+                    ]
+                },
+                config=config,
+                version="v2",
+            )
+            if not getattr(result, "interrupts", ()):
+                raise RuntimeError("LangChain did not pause for the feature choice.")
+        await agent.ainvoke(
+            Command(
+                resume={
+                    "decisions": [
+                        {"type": "respond", "message": question}
+                    ]
+                }
+            ),
+            config=config,
+            version="v2",
+        )
+        return False
+
+    result = await agent.ainvoke(
+        {
+            "messages": [
+                HumanMessage(
+                    content=(
+                        f"Call ask_customer_to_choose_feature with this exact "
+                        f"question, then wait for the customer: {prompt}"
+                    )
+                )
+            ]
+        },
+        config=config,
+        version="v2",
+    )
+    if not getattr(result, "interrupts", ()):
+        raise RuntimeError("LangChain did not pause for the feature choice.")
+    return True
+
+
+def _selected_feature_from_history(
+    question: str,
+    history: list[dict[str, str]],
+) -> str | None:
+    match = re.fullmatch(
+        r"\s*(?:(?:feature|option)\s*)?(\d+)\s*[.!]?\s*",
+        question,
+        re.IGNORECASE,
+    )
+    if match is None:
+        return None
+    return _feature_menu_options(history).get(match.group(1))
+
+
 def _resolve_product_recommendation_context(
     question: str,
     history: list[dict[str, str]],
@@ -231,7 +387,9 @@ def _resolve_product_recommendation_context(
         category = _extract_product_category(combined)
 
     target_price_bdt = None
-    for candidate in [question, *_conversation_text_for_recommendation(question, history).splitlines()]:
+    price_candidates = [] if _selected_feature_from_history(question, history) else [question]
+    price_candidates.extend(_conversation_text_for_recommendation(question, history).splitlines())
+    for candidate in price_candidates:
         if not candidate.strip():
             continue
         target_price_bdt = _extract_budget_bdt(candidate)
@@ -253,70 +411,42 @@ def _resolve_product_recommendation_context(
     return category, target_price_bdt
 
 
-def _feature_label(feature: str) -> str:
-    return re.sub(r"(?<!^)(?=[A-Z])", " ", feature).replace("_", " ").casefold()
-
-
-def _feature_values(products: list[dict[str, Any]], feature: str) -> list[Any]:
-    values = []
+def _unique_product_features(products: list[dict[str, Any]]) -> list[str]:
+    unique_features: dict[str, str] = {}
     for product in products:
-        value = product.get(feature)
-        if value is None:
+        features = product.get("features", [])
+        if not isinstance(features, list):
             continue
-        if isinstance(value, list):
-            value = ", ".join(str(item) for item in value[:2])
-        if value not in values:
-            values.append(value)
-    return values
+        for feature in features:
+            if not isinstance(feature, str) or not feature.strip():
+                continue
+            normalized = re.sub(r"\s+", " ", feature.casefold()).strip()
+            unique_features.setdefault(normalized, feature.strip())
+    return list(unique_features.values())
 
 
-def _varying_product_features(products: list[dict[str, Any]]) -> list[str]:
-    if len(products) < 2:
-        return []
-    features = []
-    for feature in products[0]:
-        if feature in _PRODUCT_BASE_FIELDS:
-            continue
-        if len(_feature_values(products, feature)) > 1:
-            features.append(feature)
-    return features
-
-
-def _product_priority(question: str, products: list[dict[str, Any]]) -> str | None:
-    normalized = question.casefold()
-    varying_features = _varying_product_features(products)
-    for feature in varying_features:
-        terms = (_feature_label(feature), *_PRODUCT_FEATURE_SYNONYMS.get(feature, ()))
-        if any(re.search(rf"\b{re.escape(term)}\b", normalized) for term in terms):
+def _product_priority(
+    question: str,
+    features: list[str],
+    history: list[dict[str, str]],
+) -> str | None:
+    normalized_question = re.sub(r"\s+", " ", question.casefold()).strip()
+    selected_feature = _selected_feature_from_history(question, history)
+    if selected_feature:
+        selected_normalized = re.sub(r"\s+", " ", selected_feature.casefold()).strip()
+        return next(
+            (
+                feature
+                for feature in features
+                if re.sub(r"\s+", " ", feature.casefold()).strip() == selected_normalized
+            ),
+            None,
+        )
+    for feature in sorted(features, key=len, reverse=True):
+        normalized_feature = re.sub(r"\s+", " ", feature.casefold()).strip()
+        if normalized_feature and normalized_feature in normalized_question:
             return feature
-    for feature in varying_features:
-        for value in _feature_values(products, feature):
-            text_value = str(value).casefold().strip()
-            if len(text_value) >= 3 and text_value in normalized:
-                return feature
     return None
-
-
-def _product_feature_sort_key(
-    product: dict[str, Any],
-    feature: str,
-    target_price_bdt: int,
-) -> tuple[Any, ...]:
-    value = product.get(feature)
-    if feature == "finalPriceBDT":
-        return (abs(int(value or 0) - target_price_bdt),)
-    if isinstance(value, (int, float)) and not isinstance(value, bool):
-        return (-value,)
-    if isinstance(value, str):
-        dimensions = re.fullmatch(r"\s*(\d+)\s*[x×]\s*(\d+)\s*", value, re.I)
-        if feature == "resolution" and dimensions:
-            return (-int(dimensions.group(1)) * int(dimensions.group(2)),)
-        numbers = re.search(r"\d+(?:\.\d+)?", value)
-        if numbers:
-            return (-float(numbers.group()),)
-    if isinstance(value, list):
-        return (-len(value),)
-    return (str(value or "").casefold(),)
 
 
 def _recommend_from_catalog(
@@ -324,6 +454,7 @@ def _recommend_from_catalog(
     catalog_result: str,
     category: str,
     target_price_bdt: int,
+    history: list[dict[str, str]],
 ) -> str:
     catalog = json.loads(catalog_result)
     products = catalog.get("products", [])
@@ -334,39 +465,45 @@ def _recommend_from_catalog(
             f"{target_price_bdt:,}. Would you like to adjust the target price?"
         )
 
-    priority = _product_priority(question, products)
+    features = _unique_product_features(products)
+    priority = _product_priority(question, features, history)
     if priority is None:
-        features = _varying_product_features(products)[:2]
         if features:
-            choices = " or ".join(
-                f"{_feature_label(feature)} ({', '.join(map(str, _feature_values(products, feature)[:3]))})"
-                for feature in features
+            choices = "\n".join(
+                f"{index}. {feature}" for index, feature in enumerate(features, start=1)
             )
             return (
                 f"I found {len(products)} in-stock {category_label} near BDT "
-                f"{target_price_bdt:,}. Which matters more to you: {choices}?"
+                f"{target_price_bdt:,}. Which feature should I prioritize? Choose one:\n{choices}"
             )
         return (
             f"I found {len(products)} in-stock {category_label} near BDT "
-            f"{target_price_bdt:,}. Which should I prioritize: the closest price or a particular brand?"
+            f"{target_price_bdt:,}, but the shortlist has no feature details to compare."
         )
 
+    normalized_priority = re.sub(r"\s+", " ", priority.casefold()).strip()
+    matching_products = [
+        product
+        for product in products
+        if any(
+            isinstance(feature, str)
+            and re.sub(r"\s+", " ", feature.casefold()).strip() == normalized_priority
+            for feature in product.get("features", [])
+        )
+    ]
     ranked = sorted(
-        products,
-        key=lambda product: (
-            *_product_feature_sort_key(product, priority, target_price_bdt),
-            abs(int(product.get("finalPriceBDT", 0)) - target_price_bdt),
-        ),
+        matching_products,
+        key=lambda product: abs(int(product.get("finalPriceBDT", 0)) - target_price_bdt),
     )
+    if not ranked:
+        return f"I couldn't find a shortlisted product with the feature '{priority}'."
     best = ranked[0]
     details = [
-        f"{_feature_label(priority)}: {', '.join(map(str, _feature_values([best], priority)))}",
+        f"selected feature: {priority}",
         f"price: BDT {int(best.get('finalPriceBDT', 0)):,}",
     ]
-    if best.get("brand"):
-        details.append(f"brand: {best['brand']}")
     return (
-        f"Based on your { _feature_label(priority) } priority, I recommend "
+        f"Based on your selected feature, I recommend "
         f"{best.get('name') or 'this product'} ({'; '.join(details)}). "
         f"It has {best.get('stock', 0)} in stock."
     )
@@ -665,6 +802,7 @@ async def answer_database_chat(
     history: list[dict[str, str]],
     db: Any,
     intent: str,
+    conversation_id: str | None = None,
 ) -> dict[str, Any]:
     from langchain_core.messages import ToolMessage
 
@@ -728,12 +866,53 @@ async def answer_database_chat(
         catalog_result = await tool_map["find_products_near_price"].ainvoke(
             {"category": category, "target_price_bdt": budget_bdt}
         )
+        catalog_products = json.loads(catalog_result).get("products", [])
+        features = _unique_product_features(catalog_products)
+        thread_id = conversation_id or uuid4().hex
+        if not _feature_menu_options(history):
+            if not catalog_products or not features:
+                return {
+                    "answer": _recommend_from_catalog(
+                        question,
+                        catalog_result,
+                        category,
+                        budget_bdt,
+                        history,
+                    ),
+                    "sources": [],
+                    "hitl_pending": False,
+                }
+            prompt = _feature_choice_prompt(
+                catalog_products,
+                features,
+                budget_bdt,
+            )
+            await _run_feature_choice_human_review(
+                question,
+                history,
+                thread_id,
+                prompt,
+            )
+            return {
+                "answer": prompt,
+                "sources": [],
+                "hitl_pending": True,
+            }
+
+        prompt = _feature_choice_prompt(catalog_products, features, budget_bdt)
+        await _run_feature_choice_human_review(
+            question,
+            history,
+            thread_id,
+            prompt,
+        )
         return {
             "answer": _recommend_from_catalog(
                 question,
                 catalog_result,
                 category,
                 budget_bdt,
+                history,
             ),
             "sources": [],
         }
@@ -887,6 +1066,7 @@ async def answer_chat_message(
     question: str,
     history: list[dict[str, str]] | None = None,
     db: Any = None,
+    conversation_id: str | None = None,
 ) -> dict[str, Any]:
     """Answer ordinary chat normally and ground policy questions in PDF sources."""
     if not question.strip():
@@ -894,7 +1074,13 @@ async def answer_chat_message(
     conversation = history or []
     intent = _classify_chat_intent(question, conversation)
     if intent in {"ORDER", "BUILD", "PRODUCT_RECOMMENDATION"}:
-        return await answer_database_chat(question, conversation, db, intent)
+        return await answer_database_chat(
+            question,
+            conversation,
+            db,
+            intent,
+            conversation_id,
+        )
     if intent == "COMPARE":
         return await answer_general_chat(question, conversation)
     if is_out_of_scope(question):

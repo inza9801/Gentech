@@ -22,10 +22,13 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "vitest run"
+    "test": "vitest run",
+    "lint": "expo lint"
   },
   "private": true,
   "devDependencies": {
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~58.0.4",
     "vitest": "^4.0.0"
   }
 }

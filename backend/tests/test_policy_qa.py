@@ -46,17 +46,23 @@ def test_policy_endpoint_returns_validated_answer_and_sources(monkeypatch):
 
 
 def test_chat_endpoint_uses_unified_chat_answer(monkeypatch):
-    async def fake_answer(question, history, db):
+    async def fake_answer(question, history, db, conversation_id=None):
         assert question == "Hello"
         assert history == []
         assert db is not None
+        assert conversation_id == "test-conversation"
         return {"answer": "Hi! How can I help?", "sources": []}
 
     monkeypatch.setattr(policy_qa, "answer_chat_message", fake_answer)
-    response = _client().post("/api/chat", json={"question": "Hello"})
+    response = _client().post(
+        "/api/chat",
+        json={"question": "Hello", "conversation_id": "test-conversation"},
+    )
 
     assert response.status_code == 200
-    assert response.json() == {"answer": "Hi! How can I help?", "sources": []}
+    assert response.json()["answer"] == "Hi! How can I help?"
+    assert response.json()["conversation_id"] == "test-conversation"
+    assert response.json()["hitl_pending"] is False
 
 
 def test_policy_endpoint_rejects_blank_and_oversized_questions():

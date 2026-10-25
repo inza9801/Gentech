@@ -13,6 +13,7 @@ class PolicyChatMessage(BaseModel):
 class PolicyQARequest(BaseModel):
     question: str = Field(min_length=1, max_length=2000)
     history: list[PolicyChatMessage] = Field(default_factory=list, max_length=8)
+    conversation_id: str | None = Field(default=None, min_length=1, max_length=128)
 
 
 class PolicySource(BaseModel):
@@ -29,3 +30,5 @@ class PolicySource(BaseModel):
 class PolicyQAResponse(BaseModel):
     answer: str
     sources: list[PolicySource]
+    conversation_id: str | None = None
+    hitl_pending: bool = False

@@ -59,7 +59,8 @@ The app uses `POST /api/chat`, with JSON:
 ```json
 {
   "question": "What is the delivery fee to Chattogram?",
-  "history": []
+  "history": [],
+  "conversation_id": "chat-example"
 }
 ```
 
@@ -68,6 +69,10 @@ model and routes questions about Gentech's written policies through PDF
 retrieval. Policy answers include citations from retrieved source metadata.
 `POST /api/policy-qa` remains available for policy-only requests. Policy text is
 always treated as untrusted data, never as model instructions.
+The chat app sends a stable `conversation_id`; product feature selection uses
+LangChain's `HumanInTheLoopMiddleware` to pause at the feature-choice tool and
+resume that same conversation when the customer replies. The response includes
+`hitl_pending` while waiting for that choice.
 
 For order-status requests, the assistant asks for an order number or database ID
 if one is missing. It looks up the recorded status and estimates a 3–5 business

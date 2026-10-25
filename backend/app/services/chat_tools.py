@@ -112,7 +112,11 @@ def _serializable_time(value: Any) -> str | None:
     return parsed.isoformat() if parsed else None
 
 
-def _compact_product(product: dict[str, Any]) -> dict[str, Any]:
+def _compact_product(
+    product: dict[str, Any],
+    *,
+    include_all_features: bool = False,
+) -> dict[str, Any]:
     price = product.get("price")
     discount = product.get("discount", 0) or 0
     if not isinstance(price, (int, float)) or isinstance(price, bool) or price <= 0:
@@ -130,7 +134,12 @@ def _compact_product(product: dict[str, Any]) -> dict[str, Any]:
     for field in _PRODUCT_FIELDS:
         value = product.get(field)
         if value is not None:
-            compact[field] = value[:3] if field == "features" and isinstance(value, list) else value
+            if field == "features" and isinstance(value, list) and not include_all_features:
+                compact[field] = value[:3]
+            else:
+                compact[field] = value
+    if include_all_features and not isinstance(compact.get("features"), list):
+        compact["features"] = []
     return compact
 
 
@@ -293,7 +302,7 @@ def create_chat_tools(db: Any) -> list[Any]:
         products = [
             compact
             for document in available
-            if (compact := _compact_product(document))
+            if (compact := _compact_product(document, include_all_features=True))
         ]
         products.sort(
             key=lambda product: (
