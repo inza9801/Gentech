@@ -43,15 +43,32 @@ def test_policy_endpoint_returns_validated_answer_and_sources(monkeypatch):
 
     assert response.status_code == 200
     assert response.json()["sources"][0]["sectionNumber"] == "3.1"
+    assert response.json()["suggested_products"] == []
 
 
 def test_chat_endpoint_uses_unified_chat_answer(monkeypatch):
+    suggested_product = {
+        "id": "product-1",
+        "name": "Recommended Monitor",
+        "category": {"name": "Monitors", "slug": "monitors"},
+        "price": 25000,
+        "discount": 0,
+        "finalPrice": 25000,
+        "hasDiscount": False,
+        "inStock": True,
+        "lowStock": False,
+    }
+
     async def fake_answer(question, history, db, conversation_id=None):
         assert question == "Hello"
         assert history == []
         assert db is not None
         assert conversation_id == "test-conversation"
-        return {"answer": "Hi! How can I help?", "sources": []}
+        return {
+            "answer": "This monitor matches your needs.",
+            "sources": [],
+            "suggested_products": [suggested_product],
+        }
 
     monkeypatch.setattr(policy_qa, "answer_chat_message", fake_answer)
     response = _client().post(
@@ -60,9 +77,10 @@ def test_chat_endpoint_uses_unified_chat_answer(monkeypatch):
     )
 
     assert response.status_code == 200
-    assert response.json()["answer"] == "Hi! How can I help?"
+    assert response.json()["answer"] == "This monitor matches your needs."
     assert response.json()["conversation_id"] == "test-conversation"
     assert response.json()["hitl_pending"] is False
+    assert response.json()["suggested_products"][0]["id"] == "product-1"
 
 
 def test_policy_endpoint_rejects_blank_and_oversized_questions():

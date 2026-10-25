@@ -110,6 +110,15 @@ const styles = StyleSheet.create({
   assistantText: { color: colors.text },
   sources: { borderTopWidth: 1, borderTopColor: colors.border, marginTop: 9, paddingTop: 7, gap: 4 },
   sourceText: { color: colors.blue, fontSize: 9, lineHeight: 14 },
+  recommendedProduct: { marginTop: 10, gap: 7 },
+  recommendationLabel: {
+    color: colors.muted,
+    fontSize: 10,
+    fontWeight: '800',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  addedStatus: { color: colors.green, fontSize: 11, fontWeight: '800' },
   typing: {
     minHeight: 34,
     paddingHorizontal: 18,

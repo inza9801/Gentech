@@ -72,6 +72,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.blue,
     flexShrink: 0,
   },
+  addButtonWithLabel: {
+    width: 'auto',
+    paddingHorizontal: 9,
+    flexDirection: 'row',
+    gap: 4,
+  },
+  addButtonAdded: { backgroundColor: colors.green },
+  addButtonText: { color: '#FFFFFF', fontSize: 10, fontWeight: '800' },
   addPressed: { backgroundColor: '#075BC7' },
 });
 

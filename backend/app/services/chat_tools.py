@@ -116,6 +116,7 @@ def _compact_product(
     product: dict[str, Any],
     *,
     include_all_features: bool = False,
+    include_card_details: bool = False,
 ) -> dict[str, Any]:
     price = product.get("price")
     discount = product.get("discount", 0) or 0
@@ -131,6 +132,22 @@ def _compact_product(
         "finalPriceBDT": round(price * (1 - discount / 100)),
         "stock": product.get("availability", 0),
     }
+    if include_card_details:
+        images = product.get("images") or []
+        compact.update(
+            {
+                "id": str(product["_id"]) if product.get("_id") is not None else None,
+                "image": images[0] if images else None,
+                "images": images,
+                "rating": product.get("rating", 0) or 0,
+                "ratingCount": product.get(
+                    "ratingCount",
+                    product.get("reviewCount", 0),
+                )
+                or 0,
+                "reviewCount": product.get("reviewCount", 0) or 0,
+            }
+        )
     for field in _PRODUCT_FIELDS:
         value = product.get(field)
         if value is not None:
@@ -288,6 +305,11 @@ def create_chat_tools(db: Any) -> list[Any]:
                 "price": 1,
                 "discount": 1,
                 "availability": 1,
+                "_id": 1,
+                "images": 1,
+                "rating": 1,
+                "ratingCount": 1,
+                "reviewCount": 1,
                 **{field: 1 for field in _PRODUCT_FIELDS},
             },
         )
@@ -302,7 +324,13 @@ def create_chat_tools(db: Any) -> list[Any]:
         products = [
             compact
             for document in available
-            if (compact := _compact_product(document, include_all_features=True))
+            if (
+                compact := _compact_product(
+                    document,
+                    include_all_features=True,
+                    include_card_details=True,
+                )
+            )
         ]
         products.sort(
             key=lambda product: (

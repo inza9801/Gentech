@@ -2,13 +2,14 @@ import styles from '../styles/ProductCardStyles';
 import { Pressable, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { ProductImage } from './ProductImage';
-import { colors } from '../theme/colors';
 import { formatPrice } from '../utils/product';
 
 export function ProductCard({
   product,
   onPress,
   onAdd,
+  addedToCart = false,
+  showAddLabel = false,
   width = 174,
 }) {
   return (
@@ -56,18 +57,32 @@ export function ProductCard({
         </View>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel={`Add ${product.name} to cart`}
+          accessibilityLabel={
+            addedToCart ? `${product.name} added to cart` : `Add ${product.name} to cart`
+          }
           hitSlop={8}
+          disabled={addedToCart}
           onPress={(event) => {
             event.stopPropagation();
             onAdd?.();
           }}
           style={({ pressed }) => [
             styles.addButton,
+            showAddLabel && styles.addButtonWithLabel,
+            addedToCart && styles.addButtonAdded,
             pressed && styles.addPressed,
           ]}
         >
-          <Ionicons name="add" size={21} color="#FFFFFF" />
+          <Ionicons
+            name={addedToCart ? 'checkmark' : 'add'}
+            size={21}
+            color="#FFFFFF"
+          />
+          {showAddLabel ? (
+            <Text style={styles.addButtonText}>
+              {addedToCart ? 'Added' : 'Add to bag'}
+            </Text>
+          ) : null}
         </Pressable>
       </View>
     </Pressable>

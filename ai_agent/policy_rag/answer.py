@@ -509,6 +509,69 @@ def _recommend_from_catalog(
     )
 
 
+def _suggested_product_card(
+    product: dict[str, Any],
+    category: str,
+) -> dict[str, Any] | None:
+    if not product.get("id"):
+        return None
+    price = int(product.get("priceBDT", 0))
+    discount = int(product.get("discountPercent", 0) or 0)
+    stock = int(product.get("stock", 0) or 0)
+    features = product.get("features", [])
+    category_name = category.replace("_", " ").title()
+    return {
+        "id": product["id"],
+        "sku": product.get("sku"),
+        "name": product.get("name") or "Recommended product",
+        "brand": product.get("brand"),
+        "category": {"name": category_name, "slug": category},
+        "price": price,
+        "discount": discount,
+        "finalPrice": int(product.get("finalPriceBDT", price)),
+        "hasDiscount": discount > 0,
+        "rating": float(product.get("rating", 0) or 0),
+        "ratingCount": int(product.get("ratingCount", 0) or 0),
+        "reviewCount": int(product.get("reviewCount", 0) or 0),
+        "availability": stock,
+        "inStock": stock > 0,
+        "lowStock": 0 < stock <= 5,
+        "features": features,
+        "images": product.get("images", []),
+        "image": product.get("image"),
+        "highlights": features[:3],
+    }
+
+
+def _recommended_catalog_product(
+    question: str,
+    catalog_result: str,
+    target_price_bdt: int,
+    history: list[dict[str, str]],
+) -> dict[str, Any] | None:
+    products = json.loads(catalog_result).get("products", [])
+    features = _unique_product_features(products)
+    priority = _product_priority(question, features, history)
+    if priority is None:
+        return None
+
+    normalized_priority = re.sub(r"\s+", " ", priority.casefold()).strip()
+    matching_products = [
+        product
+        for product in products
+        if any(
+            isinstance(feature, str)
+            and re.sub(r"\s+", " ", feature.casefold()).strip() == normalized_priority
+            for feature in product.get("features", [])
+        )
+    ]
+    ranked = sorted(
+        matching_products,
+        key=lambda product: abs(int(product.get("finalPriceBDT", 0)) - target_price_bdt),
+    )
+    return ranked[0] if ranked else None
+
+
 def is_out_of_scope(question: str) -> bool:
     """Identify database-only requests without blocking policy questions."""
     if _PRODUCT_WARRANTY.search(question):
@@ -906,6 +969,17 @@ async def answer_database_chat(
             thread_id,
             prompt,
         )
+        recommended_product = _recommended_catalog_product(
+            question,
+            catalog_result,
+            budget_bdt,
+            history,
+        )
+        product_card = (
+            _suggested_product_card(recommended_product, category)
+            if recommended_product
+            else None
+        )
         return {
             "answer": _recommend_from_catalog(
                 question,
@@ -915,6 +989,7 @@ async def answer_database_chat(
                 history,
             ),
             "sources": [],
+            "suggested_products": [product_card] if product_card else [],
         }
     if db is None:
         raise RuntimeError("Database is required for order, build, and product chat.")

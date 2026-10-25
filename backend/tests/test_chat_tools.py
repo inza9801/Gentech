@@ -111,12 +111,14 @@ def test_product_tool_sorts_in_stock_products_by_discounted_price_distance():
         database = FakeDatabase()
         database.collections["monitors"] = FakeCollection(
             [
-                {"name": "Far", "price": 50000, "availability": 1},
+                {"_id": "far-id", "name": "Far", "price": 50000, "availability": 1},
                 {
+                    "_id": "nearest-id",
                     "name": "Nearest",
                     "price": 21000,
                     "discount": 10,
                     "availability": 2,
+                    "images": ["monitors/nearest.jpg"],
                     "features": ["Feature A", "Feature B", "Feature C", "Feature D"],
                 },
                 {"name": "Next", "price": 25000, "availability": 1},
@@ -146,6 +148,8 @@ def test_product_tool_sorts_in_stock_products_by_discounted_price_distance():
             "Feature C",
             "Feature D",
         ]
+        assert result["products"][0]["id"] == "nearest-id"
+        assert result["products"][0]["image"] == "monitors/nearest.jpg"
         assert database.collections["monitors"].query == {}
 
     asyncio.run(run())

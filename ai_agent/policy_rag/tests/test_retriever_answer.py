@@ -475,9 +475,11 @@ def test_product_recommendation_asks_priorities_then_selects_from_live_products(
         async def to_list(self, length=None):
             return [
                 {
+                    "_id": "monitor-a",
                     "name": "Monitor A",
                     "price": 26000,
                     "availability": 3,
+                    "images": ["monitors/monitor-a.jpg"],
                     "features": [
                         "180Hz refresh rate",
                         "Adaptive-Sync",
@@ -486,6 +488,7 @@ def test_product_recommendation_asks_priorities_then_selects_from_live_products(
                     ],
                 },
                 {
+                    "_id": "monitor-b",
                     "name": "Monitor B",
                     "price": 24000,
                     "availability": 1,
@@ -547,6 +550,11 @@ def test_product_recommendation_asks_priorities_then_selects_from_live_products(
     assert first["answer"].count("Low blue light") == 1
     assert "Monitor A" in second["answer"]
     assert "selected feature: 180Hz refresh rate" in second["answer"]
+    assert len(second["suggested_products"]) == 1
+    assert second["suggested_products"][0]["id"] == "monitor-a"
+    assert second["suggested_products"][0]["category"]["slug"] == "monitors"
+    assert second["suggested_products"][0]["finalPrice"] == 26000
+    assert second["suggested_products"][0]["image"] == "monitors/monitor-a.jpg"
     assert answer._resolve_product_recommendation_context(
         "4",
         [

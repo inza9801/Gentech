@@ -61,4 +61,5 @@ and does not transfer money. Signed-in customers can edit their profile and see
 order-status updates in the in-app Notifications tab. Admin accounts can manage
 categories, products, coupons and order status from the Account tab's Admin
 console. Order notifications are refreshed while the app is active; remote push
-notifications are not configured. The support chat remains presentation-only.
+notifications are not configured. Chat product recommendations include an
+interactive product card that can add the suggestion to the shopping bag.

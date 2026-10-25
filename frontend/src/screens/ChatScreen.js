@@ -15,6 +15,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BrandMark } from '../components/BrandMark';
+import { ProductCard } from '../components/ProductCard';
 import { apiPost } from '../services/api';
 import {
   createConversation,
@@ -22,6 +23,7 @@ import {
   loadConversations,
   saveConversations,
 } from '../services/chatStorage';
+import { useCart } from '../context/CartContext';
 import { colors } from '../theme/colors';
 
 const suggestions = [
@@ -31,6 +33,7 @@ const suggestions = [
 ];
 
 export function ChatScreen() {
+  const { addItem } = useCart();
   const [conversations, setConversations] = useState([]);
   const [activeId, setActiveId] = useState(null);
   const [draft, setDraft] = useState('');
@@ -165,6 +168,10 @@ export function ChatScreen() {
           role: 'assistant',
           content: result.answer,
           sources: result.sources || [],
+          suggestedProducts: (result.suggested_products || []).map((product) => ({
+            ...product,
+            addedToCart: false,
+          })),
         };
         updateConversation(conversation.id, (current) => ({
           ...current,
@@ -222,6 +229,43 @@ export function ChatScreen() {
             ))}
           </View>
         ) : null}
+        {item.suggestedProducts?.map((product) => (
+          <View key={product.id} style={styles.recommendedProduct}>
+            <Text style={styles.recommendationLabel}>Recommended for you</Text>
+            <ProductCard
+              product={product}
+              width={245}
+              addedToCart={product.addedToCart}
+              showAddLabel
+              onAdd={() => {
+                if (product.addedToCart || !activeConversation) return;
+                const cartProduct = { ...product };
+                delete cartProduct.addedToCart;
+                addItem(cartProduct);
+                updateConversation(activeConversation.id, (conversation) => ({
+                  ...conversation,
+                  messages: conversation.messages.map((message) =>
+                    message.id === item.id
+                      ? {
+                          ...message,
+                          suggestedProducts: message.suggestedProducts.map((suggested) =>
+                            suggested.id === product.id
+                              ? { ...suggested, addedToCart: true }
+                              : suggested,
+                          ),
+                        }
+                      : message,
+                  ),
+                }));
+              }}
+            />
+            {product.addedToCart ? (
+              <Text accessibilityRole="alert" style={styles.addedStatus}>
+                Added to your bag
+              </Text>
+            ) : null}
+          </View>
+        ))}
       </View>
     </View>
   );

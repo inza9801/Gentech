@@ -4,6 +4,8 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
+from app.schemas.product import ProductCard
+
 
 class PolicyChatMessage(BaseModel):
     role: Literal["user", "assistant"]
@@ -30,5 +32,6 @@ class PolicySource(BaseModel):
 class PolicyQAResponse(BaseModel):
     answer: str
     sources: list[PolicySource]
+    suggested_products: list[ProductCard] = Field(default_factory=list)
     conversation_id: str | None = None
     hitl_pending: bool = False
