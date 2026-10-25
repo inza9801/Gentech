@@ -29,7 +29,7 @@ class PolicySettings(BaseSettings):
     policy_retrieval_collection_boost: float = 1.3
     policy_retrieval_table_boost: float = 1.2
     policy_retrieval_reranker: str = "none"
-    policy_timeout_seconds: int = 45
+    policy_timeout_seconds: int = 120
     policy_chunk_max_tokens: int = 500
     policy_chunk_overlap_tokens: int = 50
 

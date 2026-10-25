@@ -23,16 +23,19 @@ import { EditProfileScreen } from '../screens/EditProfileScreen';
 import { AdminConsoleScreen } from '../screens/AdminConsoleScreen';
 import { NotificationsScreen } from '../screens/NotificationsScreen';
 import { useNotifications } from '../context/NotificationContext';
+import { useAuth } from '../context/AuthContext';
 
 const Tabs = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 function BottomTabs() {
   const { unreadCount } = useNotifications();
+  const { token, customer } = useAuth();
   return (
     <Tabs.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
+        tabBarHideOnKeyboard: true,
         tabBarActiveTintColor: colors.blue,
         tabBarInactiveTintColor: colors.muted,
         tabBarStyle: styles.tabBar,
@@ -55,7 +58,11 @@ function BottomTabs() {
       <Tabs.Screen name="Offers" component={OffersScreen} />
       <Tabs.Screen name="Notifications" component={NotificationsScreen} />
       <Tabs.Screen name="Account" component={AccountScreen} />
-      <Tabs.Screen name="Chat" component={ChatScreen} />
+      {token && customer ? (
+        <Tabs.Screen name="Chat">
+          {() => <ChatScreen key={customer.id} />}
+        </Tabs.Screen>
+      ) : null}
     </Tabs.Navigator>
   );
 }

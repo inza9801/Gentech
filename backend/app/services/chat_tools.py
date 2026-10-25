@@ -100,11 +100,21 @@ def _estimated_delivery(created_at: Any, order_id: Any) -> dict[str, str] | None
     }
 
 
-def _order_lookup_query(order_id: str) -> dict[str, Any]:
+def _order_lookup_query(order_id: str, customer_id: Any) -> dict[str, Any]:
     conditions: list[dict[str, Any]] = [{"orderNumber": order_id}]
     if ObjectId.is_valid(order_id):
         conditions.append({"_id": ObjectId(order_id)})
-    return {"$or": conditions}
+    customer_ids = (
+        [customer_id]
+        if isinstance(customer_id, str)
+        else [customer_id, str(customer_id)]
+    )
+    return {
+        "$and": [
+            {"$or": conditions},
+            {"customerId": {"$in": customer_ids}},
+        ]
+    }
 
 
 def _serializable_time(value: Any) -> str | None:
@@ -160,8 +170,8 @@ def _compact_product(
     return compact
 
 
-def create_chat_tools(db: Any) -> list[Any]:
-    """Create per-request tools bound to the active MongoDB database."""
+def create_chat_tools(db: Any, customer_id: Any = None) -> list[Any]:
+    """Create per-request tools bound to the database and authenticated customer."""
 
     @tool(
         description=(
@@ -174,8 +184,10 @@ def create_chat_tools(db: Any) -> list[Any]:
         identifier = order_id.strip()
         if not identifier:
             raise ValueError("An order number or order ID is required.")
+        if customer_id is None:
+            return json.dumps({"found": False, "message": "No order matched that ID."})
         order = await db["orders"].find_one(
-            _order_lookup_query(identifier),
+            _order_lookup_query(identifier, customer_id),
             {
                 "orderNumber": 1,
                 "status": 1,

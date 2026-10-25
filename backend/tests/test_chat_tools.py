@@ -41,6 +41,7 @@ class FakeDatabase:
                 [
                     {
                         "orderNumber": "GT-2026-000001",
+                        "customerId": "customer-1",
                         "status": "accepted",
                         "createdAt": datetime(2026, 10, 18, tzinfo=timezone.utc),
                         "statusHistory": [],
@@ -82,7 +83,8 @@ class FakeDatabase:
 
 def test_order_tool_returns_status_and_eta_without_personal_details():
     async def run():
-        tool = create_chat_tools(FakeDatabase())[0]
+        database = FakeDatabase()
+        tool = create_chat_tools(database, "customer-1")[0]
         result = json.loads(await tool.ainvoke({"order_id": "GT-2026-000001"}))
 
         assert result["found"] is True
@@ -90,13 +92,28 @@ def test_order_tool_returns_status_and_eta_without_personal_details():
         assert result["estimatedDelivery"]["from"] == "2026-10-21"
         assert "customer" not in result
         assert "shippingAddress" not in result
+        assert database.collections["orders"].query["$and"][1] == {
+            "customerId": {"$in": ["customer-1"]}
+        }
+
+    asyncio.run(run())
+
+
+def test_order_tool_without_customer_context_does_not_query_orders():
+    async def run():
+        database = FakeDatabase()
+        tool = create_chat_tools(database)[0]
+        result = json.loads(await tool.ainvoke({"order_id": "GT-2026-000001"}))
+
+        assert result["found"] is False
+        assert not hasattr(database.collections["orders"], "query")
 
     asyncio.run(run())
 
 
 def test_pc_inventory_tool_returns_live_discounted_inventory_for_all_categories():
     async def run():
-        tool = create_chat_tools(FakeDatabase())[1]
+        tool = create_chat_tools(FakeDatabase(), "customer-1")[1]
         result = json.loads(await tool.ainvoke({"budget_bdt": 100000}))
 
         assert result["budgetBDT"] == 100000
@@ -125,7 +142,7 @@ def test_product_tool_sorts_in_stock_products_by_discounted_price_distance():
                 {"name": "Out of stock", "price": 20000, "availability": 0},
             ]
         )
-        tool = create_chat_tools(database)[2]
+        tool = create_chat_tools(database, "customer-1")[2]
         result = json.loads(
             await tool.ainvoke(
                 {"category": "Monitor", "target_price_bdt": 20000}
@@ -157,7 +174,7 @@ def test_product_tool_sorts_in_stock_products_by_discounted_price_distance():
 
 def test_product_tool_rejects_unknown_category():
     async def run():
-        tool = create_chat_tools(FakeDatabase())[2]
+        tool = create_chat_tools(FakeDatabase(), "customer-1")[2]
         with pytest.raises(ValueError, match="supported"):
             await tool.ainvoke(
                 {"category": "unknown", "target_price_bdt": 20000}

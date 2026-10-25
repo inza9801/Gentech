@@ -4,13 +4,16 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
 from app.core.database import get_db
+from app.core.security import require_customer
 from app.routers import policy_qa
 
 
-def _client() -> TestClient:
+def _client(authenticated: bool = True) -> TestClient:
     app = FastAPI()
     app.include_router(policy_qa.router)
     app.dependency_overrides[get_db] = lambda: object()
+    if authenticated:
+        app.dependency_overrides[require_customer] = lambda: {"_id": "customer-1"}
     return TestClient(app)
 
 
@@ -59,11 +62,18 @@ def test_chat_endpoint_uses_unified_chat_answer(monkeypatch):
         "lowStock": False,
     }
 
-    async def fake_answer(question, history, db, conversation_id=None):
+    async def fake_answer(
+        question,
+        history,
+        db,
+        conversation_id=None,
+        customer_id=None,
+    ):
         assert question == "Hello"
         assert history == []
         assert db is not None
         assert conversation_id == "test-conversation"
+        assert customer_id == "customer-1"
         return {
             "answer": "This monitor matches your needs.",
             "sources": [],
@@ -83,10 +93,50 @@ def test_chat_endpoint_uses_unified_chat_answer(monkeypatch):
     assert response.json()["suggested_products"][0]["id"] == "product-1"
 
 
+def test_chat_stream_emits_progress_deltas_and_final_response(monkeypatch):
+    async def fake_answer(
+        question,
+        history,
+        db,
+        conversation_id=None,
+        customer_id=None,
+        on_delta=None,
+        on_progress=None,
+    ):
+        assert question == "Hello"
+        assert db is not None
+        assert customer_id == "customer-1"
+        await on_progress("Writing a reply")
+        await on_delta("Hello")
+        await on_delta(" there")
+        return {"answer": "Hello there", "sources": []}
+
+    monkeypatch.setattr(policy_qa, "answer_chat_message", fake_answer)
+    response = _client().post(
+        "/api/chat/stream",
+        json={"question": "Hello", "conversation_id": "stream-conversation"},
+    )
+
+    assert response.status_code == 200
+    assert response.headers["content-type"].startswith("text/event-stream")
+    assert "event: progress\ndata: {\"message\": \"Writing a reply\"}" in response.text
+    assert "event: delta\ndata: {\"text\": \"Hello\"}" in response.text
+    assert "event: delta\ndata: {\"text\": \" there\"}" in response.text
+    assert "event: done" in response.text
+    assert '"conversation_id": "stream-conversation"' in response.text
+
+
 def test_policy_endpoint_rejects_blank_and_oversized_questions():
     client = _client()
     assert client.post("/api/policy-qa", json={"question": "   "}).status_code == 422
     assert client.post("/api/policy-qa", json={"question": "x" * 2001}).status_code == 422
+
+
+def test_chat_endpoints_require_customer_authentication():
+    client = _client(authenticated=False)
+    assert client.post("/api/chat", json={"question": "Hello"}).status_code == 401
+    assert client.post("/api/chat/stream", json={"question": "Hello"}).status_code == 401
+    assert client.post("/api/policy-qa", json={"question": "Hello"}).status_code == 401
 
 
 def test_policy_endpoint_maps_configuration_errors_to_service_unavailable(monkeypatch):

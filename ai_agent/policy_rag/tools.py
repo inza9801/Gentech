@@ -27,9 +27,13 @@ def search_policies(query: str, collection: str | None = None) -> str:
         [
             {
                 "text": chunk["text"],
+                "docTitle": chunk["docTitle"],
                 "headingPath": chunk["headingPath"],
                 "docId": chunk["docId"],
                 "sectionNumber": chunk["sectionNumber"],
+                "sectionTitle": chunk["sectionTitle"],
+                "pageNumber": chunk.get("pageNumber"),
+                "chunkId": chunk["chunkId"],
                 "score": chunk["score"],
             }
             for chunk in results

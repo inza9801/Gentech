@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import logging
 import sys
 from collections.abc import Awaitable, Callable
@@ -11,6 +12,7 @@ from typing import Any
 from uuid import uuid4
 
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi.responses import StreamingResponse
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 if str(PROJECT_ROOT) not in sys.path:
@@ -23,6 +25,7 @@ from ai_agent.policy_rag.answer import (
 )
 from ai_agent.policy_rag.settings import settings
 from app.core.database import get_db
+from app.core.security import require_customer
 from app.schemas.policy_qa import PolicyQARequest, PolicyQAResponse
 
 logger = logging.getLogger(__name__)
@@ -35,6 +38,7 @@ async def _run_chat(
     answer_function: ChatAnswer,
     db: Any = None,
     conversation_id: str | None = None,
+    customer_id: Any = None,
 ) -> PolicyQAResponse:
     question = body.question.strip()
     if not question:
@@ -47,6 +51,7 @@ async def _run_chat(
                 history,
                 db,
                 conversation_id=conversation_id,
+                customer_id=customer_id,
             )
             if db is not None
             else answer_function(question, history),
@@ -79,14 +84,124 @@ async def _run_chat(
 @router.post("/chat", response_model=PolicyQAResponse)
 async def chat(
     body: PolicyQARequest,
+    customer: Any = Depends(require_customer),
     db: Any = Depends(get_db),
 ) -> PolicyQAResponse:
     """Handle normal chat and route Gentech policy questions to PDF retrieval."""
     conversation_id = body.conversation_id or uuid4().hex
-    return await _run_chat(body, answer_chat_message, db, conversation_id)
+    return await _run_chat(
+        body,
+        answer_chat_message,
+        db,
+        conversation_id,
+        customer["_id"],
+    )
+
+
+@router.post("/chat/stream")
+async def stream_chat(
+    body: PolicyQARequest,
+    customer: Any = Depends(require_customer),
+    db: Any = Depends(get_db),
+) -> StreamingResponse:
+    """Stream progress and answer tokens for an authenticated chat turn."""
+    question = body.question.strip()
+    if not question:
+        raise HTTPException(status_code=422, detail="Question must not be empty.")
+    conversation_id = body.conversation_id or uuid4().hex
+    history = [message.model_dump() for message in body.history]
+
+    async def events():
+        queue: asyncio.Queue[tuple[str, Any] | None] = asyncio.Queue()
+
+        async def on_delta(text: str) -> None:
+            await queue.put(("delta", {"text": text}))
+
+        async def on_progress(message: str) -> None:
+            await queue.put(("progress", {"message": message}))
+
+        async def run_answer() -> None:
+            try:
+                result = await asyncio.wait_for(
+                    answer_chat_message(
+                        question,
+                        history,
+                        db,
+                        conversation_id=conversation_id,
+                        customer_id=customer["_id"],
+                        on_delta=on_delta,
+                        on_progress=on_progress,
+                    ),
+                    timeout=settings.policy_timeout_seconds,
+                )
+                response = PolicyQAResponse.model_validate(
+                    {
+                        **result,
+                        "conversation_id": conversation_id,
+                    }
+                )
+                await queue.put(("done", response.model_dump(mode="json")))
+            except PolicyConfigurationError as error:
+                await queue.put(("error", {"message": str(error)}))
+            except TimeoutError:
+                await queue.put(
+                    (
+                        "error",
+                        {"message": "Policy question timed out. Please try again."},
+                    )
+                )
+            except FileNotFoundError:
+                await queue.put(
+                    (
+                        "error",
+                        {"message": "Policy index is unavailable. Please notify support."},
+                    )
+                )
+            except Exception as error:
+                logger.exception("Streaming chat request failed (%s).", type(error).__name__)
+                await queue.put(
+                    ("error", {"message": "Chat service is temporarily unavailable."})
+                )
+            finally:
+                await queue.put(None)
+
+        task = asyncio.create_task(run_answer())
+        try:
+            yield f"event: progress\ndata: {json.dumps({'message': 'Understanding your question'})}\n\n"
+            while True:
+                event = await queue.get()
+                if event is None:
+                    break
+                name, payload = event
+                yield f"event: {name}\ndata: {json.dumps(payload, ensure_ascii=False)}\n\n"
+                if name in {"done", "error"}:
+                    break
+        finally:
+            if not task.done():
+                task.cancel()
+                try:
+                    await task
+                except asyncio.CancelledError:
+                    pass
+
+    return StreamingResponse(
+        events(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+        },
+    )
 
 
 @router.post("/policy-qa", response_model=PolicyQAResponse)
-async def ask_policy_question(body: PolicyQARequest) -> PolicyQAResponse:
+async def ask_policy_question(
+    body: PolicyQARequest,
+    customer: Any = Depends(require_customer),
+) -> PolicyQAResponse:
     """Answer using only the published Gentech policy PDFs."""
-    return await _run_chat(body, answer_policy_question)
+    return await _run_chat(
+        body,
+        answer_policy_question,
+        customer_id=customer["_id"],
+    )

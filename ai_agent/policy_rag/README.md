@@ -54,7 +54,7 @@ backend\.venv\Scripts\python.exe -m ai_agent.policy_rag.ingest --rebuild
 Re-run ingestion after any policy PDF is replaced. Unchanged chunks are not
 re-embedded; changed chunks are upserted and stale chunks are deleted.
 
-The app uses `POST /api/chat`, with JSON:
+The app uses authenticated `POST /api/chat`, with JSON:
 
 ```json
 {
@@ -64,15 +64,33 @@ The app uses `POST /api/chat`, with JSON:
 }
 ```
 
-The endpoint handles ordinary conversation with the configured Ollama chat
-model and routes questions about Gentech's written policies through PDF
-retrieval. Policy answers include citations from retrieved source metadata.
-`POST /api/policy-qa` remains available for policy-only requests. Policy text is
+The endpoint handles ordinary conversation and read-only database tools for
+live order and catalog questions. Policy-only questions use the dedicated
+retrieval-grounded answer path rather than asking the chat model to choose a
+policy-search tool; mixed policy and order/catalog questions combine the
+retrieved policy answer with the database-backed answer. This keeps policy
+retrieval reliable while preserving one chat experience. Include the signed-in
+customer's bearer token in the `Authorization` header. Policy answers include
+citations from retrieved source metadata.
+
+The mobile client uses authenticated `POST /api/chat/stream` with the same
+request shape. It emits `progress`, `delta`, and `done` server-sent events (or
+an `error` event), so the app can show compact activity feedback and render
+answer text as it arrives. Chat context is bounded to the latest eight
+messages per request to keep requests responsive.
+Both `/api/chat` and `/api/policy-qa` require a signed-in customer. Order-status
+lookups are scoped to that authenticated customer's orders; a supplied order
+number belonging to another customer is reported as not found. Policy text is
 always treated as untrusted data, never as model instructions.
 The chat app sends a stable `conversation_id`; product feature selection uses
 LangChain's `HumanInTheLoopMiddleware` to pause at the feature-choice tool and
 resume that same conversation when the customer replies. The response includes
 `hitl_pending` while waiting for that choice.
+
+On the mobile app, chat history is stored under the signed-in customer's
+account-specific key. Signing out hides chat and the next customer's history is
+loaded independently. Customers can delete individual conversations from chat
+history.
 
 For order-status requests, the assistant asks for an order number or database ID
 if one is missing. It looks up the recorded status and estimates a 3–5 business

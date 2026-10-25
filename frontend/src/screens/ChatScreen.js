@@ -1,6 +1,7 @@
 import styles from '../styles/ChatScreenStyles';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import {
+  Animated,
   ActivityIndicator,
   Alert,
   FlatList,
@@ -16,7 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BrandMark } from '../components/BrandMark';
 import { ProductCard } from '../components/ProductCard';
-import { apiPost } from '../services/api';
+import { streamChat } from '../services/chatService';
 import {
   createConversation,
   getConversationTitle,
@@ -24,6 +25,7 @@ import {
   saveConversations,
 } from '../services/chatStorage';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import { colors } from '../theme/colors';
 
 const suggestions = [
@@ -32,8 +34,70 @@ const suggestions = [
   'How much is delivery to Chattogram?',
 ];
 
+function ThinkingIndicator({ message }) {
+  const [dots] = useState(() => [
+    new Animated.Value(0),
+    new Animated.Value(0),
+    new Animated.Value(0),
+  ]);
+
+  useEffect(() => {
+    const loops = dots.map((value, index) =>
+      Animated.loop(
+        Animated.sequence([
+          Animated.delay(index * 120),
+          Animated.timing(value, {
+            toValue: 1,
+            duration: 240,
+            useNativeDriver: true,
+          }),
+          Animated.timing(value, {
+            toValue: 0,
+            duration: 240,
+            useNativeDriver: true,
+          }),
+          Animated.delay(300),
+        ]),
+      ),
+    );
+    loops.forEach((animation) => animation.start());
+    return () => loops.forEach((animation) => animation.stop());
+  }, [dots]);
+
+  return (
+    <View style={styles.thinking}>
+      <Text style={styles.typingText}>{message || 'Thinking'}</Text>
+      <View style={styles.thinkingDots}>
+        {dots.map((value, index) => (
+          <Animated.View
+            key={index}
+            style={[
+              styles.thinkingDot,
+              {
+                opacity: value.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [0.35, 1],
+                }),
+                transform: [{
+                  translateY: value.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0, -3],
+                  }),
+                }],
+              },
+            ]}
+          />
+        ))}
+      </View>
+    </View>
+  );
+}
+
 export function ChatScreen() {
+  const messageIdPrefix = useId();
   const { addItem } = useCart();
+  const { token, customer } = useAuth();
+  const customerId = customer?.id;
   const [conversations, setConversations] = useState([]);
   const [activeId, setActiveId] = useState(null);
   const [draft, setDraft] = useState('');
@@ -41,8 +105,12 @@ export function ChatScreen() {
   const [error, setError] = useState('');
   const [historyVisible, setHistoryVisible] = useState(false);
   const [storageReady, setStorageReady] = useState(false);
+  const [loadedCustomerId, setLoadedCustomerId] = useState(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const listRef = useRef(null);
   const mountedRef = useRef(true);
+  const activeCustomerIdRef = useRef(customerId);
+  const requestControllerRef = useRef(null);
   const busyRef = useRef(false);
   const messageSequenceRef = useRef(0);
   const activeConversation = conversations.find(({ id }) => id === activeId);
@@ -50,8 +118,15 @@ export function ChatScreen() {
 
   useEffect(() => {
     mountedRef.current = true;
+    activeCustomerIdRef.current = customerId;
     let active = true;
-    loadConversations()
+    if (!customerId) {
+      return () => {
+        active = false;
+        mountedRef.current = false;
+      };
+    }
+    loadConversations(customerId)
       .then((saved) => {
         if (!active) return;
         setConversations(saved);
@@ -61,20 +136,24 @@ export function ChatScreen() {
         console.warn('Could not restore chat history:', reason);
       })
       .finally(() => {
-        if (active) setStorageReady(true);
+        if (active) {
+          setLoadedCustomerId(customerId);
+          setStorageReady(true);
+        }
       });
     return () => {
       active = false;
       mountedRef.current = false;
+      requestControllerRef.current?.abort();
     };
-  }, []);
+  }, [customerId]);
 
   useEffect(() => {
-    if (!storageReady) return;
-    saveConversations(conversations).catch((reason) =>
+    if (!storageReady || !customerId || loadedCustomerId !== customerId) return;
+    saveConversations(conversations, customerId).catch((reason) =>
       console.warn('Could not save chat history:', reason),
     );
-  }, [conversations, storageReady]);
+  }, [conversations, customerId, loadedCustomerId, storageReady]);
 
   const updateConversation = (id, update) => {
     setConversations((current) =>
@@ -121,20 +200,55 @@ export function ChatScreen() {
     );
   };
 
+  const deleteConversation = (conversation) => {
+    if (busyRef.current) return;
+    Alert.alert(
+      'Delete this chat?',
+      'This conversation and its messages will be permanently removed from this device.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: () => {
+            const remaining = conversations.filter(({ id }) => id !== conversation.id);
+            setConversations(remaining);
+            if (activeId === conversation.id) {
+              setActiveId(remaining[0]?.id || null);
+              setDraft('');
+            }
+            setError('');
+          },
+        },
+      ],
+    );
+  };
+
   const ask = async (value = draft) => {
     const question = value.trim();
-    if (!question || busyRef.current || !storageReady) return;
+    if (!question || busyRef.current || !storageReady || !token || !customerId) return;
     busyRef.current = true;
     const existing = activeConversation;
     const conversation = existing || createConversation();
     const history = conversation.messages
+      .filter((message) => !message.incomplete && message.content?.trim())
       .slice(-8)
       .map(({ role, content }) => ({ role, content }));
+    messageSequenceRef.current += 1;
     const userMessage = {
-      id: `message-${Date.now()}-${++messageSequenceRef.current}`,
+      id: `${messageIdPrefix}-${messageSequenceRef.current}`,
       role: 'user',
       content: question,
       sources: [],
+    };
+    messageSequenceRef.current += 1;
+    const assistantMessageId = `${messageIdPrefix}-${messageSequenceRef.current}`;
+    const assistantPlaceholder = {
+      id: assistantMessageId,
+      role: 'assistant',
+      content: '',
+      sources: [],
+      progress: 'Understanding your question',
     };
     const updatedConversation = {
       ...conversation,
@@ -142,7 +256,7 @@ export function ChatScreen() {
         ? conversation.title
         : getConversationTitle(question),
       updatedAt: new Date().toISOString(),
-      messages: [...conversation.messages, userMessage],
+      messages: [...conversation.messages, userMessage, assistantPlaceholder],
     };
     if (existing) {
       updateConversation(conversation.id, () => updatedConversation);
@@ -155,32 +269,77 @@ export function ChatScreen() {
     setError('');
 
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 50000);
+    requestControllerRef.current = controller;
+    const timeout = setTimeout(() => controller.abort(), 125000);
     try {
-      const result = await apiPost(
-        '/chat',
+      const result = await streamChat(
         { question, history, conversation_id: conversation.id },
-        { signal: controller.signal },
+        {
+          signal: controller.signal,
+          token,
+          onProgress: (progress) => {
+            if (!mountedRef.current || activeCustomerIdRef.current !== customerId) return;
+            updateConversation(conversation.id, (current) => ({
+              ...current,
+              messages: current.messages.map((message) =>
+                message.id === assistantMessageId
+                  ? { ...message, progress }
+                  : message,
+              ),
+            }));
+          },
+          onDelta: (text) => {
+            if (!mountedRef.current || activeCustomerIdRef.current !== customerId) return;
+            updateConversation(conversation.id, (current) => ({
+              ...current,
+              messages: current.messages.map((message) =>
+                message.id === assistantMessageId
+                  ? {
+                      ...message,
+                      content: message.content + text,
+                      progress: null,
+                    }
+                  : message,
+              ),
+            }));
+          },
+        },
       );
-      if (mountedRef.current) {
-        const assistantMessage = {
-          id: `message-${Date.now()}-${++messageSequenceRef.current}`,
-          role: 'assistant',
-          content: result.answer,
-          sources: result.sources || [],
-          suggestedProducts: (result.suggested_products || []).map((product) => ({
-            ...product,
-            addedToCart: false,
-          })),
-        };
+      if (mountedRef.current && activeCustomerIdRef.current === customerId) {
         updateConversation(conversation.id, (current) => ({
           ...current,
           updatedAt: new Date().toISOString(),
-          messages: [...current.messages, assistantMessage],
+          messages: current.messages.map((message) =>
+            message.id === assistantMessageId
+              ? {
+                  ...message,
+                  content: result.answer,
+                  progress: null,
+                  sources: result.sources || [],
+                  suggestedProducts: (result.suggested_products || []).map((product) => ({
+                    ...product,
+                    addedToCart: false,
+                  })),
+                }
+              : message,
+          ),
         }));
       }
     } catch (reason) {
-      if (mountedRef.current) {
+      if (mountedRef.current && activeCustomerIdRef.current === customerId) {
+        updateConversation(conversation.id, (current) => ({
+          ...current,
+          messages: current.messages
+            .map((message) =>
+              message.id === assistantMessageId
+                ? { ...message, progress: null, incomplete: true }
+                : message,
+            )
+            .filter(
+              (message) =>
+                message.id !== assistantMessageId || message.content.trim(),
+            ),
+        }));
         setError(
           reason.name === 'AbortError'
             ? 'The response took too long. Please try again.'
@@ -189,8 +348,13 @@ export function ChatScreen() {
       }
     } finally {
       clearTimeout(timeout);
+      if (requestControllerRef.current === controller) {
+        requestControllerRef.current = null;
+      }
       busyRef.current = false;
-      if (mountedRef.current) setBusy(false);
+      if (mountedRef.current && activeCustomerIdRef.current === customerId) {
+        setBusy(false);
+      }
     }
   };
 
@@ -207,15 +371,18 @@ export function ChatScreen() {
           item.role === 'user' ? styles.userBubble : styles.assistantBubble,
         ]}
       >
-        <Text
-          selectable
-          style={[
-            styles.messageText,
-            item.role === 'user' ? styles.userText : styles.assistantText,
-          ]}
-        >
-          {item.content}
-        </Text>
+        {item.content ? (
+          <Text
+            selectable
+            style={[
+              styles.messageText,
+              item.role === 'user' ? styles.userText : styles.assistantText,
+            ]}
+          >
+            {item.content}
+          </Text>
+        ) : null}
+        {item.progress ? <ThinkingIndicator message={item.progress} /> : null}
         {item.sources?.length ? (
           <View style={styles.sources}>
             {item.sources.map((source) => (
@@ -271,8 +438,8 @@ export function ChatScreen() {
   );
 
   return (
-    <SafeAreaView style={styles.safe} edges={['top']}>
-      <View style={styles.header}>
+    <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
+      <View style={styles.header} onLayout={(event) => setHeaderHeight(event.nativeEvent.layout.height)}>
         <View style={styles.headerTop}>
           <BrandMark />
           <View style={styles.headerActions}>
@@ -316,8 +483,8 @@ export function ChatScreen() {
       </View>
       <KeyboardAvoidingView
         style={styles.chat}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 8 : 0}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? headerHeight : 0}
       >
         {messages.length === 0 ? (
           <View style={styles.emptyState}>
@@ -326,8 +493,8 @@ export function ChatScreen() {
             </View>
             <Text style={styles.cardTitle}>Ask me anything</Text>
             <Text style={styles.cardText}>
-              I can chat normally and answer Gentech policy questions from the
-              published PDFs. Live order, stock and account details aren’t available.
+              I can answer Gentech policy questions and check order status for
+              your signed-in account. Other customers’ order details stay private.
             </Text>
             <View style={styles.suggestions}>
               {suggestions.map((suggestion) => (
@@ -354,12 +521,6 @@ export function ChatScreen() {
             onContentSizeChange={() => listRef.current?.scrollToEnd({ animated: true })}
           />
         )}
-        {busy ? (
-          <View style={styles.typing}>
-            <ActivityIndicator size="small" color={colors.blue} />
-            <Text style={styles.typingText}>Thinking…</Text>
-          </View>
-        ) : null}
         {error ? <Text accessibilityRole="alert" style={styles.error}>{error}</Text> : null}
         <View style={styles.composer}>
           <TextInput
@@ -368,6 +529,7 @@ export function ChatScreen() {
             placeholder="Message Gentech…"
             placeholderTextColor={colors.muted}
             style={styles.input}
+            textAlignVertical="top"
             multiline
             maxLength={2000}
             editable={!busy && storageReady}
@@ -429,23 +591,38 @@ export function ChatScreen() {
                 <Text style={styles.historyEmpty}>Your saved chats will appear here.</Text>
               }
               renderItem={({ item }) => (
-                <Pressable
-                  onPress={() => {
-                    setActiveId(item.id);
-                    setHistoryVisible(false);
-                    setError('');
-                  }}
+                <View
                   style={[
                     styles.historyItem,
                     item.id === activeId && styles.historyItemActive,
                   ]}
                 >
-                  <Ionicons name="chatbubble-outline" size={17} color={colors.muted} />
-                  <Text numberOfLines={1} style={styles.historyItemText}>{item.title}</Text>
-                  {item.id === activeId ? (
-                    <Ionicons name="checkmark" size={18} color={colors.blue} />
-                  ) : null}
-                </Pressable>
+                  <Pressable
+                    onPress={() => {
+                      setActiveId(item.id);
+                      setHistoryVisible(false);
+                      setError('');
+                    }}
+                    style={styles.historyItemSelect}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Open chat ${item.title}`}
+                  >
+                    <Ionicons name="chatbubble-outline" size={17} color={colors.muted} />
+                    <Text numberOfLines={1} style={styles.historyItemText}>{item.title}</Text>
+                    {item.id === activeId ? (
+                      <Ionicons name="checkmark" size={18} color={colors.blue} />
+                    ) : null}
+                  </Pressable>
+                  <Pressable
+                    onPress={() => deleteConversation(item)}
+                    disabled={busy}
+                    style={styles.historyDeleteButton}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Delete chat ${item.title}`}
+                  >
+                    <Ionicons name="trash-outline" size={17} color={colors.red} />
+                  </Pressable>
+                </View>
               )}
             />
           </View>

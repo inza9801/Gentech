@@ -63,3 +63,11 @@ categories, products, coupons and order status from the Account tab's Admin
 console. Order notifications are refreshed while the app is active; remote push
 notifications are not configured. Chat product recommendations include an
 interactive product card that can add the suggestion to the shopping bag.
+Chat is available only while signed in; each customer's conversations are
+stored separately on the device and can be deleted individually from chat
+history. Chat API requests require authentication, and order-status lookups only
+return orders owned by the signed-in customer. Responses stream into the chat
+with compact progress feedback, and the composer remains available above the
+keyboard. The assistant uses recent chat context (up to eight messages) and
+can combine policy search with authorized order or catalog tools in a single
+turn.

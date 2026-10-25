@@ -119,14 +119,20 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   addedStatus: { color: colors.green, fontSize: 11, fontWeight: '800' },
-  typing: {
-    minHeight: 34,
-    paddingHorizontal: 18,
+  thinking: {
+    minHeight: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: 6,
   },
-  typingText: { color: colors.muted, fontSize: 10 },
+  typingText: { color: colors.muted, fontSize: 10, lineHeight: 16 },
+  thinkingDots: { flexDirection: 'row', alignItems: 'center', gap: 3 },
+  thinkingDot: {
+    width: 5,
+    height: 5,
+    borderRadius: 3,
+    backgroundColor: colors.blue,
+  },
   error: { color: colors.red, fontSize: 11, lineHeight: 16, paddingHorizontal: 16, paddingTop: 5 },
   composer: {
     margin: 12,
@@ -200,10 +206,24 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     gap: 9,
   },
   historyItemActive: { backgroundColor: colors.blueLight },
+  historyItemSelect: {
+    flex: 1,
+    minHeight: 46,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 9,
+  },
   historyItemText: { color: colors.text, fontSize: 12, flex: 1 },
+  historyDeleteButton: {
+    width: 36,
+    height: 36,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 export default styles;

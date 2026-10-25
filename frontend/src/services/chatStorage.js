@@ -3,6 +3,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const CHAT_STORAGE_KEY = 'gentech.ai.conversations.v1';
 const MAX_CONVERSATIONS = 30;
 
+export function getConversationStorageKey(customerId) {
+  if (typeof customerId !== 'string' || !customerId.trim()) {
+    throw new Error('A signed-in customer is required to access chat history.');
+  }
+  return `${CHAT_STORAGE_KEY}.${customerId}`;
+}
+
 export function createConversation() {
   return {
     id: `chat-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
@@ -17,8 +24,8 @@ export function getConversationTitle(question) {
   return title.length > 48 ? `${title.slice(0, 45)}…` : title || 'New chat';
 }
 
-export async function loadConversations() {
-  const stored = await AsyncStorage.getItem(CHAT_STORAGE_KEY);
+export async function loadConversations(customerId) {
+  const stored = await AsyncStorage.getItem(getConversationStorageKey(customerId));
   if (!stored) return [];
   const conversations = JSON.parse(stored);
   if (!Array.isArray(conversations)) {
@@ -34,9 +41,9 @@ export async function loadConversations() {
     .slice(0, MAX_CONVERSATIONS);
 }
 
-export async function saveConversations(conversations) {
+export async function saveConversations(conversations, customerId) {
   await AsyncStorage.setItem(
-    CHAT_STORAGE_KEY,
+    getConversationStorageKey(customerId),
     JSON.stringify(conversations.slice(0, MAX_CONVERSATIONS)),
   );
 }

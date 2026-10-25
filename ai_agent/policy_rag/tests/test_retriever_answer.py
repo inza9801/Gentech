@@ -195,28 +195,36 @@ def test_out_of_scope_questions_do_not_call_ollama_or_retrieval(monkeypatch):
     assert result["sources"] == []
 
 
-def test_chat_routes_policy_questions_to_pdf_answer(monkeypatch):
-    async def fake_policy_answer(question, history):
+def test_policy_question_uses_grounded_rag_without_database_tool_routing(monkeypatch):
+    async def fake_policy_answer(question, history, **_kwargs):
         assert question == "How much is delivery?"
         assert history == []
-        return {"answer": "The policy says BDT 120.", "sources": []}
+        return {
+            "answer": "The fee is BDT 120.",
+            "sources": [{"docTitle": "Delivery Policy", "chunkId": "delivery-fee"}],
+        }
 
-    def fail_model():
-        raise AssertionError("Keyword-routed policy questions need no classifier call.")
+    def fail_database_route(*_args, **_kwargs):
+        raise AssertionError("Policy-only questions must not enter the database tool loop.")
 
-    monkeypatch.setattr(answer, "_create_chat_model", fail_model)
     monkeypatch.setattr(answer, "answer_policy_question", fake_policy_answer)
+    monkeypatch.setattr(answer, "answer_database_chat", fail_database_route)
+    result = asyncio.run(
+        answer.answer_chat_message("How much is delivery?", db=object())
+    )
 
-    result = asyncio.run(answer.answer_chat_message("How much is delivery?"))
-
-    assert result["answer"] == "The policy says BDT 120."
-    assert result["sources"] == []
+    assert result["answer"] == "The fee is BDT 120."
+    assert result["sources"][0]["chunkId"] == "delivery-fee"
 
 
 def test_chat_answers_general_questions_without_policy_retrieval(monkeypatch):
     from langchain_core.messages import AIMessage
 
     class FakeChat:
+        def bind_tools(self, tools):
+            assert "search_policies" not in {tool.name for tool in tools}
+            return self
+
         async def ainvoke(self, messages):
             assert len(messages) == 4
             assert messages[0].type == "system"
@@ -230,20 +238,46 @@ def test_chat_answers_general_questions_without_policy_retrieval(monkeypatch):
             )
             return SimpleNamespace(content="Hi! What would you like to know?")
 
-    def fail_retrieval(*_args, **_kwargs):
-        raise AssertionError("General chat must not search policy documents.")
-
     monkeypatch.setattr(answer, "_create_chat_model", lambda: FakeChat())
-    monkeypatch.setattr(answer, "retrieve", fail_retrieval)
 
     result = asyncio.run(
         answer.answer_chat_message(
             "How are you?",
             [{"role": "user", "content": "Hello"}, {"role": "assistant", "content": "Hi"}],
+            db=object(),
         )
     )
 
     assert result == {"answer": "Hi! What would you like to know?", "sources": []}
+
+
+def test_chat_streams_model_deltas(monkeypatch):
+    from langchain_core.messages import AIMessageChunk
+
+    class FakeChat:
+        def bind_tools(self, tools):
+            return self
+
+        async def astream(self, _messages):
+            yield AIMessageChunk(content="Hello")
+            yield AIMessageChunk(content=" there")
+
+    deltas = []
+
+    async def on_delta(text):
+        deltas.append(text)
+
+    monkeypatch.setattr(answer, "_create_chat_model", lambda: FakeChat())
+    result = asyncio.run(
+        answer.answer_chat_message(
+            "How are you?",
+            db=object(),
+            on_delta=on_delta,
+        )
+    )
+
+    assert result["answer"] == "Hello there"
+    assert deltas == ["Hello", " there"]
 
 
 @pytest.mark.parametrize(
@@ -410,15 +444,70 @@ def test_product_recommendation_asks_for_category_before_model_call(monkeypatch)
     assert result["sources"] == []
 
 
+def test_mixed_product_and_policy_question_answers_policy_and_clarifies(monkeypatch):
+    async def fake_policy_answer(question, history, **_kwargs):
+        assert "delivery policy" in question
+        return {
+            "answer": "Delivery fees depend on the destination. Source: Delivery Policy.",
+            "sources": [{"docTitle": "Delivery Policy", "chunkId": "delivery"}],
+        }
+
+    monkeypatch.setattr(answer, "answer_policy_question", fake_policy_answer)
+    result = asyncio.run(
+        answer.answer_chat_message(
+            "Suggest a product around BDT 25,000 and what is the delivery policy?",
+            db=object(),
+        )
+    )
+
+    assert "Delivery fees depend on the destination." in result["answer"]
+    assert "Which category should I search" in result["answer"]
+    assert result["sources"][0]["chunkId"] == "delivery"
+
+
+def test_mixed_order_and_policy_question_combines_rag_and_order_answer(monkeypatch):
+    async def fake_policy_answer(question, history, **_kwargs):
+        assert "return policy" in question
+        return {
+            "answer": "The published policy allows returns under its stated conditions.",
+            "sources": [{"docTitle": "Returns Policy", "chunkId": "return-policy"}],
+        }
+
+    async def fake_database_answer(question, history, db, intent, *_args, **kwargs):
+        assert intent == "ORDER"
+        assert db is not None
+        assert kwargs["on_progress"] is None
+        return {"answer": "Your order has shipped.", "sources": []}
+
+    monkeypatch.setattr(answer, "answer_policy_question", fake_policy_answer)
+    monkeypatch.setattr(answer, "answer_database_chat", fake_database_answer)
+
+    result = asyncio.run(
+        answer.answer_chat_message(
+            "What is the order status and return policy for GT-2026-000001?",
+            db=object(),
+            customer_id="customer-1",
+        )
+    )
+
+    assert "policy allows returns" in result["answer"]
+    assert "Your order has shipped." in result["answer"]
+    assert result["sources"][0]["chunkId"] == "return-policy"
+
+
 def test_order_tool_call_uses_database_result(monkeypatch):
     from langchain_core.messages import AIMessage, ToolMessage
 
     class FakeOrders:
         async def find_one(self, query, projection):
-            assert query["$or"][0] == {"orderNumber": "GT-2026-000001"}
+            assert query["$and"][0]["$or"][0] == {
+                "orderNumber": "GT-2026-000001"
+            }
+            assert query["$and"][1]["customerId"]["$in"] == ["customer-1"]
             assert "shippingAddress" not in projection
             return {
                 "orderNumber": "GT-2026-000001",
+                "customerId": "customer-1",
                 "status": "accepted",
                 "createdAt": "2026-10-18T12:30:00Z",
                 "statusHistory": [],
@@ -464,6 +553,7 @@ def test_order_tool_call_uses_database_result(monkeypatch):
         answer.answer_chat_message(
             "Where is my order GT-2026-000001?",
             db=FakeDatabase(),
+            customer_id="customer-1",
         )
     )
 
@@ -687,12 +777,19 @@ def test_module_tool_result_is_json_chunks(monkeypatch):
         "ai_agent.policy_rag.tools.retrieve",
         lambda *_args, **_kwargs: [{
             "text": "A policy excerpt",
+            "docTitle": "Delivery and Shipping Policy",
             "headingPath": "3. Fees",
             "docId": "GT-POL-DS-01",
             "sectionNumber": "3.1",
+            "sectionTitle": "Standard delivery fees",
+            "pageNumber": 3,
+            "chunkId": "delivery-fee",
             "score": 0.02,
         }],
     )
 
     raw = search_policies.func("delivery fee")
-    assert json.loads(raw)[0]["sectionNumber"] == "3.1"
+    chunk = json.loads(raw)[0]
+    assert chunk["sectionNumber"] == "3.1"
+    assert chunk["docTitle"] == "Delivery and Shipping Policy"
+    assert chunk["chunkId"] == "delivery-fee"
