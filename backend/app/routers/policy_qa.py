@@ -12,7 +12,7 @@ from typing import Any
 from uuid import uuid4
 
 from fastapi import APIRouter, Depends, HTTPException
-from fastapi.responses import StreamingResponse
+from fastapi.responses import FileResponse, StreamingResponse
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 if str(PROJECT_ROOT) not in sys.path:
@@ -31,6 +31,27 @@ from app.schemas.policy_qa import PolicyQARequest, PolicyQAResponse
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api", tags=["Policy QA"])
 ChatAnswer = Callable[..., Awaitable[dict[str, Any]]]
+POLICY_PDFS = {
+    "GT-POL-WS-01": "gentech_warranty_and_service_policy.pdf",
+    "GT-POL-PR-01": "gentech_payment_cancellation_and_refunds_policy.pdf",
+    "GT-POL-DS-01": "gentech_delivery_and_shipping_policy.pdf",
+}
+
+
+@router.get("/policies/{policy_id}")
+async def get_policy_pdf(policy_id: str) -> FileResponse:
+    """Serve a published policy manual for in-app citation links."""
+    filename = POLICY_PDFS.get(policy_id)
+    if filename is None:
+        raise HTTPException(status_code=404, detail="Policy manual not found.")
+    file_path = settings.policy_pdf_dir / filename
+    if not file_path.is_file():
+        raise HTTPException(status_code=404, detail="Policy manual is unavailable.")
+    return FileResponse(
+        file_path,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'inline; filename="{filename}"'},
+    )
 
 
 async def _run_chat(

@@ -3,6 +3,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import { getMyProfile, loginCustomer } from '../services/commerceService';
 
 const TOKEN_KEY = 'gentech.auth.token';
+const CUSTOMER_ID_KEY = 'gentech.auth.customerId';
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
@@ -14,19 +15,29 @@ export function AuthProvider({ children }) {
     let active = true;
     const restoreSession = async () => {
       try {
-        const savedToken = await AsyncStorage.getItem(TOKEN_KEY);
+        const [savedToken, savedCustomerId] = await Promise.all([
+          AsyncStorage.getItem(TOKEN_KEY),
+          AsyncStorage.getItem(CUSTOMER_ID_KEY),
+        ]);
         if (!savedToken) return;
         try {
           const profile = await getMyProfile(savedToken);
           if (active) {
             setToken(savedToken);
             setCustomer(profile);
+            AsyncStorage.setItem(CUSTOMER_ID_KEY, profile.id).catch((error) =>
+              console.warn('Could not save the signed-in customer ID:', error),
+            );
           }
         } catch (error) {
           if (error.status === 401) {
-            await AsyncStorage.removeItem(TOKEN_KEY);
+            await Promise.all([
+              AsyncStorage.removeItem(TOKEN_KEY),
+              AsyncStorage.removeItem(CUSTOMER_ID_KEY),
+            ]);
           } else if (active) {
             setToken(savedToken);
+            if (savedCustomerId) setCustomer({ id: savedCustomerId });
           }
         }
       } finally {
@@ -41,6 +52,7 @@ export function AuthProvider({ children }) {
 
   const signIn = useCallback(async (email, password) => {
     const result = await loginCustomer({ email, password });
+    await AsyncStorage.setItem(CUSTOMER_ID_KEY, result.customer.id);
     await AsyncStorage.setItem(TOKEN_KEY, result.access_token);
     setToken(result.access_token);
     setCustomer(result.customer);
@@ -48,7 +60,10 @@ export function AuthProvider({ children }) {
   }, []);
 
   const signOut = useCallback(async () => {
-    await AsyncStorage.removeItem(TOKEN_KEY);
+    await Promise.all([
+      AsyncStorage.removeItem(TOKEN_KEY),
+      AsyncStorage.removeItem(CUSTOMER_ID_KEY),
+    ]);
     setToken(null);
     setCustomer(null);
   }, []);

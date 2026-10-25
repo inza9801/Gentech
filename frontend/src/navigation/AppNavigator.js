@@ -22,6 +22,7 @@ import { OrdersScreen } from '../screens/OrdersScreen';
 import { EditProfileScreen } from '../screens/EditProfileScreen';
 import { AdminConsoleScreen } from '../screens/AdminConsoleScreen';
 import { NotificationsScreen } from '../screens/NotificationsScreen';
+import { PolicyLibraryScreen } from '../screens/PolicyLibraryScreen';
 import { useNotifications } from '../context/NotificationContext';
 import { useAuth } from '../context/AuthContext';
 
@@ -118,6 +119,15 @@ export function AppNavigator() {
       }}
     >
       <Stack.Screen name="MainTabs" component={BottomTabs} />
+      <Stack.Screen name="PolicyLibrary">
+        {(props) => (
+          <StackScreen
+            {...props}
+            title="Policies and manuals"
+            component={PolicyLibraryScreen}
+          />
+        )}
+      </Stack.Screen>
       <Stack.Screen name="ProductDetails">
         {(props) => (
           <StackScreen

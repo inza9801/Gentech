@@ -71,3 +71,8 @@ with compact progress feedback, and the composer remains available above the
 keyboard. The assistant uses recent chat context (up to eight messages) and
 can combine policy search with authorized order or catalog tools in a single
 turn.
+All visitors can open the three policy PDFs from Account → Policies and
+manuals; source links in RAG answers open the relevant manual page. Available
+coupon codes appear in Offers and can be carried to the cart to apply.
+Checkout reserves item quantities from inventory immediately; canceling a
+reserved order returns those quantities to stock.

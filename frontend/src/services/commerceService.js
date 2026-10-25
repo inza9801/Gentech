@@ -30,6 +30,8 @@ export const validateCoupon = (code, subtotal, token) =>
     { token },
   );
 
+export const getAvailableCoupons = () => apiGet('/coupons/available');
+
 export const placeOrder = (body, token) =>
   apiPost('/orders', body, { token });
 

@@ -5,7 +5,9 @@ import {
   ActivityIndicator,
   Alert,
   FlatList,
+  Keyboard,
   KeyboardAvoidingView,
+  Linking,
   Modal,
   Platform,
   Pressable,
@@ -18,6 +20,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { BrandMark } from '../components/BrandMark';
 import { ProductCard } from '../components/ProductCard';
 import { streamChat } from '../services/chatService';
+import { getPolicyManualUrl } from '../services/policyService';
 import {
   createConversation,
   getConversationTitle,
@@ -107,6 +110,7 @@ export function ChatScreen() {
   const [storageReady, setStorageReady] = useState(false);
   const [loadedCustomerId, setLoadedCustomerId] = useState(null);
   const [headerHeight, setHeaderHeight] = useState(0);
+  const [keyboardVisible, setKeyboardVisible] = useState(false);
   const listRef = useRef(null);
   const mountedRef = useRef(true);
   const activeCustomerIdRef = useRef(customerId);
@@ -154,6 +158,17 @@ export function ChatScreen() {
       console.warn('Could not save chat history:', reason),
     );
   }, [conversations, customerId, loadedCustomerId, storageReady]);
+
+  useEffect(() => {
+    const showEvent = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
+    const hideEvent = Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide';
+    const showSubscription = Keyboard.addListener(showEvent, () => setKeyboardVisible(true));
+    const hideSubscription = Keyboard.addListener(hideEvent, () => setKeyboardVisible(false));
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
 
   const updateConversation = (id, update) => {
     setConversations((current) =>
@@ -271,6 +286,26 @@ export function ChatScreen() {
     const controller = new AbortController();
     requestControllerRef.current = controller;
     const timeout = setTimeout(() => controller.abort(), 125000);
+    let pendingDelta = '';
+    let animationFrame = null;
+    const flushDelta = () => {
+      if (animationFrame !== null) {
+        cancelAnimationFrame(animationFrame);
+        animationFrame = null;
+      }
+      if (!pendingDelta) return;
+      const text = pendingDelta;
+      pendingDelta = '';
+      if (!mountedRef.current || activeCustomerIdRef.current !== customerId) return;
+      updateConversation(conversation.id, (current) => ({
+        ...current,
+        messages: current.messages.map((message) =>
+          message.id === assistantMessageId
+            ? { ...message, content: message.content + text, progress: null }
+            : message,
+        ),
+      }));
+    };
     try {
       const result = await streamChat(
         { question, history, conversation_id: conversation.id },
@@ -289,22 +324,14 @@ export function ChatScreen() {
             }));
           },
           onDelta: (text) => {
-            if (!mountedRef.current || activeCustomerIdRef.current !== customerId) return;
-            updateConversation(conversation.id, (current) => ({
-              ...current,
-              messages: current.messages.map((message) =>
-                message.id === assistantMessageId
-                  ? {
-                      ...message,
-                      content: message.content + text,
-                      progress: null,
-                    }
-                  : message,
-              ),
-            }));
+            pendingDelta += text;
+            if (animationFrame === null) {
+              animationFrame = requestAnimationFrame(flushDelta);
+            }
           },
         },
       );
+      flushDelta();
       if (mountedRef.current && activeCustomerIdRef.current === customerId) {
         updateConversation(conversation.id, (current) => ({
           ...current,
@@ -326,6 +353,7 @@ export function ChatScreen() {
         }));
       }
     } catch (reason) {
+      flushDelta();
       if (mountedRef.current && activeCustomerIdRef.current === customerId) {
         updateConversation(conversation.id, (current) => ({
           ...current,
@@ -386,13 +414,27 @@ export function ChatScreen() {
         {item.sources?.length ? (
           <View style={styles.sources}>
             {item.sources.map((source) => (
-              <Text
+              <Pressable
                 key={source.chunkId || `${source.docId}-${source.sectionNumber}-${source.pageNumber}`}
-                style={styles.sourceText}
+                accessibilityRole="link"
+                accessibilityLabel={`Open ${source.docTitle}, section ${source.sectionNumber}, page ${source.pageNumber || 1}`}
+                onPress={() => {
+                  const url = getPolicyManualUrl(source.docId, source.pageNumber);
+                  if (url) {
+                    Linking.openURL(url).catch((reason) =>
+                      Alert.alert('Unable to open policy', reason.message),
+                    );
+                  }
+                }}
+                style={styles.sourceLink}
               >
-                {source.docTitle}, section {source.sectionNumber}
-                {source.pageNumber ? ` · p. ${source.pageNumber}` : ''}
-              </Text>
+                <Ionicons name="document-text-outline" size={13} color={colors.blue} />
+                <Text style={styles.sourceText}>
+                  {source.docTitle} · § {source.sectionNumber}
+                  {source.pageNumber ? ` · p. ${source.pageNumber}` : ''}
+                </Text>
+                <Ionicons name="open-outline" size={12} color={colors.blue} />
+              </Pressable>
             ))}
           </View>
         ) : null}
@@ -522,7 +564,7 @@ export function ChatScreen() {
           />
         )}
         {error ? <Text accessibilityRole="alert" style={styles.error}>{error}</Text> : null}
-        <View style={styles.composer}>
+        <View style={[styles.composer, keyboardVisible && styles.composerRaised]}>
           <TextInput
             value={draft}
             onChangeText={setDraft}

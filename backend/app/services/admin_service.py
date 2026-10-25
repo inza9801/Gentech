@@ -321,6 +321,24 @@ async def update_order_status(
     target = payload.status
     if target == "delivered":
         return await _deliver_order(db, object_id, order, payload, admin)
+    if (
+        target == "cancelled"
+        and current == "cancelled"
+        and order.get("stockReservationStatus") == "reserved"
+    ):
+        await _release_reserved_inventory(db, object_id, order)
+        updated = await admin_repo.update_order_status(
+            db,
+            object_id,
+            "cancelled",
+            {"$set": {"stockReservationStatus": "released", "updatedAt": now_utc()}},
+        )
+        if updated is None:
+            raise HTTPException(
+                409,
+                "Order status changed concurrently; reload and try again",
+            )
+        return serialize(updated)
 
     allowed_transitions = {
         "pending": {"accepted", "cancelled"},
@@ -365,7 +383,86 @@ async def update_order_status(
             409,
             "Order status changed concurrently; reload and try again",
         )
+    if target == "cancelled" and order.get("stockReservationStatus") == "reserved":
+        await _release_reserved_inventory(db, object_id, order)
+        updated = await admin_repo.update_order_status(
+            db,
+            object_id,
+            "cancelled",
+            {"$set": {"stockReservationStatus": "released", "updatedAt": now_utc()}},
+        )
+        if updated is None:
+            raise HTTPException(
+                409,
+                "Order status changed concurrently; reload and try again",
+            )
     return serialize(updated)
+
+
+async def _release_reserved_inventory(db, order_id: ObjectId, order: dict) -> None:
+    grouped_items = {}
+    for item in order.get("items", []):
+        product_id = str(item.get("productId", ""))
+        quantity = item.get("quantity")
+        if not ObjectId.is_valid(product_id) or not isinstance(quantity, int) or quantity < 1:
+            raise HTTPException(409, "Order contains an invalid product or quantity")
+        key = (product_id, item.get("categorySlug"))
+        grouped_items[key] = grouped_items.get(key, 0) + quantity
+
+    for (product_id, category_slug), quantity in grouped_items.items():
+        product_result = await product_repo.get_product_by_id(db, product_id)
+        if product_result is None:
+            raise HTTPException(409, "An ordered product no longer exists")
+        _product, category = product_result
+        if category_slug and category_slug != category["slug"]:
+            raise HTTPException(409, "An order item has an invalid product category")
+        marker = f"{order_id}:{product_id}"
+        await db[category["collection"]].update_one(
+            {
+                "_id": ObjectId(product_id),
+                "deliveryAdjustmentKeys": marker,
+            },
+            {
+                "$inc": {
+                    "availability": quantity,
+                    "soldCount": -quantity,
+                },
+                "$pull": {"deliveryAdjustmentKeys": marker},
+            },
+        )
+
+
+async def _release_reserved_inventory(db, order_id: ObjectId, order: dict) -> None:
+    grouped_items = {}
+    for item in order.get("items", []):
+        product_id = str(item.get("productId", ""))
+        quantity = item.get("quantity")
+        if not ObjectId.is_valid(product_id) or not isinstance(quantity, int) or quantity < 1:
+            raise HTTPException(409, "Order contains an invalid product or quantity")
+        key = (product_id, item.get("categorySlug"))
+        grouped_items[key] = grouped_items.get(key, 0) + quantity
+
+    for (product_id, category_slug), quantity in grouped_items.items():
+        product_result = await product_repo.get_product_by_id(db, product_id)
+        if product_result is None:
+            raise HTTPException(409, "An ordered product no longer exists")
+        _product, category = product_result
+        if category_slug and category_slug != category["slug"]:
+            raise HTTPException(409, "An order item has an invalid product category")
+        marker = f"{order_id}:{product_id}"
+        await db[category["collection"]].update_one(
+            {
+                "_id": ObjectId(product_id),
+                "deliveryAdjustmentKeys": marker,
+            },
+            {
+                "$inc": {
+                    "availability": quantity,
+                    "soldCount": -quantity,
+                },
+                "$pull": {"deliveryAdjustmentKeys": marker},
+            },
+        )
 
 
 async def _deliver_order(db, order_id, order, payload, admin):

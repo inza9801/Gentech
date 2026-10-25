@@ -109,7 +109,8 @@ const styles = StyleSheet.create({
   userText: { color: '#FFFFFF' },
   assistantText: { color: colors.text },
   sources: { borderTopWidth: 1, borderTopColor: colors.border, marginTop: 9, paddingTop: 7, gap: 4 },
-  sourceText: { color: colors.blue, fontSize: 9, lineHeight: 14 },
+  sourceLink: { flexDirection: 'row', alignItems: 'center', gap: 5, paddingVertical: 2 },
+  sourceText: { color: colors.blue, fontSize: 9, lineHeight: 14, flexShrink: 1, textDecorationLine: 'underline' },
   recommendedProduct: { marginTop: 10, gap: 7 },
   recommendationLabel: {
     color: colors.muted,
@@ -150,6 +151,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
   },
+  composerRaised: { marginBottom: 28 },
   input: {
     flex: 1,
     color: colors.text,

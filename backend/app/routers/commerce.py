@@ -1,4 +1,5 @@
 import bcrypt
+import logging
 
 from datetime import datetime, timedelta, timezone
 
@@ -23,6 +24,7 @@ from app.schemas.commerce import (
 from app.services.shipping_policy import quote_delivery
 
 router = APIRouter(prefix="/api", tags=["Commerce"])
+logger = logging.getLogger(__name__)
 
 SECRET = settings.jwt_secret
 ALGORITHM = settings.jwt_algorithm
@@ -71,6 +73,24 @@ async def find_product(db, category_slug: str, product_id: str):
     })
 
     return document, category
+
+
+async def _rollback_order_stock(db, reservations, order_id: ObjectId) -> None:
+    for collection_name, product_id, quantity, _product_name in reversed(reservations):
+        marker = f"{order_id}:{product_id}"
+        await db[collection_name].update_one(
+            {
+                "_id": product_id,
+                "deliveryAdjustmentKeys": marker,
+            },
+            {
+                "$inc": {
+                    "availability": quantity,
+                    "soldCount": -quantity,
+                },
+                "$pull": {"deliveryAdjustmentKeys": marker},
+            },
+        )
 
 
 @router.post("/customers/register", status_code=201)
@@ -339,6 +359,39 @@ async def get_delivery_quote(
     }
 
 
+@router.get("/coupons/available")
+async def list_available_coupons(db=Depends(get_db)):
+    """List currently usable coupons without exposing internal database fields."""
+    now = datetime.now(timezone.utc)
+    coupons = await db.coupons.find({"active": True}).to_list(length=200)
+    available = []
+    for coupon in coupons:
+        starts = coupon.get("startsAt")
+        expires = coupon.get("expiresAt")
+        if starts and starts.tzinfo is None:
+            starts = starts.replace(tzinfo=timezone.utc)
+        if expires and expires.tzinfo is None:
+            expires = expires.replace(tzinfo=timezone.utc)
+        usage_limit = coupon.get("usageLimit")
+        if starts and now < starts:
+            continue
+        if expires and now > expires:
+            continue
+        if usage_limit is not None and coupon.get("usedCount", 0) >= usage_limit:
+            continue
+        available.append(
+            {
+                "code": coupon["code"],
+                "discountType": coupon["discountType"],
+                "discountValue": coupon["discountValue"],
+                "minOrderAmount": coupon.get("minOrderAmount", 0),
+                "maxDiscount": coupon.get("maxDiscount"),
+                "expiresAt": expires.isoformat() if expires else None,
+            }
+        )
+    return available
+
+
 @router.post("/coupons/validate")
 async def validate_coupon(
     code: str,
@@ -370,7 +423,8 @@ async def validate_coupon(
     if expires and now > expires:
         raise HTTPException(status_code=400, detail="Coupon expired")
 
-    if coupon.get("usedCount", 0) >= coupon.get("usageLimit", 0):
+    usage_limit = coupon.get("usageLimit")
+    if usage_limit is not None and coupon.get("usedCount", 0) >= usage_limit:
         raise HTTPException(status_code=400, detail="Coupon usage limit reached")
 
     minimum = coupon.get("minOrderAmount", 0)
@@ -440,6 +494,7 @@ async def place_order(
     ]
 
     order_items = []
+    inventory_reservations = []
     subtotal = 0
 
     for item in items:
@@ -478,6 +533,9 @@ async def place_order(
             "finalPrice": final_price,
             "lineTotal": line_total,
         })
+        inventory_reservations.append(
+            (category["collection"], ObjectId(item["productId"]), quantity, product["name"])
+        )
 
     coupon_discount = 0
     coupon = None
@@ -505,7 +563,8 @@ async def place_order(
         if expires and now > expires:
             raise HTTPException(status_code=400, detail="Coupon expired")
 
-        if coupon.get("usedCount", 0) >= coupon.get("usageLimit", 0):
+        usage_limit = coupon.get("usageLimit")
+        if usage_limit is not None and coupon.get("usedCount", 0) >= usage_limit:
             raise HTTPException(status_code=400, detail="Coupon usage limit reached")
 
         if subtotal < coupon.get("minOrderAmount", 0):
@@ -546,7 +605,8 @@ async def place_order(
     total = order_total_after_discounts + delivery_quote.fee
 
     now = datetime.now(timezone.utc)
-    order_number = "GT-" + str(ObjectId())
+    order_id = ObjectId()
+    order_number = "GT-" + str(order_id)
     mobile_payment = None
     if body.paymentType == "mobile":
         mobile_payment = {
@@ -559,6 +619,7 @@ async def place_order(
         }
 
     order = {
+        "_id": order_id,
         "orderNumber": order_number,
         "customer": {
             "name": body.name,
@@ -582,13 +643,48 @@ async def place_order(
         "total": total,
         "createdAt": now,
         "updatedAt": now,
+        "stockReservationStatus": "reserved",
     }
     if customer:
         order["customerId"] = customer["_id"]
 
-    # Stock reservation and coupon usage need a MongoDB transaction
-    # for robust concurrent checkout in production.
-    await db.orders.insert_one(order)
+    reserved_inventory = []
+    try:
+        for collection_name, product_id, quantity, product_name in inventory_reservations:
+            marker = f"{order_id}:{product_id}"
+            stock_update = await db[collection_name].update_one(
+                {
+                    "_id": product_id,
+                    "availability": {"$gte": quantity},
+                    "deliveryAdjustmentKeys": {"$ne": marker},
+                },
+                {
+                    "$inc": {
+                        "availability": -quantity,
+                        "soldCount": quantity,
+                    },
+                    "$addToSet": {"deliveryAdjustmentKeys": marker},
+                },
+            )
+            if stock_update.matched_count != 1:
+                raise HTTPException(
+                    status_code=409,
+                    detail=f"Insufficient stock for {product_name}",
+                )
+            reserved_inventory.append(
+                (collection_name, product_id, quantity, product_name)
+            )
+        await db.orders.insert_one(order)
+    except Exception:
+        if reserved_inventory:
+            try:
+                await _rollback_order_stock(db, reserved_inventory, order_id)
+            except Exception:
+                logger.exception(
+                    "Could not roll back stock after checkout failed for order %s.",
+                    order_number,
+                )
+        raise
 
     if coupon:
         await db.coupons.update_one(

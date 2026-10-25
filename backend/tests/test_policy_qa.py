@@ -49,6 +49,21 @@ def test_policy_endpoint_returns_validated_answer_and_sources(monkeypatch):
     assert response.json()["suggested_products"] == []
 
 
+def test_policy_pdf_is_publicly_served_inline_with_pdf_content():
+    response = _client(authenticated=False).get("/api/policies/GT-POL-DS-01")
+
+    assert response.status_code == 200
+    assert response.headers["content-type"] == "application/pdf"
+    assert response.headers["content-disposition"].startswith("inline;")
+    assert response.content.startswith(b"%PDF")
+
+
+def test_unknown_policy_pdf_is_not_served():
+    response = _client(authenticated=False).get("/api/policies/unknown")
+
+    assert response.status_code == 404
+
+
 def test_chat_endpoint_uses_unified_chat_answer(monkeypatch):
     suggested_product = {
         "id": "product-1",

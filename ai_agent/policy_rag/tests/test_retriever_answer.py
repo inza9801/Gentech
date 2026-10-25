@@ -682,7 +682,7 @@ def test_unanswerable_policy_query_uses_support_fallback(monkeypatch):
     assert result["sources"] == []
 
 
-def test_policy_answer_uses_retrieved_chunks_and_appends_real_citations(monkeypatch):
+def test_policy_answer_uses_retrieved_chunks_without_appending_citations(monkeypatch):
     retrieved = [{
         "text": "7 to 14 business days",
         "headingPath": "8. Refund Methods and Timelines",
@@ -705,7 +705,7 @@ def test_policy_answer_uses_retrieved_chunks_and_appends_real_citations(monkeypa
     monkeypatch.setattr(answer, "_create_chat_model", lambda: FakeChat())
     result = asyncio.run(answer.answer_policy_question("How long is a card refund?"))
 
-    assert "Source: Payment, Cancellation and Refunds Policy, section 8.2 (Expected timelines), page 6" in result["answer"]
+    assert result["answer"] == "Card refunds take 7 to 14 business days."
     assert result["sources"][0]["chunkId"] == "real-chunk-id"
 
 
@@ -736,9 +736,7 @@ def test_faq_group_sources_are_not_collapsed_to_one_section():
     sources = answer._format_sources(chunks)
 
     assert len(sources) == 2
-    assert "section 12 (Payment problems)" in answer._append_citations(
-        "Answer", sources, "Question"
-    )
+    assert sources[0]["sectionTitle"] == "Payment problems"
 
 
 def test_bangla_answer_citation_label_is_localized(monkeypatch):
@@ -763,7 +761,7 @@ def test_bangla_answer_citation_label_is_localized(monkeypatch):
     monkeypatch.setattr(answer, "_create_chat_model", lambda: FakeChat())
     result = asyncio.run(answer.answer_policy_question("কার্ডে টাকা ফেরত পেতে কতদিন লাগে?"))
 
-    assert "\n\nউৎস: " in result["answer"]
+    assert result["answer"] == "কার্ডে টাকা ফেরত পেতে ৭ থেকে ১৪ কর্মদিবস লাগে।"
 
 
 def test_tool_description_matches_policy_scope():

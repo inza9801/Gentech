@@ -10,6 +10,7 @@ const options = [
   { icon: 'receipt-outline', title: 'My orders', subtitle: 'Track your purchases', route: 'Orders' },
   { icon: 'person-circle-outline', title: 'Edit profile', subtitle: 'Update your contact details', route: 'EditProfile' },
   { icon: 'location-outline', title: 'Delivery locations', subtitle: 'Choose from available delivery areas', route: null },
+  { icon: 'document-text-outline', title: 'Policies and manuals', subtitle: 'Read Gentech’s policy PDFs', route: 'PolicyLibrary', public: true },
 ];
 
 export function AccountScreen({ navigation }) {
@@ -22,6 +23,14 @@ export function AccountScreen({ navigation }) {
       return;
     }
     if (screen) navigation.getParent()?.navigate(screen);
+  };
+
+  const openOption = (option) => {
+    if (option.public) {
+      navigation.getParent()?.navigate(option.route);
+      return;
+    }
+    openProtected(option.route);
   };
 
   return (
@@ -61,7 +70,7 @@ export function AccountScreen({ navigation }) {
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.sectionTitle}>Quick links</Text>
         {options.map((option) => (
-          <Pressable key={option.title} onPress={() => openProtected(option.route)} style={styles.row}>
+          <Pressable key={option.title} onPress={() => openOption(option)} style={styles.row}>
             <View style={styles.rowIcon}><Ionicons name={option.icon} size={20} color={colors.blue} /></View>
             <View style={styles.rowCopy}>
               <Text style={styles.rowTitle}>{option.title}</Text>
@@ -74,5 +83,4 @@ export function AccountScreen({ navigation }) {
     </SafeAreaView>
   );
 }
-
 

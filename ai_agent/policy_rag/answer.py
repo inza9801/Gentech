@@ -742,27 +742,6 @@ def _format_sources(chunks: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return list(unique.values())
 
 
-def _append_citations(
-    answer: str,
-    sources: list[dict[str, Any]],
-    question: str,
-) -> str:
-    citations = []
-    for source in sources:
-        citation = f"{source['docTitle']}, section {source['sectionNumber']}"
-        section_title = source.get("sectionTitle", "")
-        if section_title and not section_title.startswith(
-            f"{source['sectionNumber']}."
-        ):
-            citation += f" ({section_title})"
-        if source.get("pageNumber") is not None:
-            citation += f", page {source['pageNumber']}"
-        if citation not in citations:
-            citations.append(citation)
-    label = "উৎস" if _BENGALI.search(question) else "Source"
-    return answer.rstrip() + f"\n\n{label}: " + "; ".join(citations)
-
-
 async def answer_policy_question(
     question: str,
     history: list[dict[str, str]] | None = None,
@@ -845,7 +824,7 @@ async def answer_policy_question(
     if not answer:
         raise RuntimeError("Ollama returned an empty policy answer.")
     return {
-        "answer": _append_citations(answer, sources, question),
+        "answer": answer,
         "sources": sources,
     }
 

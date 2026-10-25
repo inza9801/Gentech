@@ -8,7 +8,6 @@ import {
   Pressable,
   ScrollView,
   Text,
-  TextInput,
   View,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -326,7 +325,57 @@ export function AdminConsoleScreen() {
                   <Text style={styles.status}>{status}</Text>
                 </View>
                 <Text style={styles.cardSubtitle}>{item.customer?.name || 'Guest'} · {item.customer?.phone || 'No phone'}</Text>
-                <Text style={styles.orderTotal}>{formatPrice(item.total)}</Text>
+                <View style={styles.orderDetails}>
+                  <Text style={styles.orderSectionTitle}>
+                    Items ({(item.items || []).reduce((count, orderItem) => count + (orderItem.quantity || 0), 0)})
+                  </Text>
+                  {(item.items || []).map((orderItem, index) => (
+                    <View
+                      key={`${orderItem.productId || orderItem.name}-${index}`}
+                      style={styles.orderItem}
+                    >
+                      <View style={styles.orderItemCopy}>
+                        <Text style={styles.orderItemName}>
+                          {orderItem.name || 'Product'} × {orderItem.quantity || 0}
+                        </Text>
+                        <Text style={styles.orderItemMeta}>
+                          {formatPrice(orderItem.finalPrice ?? orderItem.unitPrice ?? 0)} each
+                          {orderItem.discount ? ` · ${orderItem.discount}% off` : ''}
+                        </Text>
+                      </View>
+                      <Text style={styles.orderItemPrice}>
+                        {formatPrice(orderItem.lineTotal ?? (orderItem.finalPrice ?? orderItem.unitPrice ?? 0) * (orderItem.quantity || 0))}
+                      </Text>
+                    </View>
+                  ))}
+                  <View style={styles.orderDivider} />
+                  <OrderDetail label="Subtotal" value={formatPrice(item.subtotal ?? 0)} />
+                  {item.couponCode ? (
+                    <OrderDetail
+                      label={`Coupon (${item.couponCode})`}
+                      value={`−${formatPrice(item.couponDiscount || 0)}`}
+                    />
+                  ) : null}
+                  <OrderDetail label="Delivery fee" value={formatPrice(item.deliveryFee || 0)} />
+                  <OrderDetail label="Payment" value={`${item.paymentType === 'mobile' ? 'bKash demo' : 'Cash on delivery'} · ${item.paymentStatus || 'pending'}`} />
+                  {item.delivery ? (
+                    <View style={styles.deliveryDetails}>
+                      <Text style={styles.orderDetailLabel}>Delivery address</Text>
+                      <Text style={styles.orderDetailValue}>
+                        {[item.delivery.area, item.delivery.district].filter(Boolean).join(', ') || 'Not provided'}
+                      </Text>
+                      {item.delivery.notes ? (
+                        <Text style={styles.orderItemMeta}>Note: {item.delivery.notes}</Text>
+                      ) : null}
+                    </View>
+                  ) : null}
+                  <View style={styles.orderDivider} />
+                  <OrderDetail
+                    label="Order total"
+                    value={formatPrice(item.total ?? 0)}
+                    emphasized
+                  />
+                </View>
                 {actions.length ? (
                   <View style={styles.orderActions}>
                     {actions.map(([nextStatus, label]) => (
@@ -400,6 +449,19 @@ export function AdminConsoleScreen() {
   );
 }
 
+function OrderDetail({ label, value, emphasized = false }) {
+  return (
+    <View style={styles.orderDetailRow}>
+      <Text style={[styles.orderDetailLabel, emphasized && styles.orderTotalLabel]}>
+        {label}
+      </Text>
+      <Text style={[styles.orderDetailValue, emphasized && styles.orderTotal]}>
+        {value}
+      </Text>
+    </View>
+  );
+}
+
 function ManagedCard({ title, subtitle, onEdit, onDelete }) {
   return (
     <View style={styles.managedCard}>
@@ -420,4 +482,3 @@ function ManagedCard({ title, subtitle, onEdit, onDelete }) {
 function sectionTitle(section) {
   return SECTIONS.find((item) => item.key === section)?.label || 'Manage';
 }
-

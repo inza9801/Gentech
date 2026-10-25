@@ -73,6 +73,10 @@ retrieval reliable while preserving one chat experience. Include the signed-in
 customer's bearer token in the `Authorization` header. Policy answers include
 citations from retrieved source metadata.
 
+The three policy PDFs are available to all visitors at `/api/policies/{docId}`.
+Chat answers keep citations out of the answer text and show source metadata as
+links; each link opens the matching policy PDF at its cited page.
+
 The mobile client uses authenticated `POST /api/chat/stream` with the same
 request shape. It emits `progress`, `delta`, and `done` server-sent events (or
 an `error` event), so the app can show compact activity feedback and render
