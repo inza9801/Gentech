@@ -61,7 +61,9 @@ function BottomTabs() {
       <Tabs.Screen name="Account" component={AccountScreen} />
       {token && customer ? (
         <Tabs.Screen name="Chat">
-          {() => <ChatScreen key={customer.id} />}
+          {({ navigation }) => (
+            <ChatScreen key={customer.id} navigation={navigation} />
+          )}
         </Tabs.Screen>
       ) : null}
     </Tabs.Navigator>

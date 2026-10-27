@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
   totalRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: colors.surface, padding: 15, borderRadius: 14 },
   totalCard: { backgroundColor: colors.surface, borderRadius: 14, paddingHorizontal: 12 },
   total: { color: colors.text, fontSize: 18, fontWeight: '900' },
+  deliveryHint: { color: colors.muted, fontSize: 11, lineHeight: 16, paddingHorizontal: 15 },
   coupon: { color: colors.green, fontWeight: '800', fontSize: 12 },
   error: { color: colors.red, fontSize: 12 },
   primary: { minHeight: 50, borderRadius: 14, backgroundColor: colors.blue, alignItems: 'center', justifyContent: 'center' },

@@ -8,7 +8,6 @@ class DeliveryQuote:
     zone: str
     zone_label: str
     fee: int
-    free_delivery_threshold: int | None
 
 
 _ZONE_2_DISTRICTS = {
@@ -33,7 +32,15 @@ _ZONE_3_DISTRICTS = {
 
 
 def _normalized(value: str) -> str:
-    return " ".join(value.casefold().replace("-", " ").split())
+    return " ".join(
+        value.casefold()
+        .replace("-", " ")
+        .replace("_", " ")
+        .replace(":", " ")
+        .replace("(", " ")
+        .replace(")", " ")
+        .split()
+    )
 
 
 def resolve_delivery_zone(
@@ -47,7 +54,7 @@ def resolve_delivery_zone(
         normalized_zone = _normalized(configured_zone)
         if normalized_zone in {"remote", "remote areas"}:
             return "remote"
-        if normalized_zone in {"1", "zone 1", "zone 1 dhaka city"}:
+        if normalized_zone in {"dhaka", "1", "zone 1", "zone 1 dhaka city"}:
             return "zone_1"
         if normalized_zone in {"2", "zone 2", "zone 2 greater dhaka"}:
             return "zone_2"
@@ -75,7 +82,7 @@ def quote_delivery(
     *,
     configured_zone: str | None = None,
 ) -> DeliveryQuote:
-    """Quote standard delivery using the policy's post-discount thresholds."""
+    """Return the fixed delivery fee assigned to the resolved zone."""
     if order_total_after_discounts < 0:
         raise ValueError("Order total after discounts cannot be negative.")
     zone = resolve_delivery_zone(district, area, configured_zone=configured_zone)
@@ -83,20 +90,14 @@ def quote_delivery(
         raise ValueError("Remote-area delivery requires a support quote.")
 
     fees = {
-        "zone_1": ("Zone 1: Dhaka city", 60, 20_000),
-        "zone_2": ("Zone 2: Greater Dhaka", 100, 20_000),
-        "zone_3": ("Zone 3: Divisional cities", 120, 50_000),
-        "zone_4": ("Zone 4: Other districts and upazilas", 150, 50_000),
+        "zone_1": ("Zone 1: Dhaka city", 60),
+        "zone_2": ("Zone 2: Greater Dhaka", 100),
+        "zone_3": ("Zone 3: Divisional cities", 120),
+        "zone_4": ("Zone 4: Other districts and upazilas", 150),
     }
-    zone_label, standard_fee, free_threshold = fees[zone]
-    fee = (
-        0
-        if order_total_after_discounts >= free_threshold
-        else standard_fee
-    )
+    zone_label, fee = fees[zone]
     return DeliveryQuote(
         zone=zone,
         zone_label=zone_label,
         fee=fee,
-        free_delivery_threshold=free_threshold,
     )

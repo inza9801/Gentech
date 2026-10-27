@@ -354,7 +354,6 @@ async def get_delivery_quote(
         "zone": quote.zone,
         "zoneLabel": quote.zone_label,
         "deliveryFee": quote.fee,
-        "freeDeliveryThreshold": quote.free_delivery_threshold,
         "orderTotalAfterDiscounts": order_total,
     }
 
@@ -630,6 +629,8 @@ async def place_order(
             "area": body.area,
             "notes": body.notes,
             "zone": delivery_quote.zone,
+            "zoneLabel": delivery_quote.zone_label,
+            "deliveryFee": delivery_quote.fee,
         },
         "paymentType": body.paymentType,
         "paymentStatus": "paid" if mobile_payment else "pending",
@@ -637,6 +638,7 @@ async def place_order(
         "status": "placed",
         "items": order_items,
         "subtotal": subtotal,
+        "orderTotalAfterDiscounts": order_total_after_discounts,
         "couponCode": coupon["code"] if coupon else None,
         "couponDiscount": coupon_discount,
         "deliveryFee": delivery_quote.fee,

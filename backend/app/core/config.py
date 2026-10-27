@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     jwt_secret: str = ""
     jwt_algorithm: str = "HS256"
     jwt_expire_minutes: int = 60
+    chat_mcp_server_url: str = "http://127.0.0.1:8000/mcp/"
 
     model_config = SettingsConfigDict(
         env_file=".env",

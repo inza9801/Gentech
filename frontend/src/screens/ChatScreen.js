@@ -1,5 +1,5 @@
 import styles from '../styles/ChatScreenStyles';
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   Animated,
   ActivityIndicator,
@@ -23,6 +23,7 @@ import { streamChat } from '../services/chatService';
 import { getPolicyManualUrl } from '../services/policyService';
 import {
   createConversation,
+  createMessageId,
   getConversationTitle,
   loadConversations,
   saveConversations,
@@ -96,8 +97,7 @@ function ThinkingIndicator({ message }) {
   );
 }
 
-export function ChatScreen() {
-  const messageIdPrefix = useId();
+export function ChatScreen({ navigation }) {
   const { addItem } = useCart();
   const { token, customer } = useAuth();
   const customerId = customer?.id;
@@ -116,7 +116,6 @@ export function ChatScreen() {
   const activeCustomerIdRef = useRef(customerId);
   const requestControllerRef = useRef(null);
   const busyRef = useRef(false);
-  const messageSequenceRef = useRef(0);
   const activeConversation = conversations.find(({ id }) => id === activeId);
   const messages = activeConversation?.messages || [];
 
@@ -247,17 +246,15 @@ export function ChatScreen() {
     const conversation = existing || createConversation();
     const history = conversation.messages
       .filter((message) => !message.incomplete && message.content?.trim())
-      .slice(-8)
+      .slice(-20)
       .map(({ role, content }) => ({ role, content }));
-    messageSequenceRef.current += 1;
     const userMessage = {
-      id: `${messageIdPrefix}-${messageSequenceRef.current}`,
+      id: createMessageId(),
       role: 'user',
       content: question,
       sources: [],
     };
-    messageSequenceRef.current += 1;
-    const assistantMessageId = `${messageIdPrefix}-${messageSequenceRef.current}`;
+    const assistantMessageId = createMessageId();
     const assistantPlaceholder = {
       id: assistantMessageId,
       role: 'assistant',
@@ -444,6 +441,10 @@ export function ChatScreen() {
             <ProductCard
               product={product}
               width={245}
+              onPress={() => navigation.getParent()?.navigate(
+                'ProductDetails',
+                { productId: product.id },
+              )}
               addedToCart={product.addedToCart}
               showAddLabel
               onAdd={() => {

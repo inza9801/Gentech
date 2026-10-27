@@ -31,8 +31,8 @@ _LIVE_CATALOG_LOOKUP = re.compile(
     re.IGNORECASE,
 )
 _POLICY_INTENT = re.compile(
-    r"\b(policy|warranty|guarantee|defect(?:ive)?|damage(?:d)?|return|refund|"
-    r"payment|delivery|shipping|cancel(?:lation)?|replacement|service claim|"
+    r"\b(policy|warranty|guarantee|defect(?:ive)?|damage(?:d)?|returns?|refunds?|"
+    r"payments?|delivery|shipping|cancel(?:lation)?|replacement|service claims?|"
     r"exchange|failed delivery|parcel|cash on delivery|cod|"
     r"delivery fee|delivery charge|refund time|return window)\b"
     r"|নীতিমালা|ওয়ারেন্টি|ওয়ারেন্টি|নষ্ট|ক্ষতিগ্রস্ত|ফেরত|রিফান্ড|পেমেন্ট|"
@@ -121,7 +121,7 @@ _BUDGET_AMOUNT = re.compile(
     r"\s*(?P<symbol_unit>k|thousand|lakh|lac)?\b)",
     re.IGNORECASE,
 )
-_FEATURE_CHOICE_CHECKPOINTER = None
+_MAX_HISTORY_MESSAGES = 20
 
 
 def _extract_budget_bdt(text: str) -> int | None:
@@ -176,7 +176,7 @@ def _extract_bare_price_bdt(text: str) -> int | None:
 
 def _conversation_text_for_recommendation(question: str, history: list[dict[str, str]]) -> str:
     parts = []
-    for message in (history or [])[-8:]:
+    for message in (history or [])[-_MAX_HISTORY_MESSAGES:]:
         content = str(message.get("content", "")).strip()
         if content:
             parts.append(content)
@@ -186,16 +186,43 @@ def _conversation_text_for_recommendation(question: str, history: list[dict[str,
 
 
 def _feature_menu_options(history: list[dict[str, str]]) -> dict[str, str]:
-    for message in reversed(history[-8:]):
+    for message in reversed(history[-_MAX_HISTORY_MESSAGES:]):
         content = str(message.get("content", ""))
-        if message.get("role") != "assistant" or "Choose one:" not in content:
+        if not content.strip():
             continue
+        if message.get("role") != "assistant":
+            return {}
+        if "Choose one:" not in content:
+            return {}
         menu = content.split("Choose one:", 1)[1]
         return {
             number: feature.strip()
             for number, feature in re.findall(r"(?m)^\s*(\d+)\.\s*(.+?)\s*$", menu)
         }
     return {}
+
+
+def _is_feature_selection_response(
+    question: str,
+    history: list[dict[str, str]],
+) -> bool:
+    options = _feature_menu_options(history)
+    if not options or _PRODUCT_RECOMMENDATION.search(question):
+        return False
+
+    match = re.fullmatch(
+        r"\s*(?:(?:feature|option)\s*)?(\d+)\s*[.!]?\s*",
+        question,
+        re.IGNORECASE,
+    )
+    if match is not None:
+        return match.group(1) in options
+
+    normalized_question = re.sub(r"\s+", " ", question.casefold()).strip(" .!")
+    return any(
+        re.sub(r"\s+", " ", feature.casefold()).strip(" .!") in normalized_question
+        for feature in options.values()
+    )
 
 
 def _feature_choice_prompt(products: list[dict[str, Any]], features: list[str], target_price_bdt: int) -> str:
@@ -216,10 +243,6 @@ def _create_feature_choice_agent(prompt: str):
     from langchain_core.outputs import ChatGeneration, ChatResult
     from langchain_core.tools import tool
     from langgraph.checkpoint.memory import InMemorySaver
-
-    global _FEATURE_CHOICE_CHECKPOINTER
-    if _FEATURE_CHOICE_CHECKPOINTER is None:
-        _FEATURE_CHOICE_CHECKPOINTER = InMemorySaver()
 
     @tool
     def ask_customer_to_choose_feature(question: str) -> str:
@@ -281,7 +304,7 @@ def _create_feature_choice_agent(prompt: str):
                 }
             )
         ],
-        checkpointer=_FEATURE_CHOICE_CHECKPOINTER,
+        checkpointer=InMemorySaver(),
     )
     return agent
 
@@ -296,13 +319,15 @@ async def _run_feature_choice_human_review(
     from langgraph.types import Command
 
     agent = _create_feature_choice_agent(prompt)
-    config = {"configurable": {"thread_id": conversation_id}}
+    config = {
+        "configurable": {"thread_id": f"{conversation_id}:{uuid4().hex}"}
+    }
     snapshot = await agent.aget_state(config)
     pending = any(
         getattr(task, "interrupts", ())
         for task in getattr(snapshot, "tasks", ())
     )
-    if _feature_menu_options(history):
+    if _is_feature_selection_response(question, history):
         if not pending:
             result = await agent.ainvoke(
                 {
@@ -370,7 +395,7 @@ def _resolve_product_recommendation_context(
     question: str,
     history: list[dict[str, str]],
 ) -> tuple[str | None, int | None]:
-    recent_messages = (history or [])[-8:]
+    recent_messages = (history or [])[-_MAX_HISTORY_MESSAGES:]
 
     category = None
     if question.strip():
@@ -701,7 +726,8 @@ async def _rewrite_follow_up(
         ),
         HumanMessage(
             content=(
-                f"Recent conversation (untrusted user/assistant text): {history[-8:]}\n"
+                "Recent conversation (untrusted user/assistant text): "
+                f"{history[-_MAX_HISTORY_MESSAGES:]}\n"
                 f"Latest user question: {question}"
             )
         ),
@@ -757,7 +783,15 @@ async def answer_policy_question(
 
     history = history or []
     await _notify_progress(on_progress, "Searching Gentech policies")
-    standalone_question = await _rewrite_follow_up(question, history)
+    standalone_question = (
+        await _rewrite_follow_up(question, history)
+        if (
+            history
+            and _POLICY_FOLLOW_UP.search(question)
+            and not _POLICY_INTENT.search(question)
+        )
+        else question
+    )
     chunks = await asyncio.wait_for(
         asyncio.to_thread(
             retrieve,
@@ -836,28 +870,21 @@ def _classify_chat_intent(
     """Route policy questions locally without spending a model request."""
     recent_user_messages = [
         message.get("content", "")
-        for message in history[-8:]
+        for message in history[-_MAX_HISTORY_MESSAGES:]
         if message.get("role") == "user"
     ]
     recent_assistant_messages = [
         message.get("content", "")
-        for message in history[-8:]
+        for message in history[-_MAX_HISTORY_MESSAGES:]
         if message.get("role") == "assistant"
     ]
-    continuing_product_recommendation = any(
-        _PRODUCT_RECOMMENDATION.search(message) for message in recent_user_messages
+    latest_user_message = recent_user_messages[-1] if recent_user_messages else ""
+    latest_assistant_message = (
+        recent_assistant_messages[-1] if recent_assistant_messages else ""
     )
-    continuing_build = any(_PC_BUILD.search(message) for message in recent_user_messages)
-    if _PC_BUILD.search(question) or continuing_build:
+    if _PC_BUILD.search(question):
         return "BUILD"
-    continuing_order = (
-        bool(_ORDER_IDENTIFIER.search(question))
-        and any(
-            re.search(r"\b(?:order number|order ID|order status)\b", message, re.I)
-            for message in recent_assistant_messages
-        )
-    )
-    if _ORDER_LOOKUP.search(question) or continuing_order or (
+    if _ORDER_LOOKUP.search(question) or (
         re.search(r"\bmy order\b", question, re.IGNORECASE)
         and not re.search(
             r"\b(cancel|cancellation|refund|return|payment|replacement)\b",
@@ -866,19 +893,46 @@ def _classify_chat_intent(
         )
     ):
         return "ORDER"
-    if _PRODUCT_RECOMMENDATION.search(question) or continuing_product_recommendation:
+    if _PRODUCT_RECOMMENDATION.search(question):
         return "PRODUCT_RECOMMENDATION"
     if _PRODUCT_COMPARISON.search(question):
         return "COMPARE"
     if _POLICY_INTENT.search(question):
         return "POLICY"
+    if (
+        _ORDER_IDENTIFIER.search(question)
+        and re.search(
+            r"\b(?:order number|order ID|order status)\b",
+            latest_assistant_message,
+            re.IGNORECASE,
+        )
+    ):
+        return "ORDER"
+    if (
+        _PC_BUILD.search(latest_user_message)
+        and (
+            not latest_assistant_message
+            or re.search(
+                r"(?:what is|what's|please share|please provide|tell me)"
+                r".{0,35}\b(?:budget|amount)\b|\btotal budget\b",
+                latest_assistant_message,
+                re.I,
+            )
+        )
+        and _extract_budget_bdt(question) is not None
+    ):
+        return "BUILD"
+    if any(_PRODUCT_RECOMMENDATION.search(message) for message in recent_user_messages) and (
+        not latest_assistant_message
+        or re.search(
+            r"which category should i search|target price|choose one:",
+            latest_assistant_message,
+            re.IGNORECASE,
+        )
+    ):
+        return "PRODUCT_RECOMMENDATION"
     if _POLICY_FOLLOW_UP.search(question):
-        previous_user_messages = [
-            message.get("content", "")
-            for message in history[-8:]
-            if message.get("role") == "user"
-        ]
-        if previous_user_messages and _POLICY_INTENT.search(previous_user_messages[-1]):
+        if latest_user_message and _POLICY_INTENT.search(latest_user_message):
             return "POLICY"
     return "GENERAL"
 
@@ -891,6 +945,96 @@ async def answer_database_chat(
     conversation_id: str | None = None,
     customer_id: Any = None,
     *,
+    mcp_access_token: str | None = None,
+    on_delta: ChatDelta | None = None,
+    on_progress: ChatProgress | None = None,
+) -> dict[str, Any]:
+    if mcp_access_token is None:
+        return await _answer_database_chat_impl(
+            question,
+            history,
+            db,
+            intent,
+            conversation_id,
+            customer_id,
+            on_delta=on_delta,
+            on_progress=on_progress,
+        )
+
+    user_context = "\n".join(
+        [
+            question,
+            *(
+                message.get("content", "")
+                for message in history[-_MAX_HISTORY_MESSAGES:]
+                if message.get("role") == "user"
+            ),
+        ]
+    )
+    if intent == "ORDER" and not _ORDER_IDENTIFIER.search(user_context):
+        return await _answer_database_chat_impl(
+            question,
+            history,
+            db,
+            intent,
+            conversation_id,
+            customer_id,
+            on_delta=on_delta,
+            on_progress=on_progress,
+        )
+    if intent == "BUILD" and _extract_budget_bdt(user_context) is None:
+        return await _answer_database_chat_impl(
+            question,
+            history,
+            db,
+            intent,
+            conversation_id,
+            customer_id,
+            on_delta=on_delta,
+            on_progress=on_progress,
+        )
+    if intent == "PRODUCT_RECOMMENDATION":
+        category, target_price_bdt = _resolve_product_recommendation_context(
+            question,
+            history,
+        )
+        if category is None or target_price_bdt is None:
+            return await _answer_database_chat_impl(
+                question,
+                history,
+                db,
+                intent,
+                conversation_id,
+                customer_id,
+                on_delta=on_delta,
+                on_progress=on_progress,
+            )
+
+    from backend.app.services.chat_mcp_client import open_chat_mcp_client
+
+    async with open_chat_mcp_client(mcp_access_token) as mcp_client:
+        return await _answer_database_chat_impl(
+            question,
+            history,
+            db,
+            intent,
+            conversation_id,
+            customer_id,
+            mcp_client=mcp_client,
+            on_delta=on_delta,
+            on_progress=on_progress,
+        )
+
+
+async def _answer_database_chat_impl(
+    question: str,
+    history: list[dict[str, str]],
+    db: Any,
+    intent: str,
+    conversation_id: str | None = None,
+    customer_id: Any = None,
+    *,
+    mcp_client: Any = None,
     on_delta: ChatDelta | None = None,
     on_progress: ChatProgress | None = None,
 ) -> dict[str, Any]:
@@ -905,16 +1049,55 @@ async def answer_database_chat(
             question,
             *(
                 message.get("content", "")
-                for message in history[-8:]
+                for message in history[-_MAX_HISTORY_MESSAGES:]
                 if message.get("role") == "user"
             ),
         ]
     )
+    if mcp_client is None:
+        tools = create_chat_tools(db, customer_id)
+        tool_map = {item.name: item for item in tools}
+        model_tools = tools
+    else:
+        discovered_tools = (await mcp_client.list_tools()).tools
+        tool_map = {item.name: item for item in discovered_tools}
+        model_tools = [
+            {
+                "type": "function",
+                "function": {
+                    "name": item.name,
+                    "description": item.description or "",
+                    "parameters": item.input_schema,
+                },
+            }
+            for item in discovered_tools
+        ]
+
+    async def invoke_tool(tool_name: str, arguments: dict[str, Any]) -> str:
+        if mcp_client is None:
+            return await tool_map[tool_name].ainvoke(arguments)
+        result = await mcp_client.call_tool(tool_name, arguments)
+        if result.is_error:
+            details = "\n".join(
+                item.text for item in result.content if hasattr(item, "text")
+            )
+            raise RuntimeError(f"MCP tool {tool_name} failed: {details}")
+        structured_content = result.structured_content
+        if isinstance(structured_content, dict):
+            tool_output = structured_content.get("result")
+            if isinstance(tool_output, str):
+                return tool_output
+        if structured_content is not None:
+            return json.dumps(structured_content, ensure_ascii=False)
+        return "\n".join(
+            item.text for item in result.content if hasattr(item, "text")
+        )
+
     product_context = "\n".join(
         [
             *(
                 message.get("content", "")
-                for message in history[-8:]
+                for message in history[-_MAX_HISTORY_MESSAGES:]
                 if message.get("role") == "user"
             ),
             question,
@@ -972,33 +1155,51 @@ async def answer_database_chat(
                 "sources": [],
             })
         budget_bdt = target_price_bdt
-        from backend.app.services.chat_tools import create_chat_tools
-
         await _notify_progress(on_progress, "Searching available products")
-        tool_map = {
-            item.name: item for item in create_chat_tools(db, customer_id)
-        }
-        catalog_result = await tool_map["find_products_near_price"].ainvoke(
-            {"category": category, "target_price_bdt": budget_bdt}
+        catalog_result = await invoke_tool(
+            "find_products_near_price",
+            {"category": category, "target_price_bdt": budget_bdt},
         )
         catalog_products = json.loads(catalog_result).get("products", [])
         features = _unique_product_features(catalog_products)
         thread_id = conversation_id or uuid4().hex
-        if not _feature_menu_options(history):
-            if not catalog_products or not features:
-                return include_policy_answer(
-                    {
-                        "answer": _recommend_from_catalog(
-                            question,
-                            catalog_result,
-                            category,
-                            budget_bdt,
-                            history,
-                        ),
-                        "sources": [],
-                        "hitl_pending": False,
-                    }
-                )
+        if not catalog_products:
+            return include_policy_answer(
+                {
+                    "answer": _recommend_from_catalog(
+                        question,
+                        catalog_result,
+                        category,
+                        budget_bdt,
+                        history,
+                    ),
+                    "sources": [],
+                    "hitl_pending": False,
+                }
+            )
+        if not features:
+            closest_product = min(
+                catalog_products,
+                key=lambda product: abs(
+                    int(product.get("finalPriceBDT", 0)) - budget_bdt
+                ),
+            )
+            product_card = _suggested_product_card(closest_product, category)
+            final_price = int(closest_product.get("finalPriceBDT", 0))
+            return include_policy_answer(
+                {
+                    "answer": (
+                        "I couldn't compare feature details for this category, "
+                        f"but the closest in-stock option is "
+                        f"{closest_product.get('name') or 'this product'} at "
+                        f"BDT {final_price:,}."
+                    ),
+                    "sources": [],
+                    "suggested_products": [product_card] if product_card else [],
+                    "hitl_pending": False,
+                }
+            )
+        if not _is_feature_selection_response(question, history):
             prompt = _feature_choice_prompt(
                 catalog_products,
                 features,
@@ -1049,12 +1250,10 @@ async def answer_database_chat(
             "sources": [],
             "suggested_products": [product_card] if product_card else [],
         })
-    if db is None:
+    if db is None and mcp_client is None:
         raise RuntimeError("Database is required for order, build, and product chat.")
 
-    tools = create_chat_tools(db, customer_id)
-    tool_map = {item.name: item for item in tools}
-    model = _create_chat_model().bind_tools(tools)
+    model = _create_chat_model().bind_tools(model_tools)
     system_prompt = (
         "You are Gentech's single customer-chat assistant. Handle ordinary "
         "conversation naturally, and use the available tools whenever a request "
@@ -1093,7 +1292,7 @@ async def answer_database_chat(
         "and do not make unsupported claims."
     )
     messages = [SystemMessage(content=system_prompt)]
-    for message in history[-8:]:
+    for message in history[-_MAX_HISTORY_MESSAGES:]:
         content = message.get("content", "").strip()
         if content:
             message_type = HumanMessage if message.get("role") == "user" else AIMessage
@@ -1118,8 +1317,9 @@ async def answer_database_chat(
         calls = getattr(response, "tool_calls", [])
         if not calls:
             if intent == "PRODUCT_RECOMMENDATION" and not product_lookup_completed:
-                result = await tool_map["find_products_near_price"].ainvoke(
-                    {"category": category, "target_price_bdt": budget_bdt}
+                result = await invoke_tool(
+                    "find_products_near_price",
+                    {"category": category, "target_price_bdt": budget_bdt},
                 )
                 product_lookup_completed = True
                 messages.append(
@@ -1165,7 +1365,7 @@ async def answer_database_chat(
                 await _notify_progress(on_progress, "Checking your order")
             elif tool_name in {"get_pc_build_inventory", "find_products_near_price"}:
                 await _notify_progress(on_progress, "Checking current product availability")
-            result = await tool_map[tool_name].ainvoke(arguments)
+            result = await invoke_tool(tool_name, arguments)
             if tool_name == "find_products_near_price":
                 product_lookup_completed = True
             messages.append(
@@ -1202,7 +1402,7 @@ async def answer_general_chat(
             )
         )
     ]
-    for message in (history or [])[-8:]:
+    for message in (history or [])[-_MAX_HISTORY_MESSAGES:]:
         content = message.get("content", "").strip()
         if content:
             message_type = HumanMessage if message.get("role") == "user" else AIMessage
@@ -1227,6 +1427,7 @@ async def answer_chat_message(
     conversation_id: str | None = None,
     customer_id: Any = None,
     *,
+    mcp_access_token: str | None = None,
     on_delta: ChatDelta | None = None,
     on_progress: ChatProgress | None = None,
 ) -> dict[str, Any]:
@@ -1258,6 +1459,7 @@ async def answer_chat_message(
             intent,
             conversation_id,
             customer_id,
+            mcp_access_token=mcp_access_token,
             on_delta=on_delta,
             on_progress=on_progress,
         )
@@ -1269,6 +1471,13 @@ async def answer_chat_message(
         return result
     if intent != "POLICY" and is_out_of_scope(question):
         return {"answer": _fallback(question, out_of_scope=True), "sources": []}
+    if intent in {"GENERAL", "COMPARE"}:
+        return await answer_general_chat(
+            question,
+            conversation,
+            on_delta=on_delta,
+            on_progress=on_progress,
+        )
     return await answer_database_chat(
         question,
         conversation,
@@ -1276,6 +1485,7 @@ async def answer_chat_message(
         intent,
         conversation_id,
         customer_id,
+        mcp_access_token=mcp_access_token,
         on_delta=on_delta,
         on_progress=on_progress,
     )

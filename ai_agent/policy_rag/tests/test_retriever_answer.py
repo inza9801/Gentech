@@ -367,6 +367,40 @@ def test_order_and_build_followups_are_routed_from_history():
     ) == "PRODUCT_RECOMMENDATION"
 
 
+def test_new_policy_or_general_turn_is_not_overridden_by_old_tool_topics():
+    history = [
+        {"role": "user", "content": "Suggest a monitor around BDT 25,000"},
+        {"role": "assistant", "content": "I recommend Monitor A for your budget."},
+        {"role": "user", "content": "Build a desktop PC under BDT 100,000"},
+        {"role": "assistant", "content": "Here is a balanced build."},
+        {"role": "user", "content": "Where is my order GT-2026-000001?"},
+        {"role": "assistant", "content": "Your order is accepted."},
+    ]
+
+    assert answer._classify_chat_intent(
+        "What is the warranty policy?",
+        history,
+    ) == "POLICY"
+    assert answer._classify_chat_intent("How are you?", history) == "GENERAL"
+
+
+def test_build_budget_followup_requires_an_active_budget_question():
+    assert answer._classify_chat_intent(
+        "BDT 100,000",
+        [
+            {"role": "user", "content": "Suggest a desktop PC build."},
+            {"role": "assistant", "content": "What is your total budget in BDT?"},
+        ],
+    ) == "BUILD"
+    assert answer._classify_chat_intent(
+        "BDT 100,000",
+        [
+            {"role": "user", "content": "Suggest a desktop PC build."},
+            {"role": "assistant", "content": "Here is a balanced build."},
+        ],
+    ) == "GENERAL"
+
+
 def test_product_category_extraction_and_near_price_parsing():
     assert answer._extract_product_category("looking for a graphics card") == "graphics_cards"
     assert answer._extract_product_category("monitor") == "monitors"
@@ -560,6 +594,308 @@ def test_order_tool_call_uses_database_result(monkeypatch):
     assert result == {"answer": "Your order has been accepted.", "sources": []}
 
 
+def test_database_chat_discovers_and_calls_tools_over_mcp(monkeypatch):
+    from contextlib import asynccontextmanager
+    from langchain_core.messages import AIMessage, ToolMessage
+
+    order_tool = SimpleNamespace(
+        name="lookup_order_status",
+        description="Look up the signed-in customer's order.",
+        input_schema={
+            "type": "object",
+            "properties": {"order_id": {"type": "string"}},
+            "required": ["order_id"],
+        },
+    )
+    other_tools = [
+        SimpleNamespace(
+            name="get_pc_build_inventory",
+            description="Find current build inventory.",
+            input_schema={"type": "object", "properties": {}},
+        ),
+        SimpleNamespace(
+            name="find_products_near_price",
+            description="Find products near a price.",
+            input_schema={"type": "object", "properties": {}},
+        ),
+    ]
+
+    class FakeMCPClient:
+        called_tool = None
+
+        async def list_tools(self):
+            return SimpleNamespace(tools=[order_tool, *other_tools])
+
+        async def call_tool(self, name, arguments):
+            self.called_tool = (name, arguments)
+            return SimpleNamespace(
+                is_error=False,
+                structured_content=None,
+                content=[SimpleNamespace(text='{"status":"accepted"}')],
+            )
+
+    mcp_client = FakeMCPClient()
+
+    @asynccontextmanager
+    async def fake_open_chat_mcp_client(token):
+        assert token == "customer-jwt"
+        yield mcp_client
+
+    from backend.app.services import chat_mcp_client
+
+    monkeypatch.setattr(
+        chat_mcp_client,
+        "open_chat_mcp_client",
+        fake_open_chat_mcp_client,
+    )
+
+    class FakeModel:
+        def bind_tools(self, tools):
+            assert {tool["function"]["name"] for tool in tools} == {
+                "lookup_order_status",
+                "get_pc_build_inventory",
+                "find_products_near_price",
+            }
+            assert next(
+                tool["function"]["parameters"]
+                for tool in tools
+                if tool["function"]["name"] == "lookup_order_status"
+            ) == order_tool.input_schema
+            return self
+
+        async def ainvoke(self, messages):
+            if not any(isinstance(message, ToolMessage) for message in messages):
+                return AIMessage(
+                    content="",
+                    tool_calls=[
+                        {
+                            "name": "lookup_order_status",
+                            "args": {"order_id": "GT-2026-000001"},
+                            "id": "mcp-order-lookup",
+                            "type": "tool_call",
+                        }
+                    ],
+                )
+            tool_result = next(
+                message.content
+                for message in messages
+                if isinstance(message, ToolMessage)
+            )
+            assert '"status":"accepted"' in tool_result
+            return AIMessage(content="Your order has been accepted.")
+
+    monkeypatch.setattr(answer, "_create_chat_model", lambda: FakeModel())
+    result = asyncio.run(
+        answer.answer_chat_message(
+            "Where is my order GT-2026-000001?",
+            mcp_access_token="customer-jwt",
+        )
+    )
+
+    assert mcp_client.called_tool == (
+        "lookup_order_status",
+        {"order_id": "GT-2026-000001"},
+    )
+    assert result == {"answer": "Your order has been accepted.", "sources": []}
+
+
+def test_mcp_product_lookup_decodes_wrapped_result_and_returns_product_card(monkeypatch):
+    from contextlib import asynccontextmanager
+
+    product = {
+        "id": "monitor-123",
+        "name": "Monitor near budget",
+        "priceBDT": 25000,
+        "discountPercent": 0,
+        "finalPriceBDT": 25000,
+        "stock": 4,
+        "image": "monitors/monitor.jpg",
+        "images": ["monitors/monitor.jpg"],
+        "features": [],
+    }
+    catalog_json = json.dumps(
+        {
+            "category": "monitors",
+            "targetPriceBDT": 25000,
+            "catalogCount": 1,
+            "availableCount": 1,
+            "products": [product],
+        }
+    )
+    tool_definitions = [
+        SimpleNamespace(
+            name=name,
+            description="",
+            input_schema={"type": "object", "properties": {}},
+        )
+        for name in (
+            "lookup_order_status",
+            "get_pc_build_inventory",
+            "find_products_near_price",
+        )
+    ]
+
+    class FakeMCPClient:
+        async def list_tools(self):
+            return SimpleNamespace(tools=tool_definitions)
+
+        async def call_tool(self, name, arguments):
+            assert name == "find_products_near_price"
+            assert arguments == {
+                "category": "monitors",
+                "target_price_bdt": 25000,
+            }
+            return SimpleNamespace(
+                is_error=False,
+                structured_content={"result": catalog_json},
+                content=[],
+            )
+
+    @asynccontextmanager
+    async def fake_open_chat_mcp_client(_token):
+        yield FakeMCPClient()
+
+    from backend.app.services import chat_mcp_client
+
+    monkeypatch.setattr(
+        chat_mcp_client,
+        "open_chat_mcp_client",
+        fake_open_chat_mcp_client,
+    )
+
+    result = asyncio.run(
+        answer.answer_chat_message(
+            "Suggest a monitor around BDT 25,000",
+            db=object(),
+            mcp_access_token="customer-jwt",
+        )
+    )
+
+    assert "Monitor near budget" in result["answer"]
+    assert len(result["suggested_products"]) == 1
+    assert result["suggested_products"][0]["id"] == "monitor-123"
+    assert result["suggested_products"][0]["finalPrice"] == 25000
+
+
+def test_recommendations_for_new_categories_work_back_to_back(monkeypatch):
+    from contextlib import asynccontextmanager
+
+    features_by_category = {
+        "monitors": ["165Hz refresh rate"],
+        "processors": ["8 CPU cores"],
+        "rams": ["DDR5 memory"],
+    }
+    calls = []
+    tool_definitions = [
+        SimpleNamespace(
+            name=name,
+            description="",
+            input_schema={"type": "object", "properties": {}},
+        )
+        for name in (
+            "lookup_order_status",
+            "get_pc_build_inventory",
+            "find_products_near_price",
+        )
+    ]
+
+    class FakeMCPClient:
+        async def list_tools(self):
+            return SimpleNamespace(tools=tool_definitions)
+
+        async def call_tool(self, name, arguments):
+            assert name == "find_products_near_price"
+            category = arguments["category"]
+            calls.append(category)
+            product = {
+                "id": f"{category}-product",
+                "name": f"{category} product",
+                "priceBDT": 25_000,
+                "discountPercent": 0,
+                "finalPriceBDT": 25_000,
+                "stock": 2,
+                "features": features_by_category[category],
+            }
+            return SimpleNamespace(
+                is_error=False,
+                structured_content={
+                    "result": json.dumps(
+                        {
+                            "category": category,
+                            "targetPriceBDT": arguments["target_price_bdt"],
+                            "products": [product],
+                        }
+                    )
+                },
+                content=[],
+            )
+
+    @asynccontextmanager
+    async def fake_open_chat_mcp_client(_token):
+        yield FakeMCPClient()
+
+    from backend.app.services import chat_mcp_client
+
+    monkeypatch.setattr(
+        chat_mcp_client,
+        "open_chat_mcp_client",
+        fake_open_chat_mcp_client,
+    )
+
+    async def ask_sequential_recommendations():
+        history = []
+        results = []
+        for question in (
+            "Suggest a monitor around BDT 25,000",
+            "Suggest a CPU now",
+            "Suggest RAM now",
+        ):
+            result = await answer.answer_chat_message(
+                question,
+                history=history,
+                db=object(),
+                conversation_id="sequential-categories",
+                mcp_access_token="customer-jwt",
+            )
+            results.append(result)
+            history.extend(
+                [
+                    {"role": "user", "content": question},
+                    {"role": "assistant", "content": result["answer"]},
+                ]
+            )
+        return results
+
+    results = asyncio.run(ask_sequential_recommendations())
+
+    assert calls == ["monitors", "processors", "rams"]
+    assert "165Hz refresh rate" in results[0]["answer"]
+    assert "8 CPU cores" in results[1]["answer"]
+    assert "DDR5 memory" in results[2]["answer"]
+    assert all(result.get("hitl_pending") for result in results)
+
+
+def test_new_recommendation_is_not_consumed_as_previous_feature_choice():
+    history = [
+        {"role": "user", "content": "Suggest a monitor around BDT 25,000"},
+        {
+            "role": "assistant",
+            "content": (
+                "Which feature should I prioritize? Choose one:\n"
+                "1. High refresh rate\n2. Resolution"
+            ),
+        },
+    ]
+
+    assert not answer._is_feature_selection_response("Suggest a CPU now", history)
+    assert answer._is_feature_selection_response("2", history)
+    assert answer._is_feature_selection_response("Resolution", history)
+    assert not answer._feature_menu_options(
+        history
+        + [{"role": "assistant", "content": "I recommend Monitor A."}]
+    )
+
+
 def test_product_recommendation_asks_priorities_then_selects_from_live_products(monkeypatch):
     class FakeCursor:
         async def to_list(self, length=None):
@@ -673,6 +1009,76 @@ def test_product_recommendation_asks_priorities_then_selects_from_live_products(
     assert "Which feature should I prioritize?" in price_reply["answer"]
 
 
+def test_feature_choice_state_is_isolated_for_repeated_recommendations():
+    conversation_id = "monitor-then-cpu"
+    first_prompt = (
+        "I found monitor products. Which feature should I prioritize? "
+        "Choose one:\n1. High refresh rate"
+    )
+    next_prompt = (
+        "I found CPU products. Which feature should I prioritize? "
+        "Choose one:\n1. More cores"
+    )
+    history = [{"role": "assistant", "content": first_prompt}]
+
+    async def exercise_repeated_requests():
+        first = await answer._run_feature_choice_human_review(
+            "Suggest a monitor",
+            [],
+            conversation_id,
+            first_prompt,
+        )
+        second = await answer._run_feature_choice_human_review(
+            "Suggest a CPU now",
+            history,
+            conversation_id,
+            next_prompt,
+        )
+        third = await answer._run_feature_choice_human_review(
+            "Suggest another CPU now",
+            history,
+            conversation_id,
+            next_prompt,
+        )
+        return first, second, third
+
+    assert asyncio.run(exercise_repeated_requests()) == (True, True, True)
+
+
+def test_product_recommendation_returns_card_when_catalog_has_no_features():
+    class FakeCursor:
+        async def to_list(self, length=None):
+            return [
+                {
+                    "_id": "monitor-a",
+                    "name": "Monitor A",
+                    "price": 25000,
+                    "availability": 3,
+                    "images": ["monitors/monitor-a.jpg"],
+                }
+            ]
+
+    class FakeMonitors:
+        def find(self, query, projection):
+            return FakeCursor()
+
+    class FakeDatabase:
+        def __getitem__(self, name):
+            assert name == "monitors"
+            return FakeMonitors()
+
+    result = asyncio.run(
+        answer.answer_chat_message(
+            "Suggest a monitor around BDT 25,000",
+            db=FakeDatabase(),
+        )
+    )
+
+    assert len(result["suggested_products"]) == 1
+    assert result["suggested_products"][0]["id"] == "monitor-a"
+    assert result["suggested_products"][0]["category"]["slug"] == "monitors"
+
+
 def test_unanswerable_policy_query_uses_support_fallback(monkeypatch):
     monkeypatch.setattr(answer, "retrieve", lambda *_args, **_kwargs: [])
     result = asyncio.run(answer.answer_policy_question("What is Gentech's return window for drones?"))
@@ -707,6 +1113,45 @@ def test_policy_answer_uses_retrieved_chunks_without_appending_citations(monkeyp
 
     assert result["answer"] == "Card refunds take 7 to 14 business days."
     assert result["sources"][0]["chunkId"] == "real-chunk-id"
+
+
+def test_standalone_policy_question_skips_slow_context_rewrite(monkeypatch):
+    retrieved = [{
+        "text": "Refunds are processed within 7 to 14 business days.",
+        "headingPath": "8. Refund Methods and Timelines",
+        "docId": "GT-POL-PR-01",
+        "docTitle": "Payment, Cancellation and Refunds Policy",
+        "sectionNumber": "8",
+        "sectionTitle": "Refund timelines",
+        "pageNumber": 6,
+        "chunkType": "section",
+        "chunkId": "refund-timelines",
+        "score": 0.02,
+    }]
+
+    def fake_retrieve(question, _options):
+        assert question == "How long do card refunds take?"
+        return retrieved
+
+    async def fail_rewrite(*_args, **_kwargs):
+        raise AssertionError("A standalone policy question must not need a rewrite call.")
+
+    class FakeChat:
+        async def ainvoke(self, _messages):
+            return SimpleNamespace(content="Refunds take 7 to 14 business days.")
+
+    monkeypatch.setattr(answer, "retrieve", fake_retrieve)
+    monkeypatch.setattr(answer, "_rewrite_follow_up", fail_rewrite)
+    monkeypatch.setattr(answer, "_create_chat_model", lambda: FakeChat())
+
+    result = asyncio.run(
+        answer.answer_policy_question(
+            "How long do card refunds take?",
+            [{"role": "user", "content": "What payment methods are available?"}],
+        )
+    )
+
+    assert result["answer"] == "Refunds take 7 to 14 business days."
 
 
 def test_faq_group_sources_are_not_collapsed_to_one_section():

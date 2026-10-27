@@ -4,7 +4,8 @@
   },
   "district": "Dhaka",
   "area": "Dhanmondi",
-  "active": true
+  "active": true,
+  "deliveryZone": "zone_1"
 },
 {
   "_id": {
@@ -12,7 +13,8 @@
   },
   "district": "Dhaka",
   "area": "Mirpur",
-  "active": true
+  "active": true,
+  "deliveryZone": "zone_1"
 },
 {
   "_id": {
@@ -20,7 +22,8 @@
   },
   "district": "Dhaka",
   "area": "Uttara",
-  "active": true
+  "active": true,
+  "deliveryZone": "zone_1"
 },
 {
   "_id": {
@@ -28,7 +31,8 @@
   },
   "district": "Chattogram",
   "area": "Panchlaish",
-  "active": true
+  "active": true,
+  "deliveryZone": "zone_3"
 },
 {
   "_id": {
@@ -36,5 +40,591 @@
   },
   "district": "Chattogram",
   "area": "Agrabad",
-  "active": true
+  "active": true,
+  "deliveryZone": "zone_3"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b15"
+  },
+  "area": "Keraniganj",
+  "district": "Dhaka",
+  "active": true,
+  "deliveryZone": "zone_2"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b16"
+  },
+  "district": "Dhaka",
+  "area": "Savar",
+  "active": true,
+  "deliveryZone": "zone_2"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b17"
+  },
+  "area": "Gazipur City",
+  "district": "Gazipur",
+  "active": true,
+  "deliveryZone": "zone_2"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b18"
+  },
+  "district": "Gazipur",
+  "area": "Tongi",
+  "active": true,
+  "deliveryZone": "zone_2"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b19"
+  },
+  "area": "Narayanganj City",
+  "district": "Narayanganj",
+  "active": true,
+  "deliveryZone": "zone_2"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b1a"
+  },
+  "district": "Narsingdi",
+  "area": "Narsingdi Town",
+  "active": true,
+  "deliveryZone": "zone_2"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b1b"
+  },
+  "area": "Barishal City Centre",
+  "district": "Barishal",
+  "active": true,
+  "deliveryZone": "zone_3"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b1c"
+  },
+  "district": "Khulna",
+  "area": "Khulna City Centre",
+  "active": true,
+  "deliveryZone": "zone_3"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b1d"
+  },
+  "area": "Mymensingh City Centre",
+  "district": "Mymensingh",
+  "active": true,
+  "deliveryZone": "zone_3"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b1e"
+  },
+  "district": "Rajshahi",
+  "area": "Rajshahi City Centre",
+  "active": true,
+  "deliveryZone": "zone_3"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b1f"
+  },
+  "area": "Rangpur City Centre",
+  "district": "Rangpur",
+  "active": true,
+  "deliveryZone": "zone_3"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b20"
+  },
+  "district": "Sylhet",
+  "area": "Sylhet City Centre",
+  "active": true,
+  "deliveryZone": "zone_3"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b21"
+  },
+  "area": "District Town",
+  "district": "Faridpur",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b22"
+  },
+  "district": "Gopalganj",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b23"
+  },
+  "area": "District Town",
+  "district": "Kishoreganj",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b24"
+  },
+  "district": "Madaripur",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b25"
+  },
+  "area": "District Town",
+  "district": "Manikganj",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b26"
+  },
+  "district": "Munshiganj",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b27"
+  },
+  "area": "District Town",
+  "district": "Rajbari",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b28"
+  },
+  "district": "Shariatpur",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b29"
+  },
+  "area": "District Town",
+  "district": "Tangail",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b2a"
+  },
+  "district": "Bandarban",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b2b"
+  },
+  "area": "District Town",
+  "district": "Brahmanbaria",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b2c"
+  },
+  "district": "Chandpur",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b2d"
+  },
+  "area": "District Town",
+  "district": "Cumilla",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b2e"
+  },
+  "district": "Cox's Bazar",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b2f"
+  },
+  "area": "District Town",
+  "district": "Feni",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b30"
+  },
+  "district": "Khagrachhari",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b31"
+  },
+  "area": "District Town",
+  "district": "Lakshmipur",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b32"
+  },
+  "district": "Noakhali",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b33"
+  },
+  "area": "District Town",
+  "district": "Rangamati",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b34"
+  },
+  "district": "Bogura",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b35"
+  },
+  "area": "District Town",
+  "district": "Joypurhat",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b36"
+  },
+  "district": "Naogaon",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b37"
+  },
+  "area": "District Town",
+  "district": "Natore",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b38"
+  },
+  "district": "Chapainawabganj",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b39"
+  },
+  "area": "District Town",
+  "district": "Pabna",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b3a"
+  },
+  "district": "Sirajganj",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b3b"
+  },
+  "area": "District Town",
+  "district": "Bagerhat",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b3c"
+  },
+  "district": "Chuadanga",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b3d"
+  },
+  "area": "District Town",
+  "district": "Jashore",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b3e"
+  },
+  "district": "Jhenaidah",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b3f"
+  },
+  "area": "District Town",
+  "district": "Kushtia",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b40"
+  },
+  "district": "Magura",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b41"
+  },
+  "area": "District Town",
+  "district": "Meherpur",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b42"
+  },
+  "district": "Narail",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b43"
+  },
+  "area": "District Town",
+  "district": "Satkhira",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b44"
+  },
+  "district": "Barguna",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b45"
+  },
+  "area": "District Town",
+  "district": "Bhola",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b46"
+  },
+  "district": "Jhalokati",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b47"
+  },
+  "area": "District Town",
+  "district": "Patuakhali",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b48"
+  },
+  "district": "Pirojpur",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b49"
+  },
+  "area": "District Town",
+  "district": "Habiganj",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b4a"
+  },
+  "district": "Moulvibazar",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b4b"
+  },
+  "area": "District Town",
+  "district": "Sunamganj",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b4c"
+  },
+  "district": "Dinajpur",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b4d"
+  },
+  "area": "District Town",
+  "district": "Gaibandha",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b4e"
+  },
+  "district": "Kurigram",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b4f"
+  },
+  "area": "District Town",
+  "district": "Lalmonirhat",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b50"
+  },
+  "district": "Nilphamari",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b51"
+  },
+  "area": "District Town",
+  "district": "Panchagarh",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b52"
+  },
+  "district": "Thakurgaon",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b53"
+  },
+  "area": "District Town",
+  "district": "Jamalpur",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b54"
+  },
+  "district": "Netrokona",
+  "area": "District Town",
+  "active": true,
+  "deliveryZone": "zone_4"
+},
+{
+  "_id": {
+    "$oid": "6ae06ee0281c5095f08c4b55"
+  },
+  "area": "District Town",
+  "district": "Sherpur",
+  "active": true,
+  "deliveryZone": "zone_4"
 }]

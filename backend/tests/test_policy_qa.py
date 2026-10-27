@@ -6,6 +6,7 @@ from fastapi.testclient import TestClient
 from app.core.database import get_db
 from app.core.security import require_customer
 from app.routers import policy_qa
+from app.schemas.policy_qa import PolicyQARequest
 
 
 def _client(authenticated: bool = True) -> TestClient:
@@ -83,12 +84,14 @@ def test_chat_endpoint_uses_unified_chat_answer(monkeypatch):
         db,
         conversation_id=None,
         customer_id=None,
+        mcp_access_token=None,
     ):
         assert question == "Hello"
         assert history == []
         assert db is not None
         assert conversation_id == "test-conversation"
         assert customer_id == "customer-1"
+        assert mcp_access_token == "test-customer-token"
         return {
             "answer": "This monitor matches your needs.",
             "sources": [],
@@ -99,6 +102,7 @@ def test_chat_endpoint_uses_unified_chat_answer(monkeypatch):
     response = _client().post(
         "/api/chat",
         json={"question": "Hello", "conversation_id": "test-conversation"},
+        headers={"Authorization": "Bearer test-customer-token"},
     )
 
     assert response.status_code == 200
@@ -115,12 +119,14 @@ def test_chat_stream_emits_progress_deltas_and_final_response(monkeypatch):
         db,
         conversation_id=None,
         customer_id=None,
+        mcp_access_token=None,
         on_delta=None,
         on_progress=None,
     ):
         assert question == "Hello"
         assert db is not None
         assert customer_id == "customer-1"
+        assert mcp_access_token == "test-customer-token"
         await on_progress("Writing a reply")
         await on_delta("Hello")
         await on_delta(" there")
@@ -130,6 +136,7 @@ def test_chat_stream_emits_progress_deltas_and_final_response(monkeypatch):
     response = _client().post(
         "/api/chat/stream",
         json={"question": "Hello", "conversation_id": "stream-conversation"},
+        headers={"Authorization": "Bearer test-customer-token"},
     )
 
     assert response.status_code == 200
@@ -145,6 +152,17 @@ def test_policy_endpoint_rejects_blank_and_oversized_questions():
     client = _client()
     assert client.post("/api/policy-qa", json={"question": "   "}).status_code == 422
     assert client.post("/api/policy-qa", json={"question": "x" * 2001}).status_code == 422
+
+
+def test_chat_request_accepts_twenty_context_messages():
+    request = PolicyQARequest(
+        question="What did I ask earlier?",
+        history=[
+            {"role": "user", "content": f"Message {index}"}
+            for index in range(20)
+        ],
+    )
+    assert len(request.history) == 20
 
 
 def test_chat_endpoints_require_customer_authentication():

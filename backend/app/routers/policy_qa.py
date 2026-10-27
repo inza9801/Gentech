@@ -13,6 +13,7 @@ from uuid import uuid4
 
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.security import HTTPAuthorizationCredentials
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 if str(PROJECT_ROOT) not in sys.path:
@@ -25,7 +26,7 @@ from ai_agent.policy_rag.answer import (
 )
 from ai_agent.policy_rag.settings import settings
 from app.core.database import get_db
-from app.core.security import require_customer
+from app.core.security import bearer_scheme, require_customer
 from app.schemas.policy_qa import PolicyQARequest, PolicyQAResponse
 
 logger = logging.getLogger(__name__)
@@ -60,20 +61,21 @@ async def _run_chat(
     db: Any = None,
     conversation_id: str | None = None,
     customer_id: Any = None,
+    mcp_access_token: str | None = None,
 ) -> PolicyQAResponse:
     question = body.question.strip()
     if not question:
         raise HTTPException(status_code=422, detail="Question must not be empty.")
     history = [message.model_dump() for message in body.history]
     try:
+        answer_kwargs = {
+            "conversation_id": conversation_id,
+            "customer_id": customer_id,
+        }
+        if mcp_access_token is not None:
+            answer_kwargs["mcp_access_token"] = mcp_access_token
         result = await asyncio.wait_for(
-            answer_function(
-                question,
-                history,
-                db,
-                conversation_id=conversation_id,
-                customer_id=customer_id,
-            )
+            answer_function(question, history, db, **answer_kwargs)
             if db is not None
             else answer_function(question, history),
             timeout=settings.policy_timeout_seconds,
@@ -107,6 +109,7 @@ async def chat(
     body: PolicyQARequest,
     customer: Any = Depends(require_customer),
     db: Any = Depends(get_db),
+    credentials: HTTPAuthorizationCredentials | None = Depends(bearer_scheme),
 ) -> PolicyQAResponse:
     """Handle normal chat and route Gentech policy questions to PDF retrieval."""
     conversation_id = body.conversation_id or uuid4().hex
@@ -116,6 +119,7 @@ async def chat(
         db,
         conversation_id,
         customer["_id"],
+        credentials.credentials if credentials is not None else None,
     )
 
 
@@ -124,6 +128,7 @@ async def stream_chat(
     body: PolicyQARequest,
     customer: Any = Depends(require_customer),
     db: Any = Depends(get_db),
+    credentials: HTTPAuthorizationCredentials | None = Depends(bearer_scheme),
 ) -> StreamingResponse:
     """Stream progress and answer tokens for an authenticated chat turn."""
     question = body.question.strip()
@@ -143,16 +148,16 @@ async def stream_chat(
 
         async def run_answer() -> None:
             try:
+                answer_kwargs = {
+                    "conversation_id": conversation_id,
+                    "customer_id": customer["_id"],
+                    "on_delta": on_delta,
+                    "on_progress": on_progress,
+                }
+                if credentials is not None:
+                    answer_kwargs["mcp_access_token"] = credentials.credentials
                 result = await asyncio.wait_for(
-                    answer_chat_message(
-                        question,
-                        history,
-                        db,
-                        conversation_id=conversation_id,
-                        customer_id=customer["_id"],
-                        on_delta=on_delta,
-                        on_progress=on_progress,
-                    ),
+                    answer_chat_message(question, history, db, **answer_kwargs),
                     timeout=settings.policy_timeout_seconds,
                 )
                 response = PolicyQAResponse.model_validate(

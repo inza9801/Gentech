@@ -116,6 +116,24 @@ export function CheckoutScreen({ navigation, route }) {
     setBusy(true);
     setError(null);
     try {
+      const latestQuote = await getDeliveryQuote(
+        form.district,
+        form.area,
+        orderTotalAfterDiscounts,
+      );
+      setDeliveryQuoteState({
+        key: quoteKey,
+        quote: latestQuote,
+        error: null,
+      });
+      if (
+        latestQuote.zone !== deliveryQuote?.zone
+        || latestQuote.deliveryFee !== deliveryQuote?.deliveryFee
+      ) {
+        setError('The delivery fee was updated. Review the new total and place your order again.');
+        return;
+      }
+
       const order = await placeOrder({
         ...form,
         paymentPhone: form.paymentType === 'mobile' ? form.paymentPhone.trim() : null,
@@ -246,6 +264,11 @@ export function CheckoutScreen({ navigation, route }) {
             </Text>
           )}
         </View>
+        {deliveryQuote ? (
+          <Text style={styles.deliveryHint}>
+            Delivery fee is fixed for the selected zone.
+          </Text>
+        ) : null}
         <View style={styles.totalRow}><Text style={styles.groupLabel}>Total</Text><Text style={styles.total}>{formatPrice(total)}</Text></View>
       </View>
       {error || quoteError ? <Text style={styles.error}>{error || quoteError}</Text> : null}

@@ -14,7 +14,7 @@ class PolicyChatMessage(BaseModel):
 
 class PolicyQARequest(BaseModel):
     question: str = Field(min_length=1, max_length=2000)
-    history: list[PolicyChatMessage] = Field(default_factory=list, max_length=8)
+    history: list[PolicyChatMessage] = Field(default_factory=list, max_length=20)
     conversation_id: str | None = Field(default=None, min_length=1, max_length=128)
 
 

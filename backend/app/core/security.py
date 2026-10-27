@@ -10,18 +10,10 @@ from app.core.database import get_db
 bearer_scheme = HTTPBearer(auto_error=False)
 
 
-async def get_optional_current_user(
-    credentials: HTTPAuthorizationCredentials | None = Depends(
-        bearer_scheme
-    ),
-    db=Depends(get_db),
-):
-    if credentials is None:
-        return None
-
+async def get_user_from_access_token(token: str, db):
     try:
         payload = jwt.decode(
-            credentials.credentials,
+            token,
             settings.jwt_secret,
             algorithms=[settings.jwt_algorithm],
         )
@@ -45,6 +37,19 @@ async def get_optional_current_user(
             status_code=401,
             detail="User account not found or inactive",
         )
+    return user
+
+
+async def get_optional_current_user(
+    credentials: HTTPAuthorizationCredentials | None = Depends(
+        bearer_scheme
+    ),
+    db=Depends(get_db),
+):
+    if credentials is None:
+        return None
+
+    user = await get_user_from_access_token(credentials.credentials, db)
     if user.get("role", "customer") != "customer":
         raise HTTPException(
             status_code=403,
@@ -67,38 +72,7 @@ async def get_current_user(
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    try:
-        payload = jwt.decode(
-            credentials.credentials,
-            settings.jwt_secret,
-            algorithms=[settings.jwt_algorithm],
-        )
-        user_id = payload.get("sub")
-
-        if not user_id or not ObjectId.is_valid(user_id):
-            raise HTTPException(
-                status_code=401,
-                detail="Invalid authentication token",
-            )
-
-    except JWTError:
-        raise HTTPException(
-            status_code=401,
-            detail="Invalid or expired token",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
-
-    user = await db["customers"].find_one({
-        "_id": ObjectId(user_id)
-    })
-
-    if not user or user.get("active", True) is False:
-        raise HTTPException(
-            status_code=401,
-            detail="User account not found or inactive",
-        )
-
-    return user
+    return await get_user_from_access_token(credentials.credentials, db)
 
 
 async def require_admin(

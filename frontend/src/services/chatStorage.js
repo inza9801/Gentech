@@ -19,6 +19,25 @@ export function createConversation() {
   };
 }
 
+export function createMessageId() {
+  return `message-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
+export function ensureUniqueMessageIds(messages) {
+  const seenIds = new Set();
+  return messages.map((message) => {
+    let id = message?.id;
+    if (typeof id !== 'string' || !id || seenIds.has(id)) {
+      do {
+        id = createMessageId();
+      } while (seenIds.has(id));
+      message = { ...message, id };
+    }
+    seenIds.add(id);
+    return message;
+  });
+}
+
 export function getConversationTitle(question) {
   const title = question.trim().replace(/\s+/g, ' ');
   return title.length > 48 ? `${title.slice(0, 45)}…` : title || 'New chat';
@@ -38,6 +57,10 @@ export async function loadConversations(customerId) {
       typeof conversation.title === 'string' &&
       Array.isArray(conversation.messages),
     )
+    .map((conversation) => ({
+      ...conversation,
+      messages: ensureUniqueMessageIds(conversation.messages),
+    }))
     .slice(0, MAX_CONVERSATIONS);
 }
 

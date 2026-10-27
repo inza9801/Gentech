@@ -10,6 +10,11 @@ Expo SDK 58 React Native app written in JavaScript.
    .\.venv\Scripts\python.exe -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
    ```
 
+   The backend's internal chat MCP client uses
+   `CHAT_MCP_SERVER_URL=http://127.0.0.1:8000/mcp/` by default. If the backend
+   listens on a different host or port, set `CHAT_MCP_SERVER_URL` in
+   `backend/.env` to that server's `/mcp/` URL.
+
 2. In `frontend`, start Expo on the local network:
 
    ```powershell
@@ -66,9 +71,12 @@ interactive product card that can add the suggestion to the shopping bag.
 Chat is available only while signed in; each customer's conversations are
 stored separately on the device and can be deleted individually from chat
 history. Chat API requests require authentication, and order-status lookups only
-return orders owned by the signed-in customer. Responses stream into the chat
+return orders owned by the signed-in customer. Catalog and order database tools
+are discovered and invoked over the backend's authenticated Streamable HTTP MCP
+endpoint (`/mcp/`); order access is scoped to the verified customer JWT.
+Responses stream into the chat
 with compact progress feedback, and the composer remains available above the
-keyboard. The assistant uses recent chat context (up to eight messages) and
+keyboard. The assistant uses recent chat context (up to twenty messages) and
 can combine policy search with authorized order or catalog tools in a single
 turn.
 All visitors can open the three policy PDFs from Account → Policies and

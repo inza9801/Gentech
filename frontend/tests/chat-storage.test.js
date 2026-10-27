@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
+  createMessageId,
   createConversation,
+  ensureUniqueMessageIds,
   getConversationStorageKey,
   getConversationTitle,
 } from '../src/services/chatStorage';
@@ -26,5 +28,24 @@ describe('chat conversation helpers', () => {
     expect(() => getConversationStorageKey('')).toThrow(
       'A signed-in customer is required to access chat history.',
     );
+  });
+
+  it('creates distinct message IDs across successive messages', () => {
+    expect(createMessageId()).not.toBe(createMessageId());
+  });
+
+  it('repairs missing and duplicate message IDs in saved history', () => {
+    const messages = ensureUniqueMessageIds([
+      { id: '_r_5_-1', content: 'first' },
+      { id: '_r_5_-1', content: 'duplicate' },
+      { content: 'missing' },
+    ]);
+
+    expect(new Set(messages.map((message) => message.id)).size).toBe(3);
+    expect(messages.map((message) => message.content)).toEqual([
+      'first',
+      'duplicate',
+      'missing',
+    ]);
   });
 });
