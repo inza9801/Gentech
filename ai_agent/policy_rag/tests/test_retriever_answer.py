@@ -437,6 +437,39 @@ def test_product_recommendation_context_resolves_latest_category_and_price_from_
     assert price == 25000
 
 
+def test_new_product_category_uses_its_explicit_budget_over_previous_budget():
+    history = [
+        {"role": "user", "content": "Suggest a CPU for 50,000"},
+        {"role": "assistant", "content": "Which feature should I prioritize? Choose one:\n1. More cores"},
+    ]
+
+    category, price = answer._resolve_product_recommendation_context(
+        "Now suggest a monitor for 25,000",
+        history,
+    )
+
+    assert category == "monitors"
+    assert price == 25000
+
+    category, price = answer._resolve_product_recommendation_context(
+        "for 25,000",
+        history
+        + [
+            {"role": "user", "content": "Now suggest a monitor"},
+            {"role": "assistant", "content": "What is your target price in BDT?"},
+        ],
+    )
+    assert category == "monitors"
+    assert price == 25000
+
+    category, price = answer._resolve_product_recommendation_context(
+        "Suggest a CPU now",
+        history,
+    )
+    assert category == "processors"
+    assert price == 50000
+
+
 def test_budget_parser_normalizes_common_bdt_formats():
     assert answer._extract_budget_bdt("Build a PC under BDT 100k") == 100000
     assert answer._extract_budget_bdt("My 1 lakh budget is fixed") == 100000

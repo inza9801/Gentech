@@ -397,9 +397,7 @@ def _resolve_product_recommendation_context(
 ) -> tuple[str | None, int | None]:
     recent_messages = (history or [])[-_MAX_HISTORY_MESSAGES:]
 
-    category = None
-    if question.strip():
-        category = _extract_product_category(question)
+    category = _extract_product_category(question) if question.strip() else None
     if category is None:
         for message in reversed(recent_messages):
             candidate = str(message.get("content", "")).strip()
@@ -415,16 +413,12 @@ def _resolve_product_recommendation_context(
         category = _extract_product_category(combined)
 
     target_price_bdt = None
-    price_candidates = [] if _selected_feature_from_history(question, history) else [question]
-    price_candidates.extend(_conversation_text_for_recommendation(question, history).splitlines())
-    for candidate in price_candidates:
-        if not candidate.strip():
-            continue
-        target_price_bdt = _extract_budget_bdt(candidate)
+    is_feature_selection = _is_feature_selection_response(question, history)
+    if not is_feature_selection:
+        target_price_bdt = _extract_budget_bdt(question)
         if target_price_bdt is None:
-            target_price_bdt = _extract_bare_price_bdt(candidate)
-        if target_price_bdt is not None:
-            break
+            target_price_bdt = _extract_bare_price_bdt(question)
+
     if target_price_bdt is None:
         for message in reversed(recent_messages):
             candidate = str(message.get("content", "")).strip()
